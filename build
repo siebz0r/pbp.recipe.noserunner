@@ -1,0 +1,4 @@
+cd buildout
+python2.4 bootstrap.py
+bin/buildout -v
+
