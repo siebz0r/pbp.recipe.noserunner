@@ -1,0 +1,1445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <channel rdf:about="http://meta/exportrss">
+    <title>Atomisator</title>
+    <description>Meta Feed</description>
+    <link>http://meta/exportrss</link>
+    <items>
+      <rdf:Seq><rdf:li rdf:resource="http://digg.com/programming/CSSEdit_2_0_Released" />
+<rdf:li rdf:resource="http://digg.com/programming/Top_5_must_have_php_tools" />
+<rdf:li rdf:resource="http://digg.com/programming/Using_the_Digg_API_in_PHP" />
+<rdf:li rdf:resource="http://digg.com/programming/Dina_Programming_Font" />
+<rdf:li rdf:resource="http://digg.com/programming/moo_fx_version_2_0_is_out_Javascript_has_never_been_so_sexy" />
+<rdf:li rdf:resource="http://digg.com/programming/Laughable_Programmer_s_Font" />
+<rdf:li rdf:resource="http://digg.com/programming/Nine_Things_Developers_Want_More_Than_Money" />
+<rdf:li rdf:resource="http://digg.com/programming/Amberjack_Tours_for_your_website" />
+<rdf:li rdf:resource="http://digg.com/programming/Ultimate_Programmer_Reference_Resource_with_Ajax_search" />
+<rdf:li rdf:resource="http://digg.com/programming/Django_Book_Online_FREE_Beta" />
+<rdf:li rdf:resource="http://digg.com/programming/Avoiding_the_pitfalls_Pointers_and_memory_leaks_in_C" />
+<rdf:li rdf:resource="http://digg.com/programming/Cheat_Sheet_Round_Up_Ajax_CSS_LaTeX_Ruby" />
+<rdf:li rdf:resource="http://digg.com/programming/Google_Reader_Optimized" />
+<rdf:li rdf:resource="http://digg.com/programming/Remove_the_GO_button_from_Firefox_2_0" />
+<rdf:li rdf:resource="http://digg.com/programming/Introduction_to_Microformats" />
+<rdf:li rdf:resource="http://digg.com/programming/Optimizing_HTML_Page_load_time" />
+<rdf:li rdf:resource="http://digg.com/programming/Digg_v3_1_Fluid_Fixed_left_bar_No_Burieds" />
+<rdf:li rdf:resource="http://digg.com/programming/Who_codes_for_the_space_shuttle" />
+<rdf:li rdf:resource="http://digg.com/programming/mb3Digg_Digg_goes_3D" />
+<rdf:li rdf:resource="http://digg.com/programming/fireworks_js" />
+<rdf:li rdf:resource="http://digg.com/programming/Firefox_StatusBar_Icons_eng_only_w_CuteMenus" />
+<rdf:li rdf:resource="http://digg.com/programming/Wikipedia_English_cleaner_design" />
+<rdf:li rdf:resource="http://digg.com/programming/YouTube_com_dark_gray_redesign_vC" />
+<rdf:li rdf:resource="http://digg.com/programming/Toolbar_Buttons_Closer_for_Firefox_2_0" />
+<rdf:li rdf:resource="http://digg.com/programming/Digg_v3_fluid_width_tweaks_fixed_right_sidebar_WOW" />
+<rdf:li rdf:resource="http://digg.com/programming/Make_your_computer_a_SUSE_Linux_Enterprise_Server_with_a_normal_connection" />
+<rdf:li rdf:resource="http://digg.com/programming/Is_Azureus_Biggest_Shortcoming_Java" />
+<rdf:li rdf:resource="http://digg.com/programming/Getting_Real_by_37signals_now_free_online" />
+<rdf:li rdf:resource="http://digg.com/programming/37signals_shows_how_ridiculous_it_is_to_install_something_in_Windows_Vista" />
+<rdf:li rdf:resource="http://digg.com/programming/Working_XML_Serve_friendlier_RSS_and_Atom_feeds" />
+<rdf:li rdf:resource="http://digg.com/programming/The_New_American_Idol_The_Coder" />
+<rdf:li rdf:resource="http://digg.com/programming/Debugging_make" />
+<rdf:li rdf:resource="http://digg.com/programming/300_APIs" />
+<rdf:li rdf:resource="http://digg.com/programming/10_Old_Photos_of_Famous_Programmers_and_Business_Men" />
+<rdf:li rdf:resource="http://digg.com/programming/5_must_have_php_tools" />
+<rdf:li rdf:resource="http://digg.com/programming/How_To_Become_A_Hacker_11" />
+<rdf:li rdf:resource="http://digg.com/programming/Neat_trick_with_Javascript" />
+<rdf:li rdf:resource="http://digg.com/programming/The_Art_of_Complex_Problem_Solving" />
+<rdf:li rdf:resource="http://digg.com/programming/Threaded_data_collection_in_Python_with_example_code" />
+<rdf:li rdf:resource="http://digg.com/programming/Drag_and_drop_with_the_Grid_Part_2" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pkz1" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pl6j" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pl6u" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pktc" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pli1" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pl99" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pl4p" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pm5t" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pj1b" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pkzz" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=piu8" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=ph50" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pi3h" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pi72" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pmo6" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=ph4y" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=piwj" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pld3" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pkpl" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pjhg" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pkyp" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pgx0" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pgwc" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pj6j" />
+<rdf:li rdf:resource="http://programming.reddit.com/goto?rss=true&amp;id=pfuy" />
+<rdf:li rdf:resource="http://www.browniepointsblog.com/2006/04/09/how-to-make-sweet-sushi/" />
+<rdf:li rdf:resource="http://moronland.net/moronia/moron/953/" />
+<rdf:li rdf:resource="http://www.behr.com/behrx/workbook/" />
+<rdf:li rdf:resource="http://booskovski.blogspot.com/2006/11/richard-dawkins-some-great-clips.html" />
+<rdf:li rdf:resource="http://www.arborday.org/trees/wtit/" />
+<rdf:li rdf:resource="http://www.whenpenguinsattack.com/2006/11/05/top-5-php-tools/?82" />
+<rdf:li rdf:resource="http://tillthend0.spaces.live.com/Blog/cns!B92B8B0496E1EBFC!258.entry" />
+<rdf:li rdf:resource="http://chronicle.com/temp/reprint.php?%20id=z6xht2rj60kqmsl8tlq5ltqcshc5y93y" />
+<rdf:li rdf:resource="http://www.ted.com/tedtalks/tedtalksplayer.cfm?key=j_han&amp;flashEnabled=1&amp;" />
+<rdf:li rdf:resource="http://www.norvig.com/java-iaq.html" />
+<rdf:li rdf:resource="http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/" />
+<rdf:li rdf:resource="http://phpspot.org/blog/archives/2006/11/ajaxajax.html" />
+<rdf:li rdf:resource="http://www.podtech.net/home/technology/1439/vloggies-awards-show-party-video" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45809014/article.pl" />
+<rdf:li rdf:resource="http://www.quickonlinetips.com/archives/2005/09/complete-digg-tools-collection/" />
+<rdf:li rdf:resource="http://www.bit-tech.net/news/2006/11/06/nvidia_recalls_geforce_8800_gtx_batch/" />
+<rdf:li rdf:resource="http://www.extremetech.com/article2/0,1697,2047507,00.asp" />
+<rdf:li rdf:resource="http://nccwarp9.blogspot.com/2006/10/new-approach-to-classic-eye-glasses.html" />
+<rdf:li rdf:resource="http://www.techcrunch.com/2006/11/06/fox-interactive-launches-desktopwebsite-widget-platform/" />
+<rdf:li rdf:resource="http://arstechnica.com/news.ars/post/20061103-8143.html?refcnx" />
+<rdf:li rdf:resource="http://www.lifehacker.com/software/planning/printable-planning-forms-212315.php" />
+<rdf:li rdf:resource="http://www.aresluna.org/attached/computerhistory/articles/macintosh20yearslater/pics/06" />
+<rdf:li rdf:resource="http://shamel.blogspot.com/2006/10/google-growing-larger-than-microsoft.html" />
+<rdf:li rdf:resource="http://www.studiocreations.com/howto/blasterrifle/main.html" />
+<rdf:li rdf:resource="http://www.amazon.com/exec/obidos/ASIN/B000IVDI64/hanapbuhay-20" />
+<rdf:li rdf:resource="http://www.springwidgets.com/" />
+<rdf:li rdf:resource="http://www.photojojo.com/content/diy/how-to-make-a-postcard-mosaic-gift/" />
+<rdf:li rdf:resource="http://www.flickr.com/photos/goopymart/sets/72157594362502502/" />
+<rdf:li rdf:resource="http://www.mashery.com/" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45794099/article.pl" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183674" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183672" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183670" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183668" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183666" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183664" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183662" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183659" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183657" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183655" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183653" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183651" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183649" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183647" />
+<rdf:li rdf:resource="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183645" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/truthiness_web_20_defined_cartoon.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/the_web_designer_in_2007.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/xhtml_101_free_html_course.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/is_it_time_to_graduate_from_vss.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/a_handy_heuristic_for_auditing_source_code.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/efficient_javascript.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/behind_the_scenes_of_objectivec_20.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/test_internet_explorer_7_without_installing_it.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/stylin_fonts_and_text_in_css.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/jsessionid_considered_harmful.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/rjs_templates_in_rails_or_ajax_with_ease_a_101_le.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/sorting_candidate_cvs_using_the_antispam_algorithm.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/my_new_coding_standard.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/java_vs_cnet.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/openjacob_ria_made_easy.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/thoughts_on_agile_methods_xp_and_the_like.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/money_really_does_matter_im_an_admitted_code_merc.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/the_rails_way.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/simple_and_easy_example_with_spring_and_ruby.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/the_java_iaq_infrequently_answered_questions.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/protecting_a_python_svn_code_base_with_the_precom.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/secure_programming_habits_in_php.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/webdesign_is_95_typography_part2.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/test_driven_development_the_philosophy.html" />
+<rdf:li rdf:resource="http://www.dzone.com/rsslinks/misc_programs_written_in_ruby.html" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/chainbuilder-esb-alpha" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/VS-2005-SP1-Decemeber" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/agile-practice-patterns" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/Python-for-.NET" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/The-Ruby-Way-Review" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/jee-multicore" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/paired-progrmaming-myths" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/Billy-Hollis-Interview" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/IronPython-ASP.NET" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/scrum-checklists-book" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/generics-frustration" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/TestDriven-2.0-released" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/categorize-tests-build" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/Orcas-Named-Pipes" />
+<rdf:li rdf:resource="http://www.infoq.com/news/2006/11/european-agile-conference" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45215043/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45166420/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44521872/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44289707/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43804081/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43340958/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43292156/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42729340/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42664662/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42654636/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42428886/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42289704/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42239402/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42048651/article.pl" />
+<rdf:li rdf:resource="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/41715668/article.pl" />
+</rdf:Seq>
+    </items>
+  </channel>
+<item rdf:about="http://digg.com/programming/CSSEdit_2_0_Released">
+  <title>CSSEdit 2.0 Released</title>
+  <description>CSSEdit 2 is a major upgrade to the simple and powerful Mac OS X shareware CSS editor. The biggest feature is stylesheet overrides, which allow you to tinker with any site's CSS without having to save, upload and refresh. Also featured is X-ray, which lets you easily see how any layout is built. Lots of other new goodies - check it out!</description>
+  <link>http://digg.com/programming/CSSEdit_2_0_Released</link>
+      <dc:subject>CSSEdit 2.0 Released</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Top_5_must_have_php_tools">
+  <title>Top 5 must-have php tools</title>
+  <description>has a list of top 5 tools and and updated list of some other good tools.  A good read!</description>
+  <link>http://digg.com/programming/Top_5_must_have_php_tools</link>
+      <dc:subject>Top 5 must-have php tools</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Using_the_Digg_API_in_PHP">
+  <title>Using the Digg API in PHP</title>
+  <description>Tutorial on using the unreleased Digg API to retrieve and display stories from Digg, using PHP. Includes example code and explanations. Bring on the third-party apps!</description>
+  <link>http://digg.com/programming/Using_the_Digg_API_in_PHP</link>
+      <dc:subject>Using the Digg API in PHP</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Dina_Programming_Font">
+  <title>Dina Programming Font</title>
+  <description>Dina is a monospace bitmap font, primarily aimed at programmers. It is relatively compact to allow a lot of code on screen, while (hopefully) clear enough to remain readable even at high resolutions.</description>
+  <link>http://digg.com/programming/Dina_Programming_Font</link>
+      <dc:subject>Dina Programming Font</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/moo_fx_version_2_0_is_out_Javascript_has_never_been_so_sexy">
+  <title>moo.fx version 2.0 is out: Javascript has never been so sexy.</title>
+  <description>moo.fx is a 3kb javascript effects library, to be used with prototype.js or the mootools framework.Open source, released under the very liberal MIT License, you can feel free to do anything you want with it.</description>
+  <link>http://digg.com/programming/moo_fx_version_2_0_is_out_Javascript_has_never_been_so_sexy</link>
+      <dc:subject>moo.fx version 2.0 is out: Javascript has never been so sexy.</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Laughable_Programmer_s_Font">
+  <title>Laughable: Programmer's Font</title>
+  <description>"This font is made for clarity at small resolutions, and could be used in many other applications." -- Or so he says. Take a look at this font and see what you think for yourself. If anything, it makes it 10 times harder to read than an ordinary font. Thought it'd be funny to post this and see what people's thoughts are.</description>
+  <link>http://digg.com/programming/Laughable_Programmer_s_Font</link>
+      <dc:subject>Laughable: Programmer's Font</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Nine_Things_Developers_Want_More_Than_Money">
+  <title>Nine Things Developers Want More Than Money</title>
+  <description>If you want to collect a paycheck for 25 years and retire with a gold watch then go for companies that have the "basics" nailed. Work 9 to 5 and count the years until you can move to Costa Rica. But if you've ever felt compelled to work crazy hours because the project was so damn fun, then you know that a paycheck is not the only thing that counts.</description>
+  <link>http://digg.com/programming/Nine_Things_Developers_Want_More_Than_Money</link>
+      <dc:subject>Nine Things Developers Want More Than Money</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Amberjack_Tours_for_your_website">
+  <title>Amberjack - Tours for your website</title>
+  <description>Amberjack is an Open Source JavaScript library enabling webmasters to easily create great looking and skinnable tours for their site. It uses a JSON-like technique to post-fetch skins from the Amberjack.org server. A tour wizard makes tour creation really easy.</description>
+  <link>http://digg.com/programming/Amberjack_Tours_for_your_website</link>
+      <dc:subject>Amberjack - Tours for your website</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Ultimate_Programmer_Reference_Resource_with_Ajax_search">
+  <title>Ultimate Programmer Reference Resource (with Ajax search)</title>
+  <description>You can find any function/class/tag/style in 2 seconds using this search service. Works with most of the technologies including HTML, CSS, JavaScript, Perl, Ruby, Oracle, PHP, XSL, ActionScript, ColdFusion, C/C++ and more.</description>
+  <link>http://digg.com/programming/Ultimate_Programmer_Reference_Resource_with_Ajax_search</link>
+      <dc:subject>Ultimate Programmer Reference Resource (with Ajax search)</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Django_Book_Online_FREE_Beta">
+  <title>Django Book - Online *FREE* Beta</title>
+  <description>The Django folks will be publishing a book on the python web framework early next year.  But they have just put up the first two chapters of the online version. They will be releasing new chapters every couple of weeks and the online version will always be free to read and redistribute.</description>
+  <link>http://digg.com/programming/Django_Book_Online_FREE_Beta</link>
+      <dc:subject>Django Book - Online *FREE* Beta</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Avoiding_the_pitfalls_Pointers_and_memory_leaks_in_C">
+  <title>Avoiding the pitfalls: Pointers and memory leaks in C</title>
+  <description>When working with C, are you tired of spending time debugging problems with pointers and memory leaks? If so, then this article is for you. You'll learn about the types of pointer operations that can cause memory corruption and you'll also examine some scenarios that show what to consider while working with dynamic memory allocation.</description>
+  <link>http://digg.com/programming/Avoiding_the_pitfalls_Pointers_and_memory_leaks_in_C</link>
+      <dc:subject>Avoiding the pitfalls: Pointers and memory leaks in C</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Cheat_Sheet_Round_Up_Ajax_CSS_LaTeX_Ruby">
+  <title>Cheat Sheet Round-Up: Ajax, CSS, LaTeX, Ruby...</title>
+  <description>170 Cheat Sheets about Ajax, Apache, Blogging,CSS, CVS, Firefox, Google, HTML/XHTML,JavaScript,Linux, MySQL, LaTeX, Oracle, Perl,PHP, Python, Photoshop Ruby, Unix, Windowx, XML</description>
+  <link>http://digg.com/programming/Cheat_Sheet_Round_Up_Ajax_CSS_LaTeX_Ruby</link>
+      <dc:subject>Cheat Sheet Round-Up: Ajax, CSS, LaTeX, Ruby...</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Google_Reader_Optimized">
+  <title>Google Reader Optimized</title>
+  <description>Uses the maximum amount of space for the feed viewing area, at the expense of all unnecessary UI elements.</description>
+  <link>http://digg.com/programming/Google_Reader_Optimized</link>
+      <dc:subject>Google Reader Optimized</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Remove_the_GO_button_from_Firefox_2_0">
+  <title>Remove the GO button from Firefox 2.0</title>
+  <description>"...This is code I put in my UserChrome.css file. It removes the annoying Go button from the URL bar. In previous versions, the Go button was separate, but for some reason, Mozilla combined it with the URL bar in this version..."</description>
+  <link>http://digg.com/programming/Remove_the_GO_button_from_Firefox_2_0</link>
+      <dc:subject>Remove the GO button from Firefox 2.0</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Introduction_to_Microformats">
+  <title>Introduction to Microformats</title>
+  <description>"Microformats are small and gentle syntactic touch-ups for your web pages. They have one major purpose: to make your data readable by both man and machine. They are the technical diplomats of the Web; allowing the same piece of data to be shared among many applications and people."</description>
+  <link>http://digg.com/programming/Introduction_to_Microformats</link>
+      <dc:subject>Introduction to Microformats</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Optimizing_HTML_Page_load_time">
+  <title>Optimizing HTML Page load time</title>
+  <description>Google engineer Aaron Hopkins has written an interesting analysis of optimizing page load time.</description>
+  <link>http://digg.com/programming/Optimizing_HTML_Page_load_time</link>
+      <dc:subject>Optimizing HTML Page load time</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Digg_v3_1_Fluid_Fixed_left_bar_No_Burieds">
+  <title>Digg v3.1 - Fluid, Fixed left-bar, No Burieds</title>
+  <description>"...I didn't like the fact that the articles were so close to the edge of the screen, and quite frankly, I like my menu on the left, so back it went to the left. I did keep it fixed, though, so it's still better than the original..."</description>
+  <link>http://digg.com/programming/Digg_v3_1_Fluid_Fixed_left_bar_No_Burieds</link>
+      <dc:subject>Digg v3.1 - Fluid, Fixed left-bar, No Burieds</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Who_codes_for_the_space_shuttle">
+  <title>Who codes for the space shuttle?</title>
+  <description>Fast Company has an interesting piece about coding for the space shuttle with the Lockheed Martin Corps space mission systems division; a fascinating look into the absolutely boring task of writing 99.9% perfect software.</description>
+  <link>http://digg.com/programming/Who_codes_for_the_space_shuttle</link>
+      <dc:subject>Who codes for the space shuttle?</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/mb3Digg_Digg_goes_3D">
+  <title>mb3Digg - Digg goes 3D</title>
+  <description>Check out my first version of the mb3Digg Engine:  A Flash visualisation tool that lets you explore the top digg stories in a 3D environment.</description>
+  <link>http://digg.com/programming/mb3Digg_Digg_goes_3D</link>
+      <dc:subject>mb3Digg - Digg goes 3D</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/fireworks_js">
+  <title>fireworks.js</title>
+  <description>Fireworks.js is a bit of Javascript that creates star burst-type explosions, which have to be seen to be believed. Exploding firework animations are hot, the new black, the script equivalent of the blink tag. Mmm, blink tag.</description>
+  <link>http://digg.com/programming/fireworks_js</link>
+      <dc:subject>fireworks.js</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Firefox_StatusBar_Icons_eng_only_w_CuteMenus">
+  <title>Firefox - StatusBar Icons (eng only w/ CuteMenus)</title>
+  <description>CuteMenus Crystal SVG requiredif you dont have cutemenus then use Firefox - StatusBar Icons (eng only w/o CuteMenus)</description>
+  <link>http://digg.com/programming/Firefox_StatusBar_Icons_eng_only_w_CuteMenus</link>
+      <dc:subject>Firefox - StatusBar Icons (eng only w/ CuteMenus)</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Wikipedia_English_cleaner_design">
+  <title>Wikipedia (English) - cleaner design</title>
+  <description>This style sheet makes some changes to the layout for the Wikipedia (English) Web site.</description>
+  <link>http://digg.com/programming/Wikipedia_English_cleaner_design</link>
+      <dc:subject>Wikipedia (English) - cleaner design</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/YouTube_com_dark_gray_redesign_vC">
+  <title>YouTube.com - dark gray redesign (vC)</title>
+  <description>Cool dark gray YouTube style.</description>
+  <link>http://digg.com/programming/YouTube_com_dark_gray_redesign_vC</link>
+      <dc:subject>YouTube.com - dark gray redesign (vC)</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Toolbar_Buttons_Closer_for_Firefox_2_0">
+  <title>Toolbar - Buttons Closer for Firefox 2.0</title>
+  <description>Buttons closer on toolbar ignoring theme settings (It ignores border, background style and size from the operating system's theme)</description>
+  <link>http://digg.com/programming/Toolbar_Buttons_Closer_for_Firefox_2_0</link>
+      <dc:subject>Toolbar - Buttons Closer for Firefox 2.0</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Digg_v3_fluid_width_tweaks_fixed_right_sidebar_WOW">
+  <title>Digg v3 - fluid width, tweaks, fixed right sidebar [WOW]</title>
+  <description>This style gives Digg v3 a fluid width! Now people with smaller screens can use Digg without getting horizontal scrollbars. Also removes the ads. Also makes textboxes and  menus look like the ones on the submit page, makes the comment box font normal size, makes the comment edit box bigger so you can see what you're typing.</description>
+  <link>http://digg.com/programming/Digg_v3_fluid_width_tweaks_fixed_right_sidebar_WOW</link>
+      <dc:subject>Digg v3 - fluid width, tweaks, fixed right sidebar [WOW]</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Make_your_computer_a_SUSE_Linux_Enterprise_Server_with_a_normal_connection">
+  <title>Make your computer a SUSE Linux Enterprise Server with a normal connection</title>
+  <description>With SUSE Linux Enterprise Server, your home computer can easily be converted into a LINUX server which can be used to host your own websites, email service, FTP service, etc...</description>
+  <link>http://digg.com/programming/Make_your_computer_a_SUSE_Linux_Enterprise_Server_with_a_normal_connection</link>
+      <dc:subject>Make your computer a SUSE Linux Enterprise Server with a normal connection</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Is_Azureus_Biggest_Shortcoming_Java">
+  <title>Is Azureus' Biggest Shortcoming Java?</title>
+  <description>Wired.com is running an article on the best bit torrent clients available today , and among the top five is Azureus ; a popular SWT/Java client application, and consistently one of the most actively developed and downloaded projects at Sourceforge.net. Ironically, the first and foremost 'Bad' feature listed about it is... Java.</description>
+  <link>http://digg.com/programming/Is_Azureus_Biggest_Shortcoming_Java</link>
+      <dc:subject>Is Azureus' Biggest Shortcoming Java?</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Getting_Real_by_37signals_now_free_online">
+  <title>Getting Real by 37signals -- now free online</title>
+  <description>So far we’ve sold over 23,000 copies of Getting Real in PDF format. We introduced it on March 1 of this year, so we’re pretty thrilled with the results.But 23,000 readers isn’t enough. We want millions of people to read the book. So today we introduce two new flavors that make the content even more accessible. And, in one case, completely free.</description>
+  <link>http://digg.com/programming/Getting_Real_by_37signals_now_free_online</link>
+      <dc:subject>Getting Real by 37signals -- now free online</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/37signals_shows_how_ridiculous_it_is_to_install_something_in_Windows_Vista">
+  <title>37signals shows how ridiculous it is to install something in Windows Vista</title>
+  <description>Clocking in at a stunning 35 clicks, the video shows that installing a script debugger in the new operating system is not only not made any easier, but it still takes a series of hoop jumps. They offer the same process in OS X for comparison.</description>
+  <link>http://digg.com/programming/37signals_shows_how_ridiculous_it_is_to_install_something_in_Windows_Vista</link>
+      <dc:subject>37signals shows how ridiculous it is to install something in Windows Vista</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Working_XML_Serve_friendlier_RSS_and_Atom_feeds">
+  <title>Working XML: Serve friendlier RSS and Atom feeds</title>
+  <description>RSS and Atom feeds are popping up like mushrooms on Web sites. They are popular because they offer a simple mechanism for loyal visitors to register with a site and be notified of updates. Still they are not always easy on users, particularly those with older browsers.</description>
+  <link>http://digg.com/programming/Working_XML_Serve_friendlier_RSS_and_Atom_feeds</link>
+      <dc:subject>Working XML: Serve friendlier RSS and Atom feeds</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/The_New_American_Idol_The_Coder">
+  <title>The New American Idol... The Coder</title>
+  <description>Competitive coding is where it's at.</description>
+  <link>http://digg.com/programming/The_New_American_Idol_The_Coder</link>
+      <dc:subject>The New American Idol... The Coder</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Debugging_make">
+  <title>Debugging make</title>
+  <description>make and utilities like it are fundamental tools for streamlining the application build process. Learn the structure of the makefile, how to avoid common mistakes in its creation, and how to solve or work around portability issues and other problems as they crop up.</description>
+  <link>http://digg.com/programming/Debugging_make</link>
+      <dc:subject>Debugging make</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/300_APIs">
+  <title>300 APIs</title>
+  <description>A thorough list of 300 available APIs ranging from mapping to video.</description>
+  <link>http://digg.com/programming/300_APIs</link>
+      <dc:subject>300 APIs</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/10_Old_Photos_of_Famous_Programmers_and_Business_Men">
+  <title>10 Old Photos of Famous Programmers and Business Men</title>
+  <description>Found some cool old photos of various people such as Linus Torvald, Larry Page, Sergey Brin, Dennis Ritchie, Steve Woznaik, Steve Jobs, and more. A blast from the past you might say.</description>
+  <link>http://digg.com/programming/10_Old_Photos_of_Famous_Programmers_and_Business_Men</link>
+      <dc:subject>10 Old Photos of Famous Programmers and Business Men</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/5_must_have_php_tools">
+  <title>5 must-have php tools</title>
+  <description>5 must-have tools for php developers!</description>
+  <link>http://digg.com/programming/5_must_have_php_tools</link>
+      <dc:subject>5 must-have php tools</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/How_To_Become_A_Hacker_11">
+  <title>How To Become A Hacker</title>
+  <description>A Guide on How To Become A Ethical Hacker</description>
+  <link>http://digg.com/programming/How_To_Become_A_Hacker_11</link>
+      <dc:subject>How To Become A Hacker</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Neat_trick_with_Javascript">
+  <title>Neat trick with Javascript</title>
+  <description>wow... the things the kids think of...</description>
+  <link>http://digg.com/programming/Neat_trick_with_Javascript</link>
+      <dc:subject>Neat trick with Javascript</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/The_Art_of_Complex_Problem_Solving">
+  <title>The Art of Complex Problem Solving</title>
+  <description>A very nicely designed diagram of complex problem solving.</description>
+  <link>http://digg.com/programming/The_Art_of_Complex_Problem_Solving</link>
+      <dc:subject>The Art of Complex Problem Solving</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Threaded_data_collection_in_Python_with_example_code">
+  <title>Threaded data collection in Python - with example code!</title>
+  <description>The example used is an RSS aggregator, and the writer provides the full code of each stage of its design, while explaining the pros and cons of each model. A great introduction to threaded programming in Python, essential if you want to be the next Google!</description>
+  <link>http://digg.com/programming/Threaded_data_collection_in_Python_with_example_code</link>
+      <dc:subject>Threaded data collection in Python - with example code!</dc:subject>
+
+</item>
+<item rdf:about="http://digg.com/programming/Drag_and_drop_with_the_Grid_Part_2">
+  <title>Drag and drop with the Grid - Part 2</title>
+  <description>In Part 2, we will take that knowledge and create an extension of the Grid that adds several useful methods for working with Drag and Drop, automates the initialization process and adds functionality to do row ordering via Drag and Drop with no additional code.</description>
+  <link>http://digg.com/programming/Drag_and_drop_with_the_Grid_Part_2</link>
+      <dc:subject>Drag and drop with the Grid - Part 2</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pkz1">
+  <title>Efficient JavaScript</title>
+  <description>&lt;a href="http://dev.opera.com/articles/view/48/"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pkz1/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pkz1</link>
+      <dc:subject>Efficient JavaScript</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pl6j">
+  <title>Bizarre Game Development Opportunity with the World Bank</title>
+  <description>&lt;a href="http://blogs.guardian.co.uk/games/archives/2006/11/03/game_development_opportunity_with_the_world_bank.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pl6j/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pl6j</link>
+      <dc:subject>Bizarre Game Development Opportunity with the World Bank</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pl6u">
+  <title>Livecoding music with Haskell</title>
+  <description>&lt;a href="http://doc.gold.ac.uk/~ma503am/alex/haskellmusic"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pl6u/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pl6u</link>
+      <dc:subject>Livecoding music with Haskell</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pktc">
+  <title>PyPy Duesseldorf sprint report (nov 5th)</title>
+  <description>&lt;a href="http://codespeak.net/pipermail/pypy-dev/2006q4/003396.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pktc/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pktc</link>
+      <dc:subject>PyPy Duesseldorf sprint report (nov 5th)</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pli1">
+  <title>Behind the scenes of Objective-C 2.0</title>
+  <description>&lt;a href="http://www.informit.com/articles/article.asp?p=665128&amp;seqNum=1&amp;rl=1"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pli1/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pli1</link>
+      <dc:subject>Behind the scenes of Objective-C 2.0</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pl99">
+  <title>Pyjamas (AJAX in Python) 0.1 Release</title>
+  <description>&lt;a href="http://jtauber.com/blog/2006/11/06/pyjamas_0.1_released"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pl99/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pl99</link>
+      <dc:subject>Pyjamas (AJAX in Python) 0.1 Release</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pl4p">
+  <title>The triumph of style over substance in new school OS X application design</title>
+  <description>&lt;a href="http://www.rogueamoeba.com/utm/posts/Article/DeliciousGeneration-2006-11-06-10-00"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pl4p/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pl4p</link>
+      <dc:subject>The triumph of style over substance in new school OS X application design</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pm5t">
+  <title>Vectorizing with vDSP and vecLib</title>
+  <description>&lt;a href="http://www.ffnn.nl/pages/articles/apple-mac-os-x/vectorizing-with-vdsp-and-veclib.php"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pm5t/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pm5t</link>
+      <dc:subject>Vectorizing with vDSP and vecLib</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pj1b">
+  <title>Sorting Candidate CV's using the anti-spam algorithm...</title>
+  <description>&lt;a href="http://dev2dev.bea.com/blog/simonvc/archive/2006/11/sorting_candida.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pj1b/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pj1b</link>
+      <dc:subject>Sorting Candidate CV's using the anti-spam algorithm...</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pkzz">
+  <title>Labscam - Bell Labs meets Penn &amp; Teller</title>
+  <description>&lt;a href="http://cm.bell-labs.com/cm/cs/who/dmr/labscam.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pkzz/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pkzz</link>
+      <dc:subject>Labscam - Bell Labs meets Penn &amp; Teller</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=piu8">
+  <title>You and Your Research - Richard Hamming 1986</title>
+  <description>&lt;a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/piu8/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=piu8</link>
+      <dc:subject>You and Your Research - Richard Hamming 1986</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=ph50">
+  <title>Compiler humour</title>
+  <description>&lt;a href="http://lists.apple.com/archives/Mpw-dev/2005/May/msg00002.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/ph50/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=ph50</link>
+      <dc:subject>Compiler humour</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pi3h">
+  <title>Confessions of a Code Mercenary</title>
+  <description>&lt;a href="http://www.yafla.com/dennisforbes/Money-Really-Does-Matter-I-m-An-Admitted-Code-Mercenary/Money-Really-Does-Matter-I-m-An-Admitted-Code-Mercenary.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pi3h/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pi3h</link>
+      <dc:subject>Confessions of a Code Mercenary</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pi72">
+  <title>Wil Shipley meets Nicholas Negroponte (founder MIT media lab) on a plane</title>
+  <description>&lt;a href="http://wilshipley.com/blog/2006/11/youve-gotta-fight-for-your-right-to.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pi72/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pi72</link>
+      <dc:subject>Wil Shipley meets Nicholas Negroponte (founder MIT media lab) on a plane</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pmo6">
+  <title>Foros de Flash</title>
+  <description>&lt;a href="http://www.forosdeflash.com/blog"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pmo6/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pmo6</link>
+      <dc:subject>Foros de Flash</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=ph4y">
+  <title>Dennis Ritchie: /* You are not expected to understand this */</title>
+  <description>&lt;a href="http://cm.bell-labs.com/cm/cs/who/dmr/odd.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/ph4y/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=ph4y</link>
+      <dc:subject>Dennis Ritchie: /* You are not expected to understand this */</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=piwj">
+  <title>Want to be a better programmer? Don't re-learn something you already know!</title>
+  <description>&lt;a href="http://lambda-the-ultimate.org/node/1807#comment-21997"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/piwj/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=piwj</link>
+      <dc:subject>Want to be a better programmer? Don't re-learn something you already know!</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pld3">
+  <title>'Cannot Open the File: Mk:@MSITStore' Error Message - Windows Troubleshooting</title>
+  <description>&lt;a href="http://bubble.ro/Cannot_Open_the_File__Mk__MSITStore___Error_Message.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pld3/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pld3</link>
+      <dc:subject>'Cannot Open the File: Mk:@MSITStore' Error Message - Windows Troubleshooting</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pkpl">
+  <title>Customer Service-Driven Development - How to get buy-in for you software project (Mike-O-Matic)</title>
+  <description>&lt;a href="http://mikeomatic.net/?p=111"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pkpl/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pkpl</link>
+      <dc:subject>Customer Service-Driven Development - How to get buy-in for you software project (Mike-O-Matic)</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pjhg">
+  <title>Classmate PC live and in the flesh [competitor to $100 laptop]</title>
+  <description>&lt;a href="http://www.engadget.com/2006/10/27/classmate-pc-live-and-in-the-flesh/"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pjhg/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pjhg</link>
+      <dc:subject>Classmate PC live and in the flesh [competitor to $100 laptop]</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pkyp">
+  <title>Money Really Does Matter - I'm An Admitted Code Mercenary</title>
+  <description>&lt;a href="http://www.yafla.com/dforbes/2006/11/05.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pkyp/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pkyp</link>
+      <dc:subject>Money Really Does Matter - I'm An Admitted Code Mercenary</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pgx0">
+  <title>Statistical analysis with GNU R, the free, surprisingly nice, statistics package</title>
+  <description>&lt;a href="http://www.onlamp.com/pub/a/onlamp/2005/11/17/r_for_statistics.html?page=1"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pgx0/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pgx0</link>
+      <dc:subject>Statistical analysis with GNU R, the free, surprisingly nice, statistics package</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pgwc">
+  <title>Hot off the press: Data Parallel Haskell: a status report</title>
+  <description>&lt;a href="http://www.cse.unsw.edu.au/~chak/papers/CLPKM06.html"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pgwc/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pgwc</link>
+      <dc:subject>Hot off the press: Data Parallel Haskell: a status report</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pj6j">
+  <title>Phishing Tips and Techniques (pdf)</title>
+  <description>&lt;a href="http://www.cs.auckland.ac.nz/~pgut001/pubs/defcon.pdf"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pj6j/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pj6j</link>
+      <dc:subject>Phishing Tips and Techniques (pdf)</dc:subject>
+
+</item>
+<item rdf:about="http://programming.reddit.com/goto?rss=true&amp;id=pfuy">
+  <title>Cat - a statically-typed stack-based programming language</title>
+  <description>&lt;a href="http://www.codeproject.com/useritems/cat.asp"&gt;[link]&lt;/a&gt;&lt;a href="http://programming.reddit.com/info/pfuy/comments"&gt;[more]&lt;/a&gt;</description>
+  <link>http://programming.reddit.com/goto?rss=true&amp;id=pfuy</link>
+      <dc:subject>Cat - a statically-typed stack-based programming language</dc:subject>
+
+</item>
+<item rdf:about="http://www.browniepointsblog.com/2006/04/09/how-to-make-sweet-sushi/">
+  <title>Brownie Points » How to Make Sweet Sushi</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.browniepointsblog.com/2006/04/09/how-to-make-sweet-sushi/"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/d/5/3/d645d7d786f6c0146b4f656a27d54.png" width="90" height="68" alt="Brownie Points » How to Make Sweet Sushi" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.browniepointsblog.com/2006/04/09/how-to-make-sweet-sushi/"&gt;Brownie Points » How to Make Sweet Sushi&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/lunamint"&gt;lunamint&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/sushi"&gt;sushi&lt;/a&gt; &lt;a href="http://del.icio.us/popular/food"&gt;food&lt;/a&gt; &lt;a href="http://del.icio.us/popular/recipes"&gt;recipes&lt;/a&gt; &lt;a href="http://del.icio.us/popular/howto"&gt;howto&lt;/a&gt; &lt;a href="http://del.icio.us/popular/candy"&gt;candy&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.browniepointsblog.com/2006/04/09/how-to-make-sweet-sushi/</link>
+  <dc:author>lunamint</dc:author>
+    <dc:subject>Brownie Points » How to Make Sweet Sushi</dc:subject>
+
+</item>
+<item rdf:about="http://moronland.net/moronia/moron/953/">
+  <title>Moronland.net - The Philosophy of Sex</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://moronland.net/moronia/moron/953/"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/b/b/a/957d8ca466ae4cbf285af456737e1.png" width="90" height="68" alt="Moronland.net - The Philosophy of Sex" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://moronland.net/moronia/moron/953/"&gt;Moronland.net - The Philosophy of Sex&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/immure"&gt;immure&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/sex"&gt;sex&lt;/a&gt; &lt;a href="http://del.icio.us/popular/quotes"&gt;quotes&lt;/a&gt; &lt;a href="http://del.icio.us/popular/funny"&gt;funny&lt;/a&gt; &lt;a href="http://del.icio.us/popular/humor"&gt;humor&lt;/a&gt; &lt;a href="http://del.icio.us/popular/humour"&gt;humour&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://moronland.net/moronia/moron/953/</link>
+  <dc:author>immure</dc:author>
+    <dc:subject>Moronland.net - The Philosophy of Sex</dc:subject>
+
+</item>
+<item rdf:about="http://www.behr.com/behrx/workbook/">
+  <title>Behr.com Explore Color</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.behr.com/behrx/workbook/"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/3/b/e/9a8e8995a3a2e48dd6e376aae945c.png" width="90" height="68" alt="Behr.com Explore Color" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.behr.com/behrx/workbook/"&gt;Behr.com Explore Color&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/angusf"&gt;angusf&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/color"&gt;color&lt;/a&gt; &lt;a href="http://del.icio.us/popular/design"&gt;design&lt;/a&gt; &lt;a href="http://del.icio.us/popular/tools"&gt;tools&lt;/a&gt; &lt;a href="http://del.icio.us/popular/paint"&gt;paint&lt;/a&gt; &lt;a href="http://del.icio.us/popular/colors"&gt;colors&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.behr.com/behrx/workbook/</link>
+  <dc:author>angusf</dc:author>
+    <dc:subject>Behr.com Explore Color</dc:subject>
+
+</item>
+<item rdf:about="http://booskovski.blogspot.com/2006/11/richard-dawkins-some-great-clips.html">
+  <title>A BUNCH A' SHIT | NO LIMITS......ALL COOL: Richard Dawkins | Some Great Clips</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://booskovski.blogspot.com/2006/11/richard-dawkins-some-great-clips.html"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/0/6/8/f37ae11e3c79b322b387b35cb4e2c.png" width="90" height="68" alt="A BUNCH A' SHIT | NO LIMITS......ALL COOL: Richard Dawkins | Some Great Clips" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://booskovski.blogspot.com/2006/11/richard-dawkins-some-great-clips.html"&gt;A BUNCH A' SHIT | NO LIMITS......ALL COOL: Richard Dawkins | Some Great Clips&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/tylermoody"&gt;tylermoody&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/dawkins"&gt;dawkins&lt;/a&gt; &lt;a href="http://del.icio.us/popular/video"&gt;video&lt;/a&gt; &lt;a href="http://del.icio.us/popular/religion"&gt;religion&lt;/a&gt; &lt;a href="http://del.icio.us/popular/atheism"&gt;atheism&lt;/a&gt; &lt;a href="http://del.icio.us/popular/science"&gt;science&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://booskovski.blogspot.com/2006/11/richard-dawkins-some-great-clips.html</link>
+  <dc:author>tylermoody</dc:author>
+    <dc:subject>A BUNCH A' SHIT | NO LIMITS......ALL COOL: Richard Dawkins | Some Great Clips</dc:subject>
+
+</item>
+<item rdf:about="http://www.arborday.org/trees/wtit/">
+  <title>What Tree is That at arborday.org</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.arborday.org/trees/wtit/"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/7/3/d/700f3c5678a39c4dea7e5a58bd8bc.png" width="90" height="68" alt="What Tree is That at arborday.org" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.arborday.org/trees/wtit/"&gt;What Tree is That at arborday.org&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/trxckster"&gt;trxckster&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/trees"&gt;trees&lt;/a&gt; &lt;a href="http://del.icio.us/popular/reference"&gt;reference&lt;/a&gt; &lt;a href="http://del.icio.us/popular/education"&gt;education&lt;/a&gt; &lt;a href="http://del.icio.us/popular/nature"&gt;nature&lt;/a&gt; &lt;a href="http://del.icio.us/popular/tree"&gt;tree&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.arborday.org/trees/wtit/</link>
+  <dc:author>trxckster</dc:author>
+    <dc:subject>What Tree is That at arborday.org</dc:subject>
+
+</item>
+<item rdf:about="http://www.whenpenguinsattack.com/2006/11/05/top-5-php-tools/?82">
+  <title>Jaslabs: High performance php » Top 5 php tools</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.whenpenguinsattack.com/2006/11/05/top-5-php-tools/?82"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/c/7/2/8925635616760fba203eb3da356d5.png" width="90" height="68" alt="Jaslabs: High performance php » Top 5 php tools" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.whenpenguinsattack.com/2006/11/05/top-5-php-tools/?82"&gt;Jaslabs: High performance php » Top 5 php tools&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/romeyinfc"&gt;romeyinfc&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/php"&gt;php&lt;/a&gt; &lt;a href="http://del.icio.us/popular/tools"&gt;tools&lt;/a&gt; &lt;a href="http://del.icio.us/popular/programming"&gt;programming&lt;/a&gt; &lt;a href="http://del.icio.us/popular/development"&gt;development&lt;/a&gt; &lt;a href="http://del.icio.us/popular/mysql"&gt;mysql&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.whenpenguinsattack.com/2006/11/05/top-5-php-tools/?82</link>
+  <dc:author>romeyinfc</dc:author>
+    <dc:subject>Jaslabs: High performance php » Top 5 php tools</dc:subject>
+
+</item>
+<item rdf:about="http://tillthend0.spaces.live.com/Blog/cns!B92B8B0496E1EBFC!258.entry">
+  <title>Those Days: Steve Jobs:Three stories from my life</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://tillthend0.spaces.live.com/Blog/cns!B92B8B0496E1EBFC!258.entry"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/c/6/0/0851c80603acfda9039381d96a95f.png" width="90" height="68" alt="Those Days: Steve Jobs:Three stories from my life" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://tillthend0.spaces.live.com/Blog/cns!B92B8B0496E1EBFC!258.entry"&gt;Those Days: Steve Jobs:Three stories from my life&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/wilgamesh"&gt;wilgamesh&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/inspiration"&gt;inspiration&lt;/a&gt; &lt;a href="http://del.icio.us/popular/stevejobs"&gt;stevejobs&lt;/a&gt; &lt;a href="http://del.icio.us/popular/apple"&gt;apple&lt;/a&gt; &lt;a href="http://del.icio.us/popular/motivation"&gt;motivation&lt;/a&gt; &lt;a href="http://del.icio.us/popular/stories"&gt;stories&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://tillthend0.spaces.live.com/Blog/cns!B92B8B0496E1EBFC!258.entry</link>
+  <dc:author>wilgamesh</dc:author>
+    <dc:subject>Those Days: Steve Jobs:Three stories from my life</dc:subject>
+
+</item>
+<item rdf:about="http://chronicle.com/temp/reprint.php?%20id=z6xht2rj60kqmsl8tlq5ltqcshc5y93y">
+  <title>The Chronicle: 10/27/2006: Can Wikipedia Ever Make the Grade?</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://chronicle.com/temp/reprint.php?%20id=z6xht2rj60kqmsl8tlq5ltqcshc5y93y"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/6/c/9/3ba248026c2c5db4404867eab6830.png" width="90" height="68" alt="The Chronicle: 10/27/2006: Can Wikipedia Ever Make the Grade?" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://chronicle.com/temp/reprint.php?%20id=z6xht2rj60kqmsl8tlq5ltqcshc5y93y"&gt;The Chronicle: 10/27/2006: Can Wikipedia Ever Make the Grade?&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/tonycarson"&gt;tonycarson&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/wikipedia"&gt;wikipedia&lt;/a&gt; &lt;a href="http://del.icio.us/popular/internet"&gt;internet&lt;/a&gt; &lt;a href="http://del.icio.us/popular/wiki"&gt;wiki&lt;/a&gt; &lt;a href="http://del.icio.us/popular/academia"&gt;academia&lt;/a&gt; &lt;a href="http://del.icio.us/popular/education"&gt;education&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://chronicle.com/temp/reprint.php?%20id=z6xht2rj60kqmsl8tlq5ltqcshc5y93y</link>
+  <dc:author>tonycarson</dc:author>
+    <dc:subject>The Chronicle: 10/27/2006: Can Wikipedia Ever Make the Grade?</dc:subject>
+
+</item>
+<item rdf:about="http://www.ted.com/tedtalks/tedtalksplayer.cfm?key=j_han&amp;flashEnabled=1&amp;">
+  <title>Jeff Han on TED Talks</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.ted.com/tedtalks/tedtalksplayer.cfm?key=j_han&amp;flashEnabled=1&amp;"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/2/0/f/b975b476ac2792546938032267552.png" width="90" height="68" alt="Jeff Han on TED Talks" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.ted.com/tedtalks/tedtalksplayer.cfm?key=j_han&amp;flashEnabled=1&amp;"&gt;Jeff Han on TED Talks&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/grantaaron"&gt;grantaaron&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/interface"&gt;interface&lt;/a&gt; &lt;a href="http://del.icio.us/popular/design"&gt;design&lt;/a&gt; &lt;a href="http://del.icio.us/popular/video"&gt;video&lt;/a&gt; &lt;a href="http://del.icio.us/popular/touchscreen"&gt;touchscreen&lt;/a&gt; &lt;a href="http://del.icio.us/popular/cool"&gt;cool&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.ted.com/tedtalks/tedtalksplayer.cfm?key=j_han&amp;flashEnabled=1&amp;</link>
+  <dc:author>grantaaron</dc:author>
+    <dc:subject>Jeff Han on TED Talks</dc:subject>
+
+</item>
+<item rdf:about="http://www.norvig.com/java-iaq.html">
+  <title>Java IAQ: Infrequently Answered Questions</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.norvig.com/java-iaq.html"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/c/5/5/e2a59ddac81dd61ecf59e60fbbcb7.png" width="90" height="68" alt="Java IAQ: Infrequently Answered Questions" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.norvig.com/java-iaq.html"&gt;Java IAQ: Infrequently Answered Questions&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/thurston"&gt;thurston&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/java"&gt;java&lt;/a&gt; &lt;a href="http://del.icio.us/popular/programming"&gt;programming&lt;/a&gt; &lt;a href="http://del.icio.us/popular/faq"&gt;faq&lt;/a&gt; &lt;a href="http://del.icio.us/popular/iaq"&gt;iaq&lt;/a&gt; &lt;a href="http://del.icio.us/popular/development"&gt;development&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.norvig.com/java-iaq.html</link>
+  <dc:author>thurston</dc:author>
+    <dc:subject>Java IAQ: Infrequently Answered Questions</dc:subject>
+
+</item>
+<item rdf:about="http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/">
+  <title>Masuga Design » Unobtrusive AJAX Star Rating Bar</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/3/3/f/1b6960ebe2f8e25f0cf314a517f3b.png" width="90" height="68" alt="Masuga Design » Unobtrusive AJAX Star Rating Bar" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/"&gt;Masuga Design » Unobtrusive AJAX Star Rating Bar&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/cedmond3000"&gt;cedmond3000&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/ajax"&gt;ajax&lt;/a&gt; &lt;a href="http://del.icio.us/popular/rating"&gt;rating&lt;/a&gt; &lt;a href="http://del.icio.us/popular/javascript"&gt;javascript&lt;/a&gt; &lt;a href="http://del.icio.us/popular/php"&gt;php&lt;/a&gt; &lt;a href="http://del.icio.us/popular/css"&gt;css&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://www.masugadesign.com/the-lab/scripts/unobtrusive-ajax-star-rating-bar/</link>
+  <dc:author>cedmond3000</dc:author>
+    <dc:subject>Masuga Design » Unobtrusive AJAX Star Rating Bar</dc:subject>
+
+</item>
+<item rdf:about="http://phpspot.org/blog/archives/2006/11/ajaxajax.html">
+  <title>各言語用Ajax関連ライブラリ＆Ajaxフレームワークのコンプリートリスト:phpspot開発日誌</title>
+  <description>&lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://phpspot.org/blog/archives/2006/11/ajaxajax.html"&gt;&lt;img src="http://images.del.icio.us/static/img/thumbnails/f/7/c/2d33219adea9dc4d32980c791588b.png" width="90" height="68" alt="各言語用Ajax関連ライブラリ＆Ajaxフレームワークのコンプリートリスト:phpspot開発日誌" /&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-thumbnail"&gt;&lt;a href="http://phpspot.org/blog/archives/2006/11/ajaxajax.html"&gt;各言語用Ajax関連ライブラリ＆Ajaxフレームワークのコンプリートリスト:phpspot開発日誌&lt;/a&gt;&lt;/p&gt;
+                    &lt;p class="delicious-hotlist-posted"&gt;first posted by &lt;a href="http://del.icio.us/orbcarr"&gt;orbcarr&lt;/a&gt;&lt;/p&gt;
+                &lt;p class="delicious-hotlist-tags"&gt;tags: &lt;a href="http://del.icio.us/popular/ajax"&gt;ajax&lt;/a&gt; &lt;a href="http://del.icio.us/popular/framework"&gt;framework&lt;/a&gt; &lt;a href="http://del.icio.us/popular/library"&gt;library&lt;/a&gt; &lt;a href="http://del.icio.us/popular/javascript"&gt;javascript&lt;/a&gt; &lt;a href="http://del.icio.us/popular/php"&gt;php&lt;/a&gt; &lt;/p&gt;</description>
+  <link>http://phpspot.org/blog/archives/2006/11/ajaxajax.html</link>
+  <dc:author>orbcarr</dc:author>
+    <dc:subject>各言語用Ajax関連ライブラリ＆Ajaxフレームワークのコンプリートリスト:phpspot開発日誌</dc:subject>
+
+</item>
+<item rdf:about="http://www.podtech.net/home/technology/1439/vloggies-awards-show-party-video">
+  <title>Interviews with Kevin Rose - founder, Digg.com, Revision3</title>
+  <description>Vloggies: Awards Show Party Video Video montage of the Vloggies party in San Francisco. Includes intro by PodTech CEO, John Furrier and interviews with Jerry Zucker - Director/Producer, Airplane!, Naked Gun, Ghost; Kevin Rose - founder, Digg.com, Revision3; Tom Foremski - founder, Silicon Valley Watcher; Dina Kaplan - winner, Blip.tv;</description>
+  <link>http://www.podtech.net/home/technology/1439/vloggies-awards-show-party-video</link>
+      <dc:subject>Interviews with Kevin Rose - founder, Digg.com, Revision3</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45809014/article.pl">
+  <title>Sony's Karakker On Turning Around PS3 Buzz</title>
+  <description>simoniker writes "Sony's new PR boss Dave Karakker has been talking about his challenges handling publicity for the PlayStation 3, explaining how Sony will be switching things up: "We were allowing media to drive the message for us, and interpret it for us. So allowing someone like Peter Moore, who's a good friend of mine, to stand up there and say negative things about Sony, there wasn't anybody refuting that. People just took that for face value. Now we're very aggressively defending our turf." He also defend the lack of universal achievements on PS3: "Frankly, how I view it is I don't care if you're great at Madden if I'm playing you in Resistance. Because that doesn't tell me you're that much better in Resistance. An overall score doesn't really tell me much, it tells me you've spent a lot of time online, it tells me you spend a lot of time playing games, but it doesn't tell me how good you are at a particular game."" Should be noted that Simoniker is a former Slashdot editor -- also, the AP write-up about reactions to the PS3 is quite positive.
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdot?a=SX4ihg"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdot?i=SX4ihg" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdot/~4/45809014" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45809014/article.pl</link>
+      <dc:subject>Sony's Karakker On Turning Around PS3 Buzz</dc:subject>
+
+</item>
+<item rdf:about="http://www.quickonlinetips.com/archives/2005/09/complete-digg-tools-collection/">
+  <title>Every Digg Tool Known To Man.  A Bit Overboard, Even!</title>
+  <description>There are literally dozens of tools to customize digg on here.  Almost to the point of insanity.</description>
+  <link>http://www.quickonlinetips.com/archives/2005/09/complete-digg-tools-collection/</link>
+      <dc:subject>Every Digg Tool Known To Man.  A Bit Overboard, Even!</dc:subject>
+
+</item>
+<item rdf:about="http://www.bit-tech.net/news/2006/11/06/nvidia_recalls_geforce_8800_gtx_batch/">
+  <title>NVIDIA calls back new GeForce 8800 cards before they even launch</title>
+  <description>As many of you know, NVIDIA is launching its next-generation GeForce 8-series products later this week. However, there has been a manufacturing problem with a batch of the GeForce 8800 GTX cards.  Clearly someone has made a mistake during the manufacturing process and NVIDIA is going to have to pull out all of the stops to meet its launch date.</description>
+  <link>http://www.bit-tech.net/news/2006/11/06/nvidia_recalls_geforce_8800_gtx_batch/</link>
+      <dc:subject>NVIDIA calls back new GeForce 8800 cards before they even launch</dc:subject>
+
+</item>
+<item rdf:about="http://www.extremetech.com/article2/0,1697,2047507,00.asp">
+  <title>Why Gaming Sucks On Linux</title>
+  <description>Despite last week's article about running World of Warcraft on Linux with CodeWeavers' CrossOver, I can't help but feel a sense of despair when I think of gaming under Linux. It seems that over the last few years, with a few exceptions, things have gotten worse rather than better. Frankly, I've had it with gaming under Linux.</description>
+  <link>http://www.extremetech.com/article2/0,1697,2047507,00.asp</link>
+      <dc:subject>Why Gaming Sucks On Linux</dc:subject>
+
+</item>
+<item rdf:about="http://nccwarp9.blogspot.com/2006/10/new-approach-to-classic-eye-glasses.html">
+  <title>New approach to classic eye glasses</title>
+  <description>Functional Piercing</description>
+  <link>http://nccwarp9.blogspot.com/2006/10/new-approach-to-classic-eye-glasses.html</link>
+      <dc:subject>New approach to classic eye glasses</dc:subject>
+
+</item>
+<item rdf:about="http://www.techcrunch.com/2006/11/06/fox-interactive-launches-desktopwebsite-widget-platform/">
+  <title>Fox Interactive Launches Desktop/Website Widget Platform</title>
+  <description>Fox Interactive Media will announce a new widget platform called SpringWidgets on Monday morning at the Widgets Live Conference in San Francisco. It is a unique offering in the increasingly complicated widget space, although the desktop portion of it only works on the Windows platform.</description>
+  <link>http://www.techcrunch.com/2006/11/06/fox-interactive-launches-desktopwebsite-widget-platform/</link>
+      <dc:subject>Fox Interactive Launches Desktop/Website Widget Platform</dc:subject>
+
+</item>
+<item rdf:about="http://arstechnica.com/news.ars/post/20061103-8143.html?refcnx">
+  <title>Federal "automated targetting" database offlimits to public verification</title>
+  <description>The new US "Automated Targeting System" is assigning risk assessments to all Americans who travel in or out of the United States, and despite the fact that plenty of non-government agencies can learn all about you, you can't view the records to even see if they are accurate.</description>
+  <link>http://arstechnica.com/news.ars/post/20061103-8143.html?refcnx</link>
+      <dc:subject>Federal "automated targetting" database offlimits to public verification</dc:subject>
+
+</item>
+<item rdf:about="http://www.lifehacker.com/software/planning/printable-planning-forms-212315.php">
+  <title>Printable planning forms</title>
+  <description>Those of us who actually (gasp!) still write instead of use the 'puter to plan stuff will appreciate these free printable planning forms - anything from calendars to planner pages - at OrganizedHome's printables gallery.</description>
+  <link>http://www.lifehacker.com/software/planning/printable-planning-forms-212315.php</link>
+      <dc:subject>Printable planning forms</dc:subject>
+
+</item>
+<item rdf:about="http://www.aresluna.org/attached/computerhistory/articles/macintosh20yearslater/pics/06">
+  <title>HUGE Mac 20th Anniversay Poster: 'Apple Macintosh Packaging Concept'</title>
+  <description>This LARGE FORMAT Macintosh 20th Anniversary Commemorative Poster features the "Original Macintosh Packaging Concept" and Apple's Philosophy of the Art of Packaging. Nice Side Article to read and Great Photos</description>
+  <link>http://www.aresluna.org/attached/computerhistory/articles/macintosh20yearslater/pics/06</link>
+      <dc:subject>HUGE Mac 20th Anniversay Poster: 'Apple Macintosh Packaging Concept'</dc:subject>
+
+</item>
+<item rdf:about="http://shamel.blogspot.com/2006/10/google-growing-larger-than-microsoft.html">
+  <title>Google growing larger than Microsoft?</title>
+  <description>Some prediction state that at the current rate, Google will have a market cap larger than Microsoft within about 4 years. I say that based on the "Economy of Attention", Google have already crossed the "tipping point" and WILL be larger than Microsoft. Check-out why.</description>
+  <link>http://shamel.blogspot.com/2006/10/google-growing-larger-than-microsoft.html</link>
+      <dc:subject>Google growing larger than Microsoft?</dc:subject>
+
+</item>
+<item rdf:about="http://www.studiocreations.com/howto/blasterrifle/main.html">
+  <title>Build a Stars Wars Full Metal Blaster Rifle Replica</title>
+  <description>Make your very own FULL METAL Blaster Rifle replica as seen in the Star Wars movies. The parts that went into making this prop came directly from the local hardware store and local automotive salvage yard. The entire replica was built for just over $50.00 USA. It took about 24 hours to complete the project.</description>
+  <link>http://www.studiocreations.com/howto/blasterrifle/main.html</link>
+      <dc:subject>Build a Stars Wars Full Metal Blaster Rifle Replica</dc:subject>
+
+</item>
+<item rdf:about="http://www.amazon.com/exec/obidos/ASIN/B000IVDI64/hanapbuhay-20">
+  <title>Trojan 100 Condoms Variety Pack for $19.99 (Save $50.00)</title>
+  <description>Happy Holidays!</description>
+  <link>http://www.amazon.com/exec/obidos/ASIN/B000IVDI64/hanapbuhay-20</link>
+      <dc:subject>Trojan 100 Condoms Variety Pack for $19.99 (Save $50.00)</dc:subject>
+
+</item>
+<item rdf:about="http://www.springwidgets.com/">
+  <title>SpringWidgets : Home</title>
+  <description></description>
+  <link>http://www.springwidgets.com/</link>
+      <dc:subject>SpringWidgets : Home</dc:subject>
+
+</item>
+<item rdf:about="http://www.photojojo.com/content/diy/how-to-make-a-postcard-mosaic-gift/">
+  <title>How to Turn a Photo into a Mailable Mosaic (or, a Photo a Day and They&amp;#8217;ll Think You&amp;#8217;re Monet)</title>
+  <description></description>
+  <link>http://www.photojojo.com/content/diy/how-to-make-a-postcard-mosaic-gift/</link>
+      <dc:subject>How to Turn a Photo into a Mailable Mosaic (or, a Photo a Day and They&amp;#8217;ll Think You&amp;#8217;re Monet)</dc:subject>
+
+</item>
+<item rdf:about="http://www.flickr.com/photos/goopymart/sets/72157594362502502/">
+  <title>TEH INTERNETS - a photoset on Flickr</title>
+  <description></description>
+  <link>http://www.flickr.com/photos/goopymart/sets/72157594362502502/</link>
+      <dc:subject>TEH INTERNETS - a photoset on Flickr</dc:subject>
+
+</item>
+<item rdf:about="http://www.mashery.com/">
+  <title>Mashery</title>
+  <description></description>
+  <link>http://www.mashery.com/</link>
+      <dc:subject>Mashery</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45794099/article.pl">
+  <title>Google's Growing Love For The Mac</title>
+  <description>An anonymous reader writes "While browsing the 2007 Macworld speaker bios, I found an interesting Google+Mac piece of news. Looks like Google has appointed the famous Amit Singh in charge of their Mac Engineering (also confirmed on Singh's website). While Google generally seems to lag behind in Safari compatibility they have been offering some native Mac software. We earlier heard Google CEO Eric Schmidt's joining Apple's board of directors. Then following Microsoft MacBU's lead, Google started their own Mac Blog a few weeks earlier. Google's jobs website also lists several Mac openings. If Singh's technical expertise and history of OS X wizardry any indication, we can hope for some cool Mac software from Google. Also wondering if all this is just Google's response to Apple's market growth or maybe a more serious partnership is coming? ;-)"
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdot?a=zRWX7V"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdot?i=zRWX7V" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdot/~4/45794099" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdot/~3/45794099/article.pl</link>
+      <dc:subject>Google's Growing Love For The Mac</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183674">
+  <title>Optimum slack time</title>
+  <description>Some quality chaps at the University of Arizona put together a report calculating how long you should slack for. The Effects of Moore���s Law and Slacking on Large Computations (beware PDF) Essentially, the idea here is that if you&amp;#8217;re running a long computation, you might be better to sit on your hands for a bit and wait [...]</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183674</link>
+      <dc:subject>Optimum slack time</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183672">
+  <title>Aranea Web Framework 1.0.1</title>
+  <description>The Aranea Web Framework project has released version 1.0.1. They write in, "In addition to fixes to several bugs that were found in the 1.0 release we have also implemented support for JSP 2.0 and Expression Language by providing a alternative tag library URI:http://araneaframework.org/tag-library/standard_rt."</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183672</link>
+      <dc:subject>Aranea Web Framework 1.0.1</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183670">
+  <title>SCM Religious Wars</title>
+  <description>I hate arguments over SCM's even more than I hate emacs vs vi arguments. At least the latter is usually done in a tongue in cheek 'tastes great/less filling' sort of way because you know you aren't really going to convince anyone to switch. On the other hand, with SCM's people start getting to into feature comparisons and arguing over issues...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183670</link>
+      <dc:subject>SCM Religious Wars</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183668">
+  <title>API Design References</title>
+  <description>Fernando posted a number of incredibly useful links on API design in reply to an earlier post of mine. They deserve more visibility! http://openide.netbeans.org/tutorial/api-design.html http://www.artima.com/interfacedesign/ http://www.codeproject.com/gen/design/APIUsabilityArticle.asp http://www.cafeconleche.org/slides/javapolis/xom/index.html...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183668</link>
+      <dc:subject>API Design References</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183666">
+  <title>Stylin' Fonts and Text in CSS</title>
+  <description>Much of Web design is dealing with type���in paragraphs, headlines, lists, menus, and forms. As a result, the properties in this chapter are essential to making the difference between a site that looks thrown together and one that looks like it has the professional touch.</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183666</link>
+      <dc:subject>Stylin' Fonts and Text in CSS</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183664">
+  <title>DevConnections at Las Vegas</title>
+  <description>I'll be at the Visual Studio and .NET DevConnections conference at Las Vegas. If you are attending, be sure to stop by #704 (the Windows Vista section) and say hi. Arik, Paul David, Karen Franco or I would love to talk about Windows Presentation Foundation or .NET 3.0 or Windows Vista. Tags: WinFX, .NET, NETFX3, Windows Vista, WPF</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183664</link>
+      <dc:subject>DevConnections at Las Vegas</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183662">
+  <title>Open-jACOB RIA made easy</title>
+  <description>Open-jACOB is a free framework for building a new generation of richer, more interactive, database driven, highly personalized cross-browser web applications.</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183662</link>
+      <dc:subject>Open-jACOB RIA made easy</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183659">
+  <title>ClassLoading PermGen Space and JVMs</title>
+  <description>Frank Kievet has a nice detailed explanation of why special class loading triggers PermGen Space memory errors He than modifies an Java6 JDK utility jhat to track down the memory leak in the classloader as detailed in this post. Because both Application servers and IDEs might use special classloaders to not only delpoy new applications but also...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183659</link>
+      <dc:subject>ClassLoading PermGen Space and JVMs</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183657">
+  <title>Defactoring code</title>
+  <description>Michael has an answer for everyone who has ever been lost in a sea of tiny little methods, all alike: This time we're looking at the Defactoring Tool - a novel idea that if you can refactor things in to lots of small methods, then surely you can defactor all those small methods in to one giant blob of code. And you can Technorati Tags:...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183657</link>
+      <dc:subject>Defactoring code</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183655">
+  <title>RJS templates in Rails or Ajax with ease a 101 level rjs walkthrough</title>
+  <description>this is a pretty simple article that details getting started with RJS in Rails. Aimed at the Rails dev who wants to add more powerful Ajax features to their sites!</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183655</link>
+      <dc:subject>RJS templates in Rails or Ajax with ease a 101 level rjs walkthrough</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183653">
+  <title>Consistency vs. Availability</title>
+  <description>I received the following question from Houman and I thought the both the question and answer deserved some more public discussion: "Hello Udi, I really enjoyed reading your article on MSJ, thanks. I have been trying to get a handle on the trade off between consistency and availability in distributed environments. I feel that it is closely...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183653</link>
+      <dc:subject>Consistency vs. Availability</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183651">
+  <title>Come Talk To Me</title>
+  <description>Conference wish-lists... also: Weblogs: JavaOne 2007 call-for-papers coming, translucent scroll bars, and more JSR-277 Q&amp;A; Spotlight: Facelets Java Today: NetBeans Dream Team, Java on multi-core 64-bit hardware, and a new Agile prinicple Forums: JVM competition, Painters vs. L&amp;F;'s, and TimeZone selection component needed</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183651</link>
+      <dc:subject>Come Talk To Me</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183649">
+  <title>[TechEd] Day 1 in Barcelona</title>
+  <description>Hola! Gestartet ... Unser Hotel "Catalunia Plaza" (Placa Espana)&amp;nbsp;ist vom Flughafen wunderbar zu erreichen. Die Buslinie A1 (Aerobus) f��hrt f��r 3,75 Euro direkt vom Flughafen vor die Haust��r in ca. 20 Minuten. Vern��nftige Preise, gute Zimmer und ein reichhaltiges Fr��hst��cksbuffet. Wir (Andr�� Obelink, Andrej Radinger, Tom Bronzin,...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183649</link>
+      <dc:subject>[TechEd] Day 1 in Barcelona</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183647">
+  <title>Internationalisation</title>
+  <description>There&amp;#8217;s a useful trick that I first read about from a Microsoft developer, but I can&amp;#8217;t remember which. If you want to confirm that your application properly handled international characters, put the following into it: I��t��rn��ti��n��liz��ti��n Lots of non-English characters, but still readable. Since I can never remember what this...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183647</link>
+      <dc:subject>Internationalisation</dc:subject>
+
+</item>
+<item rdf:about="http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183645">
+  <title>OpenReports 2.1-M1</title>
+  <description>The OpenReports project has announced the release of version 2.1-M1. They write in, "2.1-M1 includes support for Eclipse BIRT, improved JFreeReport and JXLS support, advanced scheduling enhancements, and the introduction of the ReportService, a Service-oriented architecture (SOA) for report generation and scheduling exposed as a SOAP web...</description>
+  <link>http://www.artima.com/forums/flat.jsp?forum=196&amp;thread=183645</link>
+      <dc:subject>OpenReports 2.1-M1</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/truthiness_web_20_defined_cartoon.html">
+  <title>Truthiness: Web 2.0 Defined (cartoon)</title>
+  <description>Just exactly what is this "Web 2.0" thing anyway? Here's one definition.</description>
+  <link>http://www.dzone.com/rsslinks/truthiness_web_20_defined_cartoon.html</link>
+  <dc:author>rick</dc:author>
+    <dc:subject>Truthiness: Web 2.0 Defined (cartoon)</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/the_web_designer_in_2007.html">
+  <title>The Web Designer in 2007</title>
+  <description>The Web Designer has probably been around for over ten years now. But with all the developments this year alone, what does the Web Designer have to be and do in the coming year to able to stay relevant in the I.T. industry?</description>
+  <link>http://www.dzone.com/rsslinks/the_web_designer_in_2007.html</link>
+  <dc:author>regnard</dc:author>
+    <dc:subject>The Web Designer in 2007</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/xhtml_101_free_html_course.html">
+  <title>XHTML 101 - Free HTML Course</title>
+  <description>It's a link to a free XHTML course and me talking about HTML for a bit</description>
+  <link>http://www.dzone.com/rsslinks/xhtml_101_free_html_course.html</link>
+  <dc:author>hoskinator</dc:author>
+    <dc:subject>XHTML 101 - Free HTML Course</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/is_it_time_to_graduate_from_vss.html">
+  <title>Is it time to graduate from VSS?</title>
+  <description>Does your team use Visual Source Safe? Does your team plan on using VSS this year? Chances are, you are– at least based upon the data from VSoft Technologies, who found that the majority of their survey respondents (about 400) are still using VSS or planning on using it.</description>
+  <link>http://www.dzone.com/rsslinks/is_it_time_to_graduate_from_vss.html</link>
+  <dc:author>aglover</dc:author>
+    <dc:subject>Is it time to graduate from VSS?</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/a_handy_heuristic_for_auditing_source_code.html">
+  <title>A handy heuristic for auditing source code</title>
+  <description>My client had an interesting remark. "I don't know how you do this - spot so many things in such a short time." I realized I didn't know how I did it, until he asked - I just did it. My technique, for what it's worth...</description>
+  <link>http://www.dzone.com/rsslinks/a_handy_heuristic_for_auditing_source_code.html</link>
+  <dc:author>rick</dc:author>
+    <dc:subject>A handy heuristic for auditing source code</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/efficient_javascript.html">
+  <title>Efficient JavaScript</title>
+  <description>Traditionally, a Web page would not contain much scripting, or at least, not much that would affect the performance of that Web page. However, as Web pages become more like applications, the performance of scripts is having a bigger effect. With more and more applications being developed using Web technologies, improving the performance of scripts is becoming increasingly important.</description>
+  <link>http://www.dzone.com/rsslinks/efficient_javascript.html</link>
+  <dc:author>bonlebon</dc:author>
+    <dc:subject>Efficient JavaScript</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/behind_the_scenes_of_objectivec_20.html">
+  <title>Behind the Scenes of Objective-C 2.0</title>
+  <description>David Chisnall takes a look behind the scenes at Apple's upcoming revamp of the Objective-C language. As with any new language, some things are good, some are ugly, and some are both.</description>
+  <link>http://www.dzone.com/rsslinks/behind_the_scenes_of_objectivec_20.html</link>
+  <dc:author>bonlebon</dc:author>
+    <dc:subject>Behind the Scenes of Objective-C 2.0</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/test_internet_explorer_7_without_installing_it.html">
+  <title>Test Internet Explorer 7 Without Installing It</title>
+  <description>The Internet Explorer 7 installation replaces previous versions, which is pretty inconvenient if you need to test how a site displays in both browsers. This set of batch and registry files allow you to to run IE7 in standalone mode (without installing it), so you can keep IE6 installed and fire up IE7 only when you need it.</description>
+  <link>http://www.dzone.com/rsslinks/test_internet_explorer_7_without_installing_it.html</link>
+  <dc:author>vibhash</dc:author>
+    <dc:subject>Test Internet Explorer 7 Without Installing It</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/stylin_fonts_and_text_in_css.html">
+  <title>Stylin' Fonts and Text in CSS</title>
+  <description>Much of Web design is dealing with type—in paragraphs, headlines, lists, menus, and forms. As a result, the properties in this chapter are essential to making the difference between a site that looks thrown together and one that looks like it has the professional touch.</description>
+  <link>http://www.dzone.com/rsslinks/stylin_fonts_and_text_in_css.html</link>
+  <dc:author>bonlebon</dc:author>
+    <dc:subject>Stylin' Fonts and Text in CSS</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/jsessionid_considered_harmful.html">
+  <title>JSESSIONID considered harmful</title>
+  <description>One little-known feature of the Java Servlet Spec allows for encoding session identifiers in URLs. In theory, this allows browsers without support for cookies to maintain session state with your website. In practice, however, there are several problems with this approach...</description>
+  <link>http://www.dzone.com/rsslinks/jsessionid_considered_harmful.html</link>
+  <dc:author>insideo</dc:author>
+    <dc:subject>JSESSIONID considered harmful</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/rjs_templates_in_rails_or_ajax_with_ease_a_101_le.html">
+  <title>RJS templates in Rails or Ajax with ease a 101 level rjs walkthrough</title>
+  <description>this is a pretty simple article that details getting started with RJS in Rails. Aimed at the Rails dev who wants to add more powerful Ajax features to their sites!</description>
+  <link>http://www.dzone.com/rsslinks/rjs_templates_in_rails_or_ajax_with_ease_a_101_le.html</link>
+  <dc:author>fallenrogue</dc:author>
+    <dc:subject>RJS templates in Rails or Ajax with ease a 101 level rjs walkthrough</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/sorting_candidate_cvs_using_the_antispam_algorithm.html">
+  <title>Sorting Candidate CV's using the anti-spam algorithm</title>
+  <description>Most CV's have the same level as truthiness as Spam anyway.. Ill just spend a couple of hours adapting the learning algorithm from a Spam Filter to work on CV's and ill never have to worry about this again.</description>
+  <link>http://www.dzone.com/rsslinks/sorting_candidate_cvs_using_the_antispam_algorithm.html</link>
+  <dc:author>rick</dc:author>
+    <dc:subject>Sorting Candidate CV's using the anti-spam algorithm</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/my_new_coding_standard.html">
+  <title>My new coding standard</title>
+  <description>As developers we sometimes hold ourselves to impossible standards....well, this is the one I'm shooting for!</description>
+  <link>http://www.dzone.com/rsslinks/my_new_coding_standard.html</link>
+  <dc:author>mezmo</dc:author>
+    <dc:subject>My new coding standard</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/java_vs_cnet.html">
+  <title>Java vs C#/.NET</title>
+  <description>Java is a meta-operating system. It supports a huge set of APIs that are consistently implemented on all platforms.
+    C#/CLI does not always provide a consistent API on all platforms but it allows and encourages you to rely and exploit on the native APIs available on the underlying operating system.
+    Which is better?</description>
+  <link>http://www.dzone.com/rsslinks/java_vs_cnet.html</link>
+  <dc:author>JWH</dc:author>
+    <dc:subject>Java vs C#/.NET</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/openjacob_ria_made_easy.html">
+  <title>Open-jACOB RIA made easy</title>
+  <description>Open-jACOB is a free framework for building a new generation of richer, more interactive, database driven, highly personalized cross-browser web applications.</description>
+  <link>http://www.dzone.com/rsslinks/openjacob_ria_made_easy.html</link>
+  <dc:author>bonlebon</dc:author>
+    <dc:subject>Open-jACOB RIA made easy</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/thoughts_on_agile_methods_xp_and_the_like.html">
+  <title>Thoughts on Agile Methods - XP and the like.</title>
+  <description>A partisan look at agile methods especially Extreme Programming. What's great about XP, what's not and and why XP isn't it gaining any significant traction?</description>
+  <link>http://www.dzone.com/rsslinks/thoughts_on_agile_methods_xp_and_the_like.html</link>
+  <dc:author>kellyfj</dc:author>
+    <dc:subject>Thoughts on Agile Methods - XP and the like.</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/money_really_does_matter_im_an_admitted_code_merc.html">
+  <title>Money Really Does Matter - I'm An Admitted Code Mercenary</title>
+  <description>I love solving people's problems and making systems better and doing neat things and being respected and thought of as intelligent.Yet in the end, what matters to me most is the compensation: The wage, the bonus, the equity, the benefits. And then some.</description>
+  <link>http://www.dzone.com/rsslinks/money_really_does_matter_im_an_admitted_code_merc.html</link>
+  <dc:author>rick</dc:author>
+    <dc:subject>Money Really Does Matter - I'm An Admitted Code Mercenary</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/the_rails_way.html">
+  <title>The Rails Way</title>
+  <description>With all the attention Rails has received in the last year, there has been an enormous influx of people wanting to learn how to write web applications with it. Rails itself attempts to shepherd programmers along well-trod paths, to help them build well-designed applications “by default”. Alas, Rails’ conventions are not always enough.</description>
+  <link>http://www.dzone.com/rsslinks/the_rails_way.html</link>
+  <dc:author>rubyminer</dc:author>
+    <dc:subject>The Rails Way</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/simple_and_easy_example_with_spring_and_ruby.html">
+  <title>Simple and Easy Example With Spring and Ruby</title>
+  <description>The following example illustrates how to use JRuby and the Spring MVC framework. It is based on the jobster Ruby and Spring example, but the example on this page is a working reimplementation.</description>
+  <link>http://www.dzone.com/rsslinks/simple_and_easy_example_with_spring_and_ruby.html</link>
+  <dc:author>rick</dc:author>
+    <dc:subject>Simple and Easy Example With Spring and Ruby</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/the_java_iaq_infrequently_answered_questions.html">
+  <title>The Java IAQ - Infrequently Answered Questions</title>
+  <description>A question is infrequently answered either because few people know the answer or because it is about an obscure, subtle point (but a point that may be crucial to you).
+The Java IAQ by Peter Norvig</description>
+  <link>http://www.dzone.com/rsslinks/the_java_iaq_infrequently_answered_questions.html</link>
+  <dc:author>Peter Stofferis</dc:author>
+    <dc:subject>The Java IAQ - Infrequently Answered Questions</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/protecting_a_python_svn_code_base_with_the_precom.html">
+  <title>Protecting a Python svn code base with the pre-commit hook</title>
+  <description>A script to block commits containing bad characters</description>
+  <link>http://www.dzone.com/rsslinks/protecting_a_python_svn_code_base_with_the_precom.html</link>
+  <dc:author>tarek.ziade</dc:author>
+    <dc:subject>Protecting a Python svn code base with the pre-commit hook</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/secure_programming_habits_in_php.html">
+  <title>Secure programming habits in PHP</title>
+  <description>The goal of this article is to show common threats and challenges of programming secure PHP applications. The wonderful thing about PHP is that people with little or even no programming experience are able to achieve simple goals very quickly. The problem, on the other hand, is that many programmers are not really conscious about what is going...</description>
+  <link>http://www.dzone.com/rsslinks/secure_programming_habits_in_php.html</link>
+  <dc:author>nvez</dc:author>
+    <dc:subject>Secure programming habits in PHP</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/webdesign_is_95_typography_part2.html">
+  <title>Webdesign is 95% typography  - Part2</title>
+  <description>An avalanche of comments was incited by one of my recent notes. In order to not answer to each commentator individually, I decided to write a summary that answers most of the raised concerns, accusations, questions.</description>
+  <link>http://www.dzone.com/rsslinks/webdesign_is_95_typography_part2.html</link>
+  <dc:author>informationarchitect</dc:author>
+    <dc:subject>Webdesign is 95% typography  - Part2</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/test_driven_development_the_philosophy.html">
+  <title>Test Driven Development, The Philosophy</title>
+  <description>The fundamental idea of test driven development is to write tests before writing the code to be tested. As the code is written, and you'll have immediate confirmation of whether or not a new chunk of code is completely functional, close to working, a complete disaster. In the most rigorous application, you write a single test, watch it fail, then write the implementation code that makes that single test pass, and then repeat.</description>
+  <link>http://www.dzone.com/rsslinks/test_driven_development_the_philosophy.html</link>
+  <dc:author>bonlebon</dc:author>
+    <dc:subject>Test Driven Development, The Philosophy</dc:subject>
+
+</item>
+<item rdf:about="http://www.dzone.com/rsslinks/misc_programs_written_in_ruby.html">
+  <title>Misc Programs written in Ruby</title>
+  <description>Small programs written in Ruby.</description>
+  <link>http://www.dzone.com/rsslinks/misc_programs_written_in_ruby.html</link>
+  <dc:author>zoat</dc:author>
+    <dc:subject>Misc Programs written in Ruby</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/chainbuilder-esb-alpha">
+  <title>ChainBuilder ESB Alpha</title>
+  <description>Bostech has released an alpha version of ChainBuilder, another entry into the ESB market. ChainBuilder is based on JBI and includes a graphical design tool for Eclipse.</description>
+  <link>http://www.infoq.com/news/2006/11/chainbuilder-esb-alpha</link>
+      <dc:subject>ChainBuilder ESB Alpha</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/VS-2005-SP1-Decemeber">
+  <title>Visual Studio 2005 SP1 to be Released in December</title>
+  <description>According to the Microsoft Connect, the long awaited Service Pack 1 for Visual Studio 2005 will be released in December.</description>
+  <link>http://www.infoq.com/news/2006/11/VS-2005-SP1-Decemeber</link>
+      <dc:subject>Visual Studio 2005 SP1 to be Released in December</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/agile-practice-patterns">
+  <title>Sharing What's Worked: Patterns for Adopting Agile Practices</title>
+  <description>Organizations adopting Agile naturally ask these questions; "Where do I start?", "What specific practices should I adopt?", "How can I adopt incrementally?" and "Where can I expect pitfalls?"  In this article, Amr Elssamadisy gives a glimpse into an ongoing effort to document Agile practice adoption patterns: Participants at XPday Montreal took a stab at "Simple Design" and "Pair Programming."</description>
+  <link>http://www.infoq.com/news/2006/11/agile-practice-patterns</link>
+      <dc:subject>Sharing What's Worked: Patterns for Adopting Agile Practices</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/Python-for-.NET">
+  <title>Python for .NET</title>
+  <description>IronPython is an excellent solution for developers who need their .NET support for their Python applications. That is, unless they also need libraries that are only supported by C++ extensions. This is where Python for .NET comes in.</description>
+  <link>http://www.infoq.com/news/2006/11/Python-for-.NET</link>
+      <dc:subject>Python for .NET</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/The-Ruby-Way-Review">
+  <title>Review of The Ruby Way by Hal Fulton</title>
+  <description>We take a look at the recently released second edition of "The Ruby Way" by Hal Fulton and see whether it's deserves the hype.</description>
+  <link>http://www.infoq.com/news/2006/11/The-Ruby-Way-Review</link>
+      <dc:subject>Review of The Ruby Way by Hal Fulton</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/jee-multicore">
+  <title>Taking Advantage of Multiple Processor Cores in JEE Applications</title>
+  <description>Michael Juntao Yuan, and Dave Jaffe have published an article on OnJava.com detailing the process of scaling enterprise Java applications on 64-bit multi-core x86 servers. As chip makers such as AMD and Intel transition from faster megahertz per chip to more cores per chip, performance gains will be harder to achieve for traditional single threaded applications.</description>
+  <link>http://www.infoq.com/news/2006/11/jee-multicore</link>
+      <dc:subject>Taking Advantage of Multiple Processor Cores in JEE Applications</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/paired-progrmaming-myths">
+  <title>Common misconceptions about paired programming</title>
+  <description>Paired programming is an agile practice that is the source of much debate. Martin Fowler has posted an article on common misconceptions with paired programming, suggesting that pair programming is not a requirement of XP, it does not halve productivity, and others.</description>
+  <link>http://www.infoq.com/news/2006/11/paired-progrmaming-myths</link>
+      <dc:subject>Common misconceptions about paired programming</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/Billy-Hollis-Interview">
+  <title>Billy Hollis on the Future of Software Development</title>
+  <description>Infoq sits down with Billy Hollis to talk about the state of the .NET world and sofware development.  Billy talks about topics from Data Access to 3D interfaces.</description>
+  <link>http://www.infoq.com/news/2006/11/Billy-Hollis-Interview</link>
+      <dc:subject>Billy Hollis on the Future of Software Development</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/IronPython-ASP.NET">
+  <title>IronPython for ASP.NET</title>
+  <description>Microsoft has released an extension that allows IronPython to be used with ASP.NET. More importantly, they have created a route for other dynamic languages to tie into the ASP.Net framework.</description>
+  <link>http://www.infoq.com/news/2006/11/IronPython-ASP.NET</link>
+      <dc:subject>IronPython for ASP.NET</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/scrum-checklists-book">
+  <title>InfoQ Book: Scrum Checklists</title>
+  <description>SPRINT-iT and InfoQ have teamed to provide a new resource for Scrum teams: a downloadable quick-reference filled with basic definitions and checklists, intended to give trained teams confidence in accomplishing their first Sprints. This is an important resource, because early successes can increase acceptance of Scrum in their organizations and pave the way for greater management support.</description>
+  <link>http://www.infoq.com/news/2006/11/scrum-checklists-book</link>
+      <dc:subject>InfoQ Book: Scrum Checklists</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/generics-frustration">
+  <title>Two years later, frustration with Generics continues</title>
+  <description>Laird Nelson describes his frustrations with understanding Java Generics. While clear in the simple case, as he works through a more complicated scenario, he ends up throwing them away because they're so complicated.  Are we helping or hurting ourselves by using Generics?</description>
+  <link>http://www.infoq.com/news/2006/11/generics-frustration</link>
+      <dc:subject>Two years later, frustration with Generics continues</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/TestDriven-2.0-released">
+  <title>TestDriven.NET 2.0 released</title>
+  <description>TestDriven.NET 2.0 was released last week.  TestDriven.NET 2.0 supports the TDD framework and supports all version of Visual Studio .NET.  TestDriven.NET is a Visual Studio plug-in providing support for Nunit, MBUnit, and Visual Studio Team System.</description>
+  <link>http://www.infoq.com/news/2006/11/TestDriven-2.0-released</link>
+      <dc:subject>TestDriven.NET 2.0 released</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/categorize-tests-build">
+  <title>Use Test Categorization for Agile Builds</title>
+  <description>Everyone agrees that developer testing is important, but ever-lengthening build times can discourage running these tests with optimal frequency.  Andrew Glover's new IBM DeveloperWorks article outlines a strategy to use categorized tests to ensure end-to-end system soundness, including examples on how to automatically sort and run tests by category, resulting in dramatically reduced build times.</description>
+  <link>http://www.infoq.com/news/2006/11/categorize-tests-build</link>
+      <dc:subject>Use Test Categorization for Agile Builds</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/Orcas-Named-Pipes">
+  <title>Named Pipe Support added to Visual Studio Orcas</title>
+  <description>The next version of Visual Studio will include named pipe support. Named pipes are the traditional way to handle inter-process communication in Windows.</description>
+  <link>http://www.infoq.com/news/2006/11/Orcas-Named-Pipes</link>
+      <dc:subject>Named Pipe Support added to Visual Studio Orcas</dc:subject>
+
+</item>
+<item rdf:about="http://www.infoq.com/news/2006/11/european-agile-conference">
+  <title>European Leadership Summit at the Agile Business Conference 2006</title>
+  <description>"Agile Business Conference 2006," will take place next week in London, Europe's largest Agile conference. The first day is dedicated to the Agile Project Leadership Network's "European Leadership Summit." The conference is specifically created to provide practical information to managers and leaders, and it allows attendees to interact directly with industry experts.</description>
+  <link>http://www.infoq.com/news/2006/11/european-agile-conference</link>
+      <dc:subject>European Leadership Summit at the Agile Business Conference 2006</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45215043/article.pl">
+  <title>Tech Jobs For a Student?</title>
+  <description>Nick Manley writes "I turned 17 back in August and have been fascinated with technology my entire life. I have a special interest in software and computer programming. I am really hoping to find a job, or at least an internship, where I can learn more about my field and expand my knowledge of software development. Does anyone have recommendations for someone like myself, without any college education, for ways to get a head start on my career? Preferably, one that doesn't include selling iPods to kids at Best Buy."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=k7Sj0H"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=k7Sj0H" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/45215043" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45215043/article.pl</link>
+  <dc:author>Zonk</dc:author>
+    <dc:subject>Tech Jobs For a Student?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45166420/article.pl">
+  <title>No More Coding From Scratch?</title>
+  <description>Susan Elliott Sim asks: "In the science fiction novel, 'A Deepness in the Sky,' Vernor Vinge described a future where software is created by 'programmer archaeologists' who search archives for existing pieces of code, contextualize them, and combine them into new applications. So much complexity and automation has been built into code that it is simply infeasible to build from scratch. While this seems like the ultimate code reuse fantasy (or nightmare), we think it's starting to happen with the availability of Open Source software. We have observed a number of projects where software development is driven by the identification, selection, and combination of working software systems. More often than not, these constituent parts are Open Source software systems and typically not designed to be used as components. These parts are then made to interoperate through wrappers and glue code. We think this trend is a harbinger of things to come. What do you think? How prevalent is this approach to new software development? What do software developers think about their projects being used in such a way?"
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=Fu6tF7"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=Fu6tF7" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/45166420" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/45166420/article.pl</link>
+  <dc:author>Cliff</dc:author>
+    <dc:subject>No More Coding From Scratch?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44521872/article.pl">
+  <title>PHP 5.2.0 Released</title>
+  <description>ShaunC writes "The PHP Group and Zend have released PHP 5.2.0, and upgrades are encouraged. The 5.2.0 update offers several security fixes, including patches for a couple recently announced buffer overflows in input parsing. This release also includes a number of library upgrades, bug fixes, and default bundling of the popular JSON extension to help with AJAX development. See the full changelog for more details."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=zwLN5Y"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=zwLN5Y" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/44521872" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44521872/article.pl</link>
+  <dc:author>CowboyNeal</dc:author>
+    <dc:subject>PHP 5.2.0 Released</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44289707/article.pl">
+  <title>Does Offshoring Threaten Combat Software?</title>
+  <description>PreacherTom writes, "Pentagon officials report that 'maliciously placed code' could compromise the security of the Defense Department and, ultimately, hurt its ability to fight wars. The culprits: offshore programmers. While the Pentagon has stepped up its vendor screening and software testing of late, it's becoming more difficult and costly to test every line of software code on increasingly sophisticated weapons systems. The task force assigned to this issue will be soon presenting its report, and most likely will determine that offshoring presents too great a risk."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=T0lKjg"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=T0lKjg" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/44289707" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/44289707/article.pl</link>
+  <dc:author>kdawson</dc:author>
+    <dc:subject>Does Offshoring Threaten Combat Software?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43804081/article.pl">
+  <title>Microsoft Partners With Zend</title>
+  <description>jesse.castro writes to point out news of Microsoft striking a multi-year partnership with PHP provider Zend to improve PHP's performance on Windows-based Web servers. From the article: "Rather than marking a sudden change of course, Microsoft is openly engaging in a dialogue with Zend, a key open source promoter, and millions of PHP developers, analysts said."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=MEGVO6"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=MEGVO6" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/43804081" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43804081/article.pl</link>
+  <dc:author>kdawson</dc:author>
+    <dc:subject>Microsoft Partners With Zend</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43340958/article.pl">
+  <title>Apple Unveils Extra Leopard-isms To Developers</title>
+  <description>devilsecret writes to point out that some of the new Apple capabilities for developers on Leopard have been unveiled. The most interesting parts appear to be the opening of more of iLife to other programs, and the inclusion of Ruby on Rails.
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=KlBC8b"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=KlBC8b" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/43340958" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43340958/article.pl</link>
+  <dc:author>Hemos</dc:author>
+    <dc:subject>Apple Unveils Extra Leopard-isms To Developers</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43292156/article.pl">
+  <title>Oracle and Red Hat begin battle for the Enterprise</title>
+  <description>Salvance writes "Yahoo News (via ComputerWire) is reporting that Oracle and Red Hat are turning up the heat in the battle over Oracle's new enterprise Linux offering. While Oracle claims they'll be able to offer their 'Unbreakable' version of Red Hat's Linux offering for half the price, Red Hat asserts that all the important security and hardware certifications would be invalidated on Oracle's offering. At this point, the only thing that's certain is that Red Hat needs to figure out how to keep their large Oracle Enterprise clients on board or risk becoming a takeover target (undoubtably, with Oracle leading the list of potentially bidders)."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=2J4JtK"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=2J4JtK" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/43292156" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/43292156/article.pl</link>
+  <dc:author>Hemos</dc:author>
+    <dc:subject>Oracle and Red Hat begin battle for the Enterprise</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42729340/article.pl">
+  <title>HTML to be 'Incrementally Evolved'</title>
+  <description>MrDrBob writes "It has been decided that HTML is going to be incrementally updated, as the W3C believe that their efforts with XHTML are going unnoticed or unused by many websites out there. HTML is going to be worked on in parallel with XHTML (but with no dependencies), with the W3C trying to evolve HTML to a point where it's easier and logical for everybody to transition to XHTML. However, their work is still going to attempt to improve HTML in itself, with work on forms moving towards transitioning into XForms, but bearing in mind the work done by Webforms. In addition, the W3C's HTML validator is going to get improved, with Tim Berners-Lee wanting it to 'check (even) more stuff, be (even) more helpful, and prioritize carefully its errors, warning and mild chidings'. This looks like a nice step forward for the W3C, and will hopefully leave all the squabbling and procrastination behind."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=t8Lz8t"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=t8Lz8t" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42729340" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42729340/article.pl</link>
+  <dc:author>CowboyNeal</dc:author>
+    <dc:subject>HTML to be 'Incrementally Evolved'</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42664662/article.pl">
+  <title>Will Red Hat Survive?</title>
+  <description>An anonymous reader writes "Red Herring has an in-depth analysis interviewing industry experts on what the future of Linux distributor Red Hat will likely be now that Oracle is offering cheaper support and services essentially identical to Red Hat Linux. Will Oracle purchase Red Hat? Or is it not yet too late?" From the article: "Mr. Dargo countered that Oracle's move indicated a lack of understanding of the value that Red Hat's support and service provide. But he noted that Red Hat could be vulnerable if Oracle manages to provide better service. 'If the strategy at Oracle works out, Red Hat is going to face some serious issues, but I don't think it is going to work out,' he said. 'There are lots of opportunities for Red Hat to do some aggressive and creative things to turn around.'"
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=4h5pms"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=4h5pms" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42664662" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42664662/article.pl</link>
+  <dc:author>Zonk</dc:author>
+    <dc:subject>Will Red Hat Survive?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42654636/article.pl">
+  <title>Slashdot's Vastu</title>
+  <description>nanopolitan writes "Wired has a story on harmonious website design according to Vastu, 'the Indian counterpart of feng shui'. The graphic accompanying the story has an analysis of Slashdot's design by Dr. Smita Narang. Her verdict? This site is 'in desperate need of balance'." From the article: "Thirty-year-old Smita Narang is rapidly becoming one of India's hottest Web designers. Her method: applying vastu shastra, the Indian counterpart of feng shui, to the online realm. The process entails mapping page attributes - HTML, colors, graphics - to elements like fire, water, and air. 'Any disturbance of these established elements can cause an imbalance in the site that directly affects its business,' Narang says."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=8aewXM"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=8aewXM" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42654636" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42654636/article.pl</link>
+  <dc:author>Zonk</dc:author>
+    <dc:subject>Slashdot's Vastu</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42428886/article.pl">
+  <title>OLPC Inspires Open Source Projects</title>
+  <description>Don Marti writes "A loose network of developers representing many commonly used open source projects are working to develop a new generation of low-memory, efficient code. This targeted code is being designed for a system, of which only 500 prototype boards now exist: the 'Children's Machine 1' from the One Laptop Per Child project." From the article: "Gettys says measuring existing performance has to come before trying those changes. 'We've been pulling in every decent performance tool Linux has so we can optimize when and where it really matters,' he says. A key automated testing tool is Tinderbox, a build and test management tool originally developed for Mozilla, that new OLPC developer Chris Ball has installed, to build and test OLPC software. And, after Red Hat kernel developer Dave Jones gave a standing-room-only talk at the 2006 Linux Symposium titled, Why Userspace Sucks (Or, 101 Really Dumb Things Your App Shouldn't Do), his reports of suckiness, which include kernel-based measurements of wasteful behavior, are helpful, Blizzard says."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=nENXNy"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=nENXNy" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42428886" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42428886/article.pl</link>
+  <dc:author>Zonk</dc:author>
+    <dc:subject>OLPC Inspires Open Source Projects</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42289704/article.pl">
+  <title>Oracle Linux Explored</title>
+  <description>M-Saunders writes "Two days ago Slashdot reported on Oracle's move into the enterprise Linux market, and how it may challenge Red Hat. Red Hat's stock has already dropped, and there's a great deal of talk about the implications of this act. Linux Format got hold of the 'Unbreakable' distro to find out what's going on under the hood. Is it a breakthrough for Linux in the corporate market, or just another RHEL respin? See the article for all the info and screenshots &amp;mdash; including an 'interesting' choice of GRUB colours."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=C2ZHnB"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=C2ZHnB" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42289704" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42289704/article.pl</link>
+  <dc:author>Zonk</dc:author>
+    <dc:subject>Oracle Linux Explored</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42239402/article.pl">
+  <title>The Web 2.0 Conundrum - How Much Control is Too Much?</title>
+  <description>CrashRoX asks: "One of the big hypes with Web 2.0 is that users should be able to control their content. We then end up with all assortments of mash-ups, widgets, feeds and customized pages/profiles. Given this, where do site admins draw the line on what users can do? MySpace is the best example for this question. Their popularity is based on promoting the fact that you can have a page that displays your personality, customize it and pretty much do whatever you want to it. Over time, they've had security problems with users using JavaScript. That privilege was revoked not too long after. Most recently, they've limited the use of flash controls and have started banning certain widgets (like YouTube and others). Sites like Google let you create your own widgets using an API. How much control from a programming, security and usability point of view should we give users? What guidelines should developers follow for building web 2.0 sites?"
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=nptXew"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=nptXew" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42239402" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42239402/article.pl</link>
+  <dc:author>Cliff</dc:author>
+    <dc:subject>The Web 2.0 Conundrum - How Much Control is Too Much?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42048651/article.pl">
+  <title>Java To Be Opened For Christmas?</title>
+  <description>MBCook writes "At the Oracle OpenWorld conference, Sun's CEO Jonathan Schwartz announced on Wednesday morning that Java would be opened within 30-60 days, which would would mean about Christmas Day at the latest. Sun first announced they would do this back in May at JavaOne but didn't give a date. We've seen rumblings before on this topic. Schwartz also commented on the companies Sun Fire servers, Sun's relationship with Oracle, and general trends."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=8zPadT"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=8zPadT" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/42048651" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/42048651/article.pl</link>
+  <dc:author>CowboyNeal</dc:author>
+    <dc:subject>Java To Be Opened For Christmas?</dc:subject>
+
+</item>
+<item rdf:about="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/41715668/article.pl">
+  <title>Taking Your Programming Skills to the Next Level?</title>
+  <description>An anonymous reader asks: "About 6 years ago I graduated with a degree in Computer Science. Since that time I've been working on and off as a programmer, however I feel that my programming skills haven't really progressed to the next level as I had hoped. I guess part of the problem is that my work environment hasn't been especially technical or challenging, so I really need to try and improve my skills independently. What strategies did Slashdot readers use to improve their programming skills Which books are useful in this area?"
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?a=XWuBsg"&gt;&lt;img src="http://rss.slashdot.org/~a/Slashdot/slashdotDevelopers?i=XWuBsg" border="0" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~4/41715668" /&gt;</description>
+  <link>http://rss.slashdot.org/~r/Slashdot/slashdotDevelopers/~3/41715668/article.pl</link>
+  <dc:author>Cliff</dc:author>
+    <dc:subject>Taking Your Programming Skills to the Next Level?</dc:subject>
+
+</item>
+
+  <xhtml:script id="js" type="text/javascript" src="http://meta/rss.js" />
+</rdf:RDF>

@@ -1,0 +1,16 @@
+======
+config
+======
+
+This module reads the `atomisator.cfg` file and provides
+a few function to get the configuration info::
+
+    >>> from atomisator.main.config import parser
+
+    >>> parser.feeds
+    ['sample1.xml', 'sample2.xml']
+
+    >>> parser.database
+    'sqlite://atomisator.db'
+
+

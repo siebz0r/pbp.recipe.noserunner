@@ -1,0 +1,3 @@
+
+SQLURI = 'sqlite:///memory'
+

@@ -1,0 +1,36 @@
+=======
+mappers
+=======
+
+Mappers for the project::
+
+    >>> from atomisator.db.mappers import Entry, Link, Tag
+
+Let's create a few items::
+
+    >>> cool = Tag('cool')
+    >>> cool
+    <Tag('cool')>
+
+    >>> python_org = Link('http://python.org')
+    >>> python_org
+    <Link('http://python.org')>
+
+    >>> annoucement = Entry('Python 2.6alpha1 and 3.0alpha3 released', 
+    ...                     'http://www.python.org/news',
+    ...                     'Summary goes here')
+    >>> annoucement
+    <Entry('Python 2.6alpha1 and 3.0alpha3 released')>
+
+    >>> annoucement.add_tags(['cool', 'fun'])
+    >>> annoucement.tags
+    [<Tag('cool')>, <Tag('fun')>]
+
+    >>> annoucement.links
+    []
+
+    >>> annoucement.add_links(['http://www.python.org'])
+    >>> annoucement.links
+    [<Link('http://www.python.org')>]
+
+
