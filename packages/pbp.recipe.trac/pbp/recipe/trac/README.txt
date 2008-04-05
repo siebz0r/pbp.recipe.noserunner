@@ -42,20 +42,26 @@ We'll start by creating a buildout that uses the recipe::
     >>> write('buildout.cfg',
     ... """
     ... [buildout]
-    ... parts = test1
+    ... parts = trac
+    ... index = http://pypi.python.org/simple
     ...
-    ... [test1]
+    ... [trac]
     ... recipe = pbp.recipe.trac
-    ... option1 = %(foo)s
-    ... option2 = %(bar)s
-    ... """ % { 'foo' : 'value1', 'bar' : 'value2'})
+    ... project-name = My project
+    ... project-url = http://example.com
+    ... db = sqlite:${buildout:directory}/var/trac.db
+    ... version-system = hg
+    ... version-path = sqlite:${buildout:directory}/var/svn
+    ... """)
 
 Running the buildout gives us::
 
     >>> print system(buildout)
-    Upgraded:
+    Getting distribution for 'Trac'.
+    Got Trac ...
+    Getting distribution for 'Genshi...'.
+    Got Genshi 0.4.4.
+    Installing trac.
     ...
-    Installing test1.
-    Unused options for test1: 'option2' 'option1'.
-
+    <BLANKLINE>
 
