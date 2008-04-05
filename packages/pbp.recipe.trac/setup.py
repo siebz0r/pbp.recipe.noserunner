@@ -61,6 +61,7 @@ setup(name='pbp.recipe.trac',
                         'zc.buildout',
                         'zc.recipe.egg',
                         'Trac',
+                        'pysqlite',
                         # -*- Extra requirements: -*-
                         ],
       tests_require=tests_require,

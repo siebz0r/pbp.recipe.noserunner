@@ -49,9 +49,8 @@ We'll start by creating a buildout that uses the recipe::
     ... recipe = pbp.recipe.trac
     ... project-name = My project
     ... project-url = http://example.com
-    ... db = sqlite:${buildout:directory}/var/trac.db
-    ... version-system = hg
-    ... version-path = sqlite:${buildout:directory}/var/svn
+    ... repos-type = hg
+    ... repos-path = sqlite:${buildout:directory}/var/svn
     ... """)
 
 Running the buildout gives us::
@@ -61,7 +60,10 @@ Running the buildout gives us::
     ...
     Installing trac.
     Generated script '/sample-buildout/bin/trac-admin'.
-    Generated script '/sample-buildout/bin/tracd'.
-    ...
+    enerated script '/sample-buildout/bin/tracd'.
     <BLANKLINE>
 
+And creates a trac instance::
+
+    >>> ls(join(sample_buildout, 'parts', 'trac'))
+ 
