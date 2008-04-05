@@ -60,10 +60,44 @@ Running the buildout gives us::
     ...
     Installing trac.
     Generated script '/sample-buildout/bin/trac-admin'.
-    enerated script '/sample-buildout/bin/tracd'.
+    Generated script '/sample-buildout/bin/tracd'.
+    ...
     <BLANKLINE>
 
 And creates a trac instance::
 
     >>> ls(join(sample_buildout, 'parts', 'trac'))
- 
+    -  README
+    -  VERSION
+    d  attachments
+    d  conf
+    d  db
+    d  htdocs
+    d  log
+    d  plugins
+    d  templates
+
+    >>> f = join(sample_buildout, 'parts', 'trac', 'conf', 'trac.ini')
+    >>> print open(f).read()
+    # -*- coding: utf-8 -*-
+    <BLANKLINE>
+    ...
+    [project]
+    ...    
+    descr = My example project
+    ...
+    name = "My project"
+    url = 
+    ...
+    [trac]
+    ...
+    repository_dir = /sample-buildout/var/svn
+    repository_type = hg
+    ...
+    <BLANKLINE>
+
+
+
+
+
+
