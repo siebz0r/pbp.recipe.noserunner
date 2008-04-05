@@ -57,11 +57,11 @@ We'll start by creating a buildout that uses the recipe::
 Running the buildout gives us::
 
     >>> print system(buildout)
-    Getting distribution for 'Trac'.
-    Got Trac ...
-    Getting distribution for 'Genshi...'.
-    Got Genshi 0.4.4.
+    Getting ...
+    ...
     Installing trac.
+    Generated script '/sample-buildout/bin/trac-admin'.
+    Generated script '/sample-buildout/bin/tracd'.
     ...
     <BLANKLINE>
 
