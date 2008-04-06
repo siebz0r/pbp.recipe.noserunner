@@ -61,7 +61,7 @@ setup(name='pbp.recipe.trac',
                         'zc.buildout',
                         'zc.recipe.egg',
                         'Trac >=0.11dev, ==0.11b1',
-                        'TracMercurial>=0.11',
+                        'TracMercurial',
                         'pysqlite',
                         # -*- Extra requirements: -*-
                         ],
