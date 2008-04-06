@@ -70,6 +70,9 @@ class Recipe(object):
             parser.set('navadd', 'buildbot.title', 'Buildbot')
             parser.set('navadd', 'buildbot.url', buildbot_url)
 
+        # adding plugin for time estimation
+        parser.set('components', 'timingandestimationplugin.*', 'enabled')
+
         parser.write(open(trac_ini, 'w'))
          
         # Return files that were created by the recipe. The buildout

@@ -64,6 +64,7 @@ setup(name='pbp.recipe.trac',
                         'TracMercurial',
                         'pysqlite',
                         'NavAdd',
+                        'timingandestimationplugin'
                         # -*- Extra requirements: -*-
                         ],
       tests_require=tests_require,
@@ -71,6 +72,7 @@ setup(name='pbp.recipe.trac',
       test_suite = 'pbp.recipe.trac.tests.test_docs.test_suite',
       entry_points=entry_points,
       dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9',
+                        'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11',
                         'http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin-0.11']
       )
 
