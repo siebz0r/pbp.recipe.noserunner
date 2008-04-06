@@ -4,6 +4,7 @@ import os
 from os.path import join
 import sys
 import subprocess
+import ConfigParser
 
 import pkg_resources
 import zc.buildout
@@ -47,7 +48,19 @@ class Recipe(object):
         trac_admin = join(options['bin-directory'], 'trac-admin')
         
         subprocess.call([trac_admin, location, 'initenv', project_name, 
-                         db, repos_type, repos_path]) 
+                         db, repos_type, repos_path])
+
+        
+        # if 'hg' in thr repository type, hook its plugin
+        if repos_type == 'hg':
+            trac_ini = join(location, 'conf', 'trac.ini') 
+            parser = ConfigParser.ConfigParser()
+            parser.read([trac_ini])
+            if 'components' not in parser.sections():
+                parser.add_section('components')
+            parser.set('components', 'tracext.hg.*', 'enabled')
+            parser.write(open(trac_ini, 'w'))
+ 
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
         return tuple()
