@@ -51,6 +51,7 @@ We'll start by creating a buildout that uses the recipe::
     ... project-url = http://example.com
     ... repos-type = hg
     ... repos-path = sqlite:${buildout:directory}/var/svn
+    ... buildbot-url = http://buildbot.example.com
     ... """)
 
 Let's run the buildout::
@@ -88,4 +89,7 @@ With a trac.ini file. Let's check its content::
     '' 
     >>> parser.get('components', 'tracext.hg.*') 
     'enabled'
+
+    >>> parser.get('navadd', 'buildbot.url')
+    'http://buildbot.example.com'
 

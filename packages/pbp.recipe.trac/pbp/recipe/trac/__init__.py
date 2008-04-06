@@ -50,17 +50,28 @@ class Recipe(object):
         subprocess.call([trac_admin, location, 'initenv', project_name, 
                          db, repos_type, repos_path])
 
-        
+        trac_ini = join(location, 'conf', 'trac.ini')
+        parser = ConfigParser.ConfigParser()
+        parser.read([trac_ini])
+        if 'components' not in parser.sections():
+            parser.add_section('components')
+
         # if 'hg' in thr repository type, hook its plugin
         if repos_type == 'hg':
-            trac_ini = join(location, 'conf', 'trac.ini') 
-            parser = ConfigParser.ConfigParser()
-            parser.read([trac_ini])
-            if 'components' not in parser.sections():
-                parser.add_section('components')
             parser.set('components', 'tracext.hg.*', 'enabled')
-            parser.write(open(trac_ini, 'w'))
- 
+        
+        buildbot_url = options.get('buildbot-url', None) 
+        if buildbot_url is not None:
+            parser.set('components', 'navadd.*', 'enabled')
+            if 'navadd' not in parser.sections(): 
+                parser.add_section('navadd')  
+            parser.set('navadd', 'add_items', 'buildbot')
+            parser.set('navadd', 'buildbot.target', 'mainnav')
+            parser.set('navadd', 'buildbot.title', 'Buildbot')
+            parser.set('navadd', 'buildbot.url', buildbot_url)
+
+        parser.write(open(trac_ini, 'w'))
+         
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
         return tuple()

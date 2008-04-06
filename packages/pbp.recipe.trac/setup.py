@@ -63,10 +63,14 @@ setup(name='pbp.recipe.trac',
                         'Trac >=0.11dev, ==0.11b1',
                         'TracMercurial',
                         'pysqlite',
+                        'NavAdd',
                         # -*- Extra requirements: -*-
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
       test_suite = 'pbp.recipe.trac.tests.test_docs.test_suite',
       entry_points=entry_points,
+      dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9',
+                        'http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin-0.11']
       )
+
