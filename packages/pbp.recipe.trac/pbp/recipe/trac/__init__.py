@@ -50,6 +50,30 @@ class Recipe(object):
         subprocess.call([trac_admin, location, 'initenv', project_name, 
                          db, repos_type, repos_path])
 
+         
+        # removing crap
+        for milestone in ('milestone1', 'milestone2', 'milestone3', 
+                          'milestone4'):
+            subprocess.call([trac_admin, location, 'milestone', 'remove', 
+                             milestone])
+        
+        for comp in ('component1', 'component2'):
+            subprocess.call([trac_admin, location, 'component', 'remove', 
+                             comp])
+
+        # adding components
+        components = options.get('components', '')
+        components = [(comp.split()[0].strip(), comp.split()[1].strip(),)
+                      for comp in components.split('\n')
+                      if comp.strip() != '' and len(comp.split()) > 1]
+
+        # adding the 'future' roadmap
+        subprocess.call([trac_admin, location, 'milestone', 'add', 
+                         'future'])
+
+        for comp, owner in components:
+            subprocess.call([trac_admin, location, 'component', 'add', 
+                             comp, owner])
         trac_ini = join(location, 'conf', 'trac.ini')
         parser = ConfigParser.ConfigParser()
         parser.read([trac_ini])
