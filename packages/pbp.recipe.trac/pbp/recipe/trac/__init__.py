@@ -76,7 +76,8 @@ class Recipe(object):
         # logo
         header_logo = options.get('header-logo', '')
         parser.set('header_logo', 'src', header_logo)
-        
+       
+        # smtp
         for name in ('smtp-server', 'smtp-port', 'smtp-from', 
                      'smtp-replyto'):
             value = options.get(name, None)
@@ -84,6 +85,20 @@ class Recipe(object):
                 continue
             parser.set('notification', name.replace('-', '_'), value)
         
+        # setting up time tracking
+        if 'ticket-custom' not in parser.sections():
+            parser.add_section('ticket-custom')
+
+        for field, value in (('totalhours', 'text'),    
+                             ('totalhours.value', '0'),
+                             ('totalhours.label', 'Total Hours'),
+                             ('hours', 'text'),
+                             ('hours.value', '0'),
+                             ('hours.label', 'Hours to Add'),
+                             ('estimatedhours', 'text'),
+                             ('estimatedhours.value', '0'),
+                             ('estimatedhours.label', 'Estimated Hours')):
+            parser.set('ticket-custom', field, value)
         
         parser.write(open(trac_ini, 'w'))
          
