@@ -10,6 +10,9 @@ import pkg_resources
 import zc.buildout
 import zc.recipe.egg
 
+from trac.admin.console import TracAdmin
+from trac.ticket.model import *
+
 class Recipe(object):
     """zc.buildout recipe"""
 
@@ -47,33 +50,40 @@ class Recipe(object):
             
         trac_admin = join(options['bin-directory'], 'trac-admin')
         
-        subprocess.call([trac_admin, location, 'initenv', project_name, 
-                         db, repos_type, repos_path])
+        trac = TracAdmin(location)
 
-         
+        if not trac.env_check():
+            trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
+
+        milestone_list = [m.name for m in Milestone.select(trac.env_open())]
+        comp_list = [c.name for c in Component.select(trac.env_open())]
+
         # removing crap
         for milestone in ('milestone1', 'milestone2', 'milestone3', 
                           'milestone4'):
-            subprocess.call([trac_admin, location, 'milestone', 'remove', 
-                             milestone])
+            if milestone in milestone_list:
+                trac._do_milestone_remove(milestone)
+        
         
         for comp in ('component1', 'component2'):
-            subprocess.call([trac_admin, location, 'component', 'remove', 
-                             comp])
+            if comp in comp_list:
+                trac._do_component_remove(comp)
 
+        # adding the 'future' roadmap
+        if 'future' not in milestone_list:
+            trac._do_milestone_add('future')
+        
         # adding components
         components = options.get('components', '')
         components = [(comp.split()[0].strip(), comp.split()[1].strip(),)
                       for comp in components.split('\n')
                       if comp.strip() != '' and len(comp.split()) > 1]
 
-        # adding the 'future' roadmap
-        subprocess.call([trac_admin, location, 'milestone', 'add', 
-                         'future'])
-
         for comp, owner in components:
-            subprocess.call([trac_admin, location, 'component', 'add', 
-                             comp, owner])
+            if comp in comp_list:
+                continue
+            trac._do_component_add(comp, owner)
+        
         trac_ini = join(location, 'conf', 'trac.ini')
         parser = ConfigParser.ConfigParser()
         parser.read([trac_ini])
