@@ -44,7 +44,10 @@ We'll start by creating a buildout that uses the recipe::
     ... [buildout]
     ... parts = trac
     ... index = http://pypi.python.org/simple
-    ...
+    ... develop =
+    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/timingandestimationplugin
+    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/navaddplugin
+    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/TracMercurial
     ... [trac]
     ... recipe = pbp.recipe.trac
     ... project-name = My project
@@ -52,6 +55,11 @@ We'll start by creating a buildout that uses the recipe::
     ... repos-type = hg
     ... repos-path = sqlite:${buildout:directory}/var/svn
     ... buildbot-url = http://buildbot.example.com
+    ... header-logo = ${buildout:directory}/my_logo
+    ... smtp-server = localhost
+    ... smtp-port = 25
+    ... smtp-from = tarek@ziade.org
+    ... smtp-replyto = tarek@ziade.org
     ... """)
 
 Let's run the buildout::

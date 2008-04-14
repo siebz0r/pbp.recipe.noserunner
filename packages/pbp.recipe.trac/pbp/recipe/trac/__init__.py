@@ -73,6 +73,18 @@ class Recipe(object):
         # adding plugin for time estimation
         parser.set('components', 'timingandestimationplugin.*', 'enabled')
 
+        # logo
+        header_logo = options.get('header-logo', '')
+        parser.set('header_logo', 'src', header_logo)
+        
+        for name in ('smtp-server', 'smtp-port', 'smtp-from', 
+                     'smtp-replyto'):
+            value = options.get(name, None)
+            if value is None:
+                continue
+            parser.set('notification', name.replace('-', '_'), value)
+        
+        
         parser.write(open(trac_ini, 'w'))
          
         # Return files that were created by the recipe. The buildout
