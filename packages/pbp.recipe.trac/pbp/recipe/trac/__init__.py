@@ -5,6 +5,7 @@ from os.path import join
 import sys
 import subprocess
 import ConfigParser
+import shutil
 
 import pkg_resources
 import zc.buildout
@@ -109,8 +110,13 @@ class Recipe(object):
 
         # logo
         header_logo = options.get('header-logo', '')
-        parser.set('header_logo', 'src', header_logo)
-       
+	header_logo = os.path.realpath(header_logo)
+        if os.path.exists(header_logo):
+            shutil.copyfile(header_logo, join(location, 'htdocs', 'logo'))
+
+	parser.set('header_logo', 'src', 'site/logo')
+        parser.set('header_logo', 'link', project_url)
+
         # smtp
         for name in ('smtp-server', 'smtp-port', 'smtp-from', 
                      'smtp-replyto'):
