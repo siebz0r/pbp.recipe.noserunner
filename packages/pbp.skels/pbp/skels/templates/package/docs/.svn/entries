@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="26512"
+   name=""
+   committed-date="2006-07-28T17:25:23.623547Z"
+   url="https://svn.plone.org/svn/collective/ZopeSkel/trunk/zopeskel/templates/basic_namespace/docs"
+   last-author="hannosch"
+   kind="dir"
+   uuid="db7f04ef-aaf3-0310-a811-c281ed44c4ad"
+   repos="https://svn.plone.org/svn/collective"
+   revision="58100"/>
+</wc-entries>
