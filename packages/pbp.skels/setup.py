@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2008 'Tarek Ziad\xc3\xa9'
+# Copyright (c) 2008 'Tarek Ziadé'
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,14 +23,10 @@ from setuptools import setup, find_packages
 version = '0.1.0'
 
 README = os.path.join(os.path.dirname(__file__),
-          'pbp',
-          'skels', 'docs', 'README.txt')
+                      'pbp', 'skels', 'docs', 'README.txt')
 
 long_description = open(README).read() + '\n\n'
-
-tests_require = [
-        'zope.testing',
-    ]
+tests_require = ['zope.testing',]
 
 setup(name='pbp.skels',
       version=version,
@@ -62,6 +58,8 @@ setup(name='pbp.skels',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [paste.paster_create_template]
+      pbp_recipe_doc = pbp.skels.templates:Recipe
       """,
       )
 
