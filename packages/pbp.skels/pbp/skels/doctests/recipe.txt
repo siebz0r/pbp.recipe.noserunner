@@ -1,0 +1,64 @@
+===============
+Recipe template
+===============
+
+    >>> recipes = os.path.join(tempdir, 'recipes')
+    >>> rmdir(recipes)
+    >>> chdir(tempdir) 
+
+Let's call the paster::
+
+    >>> paster('create -t pbp_recipe_doc recipes --no-interactive')
+    Selected and implied templates:
+      pbp.skels#pbp_recipe_doc  A recipe
+    <BLANKLINE>
+    Variables:
+      egg:      recipes
+      package:  recipes
+      project:  recipes
+    Creating template pbp_recipe_doc
+    Creating directory ./recipes
+      Copying +short_name+.txt_tmpl to ./recipes/recipe.txt
+
+We should have one recipe::
+
+    >>> ls(recipes)
+    recipe.txt
+
+
+With a reST content::
+    
+    >>> print open(os.path.join(recipes, 'recipe.txt')).read()
+    =====
+    Title 
+    =====
+    <BLANKLINE>
+    :Author: John Doe
+    :Tags: tag1 tag2
+    <BLANKLINE>
+    .. contents ::
+    <BLANKLINE>
+    Prerequests
+    :::::::::::
+    <BLANKLINE>
+    Put here the prerequests for people to follow this recipe.
+    <BLANKLINE>
+    Problem
+    :::::::
+    <BLANKLINE>
+    Explain here the problem resolved in a few sentences.
+    <BLANKLINE>
+    Solution
+    ::::::::
+    <BLANKLINE>
+    Put here the solution.
+    <BLANKLINE>
+    References
+    ::::::::::
+    <BLANKLINE>
+    Put here references, and links to other recipes.
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+
+
