@@ -1,0 +1,27 @@
+================
+Package template
+================
+
+    >>> package = os.path.join(tempdir, 'package')
+    >>> rmdir(package)
+    >>> chdir(tempdir) 
+
+Let's call the paster::
+
+    >>> paster('create -t pbp_package package --no-interactive')
+    Selected and implied templates:
+      pbp.skeletons#pbp_package  A namespaced package with a test environment
+    <BLANKLINE>
+    ...    
+
+We should have a structure::
+
+    >>> ls(package)
+    README.txt
+    bootstrap.py
+    buildout.cfg
+    package.egg-info
+    pbp
+    setup.py
+
+
