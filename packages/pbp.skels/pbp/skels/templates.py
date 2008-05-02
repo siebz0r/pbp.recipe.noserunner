@@ -1,10 +1,12 @@
+import copy
+
 from pbp.skels.base import var
 from pbp.skels.base import get_var
 from pbp.skels.base import BaseTemplate
 
 class Recipe(BaseTemplate):
     _template_dir = 'templates/recipe'
-    summary = "A recipe"
+    summary = "A recipe document"
     required_templates = []
     use_cheetah = True
 
@@ -16,6 +18,25 @@ class Recipe(BaseTemplate):
         var('author', 'Author name', default='John Doe'),
         var('keywords', 'Space-separated keywords/tags', 'tag1 tag2')
     ]
+
+class Module(Recipe):
+    _template_dir = 'templates/module'
+    summary = "A Module helper document"
+    
+    vars = copy.deepcopy(Recipe.vars) 
+    get_var(vars, 'title').description = 'Title (module name)'
+    get_var(vars, 'short_name').description = 'Short name (module name)'
+
+class Design(Recipe):
+    _template_dir = 'templates/design'
+    summary = "A Design document"
+    
+    vars = copy.deepcopy(Recipe.vars) 
+    get_var(vars, 'title').description = 'Title (use a short phrase)'
+
+class Tutorial(Recipe):
+    _template_dir = 'templates/tutorial'
+    summary = "A Tutorial document"
 
 class Package(BaseTemplate):
     _template_dir = 'templates/package'

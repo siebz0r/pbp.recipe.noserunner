@@ -60,6 +60,9 @@ setup(name='pbp.skels',
       # -*- Entry points: -*-
       [paste.paster_create_template]
       pbp_recipe_doc = pbp.skels.templates:Recipe
+      pbp_design_doc = pbp.skels.templates:Design
+      pbp_tutorial_doc = pbp.skels.templates:Tutorial
+      pbp_module_doc = pbp.skels.templates:Module
       pbp_package = pbp.skels.templates:Package
       """,
       )
