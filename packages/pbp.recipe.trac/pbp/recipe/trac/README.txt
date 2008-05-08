@@ -64,7 +64,7 @@ We'll start by creating a buildout that uses the recipe::
 
 Let's run the buildout::
 
-    >>> null = system(buildout)
+    >>> print system(buildout)
 
 This creates a trac instance::
 
