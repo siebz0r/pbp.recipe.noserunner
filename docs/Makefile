@@ -2,19 +2,21 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS   =
-SPHINXBUILD  = sphinx-build.py
-PAPER        =
+SPHINXOPTS    =
+SPHINXBUILD   = sphinx-build
+PAPER         =
 
-ALLSPHINXOPTS = -d build/doctrees -D latex_paper_size=$(PAPER) \
-                $(SPHINXOPTS) source
+# Internal variables.
+PAPEROPT_a4     = -D latex_paper_size=a4
+PAPEROPT_letter = -D latex_paper_size=letter
+ALLSPHINXOPTS   = -d build/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
-.PHONY: help clean html web htmlhelp latex changes linkcheck
+.PHONY: help clean html web pickle htmlhelp latex changes linkcheck
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html      to make standalone HTML files"
-	@echo "  web       to make files usable by Sphinx.web"
+	@echo "  pickle    to make pickle files (usable by e.g. sphinx-web)"
 	@echo "  htmlhelp  to make HTML files and a HTML help project"
 	@echo "  latex     to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 	@echo "  changes   to make an overview over all changed/added/deprecated items"
@@ -29,13 +31,15 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in build/html."
 
-web:
-	mkdir -p build/web build/doctrees
-	$(SPHINXBUILD) -b web $(ALLSPHINXOPTS) build/web
+pickle:
+	mkdir -p build/pickle build/doctrees
+	$(SPHINXBUILD) -b pickle $(ALLSPHINXOPTS) build/pickle
 	@echo
-	@echo "Build finished; now you can run"
-	@echo "  python -m sphinx.web build/web"
-	@echo "to start the server."
+	@echo "Build finished; now you can process the pickle files or run"
+	@echo "  sphinx-web build/pickle"
+	@echo "to start the sphinx-web server."
+
+web: pickle
 
 htmlhelp:
 	mkdir -p build/htmlhelp build/doctrees

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3521"
+   name=""
+   committed-date="2008-04-16T18:37:17.389631Z"
+   url="http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11/timingandestimationplugin"
+   last-author="bobbysmith007"
+   kind="dir"
+   uuid="7322e99d-02ea-0310-aa39-e9a107903beb"
+   repos="http://trac-hacks.org/svn"
+   revision="3643"/>
+<entry
+   committed-rev="3362"
+   name="api.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-03-14T17:52:42.996159Z"
+   checksum="a8550fd76dc5ca77f926452bfee233ca"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:24.000000Z"/>
+<entry
+   committed-rev="3521"
+   name="statuses.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-04-16T18:37:17.389631Z"
+   checksum="a8e904d1da1aa30bab33959252e06066"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:24.000000Z"/>
+<entry
+   committed-rev="3119"
+   name="webui.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-01-21T19:36:51.898284Z"
+   checksum="3e0c6a49e6334cd9db6bc4723e968a45"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:24.000000Z"/>
+<entry
+   committed-rev="2538"
+   name="usermanual.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2007-07-31T15:00:01.041543Z"
+   checksum="5eb412b063495c83203db578c5129e4d"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   name="htdocs"
+   kind="dir"/>
+<entry
+   committed-rev="3521"
+   name="reports.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-04-16T18:37:17.389631Z"
+   checksum="e306617f37c85b688ac888a46c230078"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="2467"
+   name="ticket_webui.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2007-07-14T03:07:53.170919Z"
+   checksum="193eb7202f6dcef40f2dbd700a056c61"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="1283"
+   name="__init__.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2006-09-19T22:39:33.382673Z"
+   checksum="76dcf9a364986275e6a8202f6496d3ab"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="2298"
+   name="query_webui.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2007-06-13T14:42:08.062728Z"
+   checksum="2895f8b8226ec8426ca69943629e84b7"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="3363"
+   name="tande_filters.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-03-14T17:58:06.964124Z"
+   checksum="d6bd0252777348a21992e98e3d0a2812"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="3119"
+   name="dbhelper.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-01-21T19:36:51.898284Z"
+   checksum="0e77d105a910606189549ae9ceaff112"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="3179"
+   name="reportmanager.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-02-05T16:05:21.613516Z"
+   checksum="fb614de2f6ec53137da3b2aef2d08a12"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   committed-rev="2893"
+   name="ticket_daemon.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2007-12-13T17:24:44.084736Z"
+   checksum="f560b522c407d16203e3387073837e46"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+<entry
+   name="templates"
+   kind="dir"/>
+</wc-entries>

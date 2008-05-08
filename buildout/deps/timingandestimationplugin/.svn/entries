@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3521"
+   name=""
+   committed-date="2008-04-16T18:37:17.389631Z"
+   url="http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11"
+   last-author="bobbysmith007"
+   kind="dir"
+   uuid="7322e99d-02ea-0310-aa39-e9a107903beb"
+   repos="http://trac-hacks.org/svn"
+   revision="3643"/>
+<entry
+   name="timingandestimationplugin"
+   kind="dir"/>
+<entry
+   name="scripts"
+   kind="dir"/>
+<entry
+   committed-rev="3521"
+   name="setup.py"
+   text-time="2008-05-08T21:11:25.000000Z"
+   committed-date="2008-04-16T18:37:17.389631Z"
+   checksum="b7bf547dfe9d8df022efa82c6413b776"
+   last-author="bobbysmith007"
+   kind="file"
+   prop-time="2008-05-08T21:11:25.000000Z"/>
+</wc-entries>
