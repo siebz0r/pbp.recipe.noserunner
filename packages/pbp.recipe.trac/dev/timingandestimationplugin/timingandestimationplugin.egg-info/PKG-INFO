@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: timingandestimationplugin
+Version: 0.6.4
+Summary: Plugin to make Trac support time estimation and tracking
+Home-page: http://www.trac-hacks.org/wiki/TimingAndEstimationPlugin
+Author: Russ Tyndall at Acceleration.net
+Author-email: russ@acceleration.net
+License: http://www.opensource.org/licenses/mit-license.php
+Description: 
+        This Trac 0.11 plugin provides support for Time estimation and tracking.
+        
+        See http://trac-hacks.org/wiki/TimingAndEstimationPlugin for details.
+        
+Keywords: trac plugin estimation timetracking
+Platform: UNKNOWN

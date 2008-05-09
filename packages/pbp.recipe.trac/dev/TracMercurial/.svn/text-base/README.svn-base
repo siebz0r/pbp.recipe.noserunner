@@ -1,0 +1,248 @@
+= Mercurial Plugin for Trac (#1847) =
+
+There is an '''experimental''' plugin for Trac [milestone:0.10] 
+which enables [http://www.selenic.com/mercurial Mercurial] 
+to be used instead of [http://subversion.tigris.org Subversion]
+as the VersioningSystemBackend for Trac.
+
+''The plugin being experimental, expect some rough edges
+and a somewhat unstable set of features/documentation...''
+
+Change Logs: 
+ * log:sandbox/mercurial-plugin
+ * log:sandbox/vc-refactoring
+
+== Download and Installation ==
+
+==== Trac ====
+The plugin needs a slightly modified version of Trac 0.10.
+This version can be found in source:sandbox/vc-refactoring.
+
+Simply do:
+{{{
+svn co -r2905 http://svn.edgewall.com/repos/trac/sandbox/vc-refactoring 
+}}}
+and install from there:
+{{{
+$ cd vc-refactoring 
+$ python setup.py egg_info 
+$ python setup.py install
+}}}
+
+The plugin itself is available from source:sandbox/mercurial-plugin
+
+Check it out, too:
+{{{
+svn co -r2905 http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin 
+}}}
+and create an "egg" from there (`cd hg-plugin; python setup.py bdist_egg`).
+Note that you'll need
+[http://peak.telecommunity.com/DevCenter/setuptools setuptools] 
+>= 0.6 for that (I used setuptools-0.6a9).
+
+===== Releases =====
+|| '''Version''' || mercurial-plugin || Trac vc-refactoring || Compatible with hg         ||
+||      0.1      ||       r2514      ||        r2511        ||  0.7, tip without 1d7d0c07 ||
+||               ||       r2620      ||        r2620        ||  0.7, tip with 1d7d0c07    ||
+||   '''0.2'''   ||    '''r2905'''   ||     '''r2905'''     ||  0.7, 0.8, tip  ||
+
+
+==== Mercurial ====
+The plugin has been tested with recent development versions of Mercurial
+(upto Changeset 1704:c2755eba8631 from http://selenic.com/hg)
+and also with Mercurial 0.7 and 0.8.
+''It won't work with earlier versions, in particular not with 0.6x.''
+
+You can download Mercurial itself from 
+[http://www.selenic.com/mercurial/wiki/index.cgi/Download Hg:Download].
+
+
+== Configuration ==
+
+The configuration has to be done on the Trac side, 
+there's nothing to do on the Mercurial repository side,
+except for the fact that the repository should be made 
+accessible as a local repository. 
+Thanks to the distributed nature of Mercurial, that's
+always possible (if the repository is not already local,
+simply `hg clone` it).
+
+
+=== Setting up the mercurial plugin ===
+
+The TracMercurial-0.2 plugin egg should be added to the `plugins` folder of the 
+environment, or it can be globally installed (`python setup.py install`
+or a `python setup.py develop`).
+
+For general instructions about plugins, see also TracPlugins.
+
+If you installed the egg globally and you're modifying an 
+existing Trac environment to use the Mercurial backend,
+then you have to explicitely ''enable'' the plugin in TracIni:
+{{{
+[components]
+trac.versioncontrol.hg.* = enabled
+}}}
+Note that the above will be done automatically for a new installation,
+during the `initenv` step.
+
+
+=== Setting up a Trac environment ===
+
+You can either reuse an existing Trac environment,
+or create a brand new one.
+
+For general instructions, see TracInstall.
+
+Since milestone:0.10, the TracAdmin `initenv` command has 
+now a ''repository type'' argument besides ''repository directory''.
+
+For the ''repository type'', specify `hg` instead of the default `svn`.
+For the ''repository directory'', specify the location of the Mercurial repository
+(without the ending `.hg`).
+
+Your [wiki:TracIni <trac_environment>/conf/trac.ini] configuration file
+should have a `[trac]` section similar to the following:
+{{{
+[trac]
+repository_type = hg
+repository_dir = /path/to/my/hg/repository
+}}}
+
+There's also a few Mercurial specific settings in TracIni:
+{{{
+[hg]
+# -- Show revision number in addition to the changeset hash
+show_rev = yes
+
+# -- Changeset hash format
+node_format = short
+# hex:   Show the full SHA1 hash 
+# short: Show a shortened hash for the changesets 
+}}}
+
+
+== Features ==
+
+The Mercurial support is pretty basic, but works well. I've tested that 
+on the Mercurial repository itself and the performance is acceptable, 
+even if there's currently ''no'' caching in the database
+(this is what I'm going to work on next).
+
+For those used to Subversion in general and Subversion repository browsing
+in Trac in particular, there are a few differences worth noting.
+
+=== Mercurial Changesets ===
+
+==== Changeset Navigation ====
+
+In Mercurial, the ''Previous Changeset''/''Next Changeset'' navigation is 
+''not'' purely sequential, as it is in Subversion.
+Instead of a ''flat'' history of successive changesets, we actually navigate
+a DAG of changesets. 
+This means a changeset can have multiple parents (0, 1 or 2) and multiple
+children as well (0 to n). 
+
+Therefore, ''Previous Changeset'' is a link to the first parent, 
+and ''Next Changeset'' is a link to the first children.
+In case there are additional parents or children, these are shown as 
+additional changeset properties (''Parents'' or ''Children''), 
+placed below the ''Author'' property and above the ''Message'' property.
+
+[[Image(hg-plugin-changeset.png)]]
+
+Another additional changeset property is the list of ''Tags'' that
+might be associated with a changeset. 
+
+
+==== Wiki syntax ====
+
+The Wiki syntax has been extended a bit, to cope with the hexadecimal
+notation of hg changesets. E.g `[8ef2]` would link to the changeset 
+8ef2ba892518c115170398ec754bd1c27cab271f ...
+Also, it is possible to refer to changesets using the changeset: prefix 
+(or cset: or chgset:, for hgweb compatibility). 
+The tag: prefix can be used to refer to symbolic tags, although this is not
+a requirement (using. e.g. `cset:tip` would work too). 
+Finally, the branch: prefix has a special meaning, as this will not select
+the specified revision, but the head which is reachable from that revision.
+
+
+=== TracBrowser changes ===
+
+The TracBrowser ''View revision'' form has been extended with
+pulldown menus for jumping to a given tag or branch (in Mercurial, 
+a branch within a repository corresponds to a head, i.e. a 
+changeset without children): [[Image(hg-plugin-browser.png)]]
+
+''has to be re-added''
+
+== Bugs and Limitations ==
+
+There are still a lot of things that can be improved.
+
+=== Features that Trac+svn has but not currently implemented for Trac+hg ===
+
+ * History doesn't follow copy/move operations
+ * No ''path history'' mode (i.e. show all create/delete operations that 
+   affected a given path)
+ * Revision log ranges [xxx:yyy]
+ * View arbitrary diffs
+
+=== Multi-repository support ===
+
+First and foremost, even if Mercurial allows intra-repository branching, 
+it strongly supports the use of branching by cloning the full repository.
+Therefore, it is common to have a lot of hg repositories around, each
+devoted to the implementation of some particular feature.
+
+Trac should support this by the way of multiple repository support 
+within a single environment (see #2086).
+
+Note that the last comment on the above ticket suggests a good
+workaround for this problem.
+
+
+=== To cache or not to cache? ===
+
+When you try TracMercurial on the kernel repo, you quickly realize
+that it's way too slow without a db!
+Also, the way the diffs are produced currently (i.e. by Trac, from the full 
+content of the files) is also too slow to be usable on such big repositories 
+(e.g. the kernel changeset fc66195f585a took 7 minutes to be displayed on my 
+machine). 
+See #2591.
+
+=== Cool Features ===
+
+''Wild ideas'' section...
+
+==== Visualize branches and merges ====
+
+There should be a way to show graphically the branch and merge points within
+the revision log view. Not something as fancy as `hgk`, but nonetheless
+something that will make the changeset relationships immediately obvious.
+
+==== Search over the source ====
+
+A search provider could do the equivalent of an `hg grep`.
+
+==== Highlight Conflict Resolution ====
+
+While visualizing changeset diffs for merge changesets, we already
+show the changes relative to both parents, which helps to understand
+how conflicts (if any) were solved. But this can be improved by 
+specifically highlighting lines that differs from both parents.
+
+==== ''Add your cool feature here...'' ====
+
+----
+
+== Implementation Notes ==
+
+I'm interested in feedback concerning the code, in particular
+concerning Mercurial. I'm pretty sure I did things in a sub-optimal
+way, as I was discovering the guts of hg while writing the plugin. 
+Therefore, I'll be pleased to get tips for improvements.
+
+'' -- ChristianBoos ''
