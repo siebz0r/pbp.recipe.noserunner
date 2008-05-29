@@ -8,26 +8,24 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
 
-setup(name='atomisator.parser',
+setup(name='pbp.scripts',
       version=version,
-      description="A thin layer on the top of the Universal Feed Parser",
+      description="Contains scripts presented throughout the book",
       long_description=long_description,
       classifiers=classifiers,
-      keywords='python best practices',
-      author='Tarek Ziade',
+      keywords='',
+      author='Tarek Ziad\xc3\xa9',
       author_email='tarek@ziade.org',
-      url='http://hg.programmation-python.org',
+      url='',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['atomisator'],
+      namespace_packages=['pbp'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'feedparser'
           # -*- Extra requirements: -*-
       ],
-      tests_require=['feedparser',],
       entry_points="""
       # -*- Entry points: -*-
       """,
