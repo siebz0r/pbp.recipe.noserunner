@@ -14,7 +14,7 @@ setup(name='pbp.scripts',
       long_description=long_description,
       classifiers=classifiers,
       keywords='',
-      author='Tarek Ziad\xc3\xa9',
+      author=u'Tarek Ziadé',
       author_email='tarek@ziade.org',
       url='',
       license='GPL',
@@ -24,6 +24,7 @@ setup(name='pbp.scripts',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'guppy'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
