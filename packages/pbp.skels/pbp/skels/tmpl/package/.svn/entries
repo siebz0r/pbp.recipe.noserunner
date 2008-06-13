@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="47604"
+   name=""
+   committed-date="2007-08-19T21:32:36.689111Z"
+   url="https://svn.plone.org/svn/collective/ZopeSkel/trunk/zopeskel/templates/basic_namespace"
+   last-author="wichert"
+   kind="dir"
+   uuid="db7f04ef-aaf3-0310-a811-c281ed44c4ad"
+   repos="https://svn.plone.org/svn/collective"
+   revision="58100"/>
+<entry
+   committed-rev="47604"
+   name="setup.py_tmpl"
+   text-time="2007-11-30T15:07:45.000000Z"
+   committed-date="2007-08-19T21:32:36.689111Z"
+   checksum="19b9b7e36577f5738113549f04b05c4b"
+   last-author="wichert"
+   kind="file"
+   prop-time="2007-11-30T15:07:45.000000Z"/>
+<entry
+   name="docs"
+   kind="dir"/>
+<entry
+   name="+namespace_package+"
+   kind="dir"/>
+<entry
+   committed-rev="26402"
+   name="setup.cfg"
+   text-time="2007-11-30T15:07:45.000000Z"
+   committed-date="2006-07-24T20:05:38.503551Z"
+   checksum="ced32e2c28d3b229c8aad7c585425ccf"
+   last-author="nouri"
+   kind="file"
+   prop-time="2007-11-30T15:07:45.000000Z"/>
+</wc-entries>

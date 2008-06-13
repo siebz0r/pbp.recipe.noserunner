@@ -10,6 +10,15 @@ def secs_to_kstones(seconds):
 
 stats = {}
 
+def reset_stats():
+    global stats
+    stats = {}
+
+def print_stats():
+    template = '%s : %.2f kstones, %.3f secondes, %.3d bytes'
+    for key, v in stats.items():
+        print template % (key, v['stones'], v['time'], v['memory'])
+
 if sys.platform == 'win32':
     timer = time.clock
 else:

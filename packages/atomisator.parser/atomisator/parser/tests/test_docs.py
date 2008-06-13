@@ -1,6 +1,7 @@
 import unittest
 import doctest
 import os
+import sys
 
 # you can add variables here, that will be available 
 # in the doctests
@@ -29,10 +30,20 @@ def doc_suite(test_dir):
 
     return unittest.TestSuite(suite)
 
-def test_suite():
-    """Returns the test suite."""
-    return doc_suite(test_dir)
+if not 'nosetests' in sys.argv[0]:
+    def test_suite():
+        """Returns the test suite."""
+        return doc_suite(test_dir)
 
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+    if __name__ == '__main__':
+        unittest.main(defaultTest='test_suite')
+else:
+    def tests():
+        suite = doc_suite(test_dir)
+        res = unittest.TestResult()
+        suite.run(res)
+        for f in res.errors + res.failures:
+            raise AssertionError(f[1])
+        assert res.wasSuccessful()
+
 

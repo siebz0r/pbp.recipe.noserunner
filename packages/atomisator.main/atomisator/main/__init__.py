@@ -11,21 +11,21 @@ def _log(msg):
 
 def load_feeds():
     """Fetches feeds."""
-    count = 0
-    def _count():
-        count += 1
-    for feed in parser.feeds:
+    for count, feed in enumerate(parser.feeds):
         _log('Parsing feed %s' % feed)
         for entry in parse(feed):
-            _count()
             create_entry(entry)
-    _log('%d entries read.' % count)
+    _log('%d entries read.' % count+1)
 
 def generate_feed():
     """Creates the meta-feed."""
     _log('Writing feed in %s' % parser.file) 
     feed = generate(parser.title, parser.description, parser.link) 
-    open(parser.file, 'w').write(feed)
+    f = open(parser.file, 'w')
+    try:
+        f.write(feed)
+    finally:
+        f.close()
     _log('Feed ready.')
 
 def atomisator():

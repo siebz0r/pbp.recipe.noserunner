@@ -1,0 +1,40 @@
+#repeat $len($title)
+=#slurp
+#end repeat
+
+$title 
+#repeat $len($title) 
+=#slurp
+#end repeat
+
+:Author: $author
+:Tags: $keywords
+
+.. contents ::
+
+Who should read this ?
+::::::::::::::::::::::
+
+Explain here who is the target readership.
+
+Pre-requests
+::::::::::::
+
+Put here the pre-requests for people to follow this recipe.
+
+Problem
+:::::::
+
+Explain here the problem resolved in a few sentences.
+
+Solution
+::::::::
+
+Put here the solution.
+
+References
+::::::::::
+
+Put here references, and links to other recipes.
+
+

@@ -8,7 +8,7 @@ in a SQL database.
 The SQL uri is provided in the config module::
 
     >>> from atomisator.db import config
-    >>> config.SQLURI = 'sqlite:///:memory:'
+    >>> config.SQLURI = 'sqlite://:memory:'
 
 Let's create an entry::
 
