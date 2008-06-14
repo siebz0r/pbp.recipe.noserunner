@@ -1,14 +1,17 @@
-====================
+=====================
 atomisator.db package
-====================
+=====================
+
 .. contents::
 
 What is atomisator.db ?
 :::::::::::::::::::::::
+
 Explain here what atomisator.db does.
 
 Testing atomisator.db ?
 :::::::::::::::::::::::
+
 To run tests, create a test environmement with::
 
     $ python boostrap.py
