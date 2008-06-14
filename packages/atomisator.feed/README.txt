@@ -1,14 +1,17 @@
-======================
+=======================
 atomisator.feed package
-======================
+=======================
+
 .. contents::
 
 What is atomisator.feed ?
 :::::::::::::::::::::::::
+
 Explain here what atomisator.feed does.
 
 Testing atomisator.feed ?
 :::::::::::::::::::::::::
+
 To run tests, create a test environmement with::
 
     $ python boostrap.py

@@ -1,14 +1,17 @@
 ======================
 atomisator.main package
 ======================
+
 .. contents::
 
 What is atomisator.main ?
 :::::::::::::::::::::::::
+
 Explain here what atomisator.main does.
 
 Testing atomisator.main ?
 :::::::::::::::::::::::::
+
 To run tests, create a test environmement with::
 
     $ python boostrap.py

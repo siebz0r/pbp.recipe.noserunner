@@ -6,7 +6,7 @@ long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+        ]
 
 entry_points = {
     "console_scripts": [
@@ -24,7 +24,7 @@ setup(name='atomisator.main',
       keywords='',
       author='Tarek Ziade',
       author_email='tarek@ziade.org',
-      url='',
+      url='http://atomisator.ziade.org',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['atomisator'],

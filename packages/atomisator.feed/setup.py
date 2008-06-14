@@ -6,7 +6,7 @@ long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+        ]
 
 setup(name='atomisator.feed',
       version=version,
@@ -16,7 +16,7 @@ setup(name='atomisator.feed',
       keywords='',
       author='Tarek Ziade',
       author_email='tarek@ziade.org',
-      url='',
+      url='http://atomisator.ziade.org',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['atomisator'],
