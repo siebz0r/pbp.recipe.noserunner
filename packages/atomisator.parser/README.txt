@@ -1,14 +1,17 @@
-========================
+=========================
 atomisator.parser package
-========================
+=========================
+
 .. contents::
 
 What is atomisator.parser ?
 :::::::::::::::::::::::::::
+
 Explain here what atomisator.parser does.
 
 Testing atomisator.parser ?
 :::::::::::::::::::::::::::
+
 To run tests, create a test environmement with::
 
     $ python boostrap.py

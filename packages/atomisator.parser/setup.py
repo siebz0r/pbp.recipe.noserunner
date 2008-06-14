@@ -6,7 +6,7 @@ long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+        ]
 
 setup(name='atomisator.parser',
       version=version,
