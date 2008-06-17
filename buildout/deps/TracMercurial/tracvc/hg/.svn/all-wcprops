@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/trac/!svn/ver/6812/sandbox/mercurial-plugin/tracvc/hg
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/trac/!svn/ver/2987/sandbox/mercurial-plugin/tracvc/hg/__init__.py
+END
+backend.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/trac/!svn/ver/6812/sandbox/mercurial-plugin/tracvc/hg/backend.py
+END

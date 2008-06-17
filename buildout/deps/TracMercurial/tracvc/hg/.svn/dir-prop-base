@@ -1,0 +1,14 @@
+K 10
+svn:ignore
+V 6
+*.pyc
+
+K 16
+svnmerge-blocked
+V 46
+/sandbox/mercurial-plugin-0.11/tracext/hg:5701
+K 19
+svnmerge-integrated
+V 68
+/sandbox/mercurial-plugin-0.11/tracext/hg:1-5699,5702,5763,5766,5796
+END

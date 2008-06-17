@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: TracMercurial
+Version: 0.10.0.2
+Summary: Mercurial plugin for Trac 0.10
+Home-page: http://trac.edgewall.org/wiki/TracMercurial
+Author: Christian Boos
+Author-email: cboos@neuf.fr
+License: GPL
+Description: 
+        This plugin for Trac 0.10 provides support for the Mercurial SCM.
+        
+        See http://trac.edgewall.org/wiki/TracMercurial for more details.
+        
+Keywords: trac scm plugin mercurial hg
+Platform: UNKNOWN
