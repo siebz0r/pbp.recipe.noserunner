@@ -25,7 +25,8 @@ setup(name='atomisator.db',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'SQLAlchemy'
+          'SQLAlchemy',
+          'pysqlite'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
