@@ -1,5 +1,7 @@
 include HISTORY.txt
+include README.txt
+include CHANGES.txt
 include CONTRIBUTORS.txt
 include LICENSE
 recursive-include ez_setup *.txt *.py
-
+recursive-include pbp/skels *.txt *.py
