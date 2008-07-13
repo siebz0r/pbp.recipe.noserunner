@@ -5,10 +5,14 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import MetaData
 from sqlalchemy import ForeignKey    
+from sqlalchemy import UnicodeText
 from sqlalchemy import Text
 
 from sqlalchemy.orm import relation
 from sqlalchemy.orm import mapper
+
+from time import strptime
+from datetime import datetime
 
 metadata = MetaData()
 
@@ -45,20 +49,28 @@ mapper(Tag, tag)
 entry = Table('atomisator_entry', metadata,
               Column('id', Integer, primary_key=True),
               Column('url', String(300)),
-              Column('date', DateTime()),
+              Column('date', DateTime, default=datetime.now),
               Column('summary', Text()),
-              Column('summary_detail', Text()),
-              Column('title', Text()),
-              Column('title_detail', Text()))    
+              Column('summary_detail', UnicodeText()),
+              Column('title', UnicodeText()),
+              Column('title_detail', UnicodeText()))    
               
 class Entry(object):
     def __init__(self, title, url, summary, summary_detail='',
-                 title_detail=''):
+                 title_detail='', date=None, **kw):
         self.title = title
         self.url = url
         self.summary = summary
         self.summary_detail = summary_detail
         self.title_detail = title_detail
+        if date is not None:
+            self.date = date.split('.')[0]
+            if self.date[-1] == 'Z':
+                self.date = self.date[:-1]
+            self.date = strptime(self.date, '%Y-%m-%dT%H:%M:%S')
+            self.date = datetime(*self.date[:6])
+        for key, val in kw.items():
+            setattr(self, key, val)
     
     def add_links(self, links):
         for link in links:
@@ -66,7 +78,7 @@ class Entry(object):
 
     def add_tags(self, tags):
         for tag in tags:
-            self.tags.append(Tag(tag))
+            self.tags.append(Tag(tag['term']))
 
     def __repr__(self):
         return "<Entry('%s')>" % self.title

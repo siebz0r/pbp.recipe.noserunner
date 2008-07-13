@@ -1,5 +1,5 @@
 from atomisator.db import session 
-from atomisator.db.mappers import Entry
+from atomisator.db.mappers import entry
 from atomisator.db.mappers import Entry
 from atomisator.db.config import SQLURI
 
@@ -7,11 +7,16 @@ def create_entry(data):
     """Creates an entry in the db."""
     entry_args = {}
     for key, value in data.items():
-        if key in entry.c.keys() and key != 'id':
+        if key == 'link':
+            entry_args['url'] = value
+        elif key == 'published':
+            entry_args['date'] = data['published']
+        elif key in ('title_detail', 'summary_detail'):
+            entry_args[key] = value['value'] 
+        elif key in entry.c.keys() and key != 'id':
             entry_args[key] = value
-    
-    new = Entry(**entry_args)
 
+    new = Entry(**entry_args)
     if 'links' in data:
         new.add_links(data['links'])
 
@@ -20,7 +25,7 @@ def create_entry(data):
 
     session.save(new)
     session.commit()
-    return entry.id
+    return new.id
 
 def get_entries(**kw):
     """Returns entries"""
