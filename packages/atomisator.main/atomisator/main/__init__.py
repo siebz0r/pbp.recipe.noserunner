@@ -11,11 +11,13 @@ def _log(msg):
 
 def load_feeds():
     """Fetches feeds."""
-    for count, feed in enumerate(parser.feeds):
+    count = 0
+    for feed in parser.feeds:
         _log('Parsing feed %s' % feed)
         for entry in parse(feed):
             create_entry(entry)
-    _log('%d entries read.' % count+1)
+            count += 1
+    _log('%d entries read.' % count)
 
 def generate_feed():
     """Creates the meta-feed."""
