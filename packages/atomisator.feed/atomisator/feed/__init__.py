@@ -1,6 +1,7 @@
 from Cheetah.Template import Template
 import os
-from atomisator.db import get_entries, entry
+from atomisator.db import get_entries
+from atomisator.db.mappers import entry
 from itertools import islice
 
 tmpl = os.path.join(os.path.dirname(__file__), 'rss2.tmpl')

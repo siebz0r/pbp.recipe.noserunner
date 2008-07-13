@@ -14,10 +14,13 @@ def load_feeds():
     count = 0
     for feed in parser.feeds:
         _log('Parsing feed %s' % feed)
+        scount = 0
         for entry in parse(feed):
             create_entry(entry)
             count += 1
-    _log('%d entries read.' % count)
+            scount += 1
+        _log('%d entries read.' % scount)
+    _log('%d total.' % count)
 
 def generate_feed():
     """Creates the meta-feed."""

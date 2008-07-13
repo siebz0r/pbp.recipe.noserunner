@@ -1,10 +1,10 @@
-from atomisator.db import session 
-from atomisator.db.mappers import entry
-from atomisator.db.mappers import Entry
-from atomisator.db.config import SQLURI
 
 def create_entry(data):
     """Creates an entry in the db."""
+    from atomisator.db import session 
+    from atomisator.db.mappers import entry
+    from atomisator.db.mappers import Entry
+
     entry_args = {}
     for key, value in data.items():
         if key == 'link':
@@ -29,6 +29,8 @@ def create_entry(data):
 
 def get_entries(**kw):
     """Returns entries"""
+    from atomisator.db import session 
+    from atomisator.db.mappers import Entry
     if kw == {}:
         query = session.query(Entry)
     else:

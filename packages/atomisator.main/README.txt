@@ -4,29 +4,26 @@ atomisator.main package
 
 .. contents::
 
-What is atomisator.main ?
-:::::::::::::::::::::::::
+Atomisator merge several feeds into on single feed,
+storing entries in a database to avoid doublons.
 
-Explain here what atomisator.main does.
+To use it, create an atomisator.cfg file in your home::
 
-Testing atomisator.main ?
-:::::::::::::::::::::::::
+    [atomisator]
 
-To run tests, create a test environmement with::
+    sites = 
+        http://tarekziade.wordpress.com/atom
 
-    $ python boostrap.py
-    $ bin/buildout
+    database = sqlite:///Users/tarek/atomisator.db
 
-A `test` script will then be available, to run all 
-tests::
+    file = /Users/tarek/atomisator.xml
+    title = meta
+    description =
+    link =
 
-    $ bin/test
+You can then call the `atomisator` tool::
 
-For doctests, the -t option can be used to select 
-a given doctest text file. For instance, to run 
-`acme.txt`, do::
+    $ atomisator
 
-    $ bin/test -t acme
- 
-
+It will generate the proper atomisator.xml file.
 
