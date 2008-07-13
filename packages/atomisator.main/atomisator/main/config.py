@@ -5,8 +5,8 @@ from ConfigParser import ConfigParser
 
 CONFIG_FILE = 'atomisator.cfg'
 
-places = [join(os.path.dirname(__file__), CONFIG_FILE),
-          join(os.path.expanduser('~'), CONFIG_FILE)]
+places = [join(os.path.expanduser('~'), CONFIG_FILE),
+          join(os.path.dirname(__file__), CONFIG_FILE)]
 
 if sys.platform != 'win32':
     places.insert(0, '/etc/%s'+CONFIG_FILE)
