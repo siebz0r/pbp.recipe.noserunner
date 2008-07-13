@@ -6,7 +6,7 @@ from itertools import islice
 
 tmpl = os.path.join(os.path.dirname(__file__), 'rss2.tmpl')
 
-def generate(title, description, link, size=20):
+def generate(title, description, link, size=50):
     """Generates items."""
     def _dict(new_entry):
         res = {}

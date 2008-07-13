@@ -6,7 +6,7 @@ from atomisator.db.mappers import metadata
 
 engine = create_engine(SQLURI)
 metadata.create_all(engine)
-Session = sessionmaker(bind=engine, autoflush=True, transactional=True)
+Session = sessionmaker(bind=engine, autoflush=True, autocommit=False)
 session = Session()
 
 def save(obj):

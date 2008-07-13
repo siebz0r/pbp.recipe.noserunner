@@ -56,7 +56,7 @@ entry = Table('atomisator_entry', metadata,
               Column('title_detail', UnicodeText()))    
               
 class Entry(object):
-    def __init__(self, title, url, summary, summary_detail='',
+    def __init__(self, title, url, summary='', summary_detail='',
                  title_detail='', date=None, **kw):
         self.title = title
         self.url = url
