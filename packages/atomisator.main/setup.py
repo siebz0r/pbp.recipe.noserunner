@@ -36,6 +36,8 @@ setup(name='atomisator.main',
           'atomisator.feed',
           'atomisator.parser'
       ],
+      tests_require=['nose'],
+      test_suite='atomisator.main.tests.test_docs.test_suite',
       entry_points=entry_points
       )
 
