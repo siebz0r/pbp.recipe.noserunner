@@ -1,23 +1,24 @@
 from atomisator.db import session 
 from atomisator.db.mappers import Entry
+from atomisator.db.mappers import Entry
 from atomisator.db.config import SQLURI
 
 def create_entry(data):
     """Creates an entry in the db."""
     entry_args = {}
     for key, value in data.items():
-        if key in Entry.c.keys():
+        if key in entry.c.keys() and key != 'id':
             entry_args[key] = value
     
-    entry = Entry(**entry_args)
+    new = Entry(**entry_args)
 
     if 'links' in data:
-        entry.add_links(data['links'])
+        new.add_links(data['links'])
 
     if 'tags' in data:
-        entry.add_tags(data['tags'])
+        new.add_tags(data['tags'])
 
-    session.save(entry)
+    session.save(new)
     session.commit()
     return entry.id
 
