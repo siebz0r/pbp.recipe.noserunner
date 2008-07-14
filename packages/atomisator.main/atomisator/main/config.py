@@ -10,6 +10,8 @@ class AtomisatorConfig(ConfigParser):
         ConfigParser.__init__(self)
         if cfg is None:
             cfg = DEFAULT_CONFIG_FILE
+        if not os.path.exists(cfg):
+            raise ValueError('Could not read configuration (%s)' % cfg)
         self.read([cfg])
 
     def _get_feeds(self):
