@@ -1,16 +1,15 @@
-from atomisator.main.config import parser
+from atomisator.main.config import AtomisatorConfig
 from atomisator.parser import parse 
 from atomisator.db import config
 from atomisator.db import create_entry
 from atomisator.feed import generate
 
-config.SQLURI = parser.database
-
 def _log(msg):
     print msg
 
-def load_feeds():
+def load_feeds(conf=None):
     """Fetches feeds."""
+    parser = AtomisatorConfig(conf)
     count = 0
     for feed in parser.feeds:
         _log('Parsing feed %s' % feed)
@@ -22,8 +21,9 @@ def load_feeds():
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
 
-def generate_feed():
+def generate_feed(conf=None):
     """Creates the meta-feed."""
+    parser = AtomisatorConfig(conf)
     _log('Writing feed in %s' % parser.file) 
     feed = generate(parser.title, parser.description, parser.link) 
     f = open(parser.file, 'w')

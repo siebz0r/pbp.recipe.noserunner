@@ -5,12 +5,14 @@ config
 This module reads the `atomisator.cfg` file and provides
 a few function to get the configuration info::
 
-    >>> from atomisator.main.config import parser
-
-    >>> parser.feeds
-    ['sample1.xml', 'sample2.xml']
+    >>> from atomisator.main.config import AtomisatorConfig
+    >>> parser = AtomisatorConfig(test_conf)
+    >>> feeds = parser.feeds
+    >>> feeds.sort()
+    >>> feeds
+    ['...digg.xml', '...pp.xml', '...tarek.xml']
 
     >>> parser.database
-    'sqlite://atomisator.db'
+    'sqlite:///tests/atomisator.db'
 
 

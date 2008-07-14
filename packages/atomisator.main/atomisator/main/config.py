@@ -3,27 +3,13 @@ import sys
 from os.path import join
 from ConfigParser import ConfigParser
 
-CONFIG_FILE = 'atomisator.cfg'
-
-places = [join(os.path.expanduser('~'), CONFIG_FILE),
-          join(os.path.dirname(__file__), CONFIG_FILE)]
-
-if sys.platform != 'win32':
-    places.insert(0, '/etc/%s'+CONFIG_FILE)
-
-conf = None
-for place in places:
-    if os.path.exists(place):
-        conf = place
-        break
-
-if conf is None:
-    raise ValueError('Could not find %s' % CONFIG_FILE)
+DEFAULT_CONFIG_FILE = 'atomisator.cfg'
 
 class AtomisatorConfig(ConfigParser):
-
-    def __init__(self, cfg):
+    def __init__(self, cfg=None):
         ConfigParser.__init__(self)
+        if cfg is None:
+            cfg = DEFAULT_CONFIG_FILE
         self.read([cfg])
 
     def _get_feeds(self):
@@ -54,6 +40,4 @@ class AtomisatorConfig(ConfigParser):
     def _get_file(self):
         return self._get_simple_field('file')
     file = property(_get_file)
-
-parser = AtomisatorConfig(conf)
 
