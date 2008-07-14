@@ -1,3 +1,5 @@
+import sys
+
 from atomisator.main.config import AtomisatorConfig
 from atomisator.parser import parse 
 from atomisator.db import config
@@ -7,8 +9,16 @@ from atomisator.feed import generate
 def _log(msg):
     print msg
 
+def _get_opt():
+    if len(sys.argv) == 2:
+        return sys.argv[1]
+    return None
+
 def load_feeds(conf=None):
     """Fetches feeds."""
+    if conf is None:
+        # trying to get sys.argv
+        conf = _get_opt()
     parser = AtomisatorConfig(conf)
     count = 0
     for feed in parser.feeds:
@@ -23,6 +33,8 @@ def load_feeds(conf=None):
 
 def generate_feed(conf=None):
     """Creates the meta-feed."""
+    if conf is None:
+        conf = _get_opt()
     parser = AtomisatorConfig(conf)
     _log('Writing feed in %s' % parser.file) 
     feed = generate(parser.title, parser.description, parser.link) 
