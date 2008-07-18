@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+  xmlns="http://www.w3.org/2005/Atom"
+  xmlns:thr="http://purl.org/syndication/thread/1.0"
+  xml:lang="en"
+  xml:base="http://tarekziade.wordpress.com/wp-atom.php"
+   >
+	<title type="text">Carpet Python</title>
+	<subtitle type="text">Reality is just a point of view (P.K.Dick)</subtitle>
+
+	<updated>2008-07-13T10:32:36Z</updated>
+	<generator uri="http://wordpress.org/" version="MU">WordPress</generator>
+
+	<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com" />
+	<id>http://tarekziade.wordpress.com/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="http://tarekziade.wordpress.com/atom" />
+
+			<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[shutil.copytree small improvement]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/07/08/shutilcopytree-small-improvement/" />
+		<id>http://tarekziade.wordpress.com/?p=106</id>
+		<updated>2008-07-09T11:03:56Z</updated>
+		<published>2008-07-08T08:11:37Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="shutil" />		<summary type="html"><![CDATA[When you have to work with directories and files, there&#8217;s a very common pattern: copying a directory into another, but filtering out a few files and directories.
+For instance, if you want to copy a directory that contains source code, you will probably remove .pyc files and .svn directories if you work with Subversion. In that [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/07/08/shutilcopytree-small-improvement/"><![CDATA[<div class='snap_preview'><br /><p>When you have to work with directories and files, there&#8217;s a very common pattern: copying a directory into another, but filtering out a few files and directories.</p>
+<p>For instance, if you want to copy a directory that contains source code, you will probably remove .pyc files and .svn directories if you work with Subversion. In that case, <em>shutil.copytree</em> cannot be used, so <em>os.walk</em> is the usual way to go (rough example):</p>
+<pre>import os
+from os.path import join, splitext, split, exists
+from shutil import copyfile
+
+def copy_directory(source, target):
+    if not os.path.exists(target):
+        os.mkdir(target)
+    for root, dirs, files in os.walk(source):
+        if '.svn' in dirs:
+            dirs.remove('.svn')  # don't visit .svn directories           
+        for file in files:
+            if splitext(file)[-1] in ('.pyc', '.pyo', '.fs'):
+                continue
+            from_ = join(root, file)           
+            to_ = from_.replace(source, target, 1)
+            to_directory = split(to_)[0]
+            if not exists(to_directory):
+                os.makedirs(to_directory)
+            copyfile(from_, to_)</pre>
+<p>This is a lot of boiler-plate code, so I usually create a small function that accepts more arguments to filter out files and directory. But Python should provide this pattern in the standard library.</p>
+<p>I have proposed a patch for shutil.copytree, to integrate filtering capability. It has been reviewed and commited in the trunk this week, so we will have it in Python 2.6.  Now copytree comes with an ignore argument that has to be a callable. If given it will be called on each visited directory to decide what is copied and what is not.</p>
+<p>There&#8217;s a default callable in shutil called ignore_patterns, that can be used to filter out files with glob-style patterns. I have added this example to Python doc:</p>
+<pre><span class="k">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">copytree</span><span class="p">,</span> <span class="n">ignore_patterns</span>
+<span class="n">copytree</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">ignore_patterns</span><span class="p">(</span><span class="s">'*.pyc'</span><span class="p">,</span> <span class="s">'tmp*'</span><span class="p">))</span></pre>
+<p>Pretty straight forward ! <img src='http://s.wordpress.com/wp-includes/images/smilies/icon_biggrin.gif' alt=':D' class='wp-smiley' /><br />
+More info and examples here : <a href="http://docs.python.org/dev/library/shutil.html#shutil.copytree" target="_blank">http://docs.python.org/dev/library/shutil.html#shutil.copytree</a></p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/106/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/106/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/106/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/106/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/106/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/106/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/106/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/106/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/106/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/106/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/106/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/106/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=106&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/07/08/shutilcopytree-small-improvement/#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/07/08/shutilcopytree-small-improvement/feed/atom/" thr:count="0"/>
+		<thr:total>0</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[plone.org migration]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/07/01/ploneorg-migration/" />
+		<id>http://tarekziade.wordpress.com/?p=104</id>
+		<updated>2008-07-02T19:52:15Z</updated>
+		<published>2008-07-01T22:03:20Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="migration" />		<summary type="html"><![CDATA[Plone.org migration to Plone 3 is taking a bit longer than expected, but it should turn into reality soon.
+There will be many improvements on the set of packages the website uses (I am thinking in particular about Maurits&#8217;s work on POI that will speed up the trackers, but it is just an example), and blobs [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/07/01/ploneorg-migration/"><![CDATA[<div class='snap_preview'><br /><p>Plone.org migration to Plone 3 is taking a bit longer than expected, but it should turn into reality soon.</p>
+<p>There will be many improvements on the set of packages the website uses (I am thinking in particular about <strong>Maurits</strong>&#8217;s work on POI that will speed up the trackers, but it is just an example), and blobs should be used for the products section (more than 700 projects are registered there).</p>
+<p>I worked last week-end on the products section, by finishing <a href="http://pypi.python.org/pypi/collective.psc.mirroring" target="_blank">collective.psc.mirroring</a>, which will copy all packages that are uploaded at plone.org into a file system directory. This directory will be published directly by Apache so the website will become a new package location for zc.buildout (find-links section) and easy_install calls without invoking the Plone instance.</p>
+<p>Now I am focusing on PloneSoftwareCenter (PSC) migration. It is a pretty interesting topic: for every project located in the products folder with releases, I am going to extract its &#8220;distutils ids&#8221;. These ids are the name set in the setup.py file for each release.</p>
+<p>I will then look at PyPI through XML-RPC if the package is also released, using the id. In that case, and if the author email is the same on both side, I will validate that the project on plone.org &#8220;owns&#8221; the given distutils id. From there PSC will act like PyPI and will reject uploads of packages if the user is not the owner of the project that owns the package id.</p>
+<p>Of course there will be errors and some people might feel like their package has been hijacked if they cannot upload their packages. But this should be minor and should be OK after a while. A mail will soon be send to the community to ask people to check that they are synced between PyPI and plone.org.</p>
+<p>I am really excited about this work because plone.org will then be compatible with distutils <em>register</em> and <em>upload</em> commands, which means that people will be able to update plone.org products section like they do with PyPI : through a single commande line.</p>
+<p>Hey Sidnei, what you thought of several years ago is about to turn true. <img src='http://s.wordpress.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+<p><strong>Edit</strong>: My apologies goes to Maurits, who did the work on POI, not Reinout, his brother <img src='http://s.wordpress.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /></p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/104/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/104/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/104/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/104/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/104/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/104/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/104/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/104/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/104/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/104/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/104/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/104/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=104&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/07/01/ploneorg-migration/#comments" thr:count="8"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/07/01/ploneorg-migration/feed/atom/" thr:count="8"/>
+		<thr:total>8</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[Python 2.4: tarfile module is buggy, patch it !]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/06/19/python-24-tarfile-module-is-buggy-patch-it/" />
+		<id>http://tarekziade.wordpress.com/?p=100</id>
+		<updated>2008-06-19T00:54:59Z</updated>
+		<published>2008-06-19T00:44:05Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="tarfiles" />		<summary type="html"><![CDATA[I have encoutered really bad bugs in some Python 2.4 applications (Zope based) using the tarfile module. For instance, the TarFile.getmembers method that returns the files a tar file contains will just fail to return all files &#8230;
+Hopefully Zope will work under Python 2.5 sometimes. This is a work in progress in GSOC if I [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/06/19/python-24-tarfile-module-is-buggy-patch-it/"><![CDATA[<div class='snap_preview'><br /><p>I have encoutered really bad bugs in some Python 2.4 applications (Zope based) using the <em>tarfile</em> module. For instance, the <em>TarFile.getmembers</em> method that returns the files a tar file contains will just fail to return all files &#8230;</p>
+<p>Hopefully Zope will work under Python 2.5 sometimes. This is a work in progress in GSOC if I recall it correclty, but I am not sure of the current state.</p>
+<p>Until then I just stick Python 2.5 module in my packages. It seems to work fine (tests pass :D) after a few changes as it is isolated from the rest of Python.</p>
+<p>If you want to do it as well, there are only two changes to make it work under Python 2.4, to introduce 3 new constants in <em>os</em> module and to get rid of a syntax that does not work under 2.4:</p>
+<pre>$ diff /opt/local/lib/python2.5/tarfile.py tarfile.py</pre>
+<pre>46a47,49
+&gt;
+&gt; os.SEEK_SET, os.SEEK_CUR, os.SEEK_END = range(3)
+&gt;
+1070c1073,1076
+&lt;         self.name = os.path.abspath(name) if name else None
+---
+&gt;         if name:
+&gt;             self.name = os.path.abspath(name)
+&gt;         else:
+&gt;             self.name = None</pre>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/100/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/100/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/100/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/100/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/100/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/100/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/100/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/100/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/100/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/100/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/100/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/100/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=100&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/06/19/python-24-tarfile-module-is-buggy-patch-it/#comments" thr:count="2"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/06/19/python-24-tarfile-module-is-buggy-patch-it/feed/atom/" thr:count="2"/>
+		<thr:total>2</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[collective.buildbot mailing list]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/06/13/collectivebuildout-mailing-list/" />
+		<id>http://tarekziade.wordpress.com/?p=99</id>
+		<updated>2008-06-13T07:44:46Z</updated>
+		<published>2008-06-13T07:44:00Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="quality" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="buildbot" />		<summary type="html"><![CDATA[Interested in collective.buildbot usage or development ?
+Join us in the dedicated google group : http://groups.google.com/group/collectivebuildbo
+Reminders:
+
+collective.buildbot is a set of zc.buildout recipes and support for declarative configuration for Buildbot.
+BuildBot is a system to automate the compile/test cycle required by most software projects to validate code changes, to set up a continuous integration system.
+
+    [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/06/13/collectivebuildout-mailing-list/"><![CDATA[<div class='snap_preview'><br /><p>Interested in <a href="http://pypi.python.org/pypi/collective.buildbot" target="_blank">collective.buildbot</a> usage or development ?</p>
+<p>Join us in the dedicated google group : <a href="http://groups.google.com/group/collectivebuildbot" target="_blank">http://groups.google.com/group/collectivebuildbo</a></p>
+<p>Reminders:</p>
+<ul>
+<li>collective.buildbot is a set of zc.buildout recipes and support for declarative configuration for <a href="http://buildbot.net/trac" target="_blank">Buildbot</a>.</li>
+<li><span class="searchword0">BuildBot</span> is a system to automate the compile/test cycle required by most software projects to validate code changes, to set up a <a href="http://en.wikipedia.org/wiki/Continuous_integration" target="_blank">continuous integration system</a>.</li>
+</ul>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/99/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/99/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/99/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/99/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/99/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/99/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/99/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/99/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/99/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/99/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/99/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/99/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=99&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/06/13/collectivebuildout-mailing-list/#comments" thr:count="2"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/06/13/collectivebuildout-mailing-list/feed/atom/" thr:count="2"/>
+		<thr:total>2</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[zc.buildout on-going work]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/06/10/zcbuildout-on-going-work/" />
+		<id>http://tarekziade.wordpress.com/?p=98</id>
+		<updated>2008-06-10T09:23:02Z</updated>
+		<published>2008-06-10T09:20:14Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zc.buildout" /><category scheme="http://tarekziade.wordpress.com" term="zope" />		<summary type="html"><![CDATA[Just a quick post about the work going on in zc.buildout.
+Work published lately:
+
+Malthe and Mustapha have added a nice option to be able to add or substract values in variables that are inherited from an extended cfg file (already available, see the doc here)
+I have added an allow-hosts option, that behaves like easy_install one, which [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/06/10/zcbuildout-on-going-work/"><![CDATA[<div class='snap_preview'><br /><p>Just a quick post about the work going on in zc.buildout.</p>
+<p>Work published lately:</p>
+<ul>
+<li>Malthe and Mustapha have added a nice option to be able to add or substract values in variables that are inherited from an extended cfg file (already available, see the doc <a href="http://pypi.python.org/pypi/zc.buildout/1.0.4#variable-substitutions" target="_blank">here</a>)</li>
+<li>I have added an allow-hosts option, that behaves like easy_install one, which can be used to restrict some accesses (see <a href="http://pypi.python.org/pypi/zc.buildout/1.0.4#allow-hosts" target="_blank">here</a>)</li>
+<li>Sidnei fixed some annoying bugs (missing quotes in some process calls)</li>
+</ul>
+<p>On-going work:</p>
+<ul>
+<li>I am working on a timeout config option, to be able to set the socket timeout (see <a href="http://tarekziade.wordpress.com/2008/04/07/zcbuildout-monday-trick/" target="_blank">my previous post</a> on this). Andreas added a command-line option a bit ago as well, but we need to refactor it a bit to have it as a config file option.</li>
+<li>I work on a python API so the buildout can be driven from the code. This useful for instance to create tests that are not using a os.popen or os.system call to build a buildout: a separated process is hard to debug.</li>
+<li>We are having some thaughts on having a multiple-index enabled buildout. Still brainstorming.</li>
+</ul>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/98/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/98/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/98/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/98/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/98/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/98/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/98/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/98/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/98/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/98/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/98/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/98/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=98&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/06/10/zcbuildout-on-going-work/#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/06/10/zcbuildout-on-going-work/feed/atom/" thr:count="0"/>
+		<thr:total>0</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[Eggs: releasing procedure and continuous integration]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/06/08/eggs-releasing-procedure-and-continuous-integration/" />
+		<id>http://tarekziade.wordpress.com/?p=96</id>
+		<updated>2008-06-08T11:27:46Z</updated>
+		<published>2008-06-08T11:27:46Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zc.buildout" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="distutils" />		<summary type="html"><![CDATA[Disclaimer: this post is Subversion-centric
+When releasing a setuptools based-package to the world, developers will eventually tag it as a stable version, then upload it to PyPI or to their own website. So typically they create a branch out of the trunk, fix the version, then create a tag for the release.
+Now for continuous development releases, [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/06/08/eggs-releasing-procedure-and-continuous-integration/"><![CDATA[<div class='snap_preview'><br /><p><em>Disclaimer: this post is Subversion-centric</em></p>
+<p>When releasing a setuptools based-package to the world, developers will eventually tag it as a stable version, then upload it to PyPI or to their own website. So typically they create a <strong>branch</strong> out of the <strong>trunk</strong>, fix the <strong>version</strong>, then create a <strong>tag</strong> for the release.</p>
+<p>Now for continuous development releases, where people get for example a daily snapshot from the trunk, having a dev suffix to the egg version makes it possible to distinguish it from a stable release, so &#8216;my.package-2.4dev&#8217; will not superseed &#8216;my.package-2.4&#8242;. So a given package will need a <em>dev</em> prefix in its trunk, that gets removed in the branch where the next release occurs.</p>
+<p>From there, easy_install will be able to distinguish them.</p>
+<p>The question is: <strong>how should we do this ?</strong></p>
+<h3>The Zope 3 way</h3>
+<p>The Zope 3 egg collection has a simple way to manage it, describe here: <a href="http://svn.zope.org/*checkout*/Sandbox/philikon/foundation/releasing-software.txt" target="_blank">http://svn.zope.org/*checkout*/Sandbox/philikon/foundation/releasing-software.txt</a>. The packages have  a dev tag suffix in the version metadata, that is removed in the subversion branch used to tag and release</p>
+<p>This is simple and straight forward. Although, releasing the trunk has to be done manually. The problem is that any release of the trunk will have the same name for a given version (my.package-2.4dev) , and in some case people won&#8217;t upgrade their environment because the archive keeps the same name.</p>
+<h3>The setuptools way</h3>
+<p>Setuptools comes with a continuous integration feature that allows people to push the <em>dev</em> tag in setup.cfg. Then it adds it automatically to the archive name when it is generated.</p>
+<p>see: <a href="http://peak.telecommunity.com/DevCenter/setuptools#managing-continuous-releases-using-subversion" target="_blank">http://peak.telecommunity.com/DevCenter/setuptools#managing-continuous-releases-using-subversion</a></p>
+<p>Building a release will then consist of using the same process than Zope 3 one, except that the tag is removed from the setup.cfg file this time.</p>
+<p>Now if you try to release the trunk using disutils <em>sdist</em> or <em>bdist_egg</em> command you will automatically get a dev suffix and the Subversion revision number sticked to it. This means that each new revision can generate a new version that will have a distinct name:</p>
+<ul>
+<li>my.package-2.4dev-r1245</li>
+<li>my.package-2.4dev-r1246</li>
+<li>&#8230;</li>
+</ul>
+<p>easy_install will grab the latest trunk revision when &#8220;my.package-2.4dev&#8221; is required, and handle upgrades the right way. This is better that a manual dev tag because when you re-release a new version of the trunk, it will superseeds and therefore upgrades previous revisions.</p>
+<p>Another nice feature is to be able to provide to easy_install a subversion link directly, as long as you append the egg full name to the link:</p>
+<pre>easy_install http://my.svn/my.package/trunk#egg=my.package-dev</pre>
+<h3>collective.releaser</h3>
+<p>The problem with setup.cfg is that if you forget to remove the dev tag from it when releasing a stable version (you bad boy), you will get the dev-r4565 suffix in the egg name.</p>
+<p><a href="http://pypi.python.org/pypi/collective.releaser/" target="_blank">collective.releaser</a> takes care of this with a new setuptools command called <strong>release</strong>, by creating a release branch and removing the dev tag automatically. It upgrades the CHANGES.txt file and version.txt for Plone products.</p>
+<p>It also registers and uploads the package to any PyPI-like server. To decide where the package should be sent, it looks at the <em>release-packages</em> variable into the <em>.pypirc</em>, to see if the package name matches it. To release all packages to PyPI a default file would be:</p>
+<pre>[distutils]
+index-servers =
+  pypi</pre>
+<pre>[pypi]
+username:tarek
+password:secret
+# regular expression-based variable
+release-packages =
+  .*</pre>
+<p>From there, making a release is as simple as:</p>
+<pre>$ python2.4 setup.py release
+running release
+This package is version 0.1.1
+Do you want to run tests before releasing ? [y/N]: n
+Do you want to create the release ? If no, you will just be able to deploy again the current release [y/N]: y
+Enter a version [0.1.1]: 0.1.2
+Commiting changes...
+Creating branches...
+...
+Running "mregister sdist bdist_egg mupload -r pypi"
+running mregister
+Using PyPI login from /home/tarek/.pypirc
+Registering iw.resourcetraverser to http://pypi.python.org/pypi
+...
+running mupload
+Using PyPI login from /home/tarek/.pypirc
+Submitting dist/iw.resourcetraverser-0.1.2.tar.gz to http://pypi.python.org/pypi
+Submitting dist/iw.resourcetraverser-0.1.2-py2.4.egg to http://pypi.python.org/pypi
+...
+0.1.2 released</pre>
+<p>As described on its PyPI page, it has a plugin system to perform extra steps when a release is made. For instance, it is provided with a mail hook to be able to send mails everytime a release is made.</p>
+<p>The tool is pretty new and needs to be smoothed up. For instance, we need to add a few extra controls like making sure long_description is reST-valid. But It works, and is being used by a few fellows in the Plone community already :).</p>
+<p>Last, for continuous releases from the trunk, you can set up an alias:</p>
+<pre>$ python setup.py alias devrelease mregister sdist mupload</pre>
+<p>You will then be able to upload trunk releases with a single call:</p>
+<pre>$ python setup.py devrelease</pre>
+<p>The idea is to provide it as the standard tool to release add-on Products when Plone.org will be upgraded and able to interact with distutils commands. I will promote it through the work I am doing for the PSPS task I am championning (<a href="Improve release procedures for add-on products" target="_blank">Improve release procedures for add-on products</a>), but it has to live a bit.</p>
+<p>Help and opinions welcome !</p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/96/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/96/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/96/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/96/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/96/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/96/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/96/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/96/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/96/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/96/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/96/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/96/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=96&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/06/08/eggs-releasing-procedure-and-continuous-integration/#comments" thr:count="7"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/06/08/eggs-releasing-procedure-and-continuous-integration/feed/atom/" thr:count="7"/>
+		<thr:total>7</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[DIY PyCon FR shirts]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/05/21/diy-pycon-fr-shirts/" />
+		<id>http://tarekziade.wordpress.com/?p=94</id>
+		<updated>2008-05-21T23:28:04Z</updated>
+		<published>2008-05-21T23:28:04Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="conference" /><category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="pycon" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="france" /><category scheme="http://tarekziade.wordpress.com" term="shirts" />		<summary type="html"><![CDATA[We made the shirts at home for PyCon FR and that was a LOT of fun, even if we had to work hard to make sure all shirt were ready by the time the event started. We used a silk-screen technique and the output looks really professional. The ink used makes the shirt design last [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/05/21/diy-pycon-fr-shirts/"><![CDATA[<div class='snap_preview'><br /><p>We made the shirts at home for PyCon FR and that was a LOT of fun, even if we had to work hard to make sure all shirt were ready by the time the event started. We used a silk-screen technique and the output looks really professional. The ink used makes the shirt design last longer than shirts that uses transfer. Although the number of colors is limited.</p>
+<p><img src="http://tarekziade.files.wordpress.com/2008/05/2511758387_8da10747a8_b.jpg?w=391&h=292" alt="" width="391" height="292" /></p>
+<p>Have a look at the pictures : <a href="http://www.flickr.com/photos/82007723@N00/sets/72157605181699082/" target="_blank">http://www.flickr.com/photos/82007723@N00/sets/72157605181699082/</a></p>
+<p>Guess what: some people ordered us some t-shirts for some other events, so some more fun ahead ! <img src='http://s.wordpress.com/wp-includes/images/smilies/icon_biggrin.gif' alt=':D' class='wp-smiley' /></p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/94/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/94/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/94/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/94/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/94/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/94/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/94/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/94/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/94/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/94/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/94/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/94/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=94&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/05/21/diy-pycon-fr-shirts/#comments" thr:count="4"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/05/21/diy-pycon-fr-shirts/feed/atom/" thr:count="4"/>
+		<thr:total>4</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[Google AppEngine sprint at Pycon FR]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/05/14/google-appengine-sprint-at-pycon-fr/" />
+		<id>http://tarekziade.wordpress.com/?p=92</id>
+		<updated>2008-05-14T21:14:57Z</updated>
+		<published>2008-05-14T21:14:57Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="conference" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="sprint" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="appengine" />		<summary type="html"><![CDATA[Late (but exciting) news: a sprint room will be held at Pycon FR, by the Logilab team, that published a GPL framework on the top of Google AppEngine, called Logilab Appengine eXtension (lax).
+Participant will be able to learn how to play with AppEngine technologies.
+All infos (in french): http://fr.pycon.org/programme/sprint-appengine 
+       [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/05/14/google-appengine-sprint-at-pycon-fr/"><![CDATA[<div class='snap_preview'><br /><p>Late (but exciting) news: a sprint room will be held at <a href="http://fr.pycon.org/" target="_blank">Pycon FR</a>, by the Logilab team, that published a GPL framework on the top of <a href="http://code.google.com/appengine/" target="_blank">Google AppEngine</a>, called <span class="link-external"><a href="http://www.logilab.org/lax.html" target="_blank">Logilab Appengine eXtension</a></span> (lax).</p>
+<p>Participant will be able to learn how to play with AppEngine technologies.</p>
+<p>All infos (in french): <a href="http://fr.pycon.org/programme/sprint-appengine" target="_blank">http://fr.pycon.org/programme/sprint-appengine </a></p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/92/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/92/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/92/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/92/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/92/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/92/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/92/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/92/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/92/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/92/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/92/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/92/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=92&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/05/14/google-appengine-sprint-at-pycon-fr/#comments" thr:count="1"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/05/14/google-appengine-sprint-at-pycon-fr/feed/atom/" thr:count="1"/>
+		<thr:total>1</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[The new .pypirc format in Python / distutils]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/05/12/the-new-pypirc-format-in-python-distutils/" />
+		<id>http://tarekziade.wordpress.com/?p=91</id>
+		<updated>2008-05-12T12:45:17Z</updated>
+		<published>2008-05-12T12:45:17Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="sprint" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="distutils" /><category scheme="http://tarekziade.wordpress.com" term="pypi" />		<summary type="html"><![CDATA[Thanks to the sprinters in Washington D.C., (Andrew who worked on merging it, Alex, etc.) and people that helped in the discussion (Fred, Martin), my patch to Python for multiple servers handling in .pypirc file has been integrated in 2.6 trunk.
+This patch will allow using distutils register and upload commands with several servers, using the [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/05/12/the-new-pypirc-format-in-python-distutils/"><![CDATA[<div class='snap_preview'><br /><p>Thanks to the sprinters in Washington D.C., (Andrew who worked on merging it, Alex, etc.) and people that helped in the discussion (Fred, Martin), my patch to Python for multiple servers handling in .pypirc file has been integrated in 2.6 trunk.</p>
+<p>This patch will allow using distutils <em>register</em> and upload <em>commands</em> with several servers, using the -r option and storing for each one of them the appropriate username/password in the configuration file. See <a href="http://wiki.python.org/moin/EnhancedPyPI" target="_blank">http://wiki.python.org/moin/EnhancedPyPI</a> for more details.</p>
+<p>The <a href="http://pypi.python.org/pypi/collective.dist/" target="_blank">collective.dist</a> package provides the same feature for Python 2.4 and 2.5, through new commands: <em>mregister</em> and <em>mupload</em>.</p>
+<p>The new format is also pretty convenient to store several profiles per servers. For instance, if you have several accounts on PyPI, one for your company (acme) and one for your own usage, you can define them like this:</p>
+<pre>[distutils]
+index-servers =
+    pypi
+    acme
+
+[pypi]
+username:user
+password:password
+
+[acme]
+username:acme_user
+password:password
+</pre>
+<p>Then use them depending on the package you work in:</p>
+<pre>$ python setup.py register -r acme
+$ python setup.py register    # default, which is pypi</pre>
+<p>When plone.org will go Plone 3 (this is happening soon), the pypirc file can be extended with this new target:</p>
+<pre>[distutils]
+index-servers =
+    pypi
+    acme
+    plone
+
+[pypi]
+username:user
+password:password
+[acme]
+username:acme_user
+password:password
+[plone]
+repository:http://plone.org/products
+username:plone_user
+password:password</pre>
+<p>From there, setuptools aliases can be used in each package to simplify things:</p>
+<pre>$ python setup.py alias plone_org register -r plone sdist bdist_egg upload -r plone</pre>
+<p>Which will allow you to upload the package to the website in one simple command:</p>
+<pre>$ python setup.py plone_org
+</pre>
+<p>The patch aslo corrects a few minor bugs in distutils, such as:</p>
+<ul>
+<li>.pypirc was not found on Windows</li>
+<li>pydistutils.cfg was not found on Windows</li>
+</ul>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/91/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/91/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/91/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/91/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/91/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/91/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/91/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/91/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/91/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/91/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/91/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/91/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=91&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/05/12/the-new-pypirc-format-in-python-distutils/#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/05/12/the-new-pypirc-format-in-python-distutils/feed/atom/" thr:count="0"/>
+		<thr:total>0</thr:total>
+	</entry>
+		<entry>
+		<author>
+			<name>Tarek Ziadé</name>
+						<uri>http://tarekziade.wordpress.com/</uri>
+					</author>
+		<title type="html"><![CDATA[PyPI usage statistics, the zc.buildout effect]]></title>
+		<link rel="alternate" type="text/html" href="http://tarekziade.wordpress.com/2008/05/08/pypi-usage-statistics-the-zcbuildout-effect/" />
+		<id>http://tarekziade.wordpress.com/?p=90</id>
+		<updated>2008-05-08T20:59:49Z</updated>
+		<published>2008-05-08T20:59:49Z</published>
+		<category scheme="http://tarekziade.wordpress.com" term="plone" /><category scheme="http://tarekziade.wordpress.com" term="python" /><category scheme="http://tarekziade.wordpress.com" term="zope" /><category scheme="http://tarekziade.wordpress.com" term="zc.buildout" />		<summary type="html"><![CDATA[It is interesting to look at the usage statistics at PyPI: http://pypi.python.org/webstats/usage_200805.html#DAYSTATS
+Besides the front page, the most visited pages are in order (same thing in April):
+
+zc.buildout
+setuptools
+zc.recipe.egg
+plone.recipe.zope2instance
+plone.recipe.distros
+python-openid
+elementtree
+plone.recipe.zope2install
+
+Then the packages in the top 60 are mainly zope eggs. This corresponds to the sequence done by a Plone or Zope being build in a buildout.
+If you take a [...]]]></summary>
+		<content type="html" xml:base="http://tarekziade.wordpress.com/2008/05/08/pypi-usage-statistics-the-zcbuildout-effect/"><![CDATA[<div class='snap_preview'><br /><p>It is interesting to look at the usage statistics at PyPI: <a href="http://pypi.python.org/webstats/usage_200805.html#DAYSTATS" target="_blank">http://pypi.python.org/webstats/usage_200805.html#DAYSTATS</a></p>
+<p>Besides the front page, the most visited pages are in order (same thing in April):</p>
+<ul>
+<li>zc.buildout</li>
+<li>setuptools</li>
+<li>zc.recipe.egg</li>
+<li>plone.recipe.zope2instance</li>
+<li>plone.recipe.distros</li>
+<li>python-openid</li>
+<li>elementtree</li>
+<li>plone.recipe.zope2install</li>
+</ul>
+<p>Then the packages in the top 60 are mainly zope eggs. This corresponds to the sequence done by a Plone or Zope being build in a buildout.</p>
+<p>If you take a closer look at <a href="http://pypi.python.org/webstats/url_200804.html" target="_blank">http://pypi.python.org/webstats/url_200804.html</a>, the  next top hits  corresponds to zope.* then plone.* packages.</p>
+<img alt="" border="0" src="http://feeds.wordpress.com/1.0/categories/tarekziade.wordpress.com/90/" /> <img alt="" border="0" src="http://feeds.wordpress.com/1.0/tags/tarekziade.wordpress.com/90/" /> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/tarekziade.wordpress.com/90/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/tarekziade.wordpress.com/90/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godelicious/tarekziade.wordpress.com/90/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/delicious/tarekziade.wordpress.com/90/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gostumble/tarekziade.wordpress.com/90/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/stumble/tarekziade.wordpress.com/90/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/godigg/tarekziade.wordpress.com/90/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/digg/tarekziade.wordpress.com/90/" /></a> <a rel="nofollow" href="http://feeds.wordpress.com/1.0/goreddit/tarekziade.wordpress.com/90/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/reddit/tarekziade.wordpress.com/90/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=tarekziade.wordpress.com&blog=448161&post=90&subd=tarekziade&ref=&feed=1" /></div>]]></content>
+		<link rel="replies" type="text/html" href="http://tarekziade.wordpress.com/2008/05/08/pypi-usage-statistics-the-zcbuildout-effect/#comments" thr:count="2"/>
+		<link rel="replies" type="application/atom+xml" href="http://tarekziade.wordpress.com/2008/05/08/pypi-usage-statistics-the-zcbuildout-effect/feed/atom/" thr:count="2"/>
+		<thr:total>2</thr:total>
+	</entry>
+	</feed>
