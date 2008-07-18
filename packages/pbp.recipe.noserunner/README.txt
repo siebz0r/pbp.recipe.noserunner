@@ -1,6 +1,9 @@
+This package is part of the `Python Expert Programming` book  written by
+Tarek Ziadé.
+
+
+For more information, go to http://atomisator.ziade.org
+
 .. contents::
 
-- Code repository: http://hg-atomisator.ziade.org/instable/
-- Questions and comments to tarek_at_ziade.org
-- Report bugs at http://atomisator.ziade.org/
 

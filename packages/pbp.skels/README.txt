@@ -2,13 +2,9 @@
 pbp.skels package
 =================
 
-You may find documentation in:
+This package is part of the `Python Expert Programming` book  written by
+Tarek Ziadé.
 
-- Global README.txt: pbp/skels/docs/README.txt
-- General: pbp/skels/docs
-- Technical: pbp/skels/doctest
 
-This package is created and maintained by Ingeniweb_.
-
-.. _Ingeniweb: http://www.ingeniweb.com
+For more information, go to http://atomisator.ziade.org
 

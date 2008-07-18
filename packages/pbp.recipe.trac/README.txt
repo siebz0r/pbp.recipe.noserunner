@@ -1,17 +1,7 @@
+This package is part of the `Python Expert Programming` book  written by
+Tarek Ziadé.
+
+For more information, go to http://atomisator.ziade.org
+
 .. contents::
-
-.. Note to recipe author!
-   ---------------------
-   Update the following URLs to point to your:
-   
-   - code repository
-   - bug tracker 
-   - questions/comments feedback mail 
-   (do not set a real mail, to avoid spams)
-
-   Or remove it if not used.
-
-- Code repository: http://svn.somewhere.com/...
-- Questions and comments to somemailing_list
-- Report bugs at http://bug.somewhere.com/..
 

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.0'
+version = '0.2.0'
 long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
@@ -10,7 +10,7 @@ classifiers=[
 
 setup(name='atomisator.parser',
       version=version,
-      description="A thin layer on the top of the Universal Feed Parser",
+      description="Python Expert Programming - A thin layer on the top of the Universal Feed Parser",
       long_description=long_description,
       classifiers=classifiers,
       keywords='python best practices',

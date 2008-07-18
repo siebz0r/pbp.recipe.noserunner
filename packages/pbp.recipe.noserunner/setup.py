@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '0.1.2'
+version = '0.2.0'
 
 long_description = (
     read('README.txt')
@@ -38,7 +38,7 @@ tests_require=['nose', 'zc.buildout', 'zc.recipe.egg']
 
 setup(name='pbp.recipe.noserunner',
       version=version,
-      description="ZC Buildout runner for nose",
+      description="Python Expert Programming - ZC Buildout runner for nose",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

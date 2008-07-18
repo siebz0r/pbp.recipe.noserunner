@@ -1,29 +1,12 @@
 ==================
 pbp.scripts package
 ==================
-.. contents::
 
-What is pbp.scripts ?
-:::::::::::::::::::::
-Explain here what pbp.scripts does.
+This package is part of the `Python Expert Programming` book  written by
+Tarek Ziadé.
 
-Testing pbp.scripts ?
-:::::::::::::::::::::
-To run tests, create a test environmement with::
 
-    $ python boostrap.py
-    $ bin/buildout
+For more information, go to http://atomisator.ziade.org
 
-A `test` script will then be available, to run all 
-tests::
-
-    $ bin/test
-
-For doctests, the -t option can be used to select 
-a given doctest text file. For instance, to run 
-`acme.txt`, do::
-
-    $ bin/test -t acme
- 
-
+This small package provides some scripts used througout the book.
 

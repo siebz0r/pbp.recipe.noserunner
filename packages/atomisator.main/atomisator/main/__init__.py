@@ -37,7 +37,8 @@ def generate_feed(conf=None):
         conf = _get_opt()
     parser = AtomisatorConfig(conf)
     _log('Writing feed in %s' % parser.file) 
-    feed = generate(parser.title, parser.description, parser.link) 
+    feed = generate(parser.title, parser.description, parser.link)
+    
     f = open(parser.file, 'w')
     try:
         f.write(feed)

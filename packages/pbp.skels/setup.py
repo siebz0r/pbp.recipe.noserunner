@@ -20,7 +20,7 @@ This module contains the tool of pbp.skels
 import os
 from setuptools import setup, find_packages
 
-version = '0.1.1'
+version = '0.2.0'
 
 README = os.path.join(os.path.dirname(__file__),
                       'pbp', 'skels', 'docs', 'README.txt')
@@ -30,7 +30,7 @@ tests_require = ['zope.testing',]
 
 setup(name='pbp.skels',
       version=version,
-      description="Skeletons for Python Best Practice bool",
+      description="Python Expert Programming - Skeletons used in the book",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '0.1.0'
+version = '0.2.0'
 
 long_description = (
     read('README.txt')
@@ -38,7 +38,7 @@ tests_require=['zope.testing', 'zc.buildout']
 
 setup(name='pbp.recipe.trac',
       version=version,
-      description="ZC Buildout recipe that installs and configures a Trac server.",
+      description="Python Expert Programming - ZC Buildout recipe that installs and configures a Trac server.",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -71,8 +71,8 @@ setup(name='pbp.recipe.trac',
       extras_require=dict(tests=tests_require),
       test_suite = 'pbp.recipe.trac.tests.test_docs.test_suite',
       entry_points=entry_points,
-      dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9',
-                        'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11',
-                        'http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin-0.11']
+      dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9#egg=NavAdd',
+                        'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11#egg=timingandestimationplugin',
+                        'http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin-0.11#egg=TracMercurial']
       )
 

@@ -27,7 +27,7 @@ def create_entry(data):
     session.commit()
     return new.id
 
-def get_entries(**kw):
+def get_entries(size=None, **kw):
     """Returns entries"""
     from atomisator.db import session 
     from atomisator.db.mappers import Entry
@@ -35,6 +35,7 @@ def get_entries(**kw):
         query = session.query(Entry)
     else:
         query = session.query(Entry).filter_by(**kw)
-    for entry in query:
-        yield entry
+    if size is not None:
+        query.limit = size
+    return query
 
