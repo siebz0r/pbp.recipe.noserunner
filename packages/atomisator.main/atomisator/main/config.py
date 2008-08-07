@@ -14,11 +14,11 @@ class AtomisatorConfig(ConfigParser):
             raise ValueError('Could not read configuration (%s)' % cfg)
         self.read([cfg])
 
-    def _get_feeds(self):
-        return [site.strip() for site in 
-                self.get('atomisator', 'sites').split('\n')
+    def _get_sources(self):
+        return [s.strip().split() for s in 
+                self.get('atomisator', 'sources').split('\n')
                 if site.strip() != '']
-    feeds = property(_get_feeds)
+    sources = property(_get_sources)
 
     def _get_simple_field(self, field):
         return self.get('atomisator', field).strip()

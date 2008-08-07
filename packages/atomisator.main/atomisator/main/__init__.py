@@ -5,7 +5,6 @@ from optparse import OptionParser
 from optparse import OptionValueError
 
 from atomisator.main.config import AtomisatorConfig
-from atomisator.parser import parse 
 from atomisator.db import config
 from atomisator.db import create_entry
 from atomisator.feed import generate
@@ -18,9 +17,12 @@ def _log(msg):
 CONF_TMPL = """\
 [atomisator]
 
-# put here the feeds you wish to parse
-sites = 
-    http://tarekziade.wordpress.com/atom
+# put here the sources you wish to process
+# the first parameter is the type of source
+# and the following parameters are the arguments
+# passed to the plugin
+sources = 
+    rss http://tarekziade.wordpress.com/atom 
 
 # put here the database location
 database = sqlite:///atomisator.db
