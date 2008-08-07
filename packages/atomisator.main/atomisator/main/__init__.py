@@ -13,16 +13,8 @@ __version__ = '0.2.0'
 def _log(msg):
     print msg
 
-def _get_opt():
-    if len(sys.argv) == 2:
-        return sys.argv[1]
-    return None
-
-def load_feeds(conf=None):
+def load_feeds(conf):
     """Fetches feeds."""
-    if conf is None:
-        # trying to get sys.argv
-        conf = _get_opt()
     parser = AtomisatorConfig(conf)
     count = 0
     for feed in parser.feeds:
@@ -35,7 +27,7 @@ def load_feeds(conf=None):
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
 
-def generate_feed(conf=None):
+def generate_feed(conf):
     """Creates the meta-feed."""
     if conf is None:
         conf = _get_opt()
@@ -81,6 +73,12 @@ def _parse_options():
 
 def atomisator():
     options, args = _parse_options()
-    load_feeds()
-    generate_feed()
+    if options.create is not None:
+        generate_config(options.create)
+        sys.exit(0)
+    
+    if options.read:
+        load_feeds(options.config)
+    if options.generate:
+        generate_feed(options.config)
 
