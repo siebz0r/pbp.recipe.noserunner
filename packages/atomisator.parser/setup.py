@@ -8,9 +8,8 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
-entry_point = 'atomisator.parser:Parse'
-
-entry_points = {"atomisator:rss": ["default = %s" % entry_point]}
+entry_point = 'atomisator.parser:Parser'
+entry_points = {"atomisator.plugins": ["rss = %s" % entry_point]}
 
 setup(name='atomisator.parser',
       version=version,
@@ -32,7 +31,5 @@ setup(name='atomisator.parser',
           # -*- Extra requirements: -*-
       ],
       tests_require=['feedparser',],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points=entry_points,
       )

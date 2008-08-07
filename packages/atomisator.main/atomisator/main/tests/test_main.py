@@ -95,6 +95,8 @@ def test_config():
 
 def test_get_plugins():
     # see if we get the rss and atom plugin
+    from atomisator.parser import Parser
+    
     assert_equals(_get_plugin('xxxx'), None)
-    assert_equals(_get_plugin('rss'), '')
+    assert_equals(_get_plugin('rss'), Parser)
 

@@ -33,6 +33,7 @@ setup(name='atomisator.main',
           'setuptools',
           'atomisator.db',
           'atomisator.feed',
+          # default plugin
           'atomisator.parser'
       ],
       tests_require=['nose'],
