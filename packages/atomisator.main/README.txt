@@ -42,7 +42,7 @@ You can then call the `atomisator` tool using this file with the -f option::
 
 You can specify the path as a free argument as well::
 
-     $ atomisator /path/to/atomisator.cfg  
+    $ atomisator /path/to/atomisator.cfg  
 
 It will generate the atomisator.xml file, after reading the sources.
 

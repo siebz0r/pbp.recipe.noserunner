@@ -86,11 +86,11 @@ def _parse_options():
 
     parser.add_option("-r", "--read", dest="read",
                       action="store_true",
-                      help="Reads sources.", default=True)
+                      help="Reads sources.", default=False)
    
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
-                      help="Generates feed.", default=True)
+                      help="Generates feed.", default=False)
         
     parser.add_option("-f", "--config-file", dest="config",
                       help="Points to the configuration file.",
