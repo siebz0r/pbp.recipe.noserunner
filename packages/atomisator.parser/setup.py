@@ -9,7 +9,8 @@ classifiers=[
         ]
 
 entry_point = 'atomisator.parser:Parse'
-entry_points = {"atomisator": ["default = %s" % entry_point]}
+
+entry_points = {"atomisator:rss": ["default = %s" % entry_point]}
 
 setup(name='atomisator.parser',
       version=version,

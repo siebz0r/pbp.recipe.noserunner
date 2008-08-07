@@ -1,9 +1,9 @@
 [atomisator]
 
-sites = 
-    %(test_dir)s/digg.xml
-    %(test_dir)s/tarek.xml
-    %(test_dir)s/pp.xml
+sources = 
+    rss     %(test_dir)s/digg.xml
+    rss     %(test_dir)s/tarek.xml
+    rss     %(test_dir)s/pp.xml
 
 database = sqlite:///tests/atomisator.db
 
@@ -11,3 +11,4 @@ file = atomisator.xml
 title = meta
 description = My feed
 link = http://link
+

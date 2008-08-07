@@ -15,9 +15,12 @@ class AtomisatorConfig(ConfigParser):
         self.read([cfg])
 
     def _get_sources(self):
-        return [s.strip().split() for s in 
-                self.get('atomisator', 'sources').split('\n')
-                if site.strip() != '']
+        sources = self.get('atomisator', 'sources').split('\n')
+        def _args(p):
+            p = p.split()
+            return p[0].strip(), tuple([p.strip() 
+                                        for p in p[1:]])
+        return [_args(s) for s in sources if s.strip() != '']
     sources = property(_get_sources)
 
     def _get_simple_field(self, field):

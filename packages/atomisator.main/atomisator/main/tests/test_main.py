@@ -3,7 +3,7 @@ import os
 
 from nose.tools import with_setup, assert_equals
 from atomisator.main import atomisator, _parse_options
-from atomisator.main import CONF_TMPL 
+from atomisator.main import CONF_TMPL, _get_plugin 
 
 saved = None
 
@@ -63,4 +63,38 @@ def test_generation():
     generate_config('here.cfg')
 
     assert_equals(open('here.cfg').read(), CONF_TMPL)
+
+test_dir = os.path.dirname(__file__)
+package_dir = os.path.split(test_dir)[0]
+test_conf = os.path.join(test_dir, 'atomisator.cfg')
+
+def set_conf():
+    template = open(os.path.join(test_dir, 'atomisator.cfg_tmpl')).read()
+    cfg = template % {'test_dir': test_dir}
+    f = open(test_conf, 'w')
+    f.write(cfg)
+    f.close()
+
+def tear_conf():
+    if os.path.exists(test_conf):
+        os.remove(test_conf)
+
+@with_setup(set_conf, tear_conf)
+def test_config():
+    from atomisator.main.config import AtomisatorConfig
+    parser = AtomisatorConfig(test_conf)
+    sources = parser.sources
+    sources.sort()
+    dir = os.path.dirname(test_conf)
+    wanted = [('rss', ('%s/digg.xml' % dir,)), 
+              ('rss', ('%s/pp.xml' % dir,)), 
+              ('rss', ('%s/tarek.xml' % dir,))]
+
+    assert_equals(sources, wanted)
+    assert_equals(parser.database, 'sqlite:///tests/atomisator.db')
+
+def test_get_plugins():
+    # see if we get the rss and atom plugin
+    assert_equals(_get_plugin('xxxx'), None)
+    assert_equals(_get_plugin('rss'), '')
 

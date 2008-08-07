@@ -4,8 +4,6 @@ from itertools import imap
 
 class Parser(object):
 
-    names = ['atom', 'rss']
-
     def _filter_entry(self, entry):
         entry['links'] = [link['href'] for link in entry['links']]
         return entry

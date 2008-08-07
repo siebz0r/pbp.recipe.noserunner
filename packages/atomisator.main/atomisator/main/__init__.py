@@ -3,6 +3,7 @@ import os
 
 from optparse import OptionParser
 from optparse import OptionValueError
+from setuptools.package_index import iter_entry_points
 
 from atomisator.main.config import AtomisatorConfig
 from atomisator.db import config
@@ -47,14 +48,27 @@ def generate_config(path):
         f.close()
     _log('Default config generated at "%s."' % path)
 
+
+def _get_plugin(name):
+    plugins = list(iter_entry_points('atomisator:%s' % name))
+    if len(plugins) == 0:
+        return None
+    return plugins[0].load()
+
 def load_feeds(conf):
     """Fetches feeds."""
     parser = AtomisatorConfig(conf)
     count = 0
-    for feed in parser.feeds:
-        _log('Parsing feed %s' % feed)
+    for plugin, args in parser.sources:
+        # check if the plugin is available
+        pl = _get_plugin(plugin)
+
+        if pl is None:
+            raise ValueError('%s plugin not found' % pl) 
+            
+        _log('Reading source %s' % feed)
         scount = 0
-        for entry in parse(feed):
+        for entry in pl(*args):
             create_entry(entry)
             count += 1
             scount += 1
