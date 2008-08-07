@@ -5,14 +5,14 @@ atomisator.parser
 The parser knows how to return a feed content, with
 the `parse` function, available as a top-level function::
 
-    >>> from atomisator.parser import parse
+    >>> from atomisator.parser import Parser
 
 This function takes the feed url and returns an iterator
 over its content. A second parameter can specify a maximum
 number of entries to return. If not given, it is fixed to 10::
 
     >>> import os
-    >>> res = parse(os.path.join(test_dir, 'sample.xml'))
+    >>> res = Parser()(os.path.join(test_dir, 'sample.xml'))
     >>> res
     <itertools.islice ...>
 

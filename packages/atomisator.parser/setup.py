@@ -8,6 +8,9 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
+entry_point = 'atomisator.parser:Parse'
+entry_points = {"atomisator": ["default = %s" % entry_point]}
+
 setup(name='atomisator.parser',
       version=version,
       description="Python Expert Programming - A thin layer on the top of the Universal Feed Parser",

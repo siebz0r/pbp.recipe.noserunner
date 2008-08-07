@@ -51,8 +51,6 @@ def test_options():
     assert_equals(options.generate, True)
     assert_equals(options.config, 'here.cfg')
 
-
-
 def gen_init():
     if os.path.exists('here.cfg'):
         os.remove('here.cfg')
@@ -60,7 +58,7 @@ def gen_init():
 @with_setup(setup=gen_init, teardown=gen_init)
 def test_generation():
     
-    # Let's try a generation::
+    # Let's try a generation
     from atomisator.main import generate_config 
     generate_config('here.cfg')
 
