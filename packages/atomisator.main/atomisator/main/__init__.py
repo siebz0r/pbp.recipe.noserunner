@@ -15,7 +15,7 @@ __version__ = '0.2.0'
 def _log(msg):
     print msg
 
-CONF_TMPL = """\ 
+CONF_TMPL = """\
 [atomisator]
 
 # put here the feeds you wish to parse
@@ -93,16 +93,22 @@ def _parse_options():
                       help="Generates feed.", default=True)
         
     parser.add_option("-f", "--config-file", dest="config",
-                      help="Points to the configuration file",
-                      default="atomisator.cfg",
+                      help="Points to the configuration file.",
                       metavar="CONFIG_FILE") 
     
     
-    options = parser.parse_args()[0]
+    options, args = parser.parse_args()
+
     if options.create is not None:
         options.read = False
         options.generate = False
     else:
+        if options.config is None:
+            if len(args) > 0:
+                options.config = args[0]
+            else:
+                options.config = 'atomisator.cfg'
+
         if options.read is False and options.generate is False:
             options.read = True
             options.generate = True
@@ -110,7 +116,7 @@ def _parse_options():
     return options
 
 def atomisator():
-    options, args = _parse_options()
+    options = _parse_options()
     if options.create is not None:
         generate_config(options.create)
         sys.exit(0)

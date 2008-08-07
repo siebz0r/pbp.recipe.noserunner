@@ -40,6 +40,10 @@ You can then call the `atomisator` tool using this file with the -f option::
 
     $ atomisator -f /path/to/atomisator.cfg
 
+You can specify the path as a free argument as well::
+
+     $ atomisator /path/to/atomisator.cfg  
+
 It will generate the atomisator.xml file, after reading the sources.
 
 You can also call separately the process that fills the database::

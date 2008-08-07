@@ -37,6 +37,14 @@ def test_options():
     assert_equals(options.generate, True)
     assert_equals(options.config, 'here.cfg')
 
+    sys.argv = ['atomisator', 'here.cfg']
+    options = _parse_options()
+    assert_equals(options.create, None)
+    assert_equals(options.read, True)
+    assert_equals(options.generate, True)
+    assert_equals(options.config, 'here.cfg')
+
+
 def gen_init():
     if os.path.exists('here.cfg'):
         os.remove('here.cfg')
