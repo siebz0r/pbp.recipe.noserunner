@@ -11,8 +11,6 @@ classifiers=[
 
 entry_points = {
     "console_scripts": [
-        "load_feeds = atomisator.main:load_feeds",
-        "generate_feed = atomisator.main:generate_feed",
         "atomisator = atomisator.main:atomisator"
     ]
 }

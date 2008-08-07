@@ -69,6 +69,11 @@ def _parse_options():
     if options.create is not None:
         options.read = False
         options.generate = False
+    else:
+        if options.read is False and options.generate is False:
+            options.read = True
+            options.generate = True
+
     return options
 
 def atomisator():
