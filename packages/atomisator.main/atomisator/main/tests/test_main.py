@@ -21,3 +21,17 @@ def test_options():
     assert_equals(options.create, None)
     assert_equals(options.config, 'atomisator.cfg')
 
+    sys.argv = ['atomisator', '-c', 'myfile.cfg']
+    options = _parse_options()
+    assert_equals(options.create, 'myfile.cfg')
+    assert_equals(options.read, False)
+    assert_equals(options.generate, False)
+
+    sys.argv = ['atomisator', '-r', '-g', '-f', 'here.cfg']
+    options = _parse_options()
+    assert_equals(options.create, None)
+    assert_equals(options.read, True)
+    assert_equals(options.generate, True)
+    assert_equals(options.config, 'here.cfg')
+
+

@@ -55,23 +55,29 @@ def _parse_options():
     parser = OptionParser(usage='usage: %prog [options]',
                           version='%%prog %s' % __version__)
 
+    parser.add_option("-c", "--create-config", dest="create",
+                      action="store",
+                      help="Creates a default config file") 
+
     parser.add_option("-r", "--read", dest="read",
-                      action="store_false",
+                      action="store_true",
                       help="Reads sources.", default=True)
    
     parser.add_option("-g", "--generate", dest="generate",
-                      action="store_false",
+                      action="store_true",
                       help="Generates feed.", default=True)
 
-    parser.add_option("-c", "--create-config", dest="create",
-                      help="Creates a default config file") 
-    
+        
     parser.add_option("-f", "--config-file", dest="config",
                       help="Points to the configuration file",
                       default="atomisator.cfg") 
     
     
-    return parser.parse_args()[0]
+    options = parser.parse_args()[0]
+    if options.create is not None:
+        options.read = False
+        options.generate = False
+    return options
 
 def atomisator():
     options, args = _parse_options()
