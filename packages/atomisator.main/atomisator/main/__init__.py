@@ -81,7 +81,8 @@ def _parse_options():
 
     parser.add_option("-c", "--create-config", dest="create",
                       action="store",
-                      help="Creates a default config file") 
+                      help="Creates a default config file",
+                      metavar="CONFIG_FILE") 
 
     parser.add_option("-r", "--read", dest="read",
                       action="store_true",
@@ -90,11 +91,11 @@ def _parse_options():
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
                       help="Generates feed.", default=True)
-
         
     parser.add_option("-f", "--config-file", dest="config",
                       help="Points to the configuration file",
-                      default="atomisator.cfg") 
+                      default="atomisator.cfg",
+                      metavar="CONFIG_FILE") 
     
     
     options = parser.parse_args()[0]
