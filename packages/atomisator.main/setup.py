@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.0'
+from atomisator.main import __version__ as VERSION
+
 long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
@@ -17,7 +18,7 @@ entry_points = {
 }
 
 setup(name='atomisator.main',
-      version=version,
+      version=VERSION,
       description="Python Expert Programming - Main package for Atomisator app",
       long_description=long_description,
       classifiers=classifiers,
