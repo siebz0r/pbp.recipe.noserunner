@@ -1,4 +1,6 @@
 import sys
+import os
+
 from optparse import OptionParser
 from optparse import OptionValueError
 
@@ -12,6 +14,36 @@ __version__ = '0.2.0'
 
 def _log(msg):
     print msg
+
+CONF_TMPL = """\ 
+[atomisator]
+
+# put here the feeds you wish to parse
+sites = 
+    http://tarekziade.wordpress.com/atom
+
+# put here the database location
+database = sqlite:///atomisator.db
+
+# this is the file that will be generated
+file = atomisator.xml
+
+# infos that will appear in the generated feed. 
+title = meta
+description = Automatic feed created by Atomisator.
+link =  http://atomisator.ziade.org/example
+"""
+
+def generate_config(path):
+    """creates a default config file"""
+    if os.path.exists(path):
+        raise ValueError('%s already exists.' % path)
+    f = open(path, 'w')
+    try:
+        f.write(CONF_TMPL)
+    finally:
+        f.close()
+    _log('Default config generated at "%s."' % path)
 
 def load_feeds(conf):
     """Fetches feeds."""
