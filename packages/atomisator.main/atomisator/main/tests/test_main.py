@@ -98,6 +98,8 @@ def test_config():
     assert_equals(parser.get_plugin('xml'), 
                   'atomisator.plugin.xml')
 
+    assert_equals(parser.filters[0][0], 'stopwords')
+
 def test_get_plugins():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser

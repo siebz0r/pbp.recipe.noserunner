@@ -30,6 +30,15 @@ class AtomisatorConfig(ConfigParser):
         return [_args(s) for s in sources if s.strip() != '']
     sources = property(_get_sources)
 
+    def _get_filters(self):
+        filters = self.get('atomisator', 'filters').split('\n')
+        def _args(p):
+            p = p.split()
+            return [p.strip() for p in p]
+        return [_args(s) for s in filters if s.strip() != '']
+    filters = property(_get_filters)
+
+
     def _get_simple_field(self, field):
         return self.get('atomisator', field).strip()
 

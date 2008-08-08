@@ -12,6 +12,9 @@ title = meta
 description = My feed
 link = http://link
 
+filters =
+   stopwords    %(test_dir)s/stopwords.txt            
+
 [plugins]
 
 xml = atomisator.plugin.xml
