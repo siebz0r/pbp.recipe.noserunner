@@ -14,6 +14,13 @@ class AtomisatorConfig(ConfigParser):
             raise ValueError('Could not read configuration (%s)' % cfg)
         self.read([cfg])
 
+    def get_plugin(self, name):
+        if not self.has_section('plugins'):
+            return None
+        if not self.has_option('plugins', name):
+            return None
+        return self.get('plugins', name)
+
     def _get_sources(self):
         sources = self.get('atomisator', 'sources').split('\n')
         def _args(p):

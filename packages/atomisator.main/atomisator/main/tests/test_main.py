@@ -93,6 +93,11 @@ def test_config():
     assert_equals(sources, wanted)
     assert_equals(parser.database, 'sqlite:///tests/atomisator.db')
 
+    # getting plugins
+    assert_equals(parser.get_plugin('xxx'), None)
+    assert_equals(parser.get_plugin('xml'), 
+                  'atomisator.plugin.xml')
+
 def test_get_plugins():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser

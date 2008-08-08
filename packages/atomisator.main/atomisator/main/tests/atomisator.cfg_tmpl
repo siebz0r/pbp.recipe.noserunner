@@ -12,3 +12,7 @@ title = meta
 description = My feed
 link = http://link
 
+[plugins]
+
+xml = atomisator.plugin.xml
+

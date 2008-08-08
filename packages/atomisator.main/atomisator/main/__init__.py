@@ -52,6 +52,8 @@ def generate_config(path):
 def _get_plugin(name):
     plugins = list(iter_entry_points('atomisator.plugins', name))
     if len(plugins) == 0:
+        # not found, let's try to get it
+        # not implemented yet
         return None
     return plugins[0].load()
 
