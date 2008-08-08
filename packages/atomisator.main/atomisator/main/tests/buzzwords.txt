@@ -1,0 +1,6 @@
+python
+zope
+setuptools
+linux
+pypy
+game

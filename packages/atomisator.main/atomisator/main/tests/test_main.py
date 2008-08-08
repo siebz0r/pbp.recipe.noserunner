@@ -4,6 +4,9 @@ import os
 from nose.tools import with_setup, assert_equals
 from atomisator.main import atomisator, _parse_options
 from atomisator.main import CONF_TMPL, _get_plugin 
+from atomisator.main.config import AtomisatorConfig
+from atomisator.main import generate_config 
+from atomisator.main import load_feeds
 
 saved = None
 
@@ -57,11 +60,8 @@ def gen_init():
 
 @with_setup(setup=gen_init, teardown=gen_init)
 def test_generation():
-    
     # Let's try a generation
-    from atomisator.main import generate_config 
     generate_config('here.cfg')
-
     assert_equals(open('here.cfg').read(), CONF_TMPL)
 
 test_dir = os.path.dirname(__file__)
@@ -80,8 +80,11 @@ def tear_conf():
         os.remove(test_conf)
 
 @with_setup(set_conf, tear_conf)
+def test_load_feeds():
+    load_feeds(test_conf)
+
+@with_setup(set_conf, tear_conf)
 def test_config():
-    from atomisator.main.config import AtomisatorConfig
     parser = AtomisatorConfig(test_conf)
     sources = parser.sources
     sources.sort()

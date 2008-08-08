@@ -34,7 +34,8 @@ class AtomisatorConfig(ConfigParser):
         filters = self.get('atomisator', 'filters').split('\n')
         def _args(p):
             p = p.split()
-            return [p.strip() for p in p]
+            return p[0].strip(), tuple([p.strip() 
+                                        for p in p[1:]])
         return [_args(s) for s in filters if s.strip() != '']
     filters = property(_get_filters)
 

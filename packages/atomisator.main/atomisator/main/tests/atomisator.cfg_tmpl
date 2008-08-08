@@ -14,6 +14,7 @@ link = http://link
 
 filters =
    stopwords    %(test_dir)s/stopwords.txt            
+   buzzwords    %(test_dir)s/buzzwords.txt
 
 [plugins]
 

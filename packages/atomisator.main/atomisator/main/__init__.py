@@ -8,6 +8,7 @@ from setuptools.package_index import iter_entry_points
 from atomisator.main.config import AtomisatorConfig
 from atomisator.db import config
 from atomisator.db import create_entry
+from atomisator.db import get_entries
 from atomisator.feed import generate
 
 __version__ = '0.2.0'
@@ -57,15 +58,15 @@ def _get_plugin(name):
         return None
     return plugins[0].load()
 
-_filters = dict([(f.name, f.load()()) 
-                 for f in iter_entry_points('atomisator.filters')]
+_fs = iter_entry_points('atomisator.filters')
+_filters = dict([(f.name, f.load()()) for f in _fs])
 
-def _apply_filters(filters, entry):
+def _apply_filters(filters, entries, entry):
     for name, args in filters:
-        if name not in _filter:
+        if name not in _filters:
             # XXX do discovery here
             continue
-        entry = _filters[name](entry, *args)
+        entry = _filters[name](entry, entries, *args)
         if entry is None:
             return None
     return entry
@@ -84,7 +85,7 @@ def load_feeds(conf):
         _log('Reading source %s' % ' '.join(args))
         scount = 0
         for entry in pl()(*args):
-            entry = _apply_filters(parser.filters, entry)
+            entry = _apply_filters(parser.filters, get_entries(), entry)
             if entry is None:
                 continue
             create_entry(entry)

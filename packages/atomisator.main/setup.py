@@ -34,7 +34,9 @@ setup(name='atomisator.main',
           'atomisator.db',
           'atomisator.feed',
           # default plugin
-          'atomisator.parser'
+          'atomisator.parser',
+          # default filters
+          'atomisator.filters'
       ],
       tests_require=['nose'],
       test_suite='atomisator.main.tests.test_docs.test_suite',
