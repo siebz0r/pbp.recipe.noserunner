@@ -66,9 +66,9 @@ def load_feeds(conf):
         if pl is None:
             raise ValueError('%s plugin not found' % pl) 
             
-        _log('Reading source %s' % feed)
+        _log('Reading source %s' % ' '.join(args))
         scount = 0
-        for entry in pl(*args):
+        for entry in pl()(*args):
             create_entry(entry)
             count += 1
             scount += 1
