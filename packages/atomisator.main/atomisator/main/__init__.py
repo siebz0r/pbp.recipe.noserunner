@@ -57,6 +57,19 @@ def _get_plugin(name):
         return None
     return plugins[0].load()
 
+_filters = dict([(f.name, f.load()()) 
+                 for f in iter_entry_points('atomisator.filters')]
+
+def _apply_filters(filters, entry):
+    for name, args in filters:
+        if name not in _filter:
+            # XXX do discovery here
+            continue
+        entry = _filters[name](entry, *args)
+        if entry is None:
+            return None
+    return entry
+
 def load_feeds(conf):
     """Fetches feeds."""
     parser = AtomisatorConfig(conf)
@@ -71,6 +84,9 @@ def load_feeds(conf):
         _log('Reading source %s' % ' '.join(args))
         scount = 0
         for entry in pl()(*args):
+            entry = _apply_filters(parser.filters, entry)
+            if entry is None:
+                continue
             create_entry(entry)
             count += 1
             scount += 1
