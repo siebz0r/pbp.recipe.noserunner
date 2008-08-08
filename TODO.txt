@@ -1,0 +1,5 @@
+- add a simple helper for sources plugins to return the right structure (maybe provide a class)
+- add filtering plugins feature : plugins are able to be used
+  in a filter chain when an entry is retrieve. They have a view
+  on the db and now how to cleanup or removed an entry.
+ 
