@@ -36,7 +36,8 @@ def get_entries(size=None, **kw):
         query = session.query(Entry)
     else:
         query = session.query(Entry).filter_by(**kw)
+    query = query.order_by(desc(Entry.date))
     if size is not None:
-        query.limit = size
-    return query.order_by(desc(Entry.date))
+        query = query.limit(size)
+    return query
 
