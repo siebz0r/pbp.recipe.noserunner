@@ -31,11 +31,12 @@ def get_entries(size=None, **kw):
     """Returns entries"""
     from atomisator.db import session 
     from atomisator.db.mappers import Entry
+    from sqlalchemy import desc  
     if kw == {}:
         query = session.query(Entry)
     else:
         query = session.query(Entry).filter_by(**kw)
     if size is not None:
         query.limit = size
-    return query
+    return query.order_by(desc(Entry.date))
 
