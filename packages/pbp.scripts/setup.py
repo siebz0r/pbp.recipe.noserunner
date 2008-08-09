@@ -10,7 +10,7 @@ classifiers=[
 
 setup(name='pbp.scripts',
       version=version,
-      description="Python Expert Programming - Contains scripts presented throughout the book",
+      description="Expert Python Programming - Contains scripts presented throughout the book",
       long_description=long_description,
       classifiers=classifiers,
       keywords='',

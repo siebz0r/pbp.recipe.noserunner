@@ -38,7 +38,7 @@ tests_require=['nose', 'zc.buildout', 'zc.recipe.egg']
 
 setup(name='pbp.recipe.noserunner',
       version=version,
-      description="Python Expert Programming - ZC Buildout runner for nose",
+      description="Expert Python Programming - ZC Buildout runner for nose",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

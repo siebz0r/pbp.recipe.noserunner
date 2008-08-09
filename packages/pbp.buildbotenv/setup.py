@@ -30,7 +30,7 @@ tests_require = ['zope.testing',]
 
 setup(name='pbp.buildbotenv',
       version=version,
-      description="Python Expert Programming - Buildbot environment",
+      description="Expert Python Programming - Buildbot environment",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
