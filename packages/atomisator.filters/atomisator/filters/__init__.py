@@ -6,10 +6,11 @@ class FileFilter(object):
     def _read_file(self, path):
         if path in _files:
             return _files[path]
-        _files[path] = [w.strip() 
-                        for w in open(path).readlines()
-                        if w.strip() != '']
-        _files[path].sort()
+        list_ = [w.strip().lower() 
+                 for w in open(path).readlines()
+                 if w.strip() != '']
+        list_.sort()
+        _files[path] = set(list_)
         return _files[path]
 
 class StopWords(FileFilter):
@@ -18,7 +19,7 @@ class StopWords(FileFilter):
         """Filter off an entry if one of its words is in the stop file"""
         # we don't read the database entries here
         words = self._read_file(file)
-        fields = ('title', 'summary')
+        fields = ('title', 'summary', 'description')
         for f in fields:
             if f not in entry:
                 continue

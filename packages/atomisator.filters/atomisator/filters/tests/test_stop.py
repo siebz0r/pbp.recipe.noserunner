@@ -1,5 +1,5 @@
 import os
-
+from nose.tools import *
 from atomisator.filters import StopWords
 
 def test_stop():
@@ -8,4 +8,15 @@ def test_stop():
                             'words.txt')
 
     sw = StopWords()
-    entry = sw(entry, dbtable, stopfile)
+    entry = {'title': 'the title', 
+             'description': 'viagra info'}
+    entries = []
+    entry = sw(entry, entries, stopfile)
+    assert_equals(entry, None)
+
+    entry = {'title': 'the title', 
+             'description': 'info'}
+    res = sw(entry, entries, stopfile)
+    assert_equals(entry, res)
+
+
