@@ -1,3 +1,8 @@
+cd atomisator.filters
+python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
+rm -rf *egg-info build dist
+cd ..
+
 cd atomisator.db
 python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
 rm -rf *egg-info build dist
