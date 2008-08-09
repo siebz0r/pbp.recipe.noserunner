@@ -11,7 +11,7 @@ classifiers=[
 
 entry_points = {
     "console_scripts": [
-        "atomisator = atomisator.main:atomisator"
+        "atomisator = atomisator.main.run:atomisator"
     ]
 }
 

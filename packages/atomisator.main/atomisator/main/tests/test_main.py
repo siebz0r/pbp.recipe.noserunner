@@ -2,11 +2,11 @@ import sys
 import os
 
 from nose.tools import with_setup, assert_equals
-from atomisator.main import atomisator, _parse_options
-from atomisator.main import CONF_TMPL, _get_plugin 
+from atomisator.main.run import atomisator, _parse_options
+from atomisator.main.run import CONF_TMPL, _get_plugin 
 from atomisator.main.config import AtomisatorConfig
-from atomisator.main import generate_config 
-from atomisator.main import load_feeds
+from atomisator.main.run import generate_config 
+from atomisator.main.run import load_feeds
 
 saved = None
 
