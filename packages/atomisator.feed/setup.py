@@ -10,7 +10,7 @@ classifiers=[
 
 setup(name='atomisator.feed',
       version=version,
-      description="Python Expert Programming - Feed generator",
+      description="Expert Python Programming - Feed generator",
       long_description=long_description,
       classifiers=classifiers,
       keywords='',

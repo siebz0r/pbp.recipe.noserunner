@@ -1,4 +1,4 @@
-This package is part of the `Python Expert Programming` book  written by
+This package is part of the `Expert Python Programming` book  written by
 Tarek Ziadé.
 
 

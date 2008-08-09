@@ -10,7 +10,7 @@ classifiers=[
 
 setup(name='atomisator.db',
       version=version,
-      description="Python Expert Programming - Manages the Atomisator storage.",
+      description="Expert Python Programming - Manages the Atomisator storage.",
       long_description=long_description,
       classifiers=classifiers,
       keywords='atomisator',

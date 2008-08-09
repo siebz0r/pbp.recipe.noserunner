@@ -38,7 +38,7 @@ tests_require=['zope.testing', 'zc.buildout']
 
 setup(name='pbp.recipe.trac',
       version=version,
-      description="Python Expert Programming - ZC Buildout recipe that installs and configures a Trac server.",
+      description="Expert Python Programming - ZC Buildout recipe that installs and configures a Trac server.",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

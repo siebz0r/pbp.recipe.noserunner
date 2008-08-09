@@ -13,7 +13,7 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
 
 setup(name='atomisator.filters',
       version=version,
-      description="Python Expert Programming - Filters",
+      description="Expert Python Programming - Filters",
       long_description=long_description,
       classifiers=classifiers,
       keywords='python best practices',

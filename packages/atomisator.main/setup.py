@@ -17,7 +17,7 @@ entry_points = {
 
 setup(name='atomisator.main',
       version=VERSION,
-      description="Python Expert Programming - Main package for Atomisator app",
+      description="Expert Python Programming - Main package for Atomisator app",
       long_description=long_description,
       classifiers=classifiers,
       keywords='',

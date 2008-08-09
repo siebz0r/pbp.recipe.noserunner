@@ -13,7 +13,7 @@ entry_points = {"atomisator.plugins": ["rss = %s" % entry_point]}
 
 setup(name='atomisator.parser',
       version=version,
-      description="Python Expert Programming - A thin layer on the top of the Universal Feed Parser",
+      description="Expert Python Programming - A thin layer on the top of the Universal Feed Parser",
       long_description=long_description,
       classifiers=classifiers,
       keywords='python best practices',
