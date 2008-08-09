@@ -31,6 +31,8 @@ class AtomisatorConfig(ConfigParser):
     sources = property(_get_sources)
 
     def _get_filters(self):
+        if not self.has_option('atomisator', 'filters'):
+            return []
         filters = self.get('atomisator', 'filters').split('\n')
         def _args(p):
             p = p.split()
