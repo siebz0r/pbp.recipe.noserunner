@@ -11,7 +11,7 @@ from atomisator.db import create_entry
 from atomisator.db import get_entries
 from atomisator.feed import generate
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 def _log(msg):
     print msg
