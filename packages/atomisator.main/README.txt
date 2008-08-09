@@ -22,8 +22,8 @@ A default configuration file will be generated, that looks like this::
 
     # put here the feeds you wish to parse
     sites = 
-        http://tarekziade.wordpress.com/atom
-        http://digg.com/rss2.xml
+        rss     http://tarekziade.wordpress.com/atom
+        rss     http://digg.com/rss2.xml
 
     # put here the database location
     database = sqlite:///atomisator.db
