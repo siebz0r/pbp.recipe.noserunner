@@ -12,9 +12,16 @@ def generate(title, description, link, size=50):
         for key in entry.c.keys():
             res[key] = getattr(new_entry, key)
         return res
+
+    def _str(entry):
+        entry = _dict(entry)
+        for key, value in entry.items():
+            if isinstance(value, unicode):
+                entry[key] = value.encode('utf8')
+        return entry
     
-    entries = get_entries(size=size)
-    data = {'entries': [_dict(e) for e in entries], 
+    entries = [_str(e) for e in get_entries(size=size)]
+    data = {'entries': entries, 
             'channel': {'title': title, 'description': description,
                         'link': link}}
     

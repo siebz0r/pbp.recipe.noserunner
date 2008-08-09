@@ -3,4 +3,5 @@ include README.txt
 include CHANGES.txt
 include CONTRIBUTORS.txt
 include LICENSE
-recursive-include *.txt *.py
+recursive-include atomisator/feed *.txt *.py
+recursive-include atomisator/feed *.tmpl
