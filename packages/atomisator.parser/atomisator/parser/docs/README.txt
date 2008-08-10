@@ -14,7 +14,7 @@ number of entries to return. If not given, it is fixed to 10::
     >>> import os
     >>> res = Parser()(os.path.join(test_dir, 'sample.xml'))
     >>> res
-    <itertools.islice ...>
+    <itertools.imap ...>
 
 Each item is a dictionary that contain the entry::
 
