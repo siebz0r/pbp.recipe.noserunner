@@ -9,8 +9,6 @@ class Parser(object):
         if 'summary' not in entry:
             if 'content' in entry:
                 entry['summary'] = entry['content'][0]['value']
-            elif 'description' in entry:
-                import pdb; pdb.set_trace()
         return entry
 
     def __call__(self, url, size=-1):
