@@ -7,12 +7,12 @@ in a SQL database.
 
 The SQL uri is provided in the config module::
 
-    >>> from atomisator.db import config
-    >>> config.SQLURI = 'sqlite://:memory:'
+    >>> from atomisator.db.session import create_session
+    >>> create_session('sqlite://:memory:')
 
 Let's create an entry::
 
-    >>> from atomisator.db import create_entry
+    >>> from atomisator.db.core import create_entry
     >>> entry = {'url': 'http://www.python.org/news',
     ...          'summary': 'Summary goes here',
     ...          'title': 'Python 2.6alpha1 and 3.0alpha3 released',
@@ -24,7 +24,7 @@ Let's create an entry::
 
 We get the database id back. Now let's look for entries::
 
-    >>> from atomisator.db import get_entries
+    >>> from atomisator.db.core import get_entries
     >>> entries = get_entries()  # returns a generator object
     >>> entries.next()
     <Entry('Python 2.6alpha1 and 3.0alpha3 released')>

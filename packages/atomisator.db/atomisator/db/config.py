@@ -1,3 +1,0 @@
-
-SQLURI = 'sqlite:///memory'
-
