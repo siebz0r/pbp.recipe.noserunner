@@ -42,6 +42,7 @@ class BuzzWords(FileFilter):
             for w in entry[f].split():
                 w = w.strip().lower()
                 if w in words:
+                    entry['title'] = '[%s] %s' % (w, entry['title'])
                     return entry
         return None
 
