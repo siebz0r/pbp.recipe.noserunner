@@ -35,7 +35,7 @@ class BuzzWords(FileFilter):
         """Filter off an entry if one of its words is in the stop file"""
         # we don't read the database entries here
         words = self._read_file(file)
-        fields = ('title', 'description', 'summary')
+        fields = ('title', 'summary', 'description')
         for f in fields:
             if f not in entry:
                 continue
@@ -52,9 +52,16 @@ class Doublons(object):
         return st.lower().strip()
     
     def __call__(self, entry, entries):
-        title = self._clean(entry['title'])
+        summary = self._clean(entry['summary'])
         for e in entries:
-            if title == self._clean(e.title):
+            if summary == self._clean(e.summary):
                 return None
+        return entry
+
+class Spam(object):
+
+    def __call__(self, entry, entries):
+        if entry['summary'].strip() == '':
+            return None
         return entry
 
