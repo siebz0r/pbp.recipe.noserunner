@@ -1,6 +1,8 @@
 import os
 from nose.tools import *
-from atomisator.filters import StopWords, BuzzWords
+from atomisator.filters import StopWords
+from atomisator.filters import BuzzWords
+from atomisator.filters import Doublons
 
 def test_stop():
     
@@ -35,5 +37,19 @@ def test_buzz():
              'description': 'info'}
     res = bw(entry, entries, buzzfile)
     assert_equals(res, None)
+
+def test_doublons():
+    db = Doublons()
+    entry = {'title': 'the title', 
+             'description': 'info'}
+    entries = [{'title': 'the title', 'description': 'info'}]
+    entry = db(entry, entries)
+    assert_equals(entry, None)
+
+    entry = {'title': 'the title', 
+             'description': 'info'}
+    res = db(entry, [])
+    assert_equals(res, entry)
+
 
 

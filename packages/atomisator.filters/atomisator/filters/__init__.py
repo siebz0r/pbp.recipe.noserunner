@@ -46,3 +46,15 @@ class BuzzWords(FileFilter):
                     return entry
         return None
 
+class Doublons(object):
+
+    def _clean(self, st):
+        return st.lower().strip()
+    
+    def __call__(self, entry, entries):
+        title = self._clean(entry['title'])
+        for e in entries:
+            if title == self._clean(e['title']):
+                return None
+        return entry
+
