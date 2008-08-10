@@ -5,7 +5,7 @@ sources =
     rss     %(test_dir)s/tarek.xml
     rss     %(test_dir)s/pp.xml
 
-database = sqlite:///tests/atomisator.db
+database = sqlite:///%(test_dir)s/atomisator.db
 
 file = atomisator.xml
 title = meta

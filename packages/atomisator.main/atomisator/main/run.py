@@ -100,6 +100,7 @@ def generate_feed(conf):
     if conf is None:
         conf = _get_opt()
     parser = AtomisatorConfig(conf)
+    create_session(parser.database)
     _log('Writing feed in %s' % parser.file) 
     feed = generate(parser.title, parser.description, parser.link)
     

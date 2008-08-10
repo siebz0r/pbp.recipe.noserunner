@@ -94,7 +94,8 @@ def test_config():
               ('rss', ('%s/tarek.xml' % dir,))]
 
     assert_equals(sources, wanted)
-    assert_equals(parser.database, 'sqlite:///tests/atomisator.db')
+    wanted = os.path.join(dir, 'atomisator.db')
+    assert_equals(parser.database, 'sqlite:///%s' % wanted)
 
     # getting plugins
     assert_equals(parser.get_plugin('xxx'), None)
