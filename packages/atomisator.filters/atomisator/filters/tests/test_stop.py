@@ -42,7 +42,11 @@ def test_doublons():
     db = Doublons()
     entry = {'title': 'the title', 
              'description': 'info'}
-    entries = [{'title': 'the title', 'description': 'info'}]
+    class E:
+        title = ''
+    e = E()
+    e.title = 'the title'
+    entries = [e]
     entry = db(entry, entries)
     assert_equals(entry, None)
 
@@ -50,6 +54,4 @@ def test_doublons():
              'description': 'info'}
     res = db(entry, [])
     assert_equals(res, entry)
-
-
 

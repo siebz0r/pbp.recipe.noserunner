@@ -54,7 +54,7 @@ class Doublons(object):
     def __call__(self, entry, entries):
         title = self._clean(entry['title'])
         for e in entries:
-            if title == self._clean(e['title']):
+            if title == self._clean(e.title):
                 return None
         return entry
 
