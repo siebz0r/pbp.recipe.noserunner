@@ -8,9 +8,9 @@ from setuptools.package_index import iter_entry_points
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main import __version__ as VERSION
 
-from atomisator.db import config
-from atomisator.db import create_entry
-from atomisator.db import get_entries
+from atomisator.db.session import create_session
+from atomisator.db.core import create_entry
+from atomisator.db.core import get_entries
 from atomisator.feed import generate
 
 def _log(msg):
@@ -74,6 +74,7 @@ def _apply_filters(filters, entries, entry):
 def load_feeds(conf):
     """Fetches feeds."""
     parser = AtomisatorConfig(conf)
+    create_session(parser.database)
     count = 0
     for plugin, args in parser.sources:
         # check if the plugin is available
