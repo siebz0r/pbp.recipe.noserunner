@@ -29,15 +29,26 @@ class FileFilter(object):
         return None
 
 class StopWords(FileFilter):
-   
+    """
+    Filter off entries that matches regular expressions.
+    Expressions are given in a file, one per line.
+    The file path is provided as argument.
+    """ 
     def __call__(self, entry, entries, path):
-        """Filter off an entry if one of its words is in the stop file"""
         if self._match(entry, path) is not None:
             return None
         return entry
 
 class ReplaceWords(FileFilter):
-   
+    """
+    Replace one expression to another one.
+    Expressions are given in a file.
+    Each line is the matching expression, 
+    followed by the replacement string.
+    Elements are separated by the ":::" expression.
+
+    The file path is provided as argument.
+    """
     def _replace(self, entry, path):
         for w, exp, repl in self._read_file(path):
             for key in ('summary', 'title'):
@@ -57,6 +68,11 @@ class ReplaceWords(FileFilter):
         return self._replace(entry, path) 
 
 class BuzzWords(FileFilter):
+    """
+    Keep only the entries that matches regular expressions.
+    Expressions are given in a file, one per line.
+    The file path is provided as argument.
+    """ 
 
     def __call__(self, entry, entries, path):
         """Keeps entries based on keywords"""
@@ -67,7 +83,9 @@ class BuzzWords(FileFilter):
         return None
 
 class Doublons(object):
-
+    """
+    Filter off entries that are already in the database.
+    """ 
     def _clean(self, st):
         return st.lower().strip()
     
@@ -79,7 +97,9 @@ class Doublons(object):
         return entry
 
 class Spam(object):
-
+    """
+    Tries to remove spamy entries.
+    """
     def __call__(self, entry, entries):
         if entry['summary'].strip() == '':
             return None
