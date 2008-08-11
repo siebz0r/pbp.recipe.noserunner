@@ -43,7 +43,10 @@ class Recipe(object):
             else:
                 os.mkdir(wd)
             dest.append(wd)
-        initialization = initialization_template 
+        else:
+            wd = os.getcwd()
+
+        initialization = initialization_template % wd 
 
         env_section = options.get('environment', '').strip()
         if env_section:
@@ -54,7 +57,6 @@ class Recipe(object):
         initialization_section = options.get('initialization', '').strip()
         if initialization_section:
             initialization += initialization_section
-
         dest.extend(zc.buildout.easy_install.scripts(
             [(options['script'], 'nose', 'main')],
             ws, options['executable'],
@@ -72,8 +74,11 @@ arg_template = """[
   '--test-path', %(TESTPATH)s,
   ]"""
 
-initialization_template = """import os
+initialization_template = """\
+import os
+
 sys.argv[0] = os.path.abspath(sys.argv[0])
+os.chdir(%r)
 """
 
 env_template = """os.environ['%s'] = %r

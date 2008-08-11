@@ -49,16 +49,15 @@ Example usage
     ... """) 
 
 Running the buildout gives us::
-
-    >>> print 'start', system(buildout) 
-    start ...
+    
+    >>> print system(buildout) 
+    Installing test.
     ...
-    Generated script '/sample-buildout/bin/test'.
-    <BLANKLINE>
 
 Checking the generated script::
 
-    >>> print open(join('bin', 'test')).read()    
+    >>> import os
+    >>> print open(os.path.join('bin', 'test')).read()    
     #!...
     <BLANKLINE>
     import sys
@@ -67,7 +66,9 @@ Checking the generated script::
       ]
     <BLANKLINE>
     import os
+    <BLANKLINE>
     sys.argv[0] = os.path.abspath(sys.argv[0])
+    os.chdir('/sample-buildout/parts/test')
     <BLANKLINE>
     <BLANKLINE>
     import nose
