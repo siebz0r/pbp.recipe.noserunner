@@ -7,7 +7,7 @@ from atomisator.filters import Doublons
 def test_stop():
 
     stopfile = os.path.join(os.path.dirname(__file__), 
-            'words.txt')
+                           'words.txt')
 
     sw = StopWords()
     entry = {'title': 'the title', 
@@ -20,6 +20,12 @@ def test_stop():
             'summary': 'info'}
     res = sw(entry, entries, stopfile)
     assert_equals(entry, res)
+
+    # based on regepx
+    entry['summary'] = 'start with start'
+    res = sw(entry, entries, stopfile)
+    assert_equals(res, None)
+
 
 def test_buzz():
 

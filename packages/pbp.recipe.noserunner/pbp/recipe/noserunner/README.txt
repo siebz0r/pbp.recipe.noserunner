@@ -34,8 +34,9 @@ environment
 Example usage
 =============
 
-We'll start by creating a buildout that uses the recipe::
-
+    >>> from zc.buildout.testing import *
+    >>> from pbp.recipe.noserunner import *
+    
     >>> write('buildout.cfg',
     ... """
     ... [buildout]
@@ -67,12 +68,11 @@ Checking the generated script::
     <BLANKLINE>
     import os
     sys.argv[0] = os.path.abspath(sys.argv[0])
-    os.chdir('...test')
     <BLANKLINE>
     <BLANKLINE>
-    import nose.commands
+    import nose
     <BLANKLINE>
     if __name__ == '__main__':
-        nose.commands.nosetests()
+        nose.main()
     <BLANKLINE>
 

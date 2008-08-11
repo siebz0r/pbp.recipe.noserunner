@@ -1,49 +1,49 @@
+import re
 
 _files = {}
 
+options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
+
 class FileFilter(object):
+
+    def _comp(self, line):
+        line = line.strip()
+        return line, re.compile(line, options)
 
     def _read_file(self, path):
         if path in _files:
             return _files[path]
-        list_ = [w.strip().lower() 
-                 for w in open(path).readlines()
-                 if w.strip() != '']
-        list_.sort()
-        _files[path] = set(list_)
+        _files[path] = [self._comp(line) for line in
+                        open(path).readlines()
+                        if line.strip() != '']
         return _files[path]
+
+    def _get_texts(self, entry):
+        return entry['title'], entry['summary']
+
+    def _match(self, entry, path):
+        for w, exp in self._read_file(path):
+            for t in self._get_texts(entry):
+                if exp.search(t) is not None:
+                    return w
+        return None
 
 class StopWords(FileFilter):
    
-    def __call__(self, entry, entries, file):
+    def __call__(self, entry, entries, path):
         """Filter off an entry if one of its words is in the stop file"""
-        # we don't read the database entries here
-        words = self._read_file(file)
-        fields = ('title', 'summary', 'description')
-        for f in fields:
-            if f not in entry:
-                continue
-            for w in entry[f].split():
-                w = w.strip().lower()
-                if w in words:
-                    return None
+        if self._match(entry, path) is not None:
+            return None
         return entry
 
 class BuzzWords(FileFilter):
 
-    def __call__(self, entry, entries, file):
-        """Filter off an entry if one of its words is in the stop file"""
-        # we don't read the database entries here
-        words = self._read_file(file)
-        fields = ('title', 'summary', 'description')
-        for f in fields:
-            if f not in entry:
-                continue
-            for w in entry[f].split():
-                w = w.strip().lower()
-                if w in words:
-                    entry['title'] = '[%s] %s' % (w, entry['title'])
-                    return entry
+    def __call__(self, entry, entries, path):
+        """Keeps entries based on keywords"""
+        w = self._match(entry, path)
+        if w is not None:
+            entry['title'] = '[%s] %s' % (w, entry['title'])
+            return entry
         return None
 
 class Doublons(object):
