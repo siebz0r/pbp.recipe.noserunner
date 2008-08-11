@@ -118,12 +118,16 @@ def _parse_options():
 
     parser.add_option("-c", "--create-config", dest="create",
                       action="store",
-                      help="Creates a default config file",
+                      help="Creates a default config file.",
                       metavar="CONFIG_FILE") 
 
     parser.add_option("-r", "--read", dest="read",
                       action="store_true",
                       help="Reads sources.", default=False)
+ 
+    parser.add_option("-l", "--list-filters", dest="filters",
+                      action="store_true",
+                      help="List all filters.", default=False)
    
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
@@ -132,7 +136,6 @@ def _parse_options():
     parser.add_option("-f", "--config-file", dest="config",
                       help="Points to the configuration file.",
                       metavar="CONFIG_FILE") 
-    
     
     options, args = parser.parse_args()
 
@@ -152,8 +155,16 @@ def _parse_options():
 
     return options
 
+def list_plugins():
+    for key, ob in _filters.items():
+        print '%s: %s' % (key, ob.__doc__)
+
 def atomisator():
     options = _parse_options()
+    if options.filters:
+        list_plugins()
+        sys.exit(0)
+
     if options.create is not None:
         generate_config(options.create)
         sys.exit(0)

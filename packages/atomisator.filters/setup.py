@@ -13,7 +13,7 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "buzzwords = atomisator.filters:BuzzWords",
                                        "doublons = atomisator.filters:Doublons",
                                        "spam = atomisator.filters:Spam",
-                                       "replace = atomisator.filters:Replace"]}
+                                       "replace = atomisator.filters:ReplaceWords"]}
 
 setup(name='atomisator.filters',
       version=version,
