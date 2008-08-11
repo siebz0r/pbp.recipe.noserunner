@@ -1,14 +1,14 @@
 import os
 from nose.tools import *
+
 from atomisator.filters import StopWords
 from atomisator.filters import BuzzWords
 from atomisator.filters import Doublons
+from atomisator.filters import ReplaceWords
 
 def test_stop():
-
     stopfile = os.path.join(os.path.dirname(__file__), 
                            'words.txt')
-
     sw = StopWords()
     entry = {'title': 'the title', 
             'summary': 'viagra info'}
@@ -28,7 +28,6 @@ def test_stop():
 
 
 def test_buzz():
-
     buzzfile = os.path.join(os.path.dirname(__file__), 
             'words.txt')
 
@@ -62,4 +61,19 @@ def test_doublons():
             'summary': 'info'}
     res = db(entry, [])
     assert_equals(res, entry)
+
+def test_replace():
+    rw = ReplaceWords()
+    entry = {'title': 'the title', 'summary': 'info'}
+    replfile = os.path.join(os.path.dirname(__file__), 
+                            'replace.txt')
+    res = rw(entry, [], replfile)
+    assert_equals(res['title'], 'the tixxxtle')
+    assert_equals(res['summary'], 'info sp')
+
+    entry = {'title': 'the title', 
+             'summary': 'info not interesting'}
+    res = rw(entry, [], replfile)
+    assert_equals(res['title'], 'the tixxxtle')
+    assert_equals(res['summary'], 'info sp ')
 

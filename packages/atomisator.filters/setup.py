@@ -12,7 +12,8 @@ classifiers=[
 entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords",
                                        "buzzwords = atomisator.filters:BuzzWords",
                                        "doublons = atomisator.filters:Doublons",
-                                       "spam = atomisator.filters:Spam"]}
+                                       "spam = atomisator.filters:Spam",
+                                       "replace = atomisator.filters:Replace"]}
 
 setup(name='atomisator.filters',
       version=version,

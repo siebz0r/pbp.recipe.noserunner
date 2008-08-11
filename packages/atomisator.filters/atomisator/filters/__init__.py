@@ -36,6 +36,26 @@ class StopWords(FileFilter):
             return None
         return entry
 
+class ReplaceWords(FileFilter):
+   
+    def _replace(self, entry, path):
+        for w, exp, repl in self._read_file(path):
+            for key in ('summary', 'title'):
+                entry[key] = exp.sub(repl, entry[key])
+        return entry
+
+    def _comp(self, line):
+        line = line.strip()
+        spl = line.split(':::')
+        if len(spl) == 1:
+            exp, repl = spl[0], ''
+        else:
+            exp, repl = spl
+        return exp, re.compile(exp, options), repl
+
+    def __call__(self, entry, entries, path):
+        return self._replace(entry, path) 
+
 class BuzzWords(FileFilter):
 
     def __call__(self, entry, entries, path):
