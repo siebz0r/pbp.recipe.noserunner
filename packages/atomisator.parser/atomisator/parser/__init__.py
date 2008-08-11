@@ -3,6 +3,16 @@ from itertools import islice
 from itertools import imap
 
 class Parser(object):
+    """
+    Returns entries of an RSS or Atom feed.
+
+    Usage:
+    
+        [atomisator]
+        sources =     
+            rss url
+
+    """
 
     def _filter_entry(self, entry):
         entry['links'] = [link['href'] for link in entry['links']]
@@ -12,7 +22,6 @@ class Parser(object):
         return entry
 
     def __call__(self, url, size=-1):
-        """Returns entries of the feed."""
         result = feedparse(url)
         if size != -1:
             return islice(imap(self._filter_entry, 

@@ -129,6 +129,10 @@ def _parse_options():
                       action="store_true",
                       help="List all filters.", default=False)
    
+    parser.add_option("-p", "--list-plugins", dest="plugins",
+                      action="store_true",
+                      help="List all plugins.", default=False)
+
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
                       help="Generates feed.", default=False)
@@ -156,12 +160,23 @@ def _parse_options():
     return options
 
 def list_plugins():
+    for p in iter_entry_points('atomisator.plugins'):
+        print p.name
+        d = p.load().__doc__
+        if d is not None:
+            print d
+            
+def list_filters():
     for key, ob in _filters.items():
         print '%s: %s' % (key, ob.__doc__)
 
 def atomisator():
     options = _parse_options()
     if options.filters:
+        list_filters()
+        sys.exit(0)
+
+    if options.plugins:
         list_plugins()
         sys.exit(0)
 

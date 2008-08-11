@@ -33,8 +33,9 @@ setup(name='atomisator.main',
           'setuptools',
           'atomisator.db>=0.2.4',
           'atomisator.feed>=0.2.5',
-          # default plugin
+          # default plugins
           'atomisator.parser>=0.2.2',
+          'atomisator.plugins',
           # default filters
           'atomisator.filters>=0.1.2'
       ],
