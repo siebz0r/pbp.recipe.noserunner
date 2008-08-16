@@ -37,8 +37,12 @@ class HTML(object):
 
     """
 
-    def __call__(self, url, expression=SINGLE):
+    def __call__(self, url, *expression):
+        expression = ' '.join(expression)
+        if expression == '':
+            expression = SINGLE
         content = urlopen(url).read()
+        content = content.decode('utf8')
         page_title = re.findall(TITLE, content, options)
         page_title = len(page_title) > 0 and page_title[0] or ''
         def _entry(e):
@@ -47,11 +51,13 @@ class HTML(object):
                 return None
             if len(groups) == 1:
                 return {'summary': groups[0].strip(), 
-                        'title': page_title}
+                        'title': page_title,
+                        'url': url}
             
             return {'summary': groups[1].strip(), 
-                    'title': groups[0].strip()}
-        
+                    'title': groups[0].strip(), 
+                    'url': url}
+
         return [_entry(e) for e in 
                 re.finditer(expression, content, options)]
         
