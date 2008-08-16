@@ -37,7 +37,9 @@ setup(name='atomisator.main',
           'atomisator.parser>=0.2.2',
           'atomisator.plugins',
           # default filters
-          'atomisator.filters>=0.1.2'
+          'atomisator.filters>=0.1.2',
+          # default enhancers
+          'atomisator.enhancers'
       ],
       tests_require=['nose'],
       test_suite='atomisator.main.tests.test_docs.test_suite',

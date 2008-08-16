@@ -95,14 +95,25 @@ def load_feeds(conf):
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
 
+_es = iter_entry_points('atomisator.enhancers')
+_enhancers = dict([(e.name, e.load()()) for e in _es])
+
+def _select_enhancers(enhancers):
+    res = []
+    for name, args in enhancers:
+        if name in _enhancers:
+            res.append((_enhancers[name], args))
+    return res
+
 def generate_feed(conf):
     """Creates the meta-feed."""
     if conf is None:
         conf = _get_opt()
     parser = AtomisatorConfig(conf)
     create_session(parser.database)
-    _log('Writing feed in %s' % parser.file) 
-    feed = generate(parser.title, parser.description, parser.link)
+    _log('Writing feed in %s' % parser.file)
+    enhancers = _select_enhancers(parser.enhancers)
+    feed = generate(parser.title, parser.description, parser.link, enhancers)
     
     f = open(parser.file, 'w')
     try:

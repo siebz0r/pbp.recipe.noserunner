@@ -41,6 +41,16 @@ class AtomisatorConfig(ConfigParser):
         return [_args(s) for s in filters if s.strip() != '']
     filters = property(_get_filters)
 
+    def _get_enhancers(self):
+        if not self.has_option('atomisator', 'enhancers'):
+            return []
+        enhancers = self.get('atomisator', 'enhancers').split('\n')
+        def _args(p):
+            p = p.split()
+            return p[0].strip(), tuple([p.strip() 
+                                        for p in p[1:]])
+        return [_args(e) for e in enhancers if e.strip() != '']
+    enhancers = property(_get_enhancers)
 
     def _get_simple_field(self, field):
         return self.get('atomisator', field).strip()
