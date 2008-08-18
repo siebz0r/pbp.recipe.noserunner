@@ -1,7 +1,3 @@
-include HISTORY.txt
 include README.txt
-include CHANGES.txt
-include CONTRIBUTORS.txt
 include LICENSE
-recursive-include atomisator/feed *.txt *.py
-recursive-include atomisator/feed *.tmpl
+recursive-include atomisator/feed *.txt *.py *.tmpl
