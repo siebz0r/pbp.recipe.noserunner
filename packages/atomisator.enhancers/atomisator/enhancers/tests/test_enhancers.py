@@ -40,7 +40,17 @@ def test_digg():
     assert '<li>' in entry.summary
 
 def test_related():
-    
-    r = RelatedEntries()
+   
+    class E:
+        summary = 'my summary'
 
+    class E2:
+        summary = 'other summary'
+
+    r = RelatedEntries()
+    entry = E()
+    entries = [E2(),]
+    entry = r(entry, entries)
+    
+    assert_equals(entry.summary, 'my summary')
 
