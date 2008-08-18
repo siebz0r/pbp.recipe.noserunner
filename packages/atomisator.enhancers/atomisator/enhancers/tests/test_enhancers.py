@@ -1,4 +1,5 @@
 from atomisator.enhancers import DiggComments
+from atomisator.enhancers import RelatedEntries
 from atomisator.enhancers.digg import Digg
 
 from nose.tools import *
@@ -35,6 +36,11 @@ def test_digg():
         summary = 'xxx'
     entry =  E()
     d = DiggComments()
-    entry = d(entry)
+    entry = d(entry, [])
     assert '<li>' in entry.summary
+
+def test_related():
+    
+    r = RelatedEntries()
+
 

@@ -19,9 +19,9 @@ class DiggComments(object):
     has been digged. If so, displays
     user comments at the end of the entry.
     """
-    def __call__(self, entry):
+    def __call__(self, entry, entries, digg_id='http://example.com'):
         url = entry.url 
-        server = digg.Digg('http://example.com')
+        server = digg.Digg(digg_id)
         try:
             stories = server.getStories(link=url)
         except (digg.Digg.Error, IOError):
@@ -49,5 +49,7 @@ class RelatedEntries(object):
         - its Leventstein distance is small
     """
     def __call__(self, entry, entries):
-        pass
+        # XXX todo
+        return entry
+
 

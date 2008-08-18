@@ -22,13 +22,16 @@ def generate(title, description, link, enhancers=None, size=50):
             if isinstance(value, unicode):
                 entry[key] = value.encode('utf8')
         return entry
-    
+  
+    # see if this is the best way to load entries
+    entries = get_entries()
+
     def _enhance(entry):
         for e, args in enhancers:
-            entry = e(entry, *args)
+            entry = e(entry, entries, *args)
         return entry
 
-    entries = [_str(_enhance(e)) for e in get_entries(size=size)]
+    entries = [_str(_enhance(e)) for e in entries[:size]]
     data = {'entries': entries, 
             'channel': {'title': title, 'description': description,
                         'link': link}}
