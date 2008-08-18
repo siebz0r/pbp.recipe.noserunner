@@ -107,8 +107,8 @@ class Spam(object):
 
 class AutoTag(FileFilter):
     """
-    Automatically tag entries when words from a file
-    are found into this entry.
+    Automatically tag entries when words or regular expression
+    from a file are found into this entry.
     """ 
 
     def __call__(self, entry, entries, path):
