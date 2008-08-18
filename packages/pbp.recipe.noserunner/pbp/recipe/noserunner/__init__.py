@@ -33,7 +33,8 @@ class Recipe(object):
 
         defaults = options.get('defaults', '').strip()
         if defaults:
-            defaults = '(%s) + ' % defaults
+            defaults = ['nose'] + defaults.split()
+            defaults = "argv=%s" % defaults
 
         wd = options.get('working-directory', '')
         if not wd:

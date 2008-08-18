@@ -2,6 +2,7 @@
 ==================
 
 - Fixed change directory [Tarek Ziade]
+- Fixed defaults argument [Tarek Ziade]
 
 0.1.1 (2008-06-21)
 ==================
