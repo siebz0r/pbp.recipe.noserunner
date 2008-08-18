@@ -26,7 +26,7 @@ class Recipe(object):
     def install(self):
         options = self.options
         dest = []
-        eggs, ws = self.egg.working_set(('zope.testing', ))
+        eggs, ws = self.egg.working_set(('nose', ))
 
         test_paths = [ws.find(pkg_resources.Requirement.parse(spec)).location
                       for spec in eggs]
