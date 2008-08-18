@@ -67,7 +67,7 @@ class RelatedEntries(object):
         if related != []:
             related = [LI % r.url for r in related]
             related = TPML % ('Related', '\n'.join(related))
-        entry.summary = entry.summary + related
+            entry.summary = entry.summary + related
         return entry
 
 
