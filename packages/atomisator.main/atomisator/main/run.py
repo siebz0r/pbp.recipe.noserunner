@@ -144,6 +144,10 @@ def _parse_options():
                       action="store_true",
                       help="List all plugins.", default=False)
 
+    parser.add_option("-e", "--list-enhancers", dest="enhancers",
+                      action="store_true",
+                      help="List all enhancers.", default=False)
+
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
                       help="Generates feed.", default=False)
@@ -181,6 +185,10 @@ def list_filters():
     for key, ob in _filters.items():
         print '%s: %s' % (key, ob.__doc__)
 
+def list_enhancers():
+    for key, ob in _enhancers.items():
+        print '%s: %s' % (key, ob.__doc__)
+
 def atomisator():
     options = _parse_options()
     if options.filters:
@@ -189,6 +197,10 @@ def atomisator():
 
     if options.plugins:
         list_plugins()
+        sys.exit(0)
+
+    if options.enhancers:
+        list_enhancers()
         sys.exit(0)
 
     if options.create is not None:

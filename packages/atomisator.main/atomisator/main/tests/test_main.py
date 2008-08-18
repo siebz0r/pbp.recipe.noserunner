@@ -7,6 +7,7 @@ from atomisator.main.run import CONF_TMPL, _get_plugin
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.run import generate_config 
 from atomisator.main.run import load_feeds
+from atomisator.main.run import _enhancers, _filters
 
 saved = None
 
@@ -110,4 +111,10 @@ def test_get_plugins():
     
     assert_equals(_get_plugin('xxxx'), None)
     assert_equals(_get_plugin('rss'), Parser)
+
+def test_filters():
+    assert 'doublons' in _filters
+
+def test_enhancers():
+    assert 'digg' in _enhancers
 

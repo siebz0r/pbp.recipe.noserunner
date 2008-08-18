@@ -7,12 +7,13 @@ a few function to get the configuration info::
 
     >>> from atomisator.main.config import AtomisatorConfig
     >>> parser = AtomisatorConfig(test_conf)
-    >>> feeds = parser.feeds
+    >>> feeds = parser.sources
     >>> feeds.sort()
     >>> feeds
-    ['...digg.xml', '...pp.xml', '...tarek.xml']
+    [('rss', ('...digg.xml',)), ('rss', ('...pp.xml',)),
+     ('rss', ('...tarek.xml',))]
 
     >>> parser.database
-    'sqlite:///tests/atomisator.db'
+    'sqlite:///...tests/atomisator.db'
 
 
