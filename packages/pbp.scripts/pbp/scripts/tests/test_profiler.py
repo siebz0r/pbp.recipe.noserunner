@@ -16,7 +16,7 @@ def test_profile():
     res = profiler.stats['tested']
     
     assert res['stones'] < 200.0
-    assert_equals(res['memory'], 496)
+    assert res['memory'] < 1000
 
 def test_memory_grow():
     
@@ -35,7 +35,7 @@ def test_memory_grow():
     def unstable():
         growing.append(stable())
 
-    assert profiler.memory_grow(stable) <= 0
+    assert profiler.memory_grow(stable) <= 500
     assert profiler.memory_grow(unstable) > 850000
     
 
