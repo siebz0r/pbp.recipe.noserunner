@@ -1,2 +1,4 @@
+digg: add numbers of diggs
+
 filter to add a "related reads"+google search footer
 
