@@ -59,6 +59,8 @@ class RelatedEntries(object):
             return False
 
         for e in entries:
+            if e.id == entry.id:
+                continue
             # by tags or links
             if _inside(e.tags, tags) or _inside(e.links, links):
 
