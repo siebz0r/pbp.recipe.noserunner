@@ -105,3 +105,19 @@ class Spam(object):
             return None
         return entry
 
+class AutoTag(FileFilter):
+    """
+    Automatically tag entries when words from a file
+    are found into this entry.
+    """ 
+
+    def __call__(self, entry, entries, path):
+        """Keeps entries based on keywords"""
+        w = self._match(entry, path)
+        if w is not None:
+            if 'tags' not in entry:
+                entry['tags'] = [w]
+            elif w not in entry:
+                entry['tags'].append(w)
+        return entry
+
