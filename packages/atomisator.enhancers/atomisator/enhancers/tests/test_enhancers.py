@@ -43,14 +43,21 @@ def test_related():
    
     class E:
         summary = 'my summary'
+        tags = ['one', 'two']
+        links = ['http://link/one']
+        url = 'http://example.com/one'
 
     class E2:
         summary = 'other summary'
-
+        tags = ['two', 'three']
+        url = 'http://example.com/two'
+        links = []
+    
     r = RelatedEntries()
     entry = E()
     entries = [E2(),]
     entry = r(entry, entries)
-    
-    assert_equals(entry.summary, 'my summary')
+ 
+    # common tags   
+    assert 'http://example.com/two' in entry.summary
 

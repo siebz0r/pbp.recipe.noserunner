@@ -11,7 +11,8 @@ classifiers=[
         ]
 
 entry_points = {"atomisator.enhancers": 
-                    ["digg = atomisator.enhancers:DiggComments"]}
+                    ["digg = atomisator.enhancers:DiggComments",
+                     "related = atomisator.enhancers:RelatedEntries"]}
 
 setup(name='atomisator.enhancers',
       version=version,

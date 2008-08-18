@@ -1,8 +1,8 @@
 import digg
 
-COMMENTS = """\
+TPML = """\
 <div>
-  <strong>Digg comments</strong>
+  <strong>%s</strong>
   <ul>
     %s
   </ul>
@@ -31,8 +31,8 @@ class DiggComments(object):
         id_ = stories[0].id
         comments = server.getStoriesComments(id_)
         comments = [LI % c.content for c in comments]
-        entry.summary = entry.summary + COMMENTS % '\n'.join(comments)
-
+        comments = TPML % ('Digg comments', '\n'.join(comments))
+        entry.summary = entry.summary + comments
         return entry
 
 class RelatedEntries(object):
@@ -44,12 +44,30 @@ class RelatedEntries(object):
     One entry relates to another one if it has at least
     one of this common pattern:
     
-        - two common buzzwords or tags
-        - links to the same page
-        - its Leventstein distance is small
+        - two common tags or link
+        - links to the same page            XXX TODO
+        - its Leventstein distance is small XXX TODO
     """
     def __call__(self, entry, entries):
-        # XXX todo
+        related = []
+        tags = set(entry.tags)
+        links = set(entry.links)       
+        def _inside(elements, sources):
+            for e in elements:
+                if e in sources:
+                    return True
+            return False
+
+        for e in entries:
+            # by tags or links
+            if _inside(e.tags, tags) or _inside(e.links, links):
+
+                related.append(e)
+
+        if related != []:
+            related = [LI % r.url for r in related]
+            related = TPML % ('Related', '\n'.join(related))
+        entry.summary = entry.summary + related
         return entry
 
 
