@@ -24,7 +24,7 @@ class DiggComments(object):
         server = digg.Digg('http://example.com')
         try:
             stories = server.getStories(link=url)
-        except digg.Digg.Error:
+        except (digg.Digg.Error, IOError):
             return entry
         if stories == []:
             return entry
