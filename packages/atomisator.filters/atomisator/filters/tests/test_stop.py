@@ -1,10 +1,12 @@
 import os
 from nose.tools import *
+from cStringIO import StringIO
 
 from atomisator.filters import StopWords
 from atomisator.filters import BuzzWords
 from atomisator.filters import Doublons
 from atomisator.filters import ReplaceWords
+from atomisator.filters import RedditFollower
 
 def test_stop():
     stopfile = os.path.join(os.path.dirname(__file__), 
@@ -76,4 +78,25 @@ def test_replace():
     res = rw(entry, [], replfile)
     assert_equals(res['title'], 'the tixxxtle')
     assert_equals(res['summary'], 'info sp ')
+
+import urllib2
+
+def setupurl():
+    urllib2.old = urllib2.urlopen
+    def open(*args):
+        return StringIO('<html><body>yeah</body></html>')
+    urllib2.urlopen = open
+
+def teardownurl():
+    urllib2.urlopen = urllib2.old
+    del urllib2.old
+
+@with_setup(setupurl, teardownurl)
+def test_reddit():
+    red = RedditFollower()
+    e = {'summary': 
+         '<a href="http://link">[link]</a> <a href="xxx">[comments]</a>'}
+    entry = red(e, [])
+
+    assert 'yeah' in entry['summary']
 

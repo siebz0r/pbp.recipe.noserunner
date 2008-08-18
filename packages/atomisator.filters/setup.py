@@ -14,7 +14,8 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "doublons = atomisator.filters:Doublons",
                                        "spam = atomisator.filters:Spam",
                                        "replace = atomisator.filters:ReplaceWords",
-                                       "autotag = atomisator.filters:AutoTag"]}
+                                       "autotag = atomisator.filters:AutoTag",
+                                       "reddit = atomisator.filters:RedditFollower"]}
 
 setup(name='atomisator.filters',
       version=version,

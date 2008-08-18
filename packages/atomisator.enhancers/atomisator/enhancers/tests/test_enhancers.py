@@ -42,12 +42,14 @@ def test_digg():
 def test_related():
    
     class E:
+        id = u'1'
         summary = 'my summary'
         tags = ['one', 'two']
         links = ['http://link/one']
         url = 'http://example.com/one'
 
     class E2:
+        id = u'2'
         summary = 'other summary'
         tags = ['two', 'three']
         url = 'http://example.com/two'
