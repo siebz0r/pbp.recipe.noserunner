@@ -12,6 +12,7 @@ from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
 from atomisator.feed import generate
+from atomisator.db.session import commit
 
 def _log(msg):
     print msg
@@ -73,6 +74,10 @@ def load_feeds(conf):
     parser = AtomisatorConfig(conf)
     create_session(parser.database)
     count = 0
+
+    # initial entries, see if this call is optimal
+    existing_entries = get_entries().all()
+
     for plugin, args in parser.sources:
         # check if the plugin is available
         pl = _get_plugin(plugin)
@@ -86,16 +91,17 @@ def load_feeds(conf):
         filter_chain = set([(_filters[f], args) 
                              for f in parser.filters if f in _filters])
        
-        entries = get_entries()
         for entry in pl()(*args):
-            entry = _apply_filters(entry, entries, filter_chain)
+            entry = _apply_filters(entry, existing_entries, filter_chain)
             if entry is None:
                 continue
-            create_entry(entry)
+            id_, new_entry = create_entry(entry)
             count += 1
             scount += 1
+            existing_entries.append(new_entry)
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
+    commit()
 
 _es = iter_entry_points('atomisator.enhancers')
 _enhancers = dict([(e.name, e.load()()) for e in _es])

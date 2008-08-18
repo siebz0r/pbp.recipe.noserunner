@@ -18,7 +18,7 @@ Let's create an entry::
     ...          'title': 'Python 2.6alpha1 and 3.0alpha3 released',
     ...          'links': ['http://www.python.org'],
     ...          'tags': ['cool', 'fun']}
-    >>> id_ = create_entry(entry)
+    >>> id_, e = create_entry(entry)
     >>> type(id_)
     <type 'int'>
 

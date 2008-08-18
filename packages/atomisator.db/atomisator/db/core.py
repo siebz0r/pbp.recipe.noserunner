@@ -6,7 +6,7 @@ from atomisator.db.mappers import Entry
 from atomisator.db import session 
 from atomisator.db.mappers import Entry
 
-def create_entry(data):
+def create_entry(data, commit=True):
     """Creates an entry in the db."""
     entry_args = {}
     for key, value in data.items():
@@ -27,8 +27,9 @@ def create_entry(data):
         new.add_tags(data['tags'])
 
     session.save(new)
-    session.commit()
-    return new.id
+    if commit:
+        session.commit()
+    return new.id, new
 
 def get_entries(size=None, **kw):
     """Returns entries"""
