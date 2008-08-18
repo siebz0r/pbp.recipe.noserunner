@@ -4,6 +4,9 @@ sources =
     rss     %(test_dir)s/digg.xml
     rss     %(test_dir)s/tarek.xml
     rss     %(test_dir)s/pp.xml
+    rss     %(test_dir)s/digg.xml
+    rss     %(test_dir)s/tarek.xml
+    rss     %(test_dir)s/pp.xml
 
 database = sqlite:///%(test_dir)s/atomisator.db
 
@@ -13,8 +16,15 @@ description = My feed
 link = http://link
 
 filters =
-   stopwords    %(test_dir)s/stopwords.txt            
-   buzzwords    %(test_dir)s/buzzwords.txt
+    spam
+    stopwords    %(test_dir)s/stopwords.txt            
+    doublons
+    buzzwords    %(test_dir)s/buzzwords.txt
+    autotags     %(test_dir)s/buzzwords.txt   
+
+enhancers =
+    related
+    digg
 
 [plugins]
 

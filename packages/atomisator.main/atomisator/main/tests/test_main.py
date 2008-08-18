@@ -2,11 +2,12 @@ import sys
 import os
 
 from nose.tools import with_setup, assert_equals
+
 from atomisator.main.run import atomisator, _parse_options
 from atomisator.main.run import CONF_TMPL, _get_plugin 
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.run import generate_config 
-from atomisator.main.run import load_feeds
+from atomisator.main.run import load_feeds, generate_feed
 from atomisator.main.run import _enhancers, _filters
 
 saved = None
@@ -83,6 +84,10 @@ def tear_conf():
 @with_setup(set_conf, tear_conf)
 def test_load_feeds():
     load_feeds(test_conf)
+
+@with_setup(set_conf, tear_conf)
+def test_generate_feed():
+    generate_feed(test_conf)
 
 @with_setup(set_conf, tear_conf)
 def test_config():

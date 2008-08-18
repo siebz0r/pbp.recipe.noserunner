@@ -95,13 +95,13 @@ def load_feeds(conf):
             entry = _apply_filters(entry, existing_entries, filter_chain)
             if entry is None:
                 continue
-            id_, new_entry = create_entry(entry)
+            id_, new_entry = create_entry(entry, commit=False)
             count += 1
             scount += 1
             existing_entries.append(new_entry)
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
-    commit()
+    commit()    # final commit
 
 _es = iter_entry_points('atomisator.enhancers')
 _enhancers = dict([(e.name, e.load()()) for e in _es])
