@@ -57,8 +57,18 @@ def test_related():
     
     r = RelatedEntries()
     entry = E()
-    entries = [E2(),]
-    entry = r(entry, entries)
+    entries = [E(), E2()]
+    r.prepare(entries)
+    
+    wanted = ['one', 'three', 'two']
+    have = r._tags.keys()
+    have.sort()
+    assert_equals(wanted, have)
+    assert_equals([e.id for e in r._tags['two']], [u'1', u'2'])
+    assert_equals([e.id for e in r._tags['three']], [u'2'])
+    assert_equals([e.id for e in r._tags['one']], [u'1'])
+
+    entry = r(entry)
  
     # common tags   
     assert 'http://example.com/two' in entry.summary

@@ -15,7 +15,7 @@ def test_profile():
     # let's check what we got
     res = profiler.stats['tested']
     
-    assert res['stones'] < 200.0
+    assert res['stones']< 600
     assert res['memory'] < 1000
 
 def test_memory_grow():

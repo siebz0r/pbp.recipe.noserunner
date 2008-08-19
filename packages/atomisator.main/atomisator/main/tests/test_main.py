@@ -80,6 +80,9 @@ def set_conf():
 def tear_conf():
     if os.path.exists(test_conf):
         os.remove(test_conf)
+    xml = os.path.join(test_dir, 'atomisator.xml')
+    if os.path.exists(xml):
+        os.remove(xml)
 
 @with_setup(set_conf, tear_conf)
 def test_load_feeds():
@@ -96,8 +99,12 @@ def test_config():
     sources.sort()
     dir = os.path.dirname(test_conf)
     wanted = [('rss', ('%s/digg.xml' % dir,)), 
+              ('rss', ('%s/digg.xml' % dir,)), 
               ('rss', ('%s/pp.xml' % dir,)), 
+              ('rss', ('%s/pp.xml' % dir,)), 
+              ('rss', ('%s/tarek.xml' % dir,)),
               ('rss', ('%s/tarek.xml' % dir,))]
+
 
     assert_equals(sources, wanted)
     wanted = os.path.join(dir, 'atomisator.db')
@@ -108,7 +115,9 @@ def test_config():
     assert_equals(parser.get_plugin('xml'), 
                   'atomisator.plugin.xml')
 
-    assert_equals(parser.filters[0][0], 'stopwords')
+    f = [f[0] for f in parser.filters]
+    f.sort()
+    assert_equals(f, ['autotags', 'buzzwords', 'doublons', 'spam', 'stopwords'])
 
 def test_get_plugins():
     # see if we get the rss and atom plugin

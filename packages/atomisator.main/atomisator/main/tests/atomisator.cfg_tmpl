@@ -10,7 +10,7 @@ sources =
 
 database = sqlite:///%(test_dir)s/atomisator.db
 
-file = atomisator.xml
+file = %(test_dir)s/atomisator.xml
 title = meta
 description = My feed
 link = http://link

@@ -11,34 +11,22 @@ tmpl = os.path.join(os.path.dirname(__file__), 'rss2.tmpl')
 
 def generate(title, description, link, enhancers=None, size=50):
     """Generates items."""
-    keys = set(entry.c.keys() + ['links', 'tags'])
-
     if enhancers is None:
         enhancers = [] 
     
-    # crappy transformers, get ridd of it
-    def _dict(new_entry):
-        res = {}
-        for key in keys:
-            res[key] = getattr(new_entry, key)
-        return res
-
-    def _str(entry):
-        entry = _dict(entry)
-        for key, value in entry.items():
-            if isinstance(value, unicode):
-                entry[key] = value.encode('utf8')
-        return entry
-  
     # see if this is the best way to load entries
-    entries = get_entries()
-    
+    entries = get_entries().all()
+   
+    # preparing entries
+    for e, args in enhancers:
+        if hasattr(e, 'prepare'):
+            e.prepare(entries)
+
     def _enhance(entry):
         for e, args in enhancers:
-            entry = e(entry, entries, *args)
+            entry = e(entry, *args)
         return entry
 
-    #entries = [_str(_enhance(e)) for e in entries[:size]]
     entries = [_enhance(e) for e in entries[:size]] 
 
     class Encode(Cheetah.Filters.Filter):
