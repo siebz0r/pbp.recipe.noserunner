@@ -1,8 +1,6 @@
 from sqlalchemy import desc  
+from sqlalchemy.orm import eagerload
 
-from atomisator.db import session 
-from atomisator.db.mappers import entry
-from atomisator.db.mappers import Entry
 from atomisator.db import session 
 from atomisator.db.mappers import Entry
 
@@ -16,7 +14,7 @@ def create_entry(data, commit=True):
             entry_args['date'] = data['published']
         elif key in ('title_detail', 'summary_detail'):
             entry_args[key] = value['value'] 
-        elif key in entry.c.keys() and key != 'id':
+        elif key in Entry.__table__.c.keys() and key != 'id':
             entry_args[key] = value
 
     new = Entry(**entry_args)
@@ -37,6 +35,8 @@ def get_entries(size=None, **kw):
         query = session.query(Entry)
     else:
         query = session.query(Entry).filter_by(**kw)
+
+    query = query.options(eagerload('links'), eagerload('tags'))
     query = query.order_by(desc(Entry.date))
     if size is not None:
         query = query.limit(size)

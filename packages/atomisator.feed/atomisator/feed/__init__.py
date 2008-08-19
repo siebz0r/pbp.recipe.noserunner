@@ -5,7 +5,6 @@ import os
 from cStringIO import StringIO
 
 from atomisator.db.core import get_entries
-from atomisator.db.mappers import entry
 
 tmpl = os.path.join(os.path.dirname(__file__), 'rss2.tmpl')
 
@@ -14,9 +13,8 @@ def generate(title, description, link, enhancers=None, size=50):
     if enhancers is None:
         enhancers = [] 
     
-    # see if this is the best way to load entries
     entries = get_entries().all()
-   
+    
     # preparing entries
     for e, args in enhancers:
         if hasattr(e, 'prepare'):

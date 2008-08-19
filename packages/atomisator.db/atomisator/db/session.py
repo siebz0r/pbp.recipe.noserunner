@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from atomisator.db.mappers import metadata
+from atomisator.db.mappers import Base 
+
+metadata = Base.metadata
 
 session = None
 

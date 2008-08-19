@@ -54,7 +54,8 @@ setup(name='pbp.skels',
           'setuptools',
           # -*- Extra requirements: -*-
           'PasteScript',
-          'Cheetah'
+          'Cheetah',
+          'zope.testing'
       ],
       entry_points="""
       # -*- Entry points: -*-
