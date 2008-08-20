@@ -86,6 +86,10 @@ def load_feeds(conf):
     # initial entries, see if this call is optimal
     existing_entries = get_entries().all()
 
+    filter_chain = set([(_filters[name], args) 
+                        for name, args in parser.filters 
+                        if name in _filters])
+
     for reader, args in parser.sources:
         # check if the readers is available
         pl = _get_reader(reader)
@@ -96,9 +100,6 @@ def load_feeds(conf):
         _log('Reading source %s' % ' '.join(args))
         scount = 0
 
-        filter_chain = set([(_filters[f], args) 
-                             for f in parser.filters if f in _filters])
-       
         for entry in pl()(*args):
             entry = _apply_filters(entry, existing_entries, filter_chain)
             if entry is None:

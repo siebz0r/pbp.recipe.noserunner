@@ -92,7 +92,10 @@ class Doublons(object):
     
     def __call__(self, entry, entries):
         summary = self._clean(entry.get('summary', ''))
+        url = self._clean(entry.get('url', entry.get('link', '')))
         for e in entries:
+            if url == e.url:
+                return None
             if summary == self._clean(e.summary):
                 return None
         return entry

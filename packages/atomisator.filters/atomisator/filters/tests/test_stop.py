@@ -52,6 +52,7 @@ def test_doublons():
     class E:
         title = ''
         summary = ''
+        url = ''
 
     e = E()
     e.summary = 'info'
