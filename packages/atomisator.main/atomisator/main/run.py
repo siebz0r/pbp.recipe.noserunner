@@ -26,11 +26,19 @@ CONF_TMPL = """\
 # passed to the reader
 sources = 
     rss http://tarekziade.wordpress.com/atom 
+    rss http://digg.com/rss/index.xml
+
+# put here the filters you want to use
+filters =
+    doublons
+
+# put here the enhancers you want to use
+enhancers =
 
 # put here the database location
 database = sqlite:///atomisator.db
 
-# this is the file that will be generated
+# this is the filename that will be generated
 file = atomisator.xml
 
 # infos that will appear in the generated feed. 
