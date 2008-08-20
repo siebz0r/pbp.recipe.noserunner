@@ -26,7 +26,7 @@ enhancers =
     related
     digg
 
-[plugins]
+[readers]
 
-xml = atomisator.plugin.xml
+xml = atomisator.reader.xml
 

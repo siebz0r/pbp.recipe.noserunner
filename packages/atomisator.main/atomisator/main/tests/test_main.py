@@ -4,7 +4,7 @@ import os
 from nose.tools import with_setup, assert_equals
 
 from atomisator.main.run import atomisator, _parse_options
-from atomisator.main.run import CONF_TMPL, _get_plugin 
+from atomisator.main.run import CONF_TMPL, _get_reader 
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.run import generate_config 
 from atomisator.main.run import load_feeds, generate_feed
@@ -110,21 +110,21 @@ def test_config():
     wanted = os.path.join(dir, 'atomisator.db')
     assert_equals(parser.database, 'sqlite:///%s' % wanted)
 
-    # getting plugins
-    assert_equals(parser.get_plugin('xxx'), None)
-    assert_equals(parser.get_plugin('xml'), 
-                  'atomisator.plugin.xml')
+    # getting readers
+    assert_equals(parser.get_reader('xxx'), None)
+    assert_equals(parser.get_reader('xml'), 
+                  'atomisator.reader.xml')
 
     f = [f[0] for f in parser.filters]
     f.sort()
     assert_equals(f, ['autotags', 'buzzwords', 'doublons', 'spam', 'stopwords'])
 
-def test_get_plugins():
+def test_get_readers():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser
     
-    assert_equals(_get_plugin('xxxx'), None)
-    assert_equals(_get_plugin('rss'), Parser)
+    assert_equals(_get_reader('xxxx'), None)
+    assert_equals(_get_reader('rss'), Parser)
 
 def test_filters():
     assert 'doublons' in _filters
