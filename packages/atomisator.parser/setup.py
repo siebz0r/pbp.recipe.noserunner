@@ -9,7 +9,7 @@ classifiers=[
         ]
 
 entry_point = 'atomisator.parser:Parser'
-entry_points = {"atomisator.plugins": ["rss = %s" % entry_point]}
+entry_points = {"atomisator.readers": ["rss = %s" % entry_point]}
 
 setup(name='atomisator.parser',
       version=version,
