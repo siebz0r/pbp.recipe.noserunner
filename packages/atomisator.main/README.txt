@@ -98,7 +98,7 @@ You can also call separately the process that fills the database::
 
 In this case the feed generation will not occur. 
 
-The -g option can be used to generate the xml file on its own:
+The -g option can be used to generate the xml file on its own::
 
     $ atomisator -g -f /path/to/atomisator.cfg
 
