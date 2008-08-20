@@ -23,7 +23,7 @@ CONF_TMPL = """\
 # put here the sources you wish to process
 # the first parameter is the type of source
 # and the following parameters are the arguments
-# passed to the plugin
+# passed to the reader
 sources = 
     rss http://tarekziade.wordpress.com/atom 
 
@@ -51,13 +51,13 @@ def generate_config(path):
     _log('Default config generated at "%s."' % path)
 
 
-def _get_plugin(name):
-    plugins = list(iter_entry_points('atomisator.plugins', name))
-    if len(plugins) == 0:
+def _get_reader(name):
+    readers = list(iter_entry_points('atomisator.readers', name))
+    if len(readers) == 0:
         # not found, let's try to get it
         # not implemented yet
         return None
-    return plugins[0].load()
+    return readers[0].load()
 
 _fs = iter_entry_points('atomisator.filters')
 _filters = dict([(f.name, f.load()()) for f in _fs])
@@ -78,12 +78,12 @@ def load_feeds(conf):
     # initial entries, see if this call is optimal
     existing_entries = get_entries().all()
 
-    for plugin, args in parser.sources:
-        # check if the plugin is available
-        pl = _get_plugin(plugin)
+    for reader, args in parser.sources:
+        # check if the readers is available
+        pl = _get_reader(reader)
 
         if pl is None:
-            raise ValueError('%s plugin not found' % pl) 
+            raise ValueError('%s reader not found' % pl) 
             
         _log('Reading source %s' % ' '.join(args))
         scount = 0
@@ -148,9 +148,9 @@ def _parse_options():
                       action="store_true",
                       help="List all filters.", default=False)
    
-    parser.add_option("-p", "--list-plugins", dest="plugins",
+    parser.add_option("-p", "--list-readers", dest="readers",
                       action="store_true",
-                      help="List all plugins.", default=False)
+                      help="List all readers.", default=False)
 
     parser.add_option("-e", "--list-enhancers", dest="enhancers",
                       action="store_true",
@@ -182,8 +182,8 @@ def _parse_options():
 
     return options
 
-def list_plugins():
-    for p in iter_entry_points('atomisator.plugins'):
+def list_readers():
+    for p in iter_entry_points('atomisator.readers'):
         print p.name
         d = p.load().__doc__
         if d is not None:
@@ -203,8 +203,8 @@ def atomisator():
         list_filters()
         sys.exit(0)
 
-    if options.plugins:
-        list_plugins()
+    if options.readers:
+        list_readers()
         sys.exit(0)
 
     if options.enhancers:

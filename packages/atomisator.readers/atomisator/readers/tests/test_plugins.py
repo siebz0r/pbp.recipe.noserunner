@@ -1,7 +1,7 @@
 from nose.tools import *
 
 import os
-from atomisator.plugins import HTML 
+from atomisator.readers import HTML 
 
 def test_html():
 

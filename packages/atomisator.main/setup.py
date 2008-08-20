@@ -35,7 +35,7 @@ setup(name='atomisator.main',
           'atomisator.feed>=0.2.5',
           # default plugins
           'atomisator.parser>=0.2.2',
-          'atomisator.plugins',
+          'atomisator.readers>=0.1.2',
           # default filters
           'atomisator.filters>=0.1.2',
           # default enhancers
