@@ -28,7 +28,8 @@ setup(name='pbp.scripts',
           'guppy'
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points= {
+          "console_scripts": ["gprof2dot = pbp.scripts.gprof2dot:run_script"]
+          },
       )
+
