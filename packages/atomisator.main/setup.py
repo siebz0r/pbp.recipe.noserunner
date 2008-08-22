@@ -31,15 +31,15 @@ setup(name='atomisator.main',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'atomisator.db>=0.2.4',
-          'atomisator.feed>=0.2.5',
+          'atomisator.db>=0.2.6',
+          'atomisator.feed>=0.2.7',
           # default plugins
-          'atomisator.parser>=0.2.2',
+          'atomisator.parser>=0.2.4',
           'atomisator.readers>=0.1.1',
           # default filters
-          'atomisator.filters>=0.1.2',
+          'atomisator.filters>=0.1.5',
           # default enhancers
-          'atomisator.enhancers'
+          'atomisator.enhancers>=0.1.1'
       ],
       tests_require=['nose'],
       test_suite='atomisator.main.tests.test_docs.test_suite',
