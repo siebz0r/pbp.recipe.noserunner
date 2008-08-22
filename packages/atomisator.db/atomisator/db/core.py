@@ -10,8 +10,6 @@ def create_entry(data, commit=True):
     for key, value in data.items():
         if key == 'link':
             entry_args['url'] = value
-        elif key == 'published':
-            entry_args['date'] = data['published']
         elif key in ('title_detail', 'summary_detail'):
             entry_args[key] = value['value'] 
         elif key in Entry.__table__.c.keys() and key != 'id':
@@ -56,7 +54,7 @@ def get_entries(size=None, **kw):
         query = session.query(Entry).filter_by(**kw)
 
     query = query.options(eagerload('links'), eagerload('tags'))
-    query = query.order_by(desc(Entry.published))
+    query = query.order_by(desc(Entry.updated))
     if size is not None:
         query = query.limit(size)
     return query
