@@ -56,7 +56,7 @@ def get_entries(size=None, **kw):
         query = session.query(Entry).filter_by(**kw)
 
     query = query.options(eagerload('links'), eagerload('tags'))
-    query = query.order_by(desc(Entry.date))
+    query = query.order_by(desc(Entry.published))
     if size is not None:
         query = query.limit(size)
     return query
