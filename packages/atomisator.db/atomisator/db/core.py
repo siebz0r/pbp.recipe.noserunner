@@ -16,6 +16,25 @@ def create_entry(data, commit=True):
             entry_args[key] = value['value'] 
         elif key in Entry.__table__.c.keys() and key != 'id':
             entry_args[key] = value
+    
+    # check it the url already exists in the database
+    entries = get_entries(url=entry_args['url'])
+    if entries.count() > 0:
+        found_entry = entries.first()
+        # yes, let's check if it has been updated
+        if entry_args['updated'] == found_entry.updated:
+            return found_entry.id, found_entry
+        # updating it
+        changed = False
+        for key in Entry.__table__.c.keys():
+            if key in entry_args:
+                value = entry_args[key]
+                if getattr(found_entry, key) != value:
+                    setattr(found_entry, key, value)
+                    changed = True
+        if commit and changed:
+            session.commit()
+        return found_entry.id, found_entry
 
     new = Entry(**entry_args)
     if 'links' in data:

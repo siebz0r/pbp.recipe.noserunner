@@ -21,7 +21,7 @@ class Entry(Base):
 
     __tablename__ = 'atomisator_entry'
     id = Column(Integer, primary_key=True)
-    url = Column(String(300))
+    url = Column(String(500))
     date = Column(DateTime, default=datetime.now)
     updated = Column(DateTime, default=datetime.now)
     summary = Column(Text())
