@@ -28,3 +28,8 @@ The keys available are:
     >>> list(keys)
     ['id', 'link', 'links', 'summary', 'summary_detail', 'tags', 
      'title', 'title_detail']
+
+Dates are changed into datetime::
+
+    >>> type(entry['date'])
+    >>>

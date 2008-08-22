@@ -13,7 +13,6 @@ from sqlalchemy.orm import mapper
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relation, backref
 
-from time import strptime
 from datetime import datetime
 
 Base = declarative_base()
@@ -24,6 +23,7 @@ class Entry(Base):
     id = Column(Integer, primary_key=True)
     url = Column(String(300))
     date = Column(DateTime, default=datetime.now)
+    updated = Column(DateTime, default=datetime.now)
     summary = Column(Text())
     summary_detail = Column('summary_detail', UnicodeText())
     title = Column(UnicodeText())
@@ -39,12 +39,6 @@ class Entry(Base):
         self.summary = summary
         self.summary_detail = summary_detail
         self.title_detail = title_detail
-        if date is not None:
-            self.date = date.split('.')[0]
-            if self.date[-1] == 'Z':
-                self.date = self.date[:-1]
-            self.date = strptime(self.date, '%Y-%m-%dT%H:%M:%S')
-            self.date = datetime(*self.date[:6])
         for key, val in kw.items():
             setattr(self, key, val)
     
