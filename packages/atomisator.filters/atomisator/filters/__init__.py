@@ -85,17 +85,20 @@ class BuzzWords(FileFilter):
 
 class Doublons(object):
     """
-    Filter off entries that are already in the database.
+    Entries are unique by their url, but sometimes you can have doublons.
+    
+    This filter filters off entries that are already in the database.
+    By looking at the summaries.
+
+    XXX todo : use levensthein distance here
+
     """ 
     def _clean(self, st):
         return st.lower().strip()
     
     def __call__(self, entry, entries):
         summary = self._clean(entry.get('summary', ''))
-        url = self._clean(entry.get('url', entry.get('link', '')))
         for e in entries:
-            if url == e.url:
-                return None
             if summary == self._clean(e.summary):
                 return None
         return entry
