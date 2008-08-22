@@ -21,10 +21,10 @@ class Entry(Base):
 
     __tablename__ = 'atomisator_entry'
     id = Column(Integer, primary_key=True)
-    url = Column(String(500))
+    link = Column(Text())
     date = Column(DateTime, default=datetime.now)
     updated = Column(DateTime, default=datetime.now)
-    summary = Column(Text())
+    summary = Column(UnicodeText())
     summary_detail = Column('summary_detail', UnicodeText())
     title = Column(UnicodeText())
     title_detail = Column(UnicodeText())    
@@ -32,16 +32,29 @@ class Entry(Base):
     links = relation("Link", order_by="Link.id", backref="entry")
     tags = relation("Tag", order_by="Tag.id", backref="entry")
 
-    def __init__(self, title, url, summary='', summary_detail='',
-                 title_detail='', date=None, **kw):
-        self.title = title
-        self.url = url
-        self.summary = summary
-        self.summary_detail = summary_detail
-        self.title_detail = title_detail
-        for key, val in kw.items():
-            setattr(self, key, val)
-    
+    def __init__(self, **kw):
+        self.update(**kw)
+
+    def update(self, **kw):
+        if 'link' in kw:
+            self.link = kw['link']
+        if 'date' in kw:
+            self.date = kw['date']
+        if 'updated' in kw:
+            self.updated = kw['updated']
+        if 'summary' in kw:
+            self.summary = kw['summary']
+        if 'summary_detail' in kw:
+            self.summary_detail = kw['summary_detail']
+        if 'title_detail' in kw:
+            self.title_detail = kw['title_detail']
+        if 'title' in kw:
+            self.title = kw['title']
+        if 'links' in kw:
+            self.add_links(kw['links'])
+        if 'tags' in kw:
+            self.add_tags(kw['tags'])
+
     def add_links(self, links):
         for link in links:
             self.links.append(Link(link))

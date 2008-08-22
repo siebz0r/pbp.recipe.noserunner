@@ -6,40 +6,35 @@ from atomisator.db.mappers import Entry
 
 def create_entry(data, commit=True):
     """Creates an entry in the db."""
-    entry_args = {}
-    for key, value in data.items():
-        if key == 'link':
-            entry_args['url'] = value
-        elif key in ('title_detail', 'summary_detail'):
-            entry_args[key] = value['value'] 
-        elif key in Entry.__table__.c.keys() and key != 'id':
-            entry_args[key] = value
-    
+    link = data['link']
+
+    if 'id' in data:
+        del data['id']
+    for key in ('title_detail', 'summary_detail'):
+        if key not in data:
+            continue
+        data[key] = data[key]['value']
+
     # check it the url already exists in the database
-    entries = get_entries(url=entry_args['url'])
+    entries = get_entries(link=link)
+    
     if entries.count() > 0:
         found_entry = entries.first()
         # yes, let's check if it has been updated
-        if entry_args['updated'] == found_entry.updated:
+        if 'updated' in data and data['updated'] == found_entry.updated:
             return found_entry.id, found_entry
         # updating it
-        changed = False
-        for key in Entry.__table__.c.keys():
-            if key in entry_args:
-                value = entry_args[key]
-                if getattr(found_entry, key) != value:
-                    setattr(found_entry, key, value)
-                    changed = True
-        if commit and changed:
+        changed = found_entry.update(**data)
+        if commit: # and changed:
             session.commit()
         return found_entry.id, found_entry
+    
+    new = Entry(**data)
+    #if 'links' in data:
+    #    new.add_links(data['links'])
 
-    new = Entry(**entry_args)
-    if 'links' in data:
-        new.add_links(data['links'])
-
-    if 'tags' in data:
-        new.add_tags(data['tags'])
+    #if 'tags' in data:
+    #    new.add_tags(data['tags'])
 
     session.save(new)
     if commit:

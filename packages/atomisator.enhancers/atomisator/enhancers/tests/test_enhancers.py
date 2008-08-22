@@ -32,7 +32,7 @@ def teardown():
 def test_digg():
 
     class E:
-        url = 'http://mail.python.org/pipermail/python-dev/2006-December/070323.html'
+        link = 'http://mail.python.org/pipermail/python-dev/2006-December/070323.html'
         summary = 'xxx'
     entry =  E()
     d = DiggComments()
@@ -46,13 +46,13 @@ def test_related():
         summary = 'my summary'
         tags = ['one', 'two']
         links = ['http://link/one']
-        url = 'http://example.com/one'
+        link = 'http://example.com/one'
 
     class E2:
         id = u'2'
         summary = 'other summary'
         tags = ['two', 'three']
-        url = 'http://example.com/two'
+        link = 'http://example.com/two'
         links = []
     
     r = RelatedEntries()

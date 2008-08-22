@@ -20,10 +20,10 @@ class DiggComments(object):
     user comments at the end of the entry.
     """
     def __call__(self, entry, digg_id='http://example.com'):
-        url = entry.url 
+        link = entry.link 
         server = digg.Digg(digg_id)
         try:
-            stories = server.getStories(link=url)
+            stories = server.getStories(link=link)
         except (digg.Digg.Error, IOError):
             return entry
         if stories == []:
@@ -71,7 +71,7 @@ class RelatedEntries(object):
                         if e not in related and e.id != entry.id:
                             related.append(e)
         if related != []:
-            related = [LI % r.url for r in related]
+            related = [LI % r.link for r in related]
             related = TPML % ('Related', '\n'.join(related))
             entry.summary = entry.summary + related
         return entry
