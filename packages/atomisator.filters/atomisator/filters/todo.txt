@@ -1,0 +1,5 @@
+filter to add a "related reads"+google search footer
+
++reddit : see how we can catch the best extract from the site
++filter for delicious
+
