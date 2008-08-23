@@ -135,19 +135,63 @@ class AutoTag(FileFilter):
                     entry['tags'].append({'term': w})
         return entry
 
-re_body = re.compile(r'<body>(.*?)</body>', options)
+#re_body = re.compile(r'<body>(.*?)</body>', options)
+from BeautifulSoup import BeautifulSoup, Comment
 
-def _get_sample(link):
+valid_tags = 'p i strong b u a h1 h2 h3 pre br img'.split()
+valid_attrs = 'href src'.split()
+from sgmllib import SGMLParser
+
+class html2txt(SGMLParser):
+  def reset(self):
+    SGMLParser.reset(self)
+    self.pieces = []
+
+  def handle_data(self, text):
+    self.pieces.append(text)
+
+  def handle_entityref(self, ref):
+    if ref=='amp':
+      self.pieces.append("&")
+
+  def output(self):
+    return " ".join(self.pieces)
+
+def _clean(value, size):
+    soup = BeautifulSoup(value)
+    for comment in soup.findAll(
+        text = lambda text: isinstance(text, Comment)):
+        comment.extract()
+    for tag in soup.findAll(True):
+        if tag.name not in valid_tags:
+            tag.hidden = True
+        tag.attrs = [(attr, val) for attr, val in tag.attrs
+                    if attr in valid_attrs]
+    parser = html2txt()
+    parser.reset()
+    parser.feed(soup.body.renderContents())
+    parser.close()
+    out = parser.output().strip()
+    return out[:size] + (len(out) > size and '...' or '')
+
+def _get_sample(link, size=300):
+    charset = 'utf-8'
     try:
-        content = urllib2.urlopen(link).read()
+        page = urllib2.urlopen(link)
+        if 'content-type' in page.headers.keys():
+            content_type = page.headers['content-type'].split(';')
+            type_ = content_type[0].strip().lower()
+            if type_ not in ('text/html', 'text/plain', 'test/rst'):
+                return None, None
+            if len(content_type) > 1:
+                charset = content_type[1].split('=')[-1]
+        content = page.read()
+
     except urllib2.HTTPError:
-        return None
-    body = re_body.search(content)
-    if body is None:
-        return None
-    # see how to cut the text outside a tag
-    # to get just a sample
-    return body.groups()[0]
+        return None, None
+
+    body = _clean(content, size)
+    return body, charset
 
 class RedditFollower(object):
     """
@@ -157,7 +201,6 @@ class RedditFollower(object):
     pattern = r'<a href="(.*)">\[link\]</a> <a href=".*?">\[comments\]</a>'
 
     def __call__(self, entry, entries):
-    
         summary = entry.get('summary', '')
         link = re.search(self.pattern, summary, options) 
         if link is None:
@@ -165,8 +208,10 @@ class RedditFollower(object):
         link = link.groups()[0]
         # this is a reddit post, they are empty,
         # let's add some content
-        sample = _get_sample(link)
+        sample, encoding = _get_sample(link)
         if sample is not None:
-            entry['summary'] = sample + entry['summary']
+            extract = '<div>Extract from link :</div> <p>%s</p><br/>' % \
+                    sample.decode(encoding)            
+            entry['summary'] = extract + entry['summary']
         return entry
  

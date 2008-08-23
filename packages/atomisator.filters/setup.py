@@ -33,7 +33,7 @@ setup(name='atomisator.filters',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'BeautifulSoup',
       ],
       entry_points=entry_points,
       )

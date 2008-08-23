@@ -89,13 +89,13 @@ def load_feeds(conf):
     filter_chain = set([(_filters[name], args) 
                         for name, args in parser.filters 
                         if name in _filters])
-
     for reader, args in parser.sources:
         # check if the readers is available
         pl = _get_reader(reader)
 
         if pl is None:
-            raise ValueError('%s reader not found' % pl) 
+            raise ValueError('%s reader not found for %s' \
+                        % (pl, ' '.join(args))) 
             
         _log('Reading source %s' % ' '.join(args))
         scount = 0
