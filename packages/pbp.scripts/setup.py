@@ -30,7 +30,8 @@ setup(name='pbp.scripts',
       ],
       entry_points= {
           "console_scripts": ["gprof2dot = pbp.scripts.gprof2dot:run_script",
-                              "hotshotmain = pbp.scripts.hotshotmain:main"]
+                              "hotshotmain = pbp.scripts.hotshotmain:main",
+                              "hotshot2dot = pbp.scripts.hotshot2dot:main"]
           },
       )
 
