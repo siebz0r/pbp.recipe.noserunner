@@ -1,4 +1,5 @@
 import sys
+import os
 import hotshot.stats
 from pbp.scripts.gprof2dot import run_script
 
