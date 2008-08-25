@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
 import os
 from nose.tools import *
 from cStringIO import StringIO
@@ -6,7 +9,7 @@ from atomisator.filters import StopWords
 from atomisator.filters import BuzzWords
 from atomisator.filters import Doublons
 from atomisator.filters import ReplaceWords
-from atomisator.filters import RedditFollower
+from atomisator.filters.reddit import RedditFollower
 
 def test_stop():
     stopfile = os.path.join(os.path.dirname(__file__), 

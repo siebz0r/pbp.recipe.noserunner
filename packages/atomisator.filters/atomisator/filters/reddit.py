@@ -1,6 +1,13 @@
-from BeautifulSoup import BeautifulSoup, Comment
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
 from sgmllib import SGMLParser
+import re
+import urllib2
 
+from BeautifulSoup import BeautifulSoup, Comment
+
+options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 TAGS = ('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img')
 ATTRS = ('href', 'src', 'title')
 

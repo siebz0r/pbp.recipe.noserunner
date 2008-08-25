@@ -1,8 +1,9 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
 import re
-import urllib2
 
 _files = {}
-
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 
 class FileFilter(object):
