@@ -4,6 +4,7 @@
 from sgmllib import SGMLParser
 import re
 import urllib2
+import string
 
 from BeautifulSoup import BeautifulSoup, Comment
 
@@ -29,8 +30,11 @@ class Html2Txt(SGMLParser):
 class RedditFollower(object):
     """
     Will detect a reddit-like post and fill the summary
-    with an extract of the target page 
+    of the entry with an extract of the target page 
     by following the link.
+
+    The filter tries to pick up the best extract out
+    of the page.
     """
     pattern = r'<a href="(.*)">\[link\]</a> <a href=".*?">\[comments\]</a>'
 
@@ -44,15 +48,15 @@ class RedditFollower(object):
         link = link.groups()[0]
 
         # let's get a sample of the link
-        sample, encoding = self._get_sample(link)
+        sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:
             extract = '<div>Extract from link :</div> <p>%s</p><br/>' % \
                     sample.decode(encoding)            
             entry['summary'] = extract + entry['summary']
         return entry
  
-    def _clean(self, value, size):
-        """clean an html page"""
+    def _clean(self, value):
+        """cleans an html page."""
         soup = BeautifulSoup(value)
 
         # removes unwanted tags (security+style)
@@ -70,12 +74,55 @@ class RedditFollower(object):
         parser.reset()
         parser.feed(soup.body.renderContents())
         parser.close()
-        out = parser.output().strip()
+        return parser.output().strip()
 
-        return out[:size] + (len(out) > size and '...' or '')
+    def _words(self, data):
+        data = ''.join([w for w in data if w in string.ascii_letters+' '])
+        return [w.strip() for w in data.split()]
 
-    def _get_sample(self, link, size=300):
-        """get the page, extract part of it if it is some text"""
+    def _combos(self, lists):
+        if len(lists) == 1: 
+            return [(x,) for x in lists[0]]
+        return [(i,) + j for j in self._combos(lists[1:]) for i in lists[0]]
+
+    def _extract(self, title, content, size):
+        """will try to find the best extract"""
+        delta = size / 2.
+        lcontent = content.lower()
+
+        # finding the positions for all the words
+        def _indexes(word, content):
+            return [e.start() for e in re.finditer(word.strip(), 
+                                                   content, options)]
+        
+        # voir pour extraire un pattern
+        positions = [_indexes(w, lcontent) for w in self._words(title) 
+                     if _indexes(w, lcontent) != []]
+                
+        # creating all the combos, and calculating the
+        # amplitude for each
+        series = [(self._ampl(combo), combo) 
+                  for combo in self._combos(positions)]
+
+        # sorting, then we have the part of the text
+        # with the maximum occurences of words
+        series.sort()
+        seq = series[0][1]
+        start, end = min(seq), max(seq)
+        if end - start > size:
+            end = start + size
+            
+        return '...' + content[start:end] + '...'
+ 
+    def _ampl(self, seq):
+        return max(seq) - min(seq)
+
+    def _get_sample(self, title, link, size=300):
+        """get the page, extract part of it if it is some text.
+        
+        tries to find the words of the title, to extract 
+        the most meaningful part of the page.
+        """
         charset = 'utf-8'
         try:
             page = urllib2.urlopen(link)
@@ -91,6 +138,6 @@ class RedditFollower(object):
         except urllib2.HTTPError:
             return None, None
 
-        body = self._clean(content, size)
-        return body, charset
+        body = self._clean(content)
+        return self._extract(title, body, size), charset
 
