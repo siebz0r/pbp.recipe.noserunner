@@ -2,7 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 import urllib2
-from atomisator.filters.reddit import RedditFollower
+from atomisator.filters.followers import RedditFollower, DeliciousFollower
 from nose.tools import *
 
 DATA = """
@@ -69,5 +69,17 @@ def test_reddit():
          'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
                    ' (and more)')}
     entry = red(e, [])
+    assert 'HTTPRedirectHandler' in entry['summary']
+
+@with_setup(setupurl, teardownurl) 
+def test_delicious():
+    delicious = DeliciousFollower()
+    
+    e = {'comments': 
+            'http://delicious.com/url/45bb751bb4dd1f4a291c91cf31c43511',
+         'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
+                   ' (and more)'),
+         'link': 'http://link'}
+    entry = delicious(e, [])
     assert 'HTTPRedirectHandler' in entry['summary']
 

@@ -27,32 +27,25 @@ class Html2Txt(SGMLParser):
     def output(self):
         return ' '.join(self.pieces)
 
-class RedditFollower(object):
-    """
-    Will detect a reddit-like post and fill the summary
-    of the entry with an extract of the target page 
-    by following the link.
+class _Follower(object):
 
-    The filter tries to pick up the best extract out
-    of the page.
-    """
-    pattern = r'<a href="(.*)">\[link\]</a> <a href=".*?">\[comments\]</a>'
+    def _detect(self, entry):
+        """returns a link if detected
+        None otherwise
+        """
+        raise NotImplementedError
 
     def __call__(self, entry, entries):
-        summary = entry.get('summary', '')
-        link = re.search(self.pattern, summary, options) 
+        link = self._detect(entry)
         if link is None:
             return entry
-
-        # reddit-like detected
-        link = link.groups()[0]
 
         # let's get a sample of the link
         sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:
             extract = '<div>Extract from link :</div> <p>%s</p><br/>' % \
                     sample.decode(encoding)            
-            entry['summary'] = extract + entry['summary']
+            entry['summary'] = extract + entry.get('summary', '')
         return entry
  
     def _clean(self, value):
@@ -87,7 +80,6 @@ class RedditFollower(object):
 
     def _extract(self, title, content, size):
         """will try to find the best extract"""
-        delta = size / 2.
         lcontent = content.lower()
 
         # finding the positions for all the words
@@ -101,22 +93,18 @@ class RedditFollower(object):
                 
         # creating all the combos, and calculating the
         # amplitude for each
-        series = [(self._ampl(combo), combo) 
-                  for combo in self._combos(positions)]
+        # keeping the smallest one
+        def _ampl(seq):
+            start, end = min(seq), max(seq)
+            return end-start, start, end
 
-        # sorting, then we have the part of the text
-        # with the maximum occurences of words
-        series.sort()
-        seq = series[0][1]
-        start, end = min(seq), max(seq)
+        combos = sorted([_ampl(c) for c in self._combos(positions)])
+        ampl, start, end = combos[0]
         if end - start > size:
             end = start + size
             
         return '...' + content[start:end] + '...'
  
-    def _ampl(self, seq):
-        return max(seq) - min(seq)
-
     def _get_sample(self, title, link, size=300):
         """get the page, extract part of it if it is some text.
         
@@ -140,4 +128,40 @@ class RedditFollower(object):
 
         body = self._clean(content)
         return self._extract(title, body, size), charset
+
+class RedditFollower(_Follower):
+    """
+    Will detect a reddit-like post and fill the summary
+    of the entry with an extract of the target page 
+    by following the link.
+
+    The filter tries to pick up the best extract out
+    of the page.
+    """
+    pattern = r'<a href="(.*)">\[link\]</a> <a href=".*?">\[comments\]</a>'
+
+    def _detect(self, entry):
+        summary = entry.get('summary', '')
+
+        link = re.search(self.pattern, summary, options) 
+        if link is None:
+            return None
+
+        # reddit-like detected
+        return link.groups()[0]
+
+class DeliciousFollower(_Follower):
+    """
+    Will detect a delicious-like post and fill the summary
+    of the entry with an extract of the target page 
+    by following the link.
+
+    The filter tries to pick up the best extract out
+    of the page.
+    """
+    def _detect(self, entry):
+        comments = entry.get('comments', '')
+        if not comments.startswith('http://delicious.com/url/'):
+            return None
+        return entry['link']
 
