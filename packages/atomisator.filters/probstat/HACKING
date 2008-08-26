@@ -1,0 +1,27 @@
+I use a full screen emacs window, so the lines are probably longer than you
+would like.
+
+The algorithms are all from GPL'd or public domain source,
+originals are under the gsl/ directory if I have them.
+
+stats_module.h has a few #defines
+
+BASETYPE is the kind of item you are going to return a list of
+for the python bindings, this is PyObject *
+BASETYPE_L defines an array of BASETYPE (PyObject **)
+BASETYPE_LL is for a two-dimensional array of BASETYPE (PyObject ***)
+
+submitted patches are copyright me and released under the GPL
+I'm using GPL version 2, no future versions automatically apply
+in case RMS goes [more] insane.
+
+CVS but not the tarball
+* none, 0.912 pushes CVS changes into the release
+
+TODO
+* Perl XS bindings!
+
+I have some perl module wrappers that are compatible with Inline::C but
+I haven't tested them thourougly, and they only have the basic functionality
+(no slices, etc).  If you would like to improve them, or just use them
+drop me an email.

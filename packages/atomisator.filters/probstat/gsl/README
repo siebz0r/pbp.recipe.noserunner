@@ -1,0 +1,12 @@
+This is a copy of code from the GNU Scientific Library
+(http://sources.redhat.com/gsl/)
+
+It was a reference for the 2nd generation of algos I
+used in permutation & combination. (The first one
+I wrote, they sucked).  It may still be the current
+implemenation.
+
+Use these, or download and read the gsl sources if
+you want to know what is going on and my code isn't
+commented well enough.
+

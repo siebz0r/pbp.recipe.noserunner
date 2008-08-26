@@ -2,6 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 from sgmllib import SGMLParser
+import probstat
 import re
 import urllib2
 import string
@@ -71,12 +72,23 @@ class _Follower(object):
 
     def _words(self, data):
         data = ''.join([w for w in data if w in string.ascii_letters+' '])
-        return [w.strip() for w in data.split()]
+        return [w.strip() for w in data.split() if len(w) > 5]
 
     def _combos(self, lists):
-        if len(lists) == 1: 
-            return [(x,) for x in lists[0]]
-        return [(i,) + j for j in self._combos(lists[1:]) for i in lists[0]]
+        if lists == []:
+            return []
+        return probstat.Cartesian(lists)
+        if len(lists) == 1:
+            return [[x] for x in lists[0]]
+        
+        res = [[i] + j for j in self._combos(lists[1:]) for i in lists[0]]
+        print res
+        return res
+
+    def _ampl_combo(self, lists):
+        for seq in self._combos(lists):
+            start, end = min(seq), max(seq)
+            yield end-start, start, end     
 
     def _extract(self, title, content, size):
         """will try to find the best extract"""
@@ -85,22 +97,30 @@ class _Follower(object):
         # finding the positions for all the words
         def _indexes(word, content):
             return [e.start() for e in re.finditer(word.strip(), 
-                                                   content, options)]
+                    content, options)]
         
         # voir pour extraire un pattern
+        
         positions = [_indexes(w, lcontent) for w in self._words(title) 
                      if _indexes(w, lcontent) != []]
                 
         # creating all the combos, and calculating the
         # amplitude for each
         # keeping the smallest one
-        def _ampl(seq):
-            start, end = min(seq), max(seq)
-            return end-start, start, end
-
-        combos = sorted([_ampl(c) for c in self._combos(positions)])
-        ampl, start, end = combos[0]
-        if end - start > size:
+        
+        #def _ampl(seq):
+        #    start, end = min(seq), max(seq)
+        #    return end-start, start, end
+        #
+        #combos = sorted([_ampl(c) for c in self._combos(positions)])
+        #ampl, start, end = combos[0]
+        combos = sorted(self._ampl_combo(positions))
+        if combos == []:
+            return 'xxx'
+        seq = combos[0]
+        start, end = min(seq), max(seq)
+        ampl = end - start
+        if ampl > size:
             end = start + size
             
         return '...' + content[start:end] + '...'

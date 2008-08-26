@@ -1,0 +1,26 @@
+CVS Only
+
+0.912 (Oct 11, 2002)
+    Admin : Welcome John Hunter! [JDH now with full sourceforge access(TM), this release is largely due to his contributions]
+    * added combination_calculate_NK patch to CVS
+    * combinations work for a wider range of cases, eg when sequence
+      is longish but total number of combinations is not, as in
+    * probstat.Combination(range(100), 2).  Added test to combo.py
+    * similar fix for Permutations, and a test in test/permute.py
+
+0.911 (no date)
+    * patched to compile on windows
+0.911 (Sep 13, 2002)
+    * fixed, iterator over slices of permutations/combinations ignored the ending argument
+0.910 (Sep 7, 2002)
+    * objects can still be used as iterators, but ob.next() is gone
+    * slices! p = probstat.Permutation(range(1,5), sub_p = p[3:5]
+    * len! print 'len of permute is ', len(p)
+    * Algorithms! we now use standard public domain algos, largely from gsl
+    * Priority Queue added
+    * ComboPermute is dead, you can now call permute with a choose argument, eg p = probstat.Permutation(range(1,5), 3)
+0.901 (Aug 11, 2002)
+    * returned objects can be used as iterators (ob.next() still works)
+    * fixed typo so module init function matches module name
+0.900 (Aug 8, 2002)
+    * Initial release
