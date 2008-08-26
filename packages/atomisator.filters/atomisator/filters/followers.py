@@ -99,27 +99,16 @@ class _Follower(object):
             return [e.start() for e in re.finditer(word.strip(), 
                     content, options)]
         
-        # voir pour extraire un pattern
-        
+         
         positions = [_indexes(w, lcontent) for w in self._words(title) 
                      if _indexes(w, lcontent) != []]
                 
         # creating all the combos, and calculating the
         # amplitude for each
-        # keeping the smallest one
-        
-        #def _ampl(seq):
-        #    start, end = min(seq), max(seq)
-        #    return end-start, start, end
-        #
-        #combos = sorted([_ampl(c) for c in self._combos(positions)])
-        #ampl, start, end = combos[0]
         combos = sorted(self._ampl_combo(positions))
         if combos == []:
-            return 'xxx'
-        seq = combos[0]
-        start, end = min(seq), max(seq)
-        ampl = end - start
+            return content[:size]
+        ampl, start, end = combos[0]
         if ampl > size:
             end = start + size
             
