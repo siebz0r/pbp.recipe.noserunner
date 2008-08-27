@@ -11,7 +11,6 @@ version = '0.1.6'
 
 long_description = open("README.txt").read()
 
-
 includes = [join('probstat', 'include'), 
              join('probstat', 'python')]
 libraries = [] 
@@ -62,10 +61,10 @@ setup(name='atomisator.filters',
           'BeautifulSoup',
       ],
       entry_points=entry_points,
-      ext_modules = [Extension("probstat", files,
-                               libraries = libraries,
-                               include_dirs =  includes,
-                              )
-                    ],
+      #ext_modules = [Extension("probstat", files,
+      #                         libraries = libraries,
+      #                         include_dirs =  includes,
+      #                        )
+      #              ],
 
       )

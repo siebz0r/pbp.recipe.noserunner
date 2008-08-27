@@ -2,7 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 from sgmllib import SGMLParser
-import probstat
+#import probstat
 import re
 import urllib2
 import string
@@ -44,9 +44,8 @@ class _Follower(object):
         # let's get a sample of the link
         sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:
-            extract = '<div>Extract from link :</div> <p>%s</p><br/>' % \
-                    sample.decode(encoding)            
-            entry['summary'] = extract + entry.get('summary', '')
+            extract = '<div>Extract from link :</div> <p>%s</p><br/>' % sample
+            entry['summary'] = extract.decode(encoding, 'ignore') + entry.get('summary', u'')
         return entry
  
     def _clean(self, value):
@@ -72,47 +71,68 @@ class _Follower(object):
 
     def _words(self, data):
         data = ''.join([w for w in data if w in string.ascii_letters+' '])
-        return [w.strip() for w in data.split() if len(w) > 5]
+        return [(len(w.strip()), w.strip()) for w in data.split()]
 
-    def _combos(self, lists):
-        if lists == []:
-            return []
-        return probstat.Cartesian(lists)
-        if len(lists) == 1:
-            return [[x] for x in lists[0]]
-        
-        res = [[i] + j for j in self._combos(lists[1:]) for i in lists[0]]
-        print res
-        return res
+    #def _combos(self, lists):
+    #    if lists == []:
+    #        return []
+    #    return probstat.Cartesian(lists)
+    #    if len(lists) == 1:
+    #        return [[x] for x in lists[0]]
+    #    
+    #    res = [[i] + j for j in self._combos(lists[1:]) for i in lists[0]]
+    #    print res
+    #    return res
 
-    def _ampl_combo(self, lists):
-        for seq in self._combos(lists):
-            start, end = min(seq), max(seq)
-            yield end-start, start, end     
+    #def _ampl_combo(self, lists):
+    #    for seq in self._combos(lists):
+    #        start, end = min(seq), max(seq)
+    #        yield end-start, start, end     
 
     def _extract(self, title, content, size):
-        """will try to find the best extract"""
-        lcontent = content.lower()
+        """will try to find the best extract
+        
+        XXX should be better, experimenting
+        """
+        content_size = len(content)
+        delta = size / 2
+
+        for l, word in reversed(sorted(self._words(title))):
+            positions = list(reversed([m.start() for m in re.finditer(word, content)]))
+            if positions != []:
+                pos = positions[0]
+                if pos > delta:
+                    start = pos - delta
+                else:
+                    start = 0
+                if pos + delta < content_size:
+                    end = pos + delta
+                else:
+                    end = content_size
+
+                return '...' + content[start:end] + '...'
+
+        return '...' + content[:size] + '...'
 
         # finding the positions for all the words
-        def _indexes(word, content):
-            return [e.start() for e in re.finditer(word.strip(), 
-                    content, options)]
+        #def _indexes(word, content):
+        #    return [e.start() for e in re.finditer(word.strip(), 
+        #            content, options)]
         
          
-        positions = [_indexes(w, lcontent) for w in self._words(title) 
-                     if _indexes(w, lcontent) != []]
+        #positions = [_indexes(w, lcontent) for w in self._words(title) 
+        #             if _indexes(w, lcontent) != []]
                 
         # creating all the combos, and calculating the
         # amplitude for each
-        combos = sorted(self._ampl_combo(positions))
-        if combos == []:
-            return content[:size]
-        ampl, start, end = combos[0]
-        if ampl > size:
-            end = start + size
+        #combos = sorted(self._ampl_combo(positions))
+        #if combos == []:
+        #    return content[:size]
+        #ampl, start, end = combos[0]
+        #if ampl > size:
+        #    end = start + size
             
-        return '...' + content[start:end] + '...'
+        #return '...' + content[start:end] + '...'
  
     def _get_sample(self, title, link, size=300):
         """get the page, extract part of it if it is some text.
@@ -136,7 +156,7 @@ class _Follower(object):
             return None, None
 
         body = self._clean(content)
-        return self._extract(title, body, size), charset
+        return self._extract(title.encode(charset), body, size), charset
 
 class RedditFollower(_Follower):
     """
