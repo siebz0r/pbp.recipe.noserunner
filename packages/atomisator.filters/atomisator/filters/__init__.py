@@ -95,6 +95,8 @@ class Doublons(object):
 
     """ 
     def _clean(self, st):
+        if st is None:
+            return None
         return st.lower().strip()
     
     def __call__(self, entry, entries):
