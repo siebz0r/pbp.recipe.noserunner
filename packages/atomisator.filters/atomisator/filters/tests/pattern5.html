@@ -1,0 +1,150 @@
+
+<html>
+	<head>
+		<title>mingus: Music Theory for Python - Onderstekop Weblog</title>
+		<base href="http://www.onderstekop.nl/">
+		<meta name="verify-v1" content="b1xb9U1LUP2RpT7U1Du0GkbJ45WlPEDI7cUP8xeWTdo=" />
+		<META NAME="Keywords" CONTENT="onderstekop, web development, linux, programming, coding, ubuntu, python, jazz, ajax, javascript, php, css, free mp3, music, weblog, blog, artificial intelligence, AI">
+		<META NAME="Description" CONTENT="	Last time I posted a rather chaotic and not-very-to-the-point journal of some of the things that are wrong with the use of naive algorithms to represent the ideas in music theory. I couldn't get this thing out of my head and decided to start working on a">
+		<link rel="stylesheet" type="text/css" href="onderstekop.css">
+		<link rel="alternate" type="application/rss+xml" title="Onderstekop.nl Blog RSS Feed" href="http://feeds.feedburner.com/onderstekop"/>
+		<script type="text/javascript" src="swfobject.js"></script>
+		<script src="DV.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<script type="text/javascript" src="wz_tooltip.js"></script>
+		<div id="container"> 
+			<div id="container2">
+			<div id="header"><h1>Onderstekop</h1><h3>mingus: Music Theory for Python</h3>
+			</div>
+			
+			<!--LEFT SIDE PANEL -->
+			
+			<div id="nav">
+			
+				<!-- Main menu -->
+				<ul class='nav'>
+					<h3>Main</h3><li class='menuA'><a href='http://www.onderstekop.nl/'>Home</a></li>
+<li class='menuB'><a href='http://www.onderstekop.nl/coding/'>Coding</a></li>
+<li class='menuA'><a href='http://www.onderstekop.nl/music/'>Music</a></li>
+<li class='menuB'><a href='http://www.onderstekop.nl/about/'>About</a></li>
+				</ul><br/>
+				
+				
+				<!-- Blog Categories -->
+				<ul class='nav'>
+					<h3>Categories</h3>
+					<li class='menuA'><a href='categories/7/'>A.I. (9)</a></li>
+					<li class='menuB'><a href='categories/12/'>Coding (16)</a></li>
+					<li class='menuA'><a href='categories/4/'>Comedy (16)</a></li>
+					<li class='menuB'><a href='categories/10/'>Computer related (9)</a></li>
+					<li class='menuA'><a href='categories/8/'>Games (2)</a></li>
+					<li class='menuB'><a href='categories/2/'>Jazz (12)</a></li>
+					<li class='menuA'><a href='categories/11/'>Linux (8)</a></li>
+					<li class='menuB'><a href='categories/3/'>Music (13)</a></li>
+					<li class='menuA'><a href='categories/5/'>Nature (6)</a></li>
+					<li class='menuB'><a href='categories/1/'>Onderstekop (14)</a></li>
+					<li class='menuA'><a href='categories/9/'>Other (5)</a></li>
+					<li class='menuB'><a href='categories/6/'>Steganography (1)</a></li>
+				</ul>
+			</div>
+			
+			<!-- MAIN -->
+			<div id="main">
+
+						<div class='blog'>
+				<div class='blogheader'><div class='date2'>24<br/>Aug</div>				<span class='title'>mingus: Music Theory for Python</span></div>					<div class='content'>	<a href='http://www.onderstekop.nl/articles/121/'>Last time</a> I posted a rather chaotic and not-very-to-the-point journal of some of the things that are wrong with the use of naive algorithms to represent the ideas in music theory. I couldn't get this thing out of my head and decided to start working on a fundamental music theory and notation package for Python to make writing open source music applications easier. <br />
+<br />
+	Today I'm happy to announce that <b>mingus</b>, as the package was dubbed, is currently at version 0.1.7.5 and encapsulates most of the things I set out to make (and much more). The features, so far:<br />
+<br />
+<ul><li> Work with notes, intervals, chords, progressions, scales, keys and meters in a simple and theoretically sound way.</li><li> Generate natural diatonic intervals (seconds, thirds, fourths, etc) and absolute intervals (second minors, perfect fifths, etc.)</li><li> Generate natural diatonic triads and seventh chords, and absolute chords (min7, m/M7, etc). mingus also knows about inverted chords.</li><li> Refer to chords by their diatonic function (tonic, subtonic, etc. or I, ii, iii, IV, etc).</li><li> Work with diatonic scales and their modes (ionian, mixolydian, etc.),</li><li> generate the minor (natural, harmonic and melodic) and chromatic or whole note scales.</li><li>Recognize intervals and chords from lists of notes. </li></ul><br />
+	Here are some simple examples:<br />
+<br />
+	<code> >>> from mingus.core import *<br />
+	>>> chords.minor_seventh("C")<br />
+	['C', 'Eb', 'G', 'Bb']<br />
+	>>> progressions.to_chords(["I", "IV", "V"], "C")<br />
+	[['C', 'E', 'G'], ['F', 'A', 'C'], ['G', 'B', 'D']]<br />
+	>>> intervals.minor_fifth("C")<br />
+	'Gb'</code><br />
+	<br />
+	You can download mingus, follow its development and learn more about the package at <a href='http://mingus.googlecode.com/'>mingus project's page on<br />
+googlecode</a>. To give you a preview of what's to come, here is what a simple bar currently looks like:<br />
+<br />
+	<img src='http://www.onderstekop.nl/dump/firstbar.png'><br />
+<br />
+	The representation is still missing a couple of things as you can see, but work continues.<br />
+<br />
+	<a href='http://mingus.googlecode.com'>More mingus here</a><p/><span class='sub'>You might also be interested in</span><br/><ul><li><a href='http://www.onderstekop.nl/articles/104/'>LAN Chat</a></li><li><a href='http://www.onderstekop.nl/articles/120/'>Why aren't more books written like this?</a></li><li><a href='http://www.onderstekop.nl/articles/121/'>Reddit, Arduino, Trackers and a Music Theory Package for Python</a></li><li><a href='http://www.onderstekop.nl/articles/114/'>Parsing HTML in PHP</a></li><li><a href='http://www.onderstekop.nl/articles/109/'>Python LAN Chat 1.1</a></li></ul></div><div class="blogtrailer"><div class="digg"><script type="text/javascript">digg_url = "http://www.onderstekop.nl/articles/122/";digg_title = document.title;</script><script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script></div>					<div class='socialmedia'><span class='sub'>Added by: Bart in category: <a href='categories/12/'>Coding</a> 				<br/></br>Please take the time to save and share this page. Thanks!<br/><br/><a href="http://feeds.feedburner.com/onderstekop" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/onderstekop" rel="alternate" type="application/rss+xml">Subscribe in a reader</a><br/><br/><a href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img src="img/delicious.gif" border="0" alt="Add to Delicious"'/>  Save This Page</a><br/><br/><a href="http://www.stumbleupon.com/submit?url=http://www.onderstekop.nl/articles/122/&title=mingus: Music Theory for Python"><img src="img/stumbleupon.png" border='0' alt="Add to Stumble Upon"'/>Stumble It!</a><br/> </span></div>			</div></div><br/>
+<div class='comments' id='comments'><a name='comments'></a><h3>5 Comments</h3><div class='commentA'><div class='commentheader'><div class='commentNR'><span><br/>1</span></div><img src='http://www.onderstekop.nl/img/comment.gif'/> <a name='comment1038'></a><a href='article/122/#comment1038'>RE: mingus: Music Theory for Python</a><br/><span class='sub'>Written by: Rahul<br/>2008-08-25 02:15:06</span></div><div class='commentcontent'>[Copying from my comment on Reddit]<br />
+<br />
+Sounds like a great project!<br />
+<br />
+Have you thought of using LilyPond to generate the &quot;pretty pictures&quot; instead of writing your own sheet music renderer?<br />
+<br />
+</div></div><div class='commentB'><div class='commentheader'><div class='commentNR'><span><br/>2</span></div><img src='http://www.onderstekop.nl/img/comment.gif'/> <a name='comment1040'></a><a href='article/122/#comment1040'>RE: mingus: Music Theory for Python</a><br/><span class='sub'>Written by: Bart <a href='http://www.onderstekop.nl/' style='font-size: 0.8em'>site</a><br/>2008-08-25 03:18:52</span></div><div class='commentcontent'>Thanks for reminding me. I think you just  saved me a lot of work, but I'll need some time to investigate and play around with this. Adding a Lilypond file generator would be easy from the look of it, but I think it would be harder to control Lilypond's internals from within Python. If we need to convert everything into LilyPond's format, compile it and load the image back everytime we need to draw something on the screen, there might be some serious performance issues when working on editors, etc., but I'll do some testing.<br />
+<br />
+</div></div><div class='commentA'><div class='commentheader'><div class='commentNR'><span><br/>3</span></div><img src='http://www.onderstekop.nl/img/comment.gif'/> <a name='comment1041'></a><a href='article/122/#comment1041'>RE: mingus: Music Theory for Python</a><br/><span class='sub'>Written by: Rahul<br/>2008-08-25 03:22:54</span></div><div class='commentcontent'>What the hell, Web Design Company?<br />
+<br />
+(Sorry for off-topic :))<br />
+<br />
+</div></div><div class='commentB'><div class='commentheader'><div class='commentNR'><span><br/>4</span></div><img src='http://www.onderstekop.nl/img/comment.gif'/> <a name='comment1042'></a><a href='article/122/#comment1042'>RE: mingus: Music Theory for Python</a><br/><span class='sub'>Written by: Bart <a href='http://www.onderstekop.nl/' style='font-size: 0.8em'>site</a><br/>2008-08-25 03:43:42</span></div><div class='commentcontent'>The spam filter! It does nothing!<br />
+<br />
+(Don't worry about it. It's gone now)<br />
+<br />
+</div></div><div class='commentA'><div class='commentheader'><div class='commentNR'><span><br/>5</span></div><img src='http://www.onderstekop.nl/img/comment.gif'/> <a name='comment1043'></a><a href='article/122/#comment1043'>RE: mingus: Music Theory for Python</a><br/><span class='sub'>Written by: Bart <a href='http://www.onderstekop.nl/' style='font-size: 0.8em'>site</a><br/>2008-08-26 12:08:08</span></div><div class='commentcontent'>A little update: version 0.2 is almost ready and will be released shortly. I also stopped working on my own rendering engine for a while, looked into LilyPond and implemented a LilyPond file generator which is almost 100% operational. I'm still not sure if this is the best way to go if the package was ever to be used for building editors, but it certainly hasn't been a waste of time to support this format. <br />
+<br />
+</div></div></div><br/><a name='leavecomment'><form method='post' action='postcomment.php'><table class='forms' style='width: 380px;'><input type='hidden' name='ID' value='122'><input type='hidden' name='password' value=''><tr><th colspan='2'>Leave a comment</th></tr><tr><td class='note'>Name* </td><td><input type='text' name='author' value=''></td></tr><tr onmouseover="Tip('This will not be shown to other readers')"><td class='note'>E-mail</td><td><input type='text' name='email' value=''></td></tr><tr onmouseover="Tip('There will apear a \'site\' link next to your name when you fill this in')"><td class='note'>Website</td><td><input type='text' name='website' value='http://'></td></tr><tr><td class='note'>Title*</td><td><input type='text' name='title' value="RE: mingus: Music Theory for Python"></td></tr><tr><td class='note'>Comment*</td><td><textarea rows='10' name='comment'></textarea></td></tr><tr><td colspan='2'><input type='submit' value='Place Comment'></td></tr><tr><td colspan='2'><input type='checkbox' style='width:15px' name='subscribe' onmouseover="Tip('Just to make sure: you need to fill in your e-mail address for this to work')"> Notify me when somebody else comments on this article</td></tr></table></form>			</div>
+
+<div id="infobar">
+				
+				<div id='feed'><a href="http://feeds.feedburner.com/onderstekop" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/onderstekop" rel="alternate" type="application/rss+xml">Subscribe in a reader</a></div>
+<br/>				
+				<!-- LATEST POSTS-->
+				<ul class='nav'>
+					<h3>Latest posts</h3>
+				<li class='menuA'><a href='articles/122/'>mingus: Music Theory for Python</a></li><li class='menuB'><a href='articles/121/'>Reddit, Arduino, Trackers and a Music Theory Package for Python</a></li><li class='menuA'><a href='articles/120/'>Why aren't more books written like this?</a></li><li class='menuB'><a href='articles/118/'>Hydrogen: Using Linux to create slick drum beats</a></li><li class='menuA'><a href='articles/117/'>10 signs you know you are addicted to your site's stats</a></li><li class='menuB'><a href='articles/116/'>How to enable basic desktop icons in GNOME?</a></li><li class='menuA'><a href='articles/115/'>Bye, Bye, BlogRush!</a></li>				</ul><br/>
+
+				<!-- MOST VIEWED -->
+				<ul class='nav'>
+					<h3>Most viewed</h3>
+				<li class='menuA'><a href='articles/118/'>Hydrogen: Using Linux to create slick drum beats</a><br/><span class='sub'>39827 views</span></li><li class='menuB'><a href='articles/99/'>5 Ways to Customize your Ubuntu Desktop</a><br/><span class='sub'>30839 views</span></li><li class='menuA'><a href='articles/116/'>How to enable basic desktop icons in GNOME?</a><br/><span class='sub'>29266 views</span></li><li class='menuB'><a href='articles/103/'>How to write a search engine?</a><br/><span class='sub'>23357 views</span></li><li class='menuA'><a href='articles/120/'>Why aren't more books written like this?</a><br/><span class='sub'>18863 views</span></li><li class='menuB'><a href='articles/117/'>10 signs you know you are addicted to your site's stats</a><br/><span class='sub'>18818 views</span></li><li class='menuA'><a href='articles/93/'>5 Reasons Linux is better than Windows</a><br/><span class='sub'>14919 views</span></li><li class='menuB'><a href='articles/114/'>Parsing HTML in PHP</a><br/><span class='sub'>14025 views</span></li>				</ul><br/>
+				
+				<!-- COMMENTS -->
+				<ul class='nav'>
+					<h3>Latest comments</h3>
+				<li class='menuA'><span><a href='http://www.onderstekop.nl/articles/122/#comment1043'>RE: mingus: Music Theory for Python</a> <br/><span class='sub'>Posted by Bart, 1 day  ago</span></span></li><li class='menuB'><span><a href='http://www.onderstekop.nl/articles/122/#comment1042'>RE: mingus: Music Theory for Python</a> <br/><span class='sub'>Posted by Bart, 3 days  ago</span></span></li><li class='menuA'><span><a href='http://www.onderstekop.nl/articles/122/#comment1041'>RE: mingus: Music Theory for Python</a> <br/><span class='sub'>Posted by Rahul, 3 days  ago</span></span></li><li class='menuB'><span><a href='http://www.onderstekop.nl/articles/122/#comment1040'>RE: mingus: Music Theory for Python</a> <br/><span class='sub'>Posted by Bart, 3 days  ago</span></span></li><li class='menuA'><span><a href='http://www.onderstekop.nl/articles/122/#comment1038'>RE: mingus: Music Theory for Python</a> <br/><span class='sub'>Posted by Rahul, 3 days  ago</span></span></li>				</ul></br>
+				
+				<!-- MOST COMMENTED -->
+				<ul class='nav'>
+				<h3>Most commented</h3>
+				<li class='menuA'><a href='http://www.onderstekop.nl/articles/103/'>How to write a search engine?</a><br/><span class='sub'>54 comments</span></li><li class='menuB'><a href='http://www.onderstekop.nl/articles/114/'>Parsing HTML in PHP</a><br/><span class='sub'>28 comments</span></li><li class='menuA'><a href='http://www.onderstekop.nl/articles/118/'>Hydrogen: Using Linux to create slick drum beats</a><br/><span class='sub'>21 comments</span></li><li class='menuB'><a href='http://www.onderstekop.nl/articles/120/'>Why aren't more books written like this?</a><br/><span class='sub'>18 comments</span></li><li class='menuA'><a href='http://www.onderstekop.nl/articles/99/'>5 Ways to Customize your Ubuntu Desktop</a><br/><span class='sub'>8 comments</span></li>				</ul>
+				<!--LINKS-->
+				<br/><ul class='nav'>
+				<h3>Links</h3>
+				<li class='menuA'><a href='http://www.blogadr.com/directory/' target='_new'>Blogadr.com</a></li><li class='menuB'><a href='http://www.blogarama.com/' target='_new'>Blogarama</a></li><li class='menuA'><a href='http://www.info-listings.com/' target='_new'>Info Listings</a></li><li class='menuB'><a href='http://www.meedoenopstraat.nl/' target='_new'>Meedoen Op Straat</a></li><li class='menuA'><a href='http://www.youtube.com/Onderstekop/' target='_new'>Onderstekop Youtube Channel</a></li><li class='menuB'><a href='http://www.pilkipedia.co.uk' target='_new'>Pilkipedia</a></li><li class='menuA'><a href='http://www.webmastercity.nl' target='_new'>WebMasterCity (Dutch)</a></li><li class='menuB'><a href='http://widget-env.sourceforge.net' target='_new'>Widget Environment @ Sourceforge</a></li>				</ul><br/>
+				
+				<!--BLOGS-->
+				<ul class='nav'>
+				<h3>Blogs</h3>
+				<li class='menuA'><a href='http://antiguawebsolutions.com/myblog/' target='_new'>Antigua Web Solutions Blog</a></li><li class='menuB'><a href='http://briansbedroom.blogspot.com/' target='_new'>Brian's Bedroom - OS music tips</a></li><li class='menuA'><a href='http://www.schuurtje.net/' target='_new'>De Het Schuurtje Weblog</a></li><li class='menuB'><a href='http://lambda-the-ultimate.org/' target='_new'>Lambda the Ultimate</a></li><li class='menuA'><a href='http://blog.tophatstuff.co.uk/' target='_new'>RAM Junkie - Hoboben's Diatribes</a></li>				</ul><br/>
+				
+				<!--Technorati -->
+				<a href="http://technorati.com/faves?sub=addfavbtn&amp;add=http://www.onderstekop.nl"><img src="http://static.technorati.com/pix/fave/tech-fav-1.png" border="0" alt="Add to Technorati Favorites" /></a><br/><br/>
+				
+				<!--StumbleUpon-->
+				<a href="http://Blafhert.stumbleupon.com"><img border="0" src="http://www.stumbleupon.com/images/small_su_logo.png" alt="StumbleUpon"></a><br/><br/>
+				
+				<!--Del.ico.us-->
+				<script type="text/javascript" src="http://del.icio.us/feeds/js/networkbadge/Blafhert?icon"></script><br/>
+				
+			</div>
+		</div>
+		</div>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2731342-1";
+urchinTracker();
+</script></body>
+</html>
