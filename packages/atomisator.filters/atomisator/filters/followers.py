@@ -14,7 +14,7 @@ TAGS = set(('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img'))
 ATTRS = set(('href', 'src', 'title'))
 DELETE_TAGS = ('script',)
 DIV_BLOGS = set(('article-body', 'knol-content', 'post-body',
-                 'post', 'entry-content', 'content'))
+                 'post', 'entry-content', 'post-chapo', 'content'))
  
 class Html2Txt(SGMLParser):
     def reset(self):
@@ -217,8 +217,11 @@ class DeliciousFollower(_Follower):
     of the page.
     """
     def _detect(self, entry):
+        title_detail = entry.get('title_detail')
+        if title_detail is not None and 'delicious.com' in title_detail['base']:
+            return entry['link']
         comments = entry.get('comments', '')
-        if not comments.startswith('http://delicious.com/url/'):
-            return None
-        return entry['link']
+        if comments.startswith('http://delicious.com/url/'):
+            return entry['link']
+        return None
 
