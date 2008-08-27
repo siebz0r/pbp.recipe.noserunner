@@ -10,9 +10,12 @@ import string
 from BeautifulSoup import BeautifulSoup, Comment
 
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
-TAGS = ('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img')
-ATTRS = ('href', 'src', 'title')
-
+TAGS = set(('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img'))
+ATTRS = set(('href', 'src', 'title'))
+DELETE_TAGS = ('script',)
+DIV_BLOGS = set(('article-body', 'knol-content', 'post-body',
+                 'post', 'entry-content', 'content'))
+ 
 class Html2Txt(SGMLParser):
     def reset(self):
         SGMLParser.reset(self)
@@ -48,24 +51,48 @@ class _Follower(object):
             entry['summary'] = extract.decode(encoding, 'ignore') + entry.get('summary', u'')
         return entry
  
-    def _clean(self, value):
-        """cleans an html page."""
+    def _soup(self, value):
         soup = BeautifulSoup(value)
 
         # removes unwanted tags (security+style)
         for comment in soup.findAll(
             text = lambda text: isinstance(text, Comment)):
             comment.extract()
+
         for tag in soup.findAll(True):
+            # trying a few patterns
+            if tag.name == 'div':
+                for attr, val in tag.attrs:
+                    if attr == 'class':
+                        vals = val.split()
+                        for wanted in DIV_BLOGS:
+                            for val in vals:
+                                if val == wanted:
+                                    # caught a pattern
+                                    c = tag.renderContents()
+                                    return self._soup('<body>%s</body>' % c)
+            
+            if tag.name == 'p' and 'meta' in [v for n, v in tag.attrs]:
+                tag.extract()
+                continue
+            if tag.name in DELETE_TAGS:
+                tag.extract()
+                continue
+
             if tag.name not in TAGS:
                 tag.hidden = True
+
             tag.attrs = [(attr, val) for attr, val in tag.attrs
                         if attr in ATTRS]
+       
+        return soup.body.renderContents()
 
-        # loads and render 
+    def _clean(self, value):
+        """cleans an html page."""
+        # loads and render
         parser = Html2Txt()
         parser.reset()
-        parser.feed(soup.body.renderContents())
+        parser.feed(self._soup(value))
         parser.close()
         return parser.output().strip()
 
@@ -98,20 +125,21 @@ class _Follower(object):
         delta = size / 2
 
         for l, word in reversed(sorted(self._words(title))):
-            positions = list(reversed([m.start() for m in re.finditer(word, content)]))
+            positions = [m.start() for m in re.finditer(word, content)]
             if positions != []:
                 pos = positions[0]
-                if pos > delta:
-                    start = pos - delta
+                # now findig the position of the last dot
+                dots = [m.start() for m in re.finditer('\. ', content[:pos])]
+                if dots == []:
+                    start = pos
                 else:
-                    start = 0
-                if pos + delta < content_size:
-                    end = pos + delta
-                else:
+                    start = dots[-1] + 1
+                if start + delta > content_size:
                     end = content_size
-
+                else:
+                    end = start + delta
+         
                 return '...' + content[start:end] + '...'
-
         return '...' + content[:size] + '...'
 
         # finding the positions for all the words
@@ -134,7 +162,7 @@ class _Follower(object):
             
         #return '...' + content[start:end] + '...'
  
-    def _get_sample(self, title, link, size=300):
+    def _get_sample(self, title, link, size=500):
         """get the page, extract part of it if it is some text.
         
         tries to find the words of the title, to extract 
