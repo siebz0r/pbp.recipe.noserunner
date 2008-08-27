@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:sioc="http://rdfs.org/sioc/ns#"
+    xmlns:sioctype="http://rdfs.org/sioc/types#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xml:lang="fr">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <title>
+
+Rédaction de votre première appli Django, partie 1 : Initialisation, création des modèles et API de la base de données » Django, Traduction, Web Frameworks » Journal
+ » Biologeek, l'avis d'un freelance passionné par le web et son évolution.</title>
+    <link rel="stylesheet" href="http://media.biologeek.com/css/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="http://media.biologeek.com/css/print.css" type="text/css" media="print" />
+    <!--[if IE]><link rel="stylesheet" href="http://media.biologeek.com/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="icon" href="http://media.biologeek.com/css/img/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/xml" title="Atom Général" href="/data/atom/" />
+    <link rel="alternate" type="application/xml" title="Atom Billets" href="/data/atom/journal/" />
+    <link rel="alternate" type="application/xml" title="Atom Pensées" href="/data/atom/bistrot/" />
+    <link rel="alternate" type="application/xml" title="Atom Commentaires" href="/data/atom/commentaires/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Général" href="/data/rss/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Billets" href="/data/rss/journal/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Pensées" href="/data/rss/bistrot/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Commentaires" href="/data/rss/commentaires/" />
+    
+    <link rel="meta" type="application/rdf+xml" title="SIOC" href="http://www.biologeek.com/data/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/"/>
+
+</head>
+
+<body 
+    class="journal unicol" 
+    typeof="sioctype:BlogPost" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/"
+>
+<div id="page" 
+    property="dc:title" content="Rédaction de votre première appli Django, partie 1 : Initialisation, création des modèles et API de la base de données"
+    
+>
+<div id="header">
+    <div class="container">
+        <div class="column span-24">
+            <div id="logo" class="column span-11">
+                <h1><a href="/" title="Aller à l'accueil">Biologeek</a></h1>
+            </div>
+            <div id="citation" class="column span-13 last">
+                <blockquote class="top">
+                    <p>
+                    Biologeek est le site d'un <a href="http://www.welldev.fr" title="Accès au site professionnel de David Larlet">développeur web freelance</a> 
+                    passionné par les frameworks web, les Logiciels Libres, le Web Sémantique, l'optimisation du temps 
+                    et <a href="/archives/#tags" title="Accès à l'ensemble des thèmes abordés sur ce site">bien plus encore</a>. 
+                    Bienvenue ! -- 
+                    
+<span rel="sioc:has_creator" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/">
+    <a href="http://david.larlet.fr" title="Accès au profil de David Larlet" rel="me" typeof="sioc:User">
+        <span property="rdfs:label" rel="sioc:account_of" href="http://david.larlet.fr/foaf.rdf#DavidLarlet">David Larlet</span>
+    </a>
+</span>
+
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+        <hr class="space" />
+        <ul id="navigation" class="alt">
+            <li id="tabhome">
+                <a href="/" title="Découvrez ce site en repartant de la page d'accueil">
+                    Accueil<span>Découverte</span>
+                </a>
+            </li>
+            <li id="tabjournal">
+                <a href="/journal/" title="Lisez les dernières entrées du journal">
+                    Journal<span>Connaissance</span>
+                </a>
+            </li>
+            <li id="tabbistrot">
+                <a href="/bistrot/" title="Participez aux dernières discussions">
+                    Bistrot<span>Veille et discussions</span>
+                </a>
+            </li>
+            <li id="tabarchives">
+                <a href="/archives/" title="Consultez les archives">
+                    Archives<span>Avec le temps, va...</span>
+                </a>
+            </li>
+            <li id="tababonnements">
+                <a href="/abonnements/" title="Abonnez-vous à ce site">
+                    Abonnements<span>Simple et gratuit</span>
+                </a>
+            </li>
+            <li id="tabcontact">
+                <a href="/contact/" title="Contactez l'auteur personnellement">
+                    Contact<span>Réponse personnalisée</span>
+                </a>
+            </li>
+        </ul>
+        <hr />
+    </div>
+</div>
+<div id="help">
+    <div class="container">
+        <div id="info">
+    <h1 class="post-title">Rédaction de votre première appli Django, partie 1 : Initialisation, création des modèles et API de la base de données</h1>
+    <h3>
+        
+        Tags associés :
+        <span rel="sioc:topic" typeof="skos:concept" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/">
+            <a href="/django/" title="Accès aux articles de la catégorie Django" 
+            rel="tag" property="skos:prefLabel" content="Django">Django</a>, <a href="/traduction/" title="Accès aux articles de la catégorie Traduction" 
+            rel="tag" property="skos:prefLabel" content="Traduction">Traduction</a>, <a href="/web-frameworks/" title="Accès aux articles de la catégorie Web Frameworks" 
+            rel="tag" property="skos:prefLabel" content="Web Frameworks">Web Frameworks</a>, 
+        </span>
+        posté le <span property="dcterms:created" content="2006-06-17"  datatype="xsd:date">
+        17
+        <a href="/2006/06/" 
+        title="Accès aux archives pour juin 2006" rel="archives"
+        >juin 2006</a></span>
+    </h3>
+</div>
+        <hr />
+    </div>
+</div>
+
+
+<div id="content">
+    <div class="container">
+        <div id="main" class="main column span-16 prepend-4" property="sioc:content">
+<div class="post-chapo">
+    
+        <img src="http://media.biologeek.com/images/logos/django.png" alt="" class="vignette" />
+    
+    <p>Apprenons par l'exemple.</p>
+<p>À travers ce tutoriel, nous aborderons la création d'une application basique de
+sondage.</p>
+<p>Cela consistera en deux parties:</p>
+<blockquote>
+<ul class="simple">
+<li>Un site public qui permet aux internautes de voir les sondages et de
+voter.</li>
+<li>Un site d'administration qui vous permet d'ajouter, modifier et supprimer
+un sondage.</li>
+</ul>
+</blockquote>
+<p>Nous considèrerons que vous avez déjà <a class="reference" href="/journal/index.php/comment-installer-django">Django d'installé</a>. Vous pouvez tester
+si Django est installé en lançant l'interpréteur interactif Python et en tapant
+<tt class="docutils literal"><span class="pre">import</span> <span class="pre">django</span></tt>. Si cette commande s'exécute sans erreur, c'est que Django est
+bien installé.</p>
+</div>
+<div class="section">
+<h1><a id="cr-ation-d-un-projet" name="cr-ation-d-un-projet">Création d'un projet</a></h1>
+<p>Si vous utilisez Django pour la première fois, vous devrez faire attention à
+quelques options de la configuration initiale. En effet, vous aurez besoin
+d'auto-générer du code qui met en place un <em>projet</em> Django -- une configuration
+propre à chaque instance de Django, incluant la configuration de la base de
+données, les options spécifiques à Django et la configuration spécifique aux
+applications.</p>
+<p>En ligne de commande, faites <tt class="docutils literal"><span class="pre">cd</span></tt> d'un répertoire où vous aimeriez conserver
+votre code, puis lancez la commande <tt class="docutils literal"><span class="pre">django-admin.py</span> <span class="pre">startproject</span> <span class="pre">monsite</span></tt>.
+Ceci va créer un répertoire <tt class="docutils literal"><span class="pre">monsite</span></tt> dans le répertoire courant.</p>
+
+<p>(<tt class="docutils literal"><span class="pre">django-admin.py</span></tt> devrait être dans votre path système si vous avez installé
+Django via <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span></tt>. S'il n'est pas dans votre path, vous pouvez le
+trouver dans <tt class="docutils literal"><span class="pre">site-packages/django/bin</span></tt>, où <tt class="docutils literal"><span class="pre">site-packages</span></tt> est un
+sous-répertoire de votre installation Python. Faites un lien symbolique de
+<tt class="docutils literal"><span class="pre">django-admin.py</span></tt> quelque part dans votre path, typiquement
+<tt class="docutils literal"><span class="pre">/usr/local/bin</span></tt>.)</p>
+
+<div class="admonition-o-devrait-on-mettre-le-code admonition">
+<p class="first admonition-title">Où devrait-on mettre le code ?</p>
+<p>Si vous avez connu le PHP, vous êtes probablement habitué à mettre le code
+dans le répertoire de documents du server Web (dans un endroit comme
+<tt class="docutils literal"><span class="pre">/var/www</span></tt>). Avec Django, ne faites pas ça. Ce n'est pas une bonne idée de
+mettre du code python dans votre répertoire de documents du serveur Web
+parce que vous prennez le risquez que l'on puisse voir votre code depuis le
+Web. Ce n'est pas bon d'un point de vue de la sécurité.</p>
+<p class="last">Mettez votre code dans un répertoire <strong>à l'extérieur</strong> du répertoire de
+documents, par exemple <tt class="docutils literal"><span class="pre">/home/moncode</span></tt>.</p>
+</div>
+<p>Jetons un œil à ce que <tt class="docutils literal"><span class="pre">startproject</span></tt> a créé:</p>
+
+<pre class="literal-block">
+monsite/
+    __init__.py
+    manage.py
+    settings.py
+    urls.py
+</pre>
+<p>Ces fichiers sont:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">__init__.py</span></tt>: Un fichier vide que dit à Python que ce répertoire
+doit être considéré comme un paquetage Python. (En savoir <a class="reference" href="http://docs.python.org/tut/node8.html#packages">plus sur les
+paquetages</a> dans la documentation officielle de Python si vous êtes
+débutant en Python.)</li>
+<li><tt class="docutils literal"><span class="pre">manage.py</span></tt>: Un outil en ligne de commande que vous permet d'intéragir
+avec ce projet Django de différentes manières.</li>
+<li><tt class="docutils literal"><span class="pre">settings.py</span></tt>: Fichier de configuration de ce projet Django.</li>
+
+<li><tt class="docutils literal"><span class="pre">urls.py</span></tt>: Les déclarations d'URLs pour ce projet Django ; il s'agit
+d'une « table des matières » de votre site géré par Django.</li>
+</ul>
+</blockquote>
+<div class="section">
+<h2><a id="le-serveur-de-d-veloppement" name="le-serveur-de-d-veloppement">Le serveur de développement</a></h2>
+<p>Vérifions que tout ceci fonctionne. Placez-vous dans le répertoire <tt class="docutils literal"><span class="pre">monsite</span></tt>,
+si vous ne l'avez pas déjà fait, lancez la commande <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span>
+<span class="pre">runserver</span></tt>. Vous verrez la trace d'exécution suivante dans votre terminal:</p>
+
+<pre class="literal-block">
+Validating models...
+0 errors found.
+
+Django version 0.95, using settings 'monsite.settings'
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CONTROL-C (Unix) or CTRL-BREAK (Windows).
+</pre>
+<p>Vous avez démarré le serveur de développement de Django, un serveur web léger
+écrit entièrement en Python. Nous l'avons intégré à Django pour que vous
+puissiez développer des choses rapidement, sans avoir à vous occuper de la
+configuration d'un serveur de production -- tel Apache -- jusqu'à ce que
+vous soyez prêt à passer en production.</p>
+<p>À présent, c'est le bon moment pour noter : N'utilisez PAS ce serveur
+pour quoi que ce soit ressemblant à un environnement de production. C'est
+seulement destiné à une utilisation pendant le développement
+(Nous concevons des frameworks Web, pas des serveurs Web).</p>
+<p>Maintenant que le serveur tourne, visitez la page
+<a class="reference" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> avec votre navigateur Web. Vous verrez une page
+« Welcome to Django », dans un agréable bleu clair pastel. Ça marche !</p>
+<div class="admonition-changement-du-port admonition">
+<p class="first admonition-title">Changement du port</p>
+<p>Par défaut, la commande <tt class="docutils literal"><span class="pre">runserver</span></tt> démarre le serveur de
+développement sur le port 8000. Si vous voulez changer le port du
+serveur, passez-le en tant qu'argument à la ligne de commande. Par
+exemple, cette commande démarre le serveur sur le port 8080:</p>
+
+<pre class="literal-block">
+python manage.py runserver 8080
+</pre>
+<p class="last">Une documentation complète sur le serveur de développement se
+trouve dans la <a class="reference" href="http://www.djangoproject.com/documentation/django_admin/">documentation de django-admin</a>.</p>
+</div>
+</div>
+<div class="section">
+<h2><a id="configuration-de-la-base-de-donn-es" name="configuration-de-la-base-de-donn-es">Configuration de la base de données</a></h2>
+<p>Maintenant, éditez le fichier <tt class="docutils literal"><span class="pre">settings.py</span></tt>. C'est un module Python
+normal avec des variables de module représentant les options de
+configuration de Django. Modifiez ces options pour qu'elles correspondent à vos
+paramètres de connexion à votre base de données:</p>
+<blockquote>
+
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">DATABASE_ENGINE</span></tt> -- Au choix parmi 'postgresql', 'mysql' ou 'sqlite3'.
+D'autres viendront bientôt.</li>
+<li><tt class="docutils literal"><span class="pre">DATABASE_NAME</span></tt> -- Le nom de votre base de données, ou le
+chemin complet (absolu) du fichier de base de données si vous
+utilisez SQLite.</li>
+<li><tt class="docutils literal"><span class="pre">DATABASE_USER</span></tt> -- Le nom d'utilisateur de la base de données
+(non utilisé pour SQLite).</li>
+<li><tt class="docutils literal"><span class="pre">DATABASE_PASSWORD</span></tt> -- Le mot de passe de la base de données
+(non utilisé pour SQLite).</li>
+
+<li><tt class="docutils literal"><span class="pre">DATABASE_HOST</span></tt> -- Le nom d'hôte sur lequel est votre base de
+données. Laissez une chaîne vide si votre serveur de base de
+données est sur la même machine physique (non utilisé pour SQLite).</li>
+</ul>
+</blockquote>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">Si vous utilisez PostgreSQL ou MySQL, assurez-vous d'avoir créé
+une base de données à cette étape. Faites cela avec « <tt class="docutils literal"><span class="pre">CREATE</span>
+<span class="pre">DATABASE</span> <span class="pre">base_de_donnees;</span></tt> » à l'invite du client interactif de
+votre base de données.</p>
+
+</div>
+<p>Pendant que vous éditez <tt class="docutils literal"><span class="pre">settings.py</span></tt>, notez la présence de l'option
+<tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> vers la fin du fichier. Cette variable contient le
+nom de toutes les applications Django qui sont activées dans cette
+instance de Django. Les applis peuvent être utilisées dans de
+multiples projets, et vous pouvez les  empaqueter et les distribuer
+pour que d'autres les utilisent dans leurs projets.</p>
+<p>Par défaut, <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> contient les applis suivantes, toutes
+sont fournies avec Django:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">django.contrib.auth</span></tt> -- Un système d'authentification.</li>
+
+<li><tt class="docutils literal"><span class="pre">django.contrib.contenttypes</span></tt> -- Un framework pour les types
+de contenu.</li>
+<li><tt class="docutils literal"><span class="pre">django.contrib.sessions</span></tt> -- Un framework gérant les sessions.</li>
+<li><tt class="docutils literal"><span class="pre">django.contrib.sites</span></tt> -- Un framework pour gérer plusieurs sites
+avec une seule installation de Django.</li>
+</ul>
+</blockquote>
+<p>Ces applications sont incluses par défaut car elles conviennent pour
+la plupart des cas.</p>
+<p>Chacune de ces applications entraîne l'utilisation d'au moins une
+table de base de données, par conséquent, nous avons besoin de créer
+ces tables dans la base de données avant que nous puissions les
+utiliser. Pour ce faire, lancez la commande suivante:</p>
+
+<pre class="literal-block">
+python manage.py syncdb
+</pre>
+<p>La commande <tt class="docutils literal"><span class="pre">syncdb</span></tt> regarde l'option <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> et crée
+toutes les tables de base de données nécessaires selon la
+configuration de la base de données dans votre fichier
+<tt class="docutils literal"><span class="pre">settings.py</span></tt>. Vous verrez un message pour chaque table que ça crée,
+et vous aurez une invite vous demandant si vous aimeriez créer un
+compte superutilisateur pour le système d'authentification. Continuez
+et faites-le.</p>
+<p>Si cela vous intéresse, exécutez le client intéractif de votre base de
+données et tapez <tt class="docutils literal"><span class="pre">\dt</span></tt> (PostgreSQL), <tt class="docutils literal"><span class="pre">SHOW</span> <span class="pre">TABLES;</span></tt> (MySQL), ou
+
+<tt class="docutils literal"><span class="pre">.schema</span></tt> (SQLite) pour afficher les tables que Django a créées.</p>
+<div class="admonition-pour-les-minimalistes admonition">
+<p class="first admonition-title">Pour les minimalistes</p>
+<p class="last">Comme nous avons dit plus haut, les applications par défaut sont
+incluses pour les cas courants, mais tout le monde n'en a pas
+forcément besoin. Si vous n'avez pas besoin d'une ou plusieurs
+d'entre elles (voire toutes), libre à vous de commenter ou supprimer
+la ou les lignes appropriées dans <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> avant de
+lancer <tt class="docutils literal"><span class="pre">syncdb</span></tt>. La commande <tt class="docutils literal"><span class="pre">syncdb</span></tt> créera les tables uniquement pour
+les applis qui sont dans <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>.</p>
+
+</div>
+</div>
+</div>
+<div class="section">
+<h1><a id="cr-ation-de-mod-les" name="cr-ation-de-mod-les">Création de modèles</a></h1>
+<p>Maintenant que notre environnement -- un &quot;projet&quot; -- est initialisé,
+vous pouvez commencer à travailler.</p>
+<p>Chaque application que vous écrivez dans Django constitue un paquetage
+Python, quelque part dans votre <a class="reference" href="http://docs.python.org/tut/node8.html#SECTION008110000000000000000">Python path</a>, qui suit une certaine
+convention. Django est fourni avec un utilitaire que génère
+automatiquement la structure basique du répertoire d'une appli, vous
+pouvez donc vous focaliser sur la rédaction du code plutôt que sur la
+création des répertoires.</p>
+<div class="admonition-projets-contre-applis admonition">
+<p class="first admonition-title">Projets contre applis</p>
+
+<p class="last">Quelle est la différence entre un projet et une appli ? Une appli
+est une application web que fait quelque chose -- par exemple, un
+système de weblog, une base d'enregistrements publics ou une simple
+appli de sondage. Un projet est un ensemble de paramètres et
+d'applications pour un site Web particulier. Un projet peut
+contenir plusieurs applis. Une appli peut être dans plusieurs projets.</p>
+</div>
+<p>Dans ce tutoriel, nous allons créer notre appli de sondage dans le
+répertoire <tt class="docutils literal"><span class="pre">monsite</span></tt>, pour plus de simplicité. En conséquence,
+l'appli sera couplée au projet -- c'est-à-dire que le code Python dans
+l'appli de sondage réfèrera à <tt class="docutils literal"><span class="pre">monsite.polls</span></tt>.
+Plus tard dans le tutoriel, nous discuterons du découplage de vos
+applications pour les distribuer indépendamment.</p>
+<p>Pour créer votre appli, assurez-vous que vous êtes dans le répertoire
+<tt class="docutils literal"><span class="pre">monsite</span></tt> et tapez la commande:</p>
+<pre class="literal-block">
+python manage.py startapp polls
+</pre>
+
+<p>Cela créera un répertoire <tt class="docutils literal"><span class="pre">polls</span></tt>, qui est décrit comme suit:</p>
+<pre class="literal-block">
+polls/
+    __init__.py
+    models.py
+    views.py
+</pre>
+<p>Cette structure du répertoire va accueillir l'application de sondage.</p>
+<p>La première étape dans la rédaction d'une appli Web utilisant la base
+de données est de définir vos modèles -- essentiellement, la
+description de votre base de données, avec des méta-données additionnelles.</p>
+<div class="admonition-philosophie admonition">
+<p class="first admonition-title">Philosophie</p>
+<p class="last">Un modèle est la seule et définitive source de donnée à propos de
+vos données. Il contient les champs essentiels et les comportements
+des données que vous stockez. Django suit le <a class="reference" href="http://c2.com/cgi/wiki?DontRepeatYourself">Principe DRY</a>. Le
+but est de définir votre modèle de données dans un endroit et d'en
+faire dériver tout le reste automatiquement.</p>
+
+</div>
+<p>Dans notre simple appli de sondage, nous allons créer deux modèles:
+polls et choices. Un sondage est constitué d'une question et d'une
+date de publication. Un choix a deux champs: le libellé du choix et le
+nombre de votes pour ce choix. Chaque choix est associé à un sondage.</p>
+<p>Ces concepts sont représentés par de simples classes Python. Éditez le fichier
+<tt class="docutils literal"><span class="pre">polls/models.py</span></tt> pour qu'il ressemble à ça:</p>
+<pre class="literal-block">
+from django.db import models
+
+class Poll(models.Model):
+    question = models.CharField(maxlength=200)
+    pub_date = models.DateTimeField('Date de publication')
+
+class Choice(models.Model):
+    poll = models.ForeignKey(Poll)
+    choice = models.CharField(maxlength=200)
+    votes = models.IntegerField()
+</pre>
+<p>Le code est clair et concis. Chaque modèle est représenté par une classe qui
+étend <tt class="docutils literal"><span class="pre">django.db.models.Model</span></tt>. Chaque molèle a un certain nombre d'attributs
+de classe, chacun représentant un champ de base de données dans le modèle.</p>
+<p>Chaque champ est représenté par l'instance d'une classe <tt class="docutils literal"><span class="pre">models.*Field</span></tt> -- par
+exemple, <tt class="docutils literal"><span class="pre">models.CharField</span></tt> pour les champs de chaîne de caractères et
+
+<tt class="docutils literal"><span class="pre">models.DateTimeField</span></tt> pour les dates/heures. Ceci décrit à Django quel type
+de données est contenu dans chaque champs.</p>
+<p>Le nom de chaque instance de <tt class="docutils literal"><span class="pre">models.*Field</span></tt> (par exemple <tt class="docutils literal"><span class="pre">question</span></tt> ou
+<tt class="docutils literal"><span class="pre">pub_date</span></tt> ) est le nom du champ, dans un format informatique. Vous utiliserez
+cette valeur dans votre code Python, et votre base de données l'utilisera comme
+un nom de colonne.</p>
+<p>Vous pouvez définir en premier argument facultatif <tt class="docutils literal"><span class="pre">Field</span></tt> un nom informel,
+plus facilement compréhensible par un lecteur humain. Celui-ci est utilisé dans
+des parties introspective de Django et il contribue aussi à la documentation du
+code. Si ce champ n'est pas fourni, Django utilisera alors le nom informatique.
+Dans cet exemple, nous avons seulement défini un nom informel pour
+
+<tt class="docutils literal"><span class="pre">Poll.pub_date</span></tt>. Pour tous les autres champs de ce modèle, le nom informatique
+du champs est suffisamment explicite pour rester lisible.</p>
+<p>Quelques classes <tt class="docutils literal"><span class="pre">*Field</span></tt> requièrent des éléments. <tt class="docutils literal"><span class="pre">CharField</span></tt>, par
+exemple, requiert que vous lui donniez une longueur maximale <tt class="docutils literal"><span class="pre">maxlength</span></tt>. Ce
+n'est pas seulement utilisé dans le schéma de la base de données, mais
+également dans la validation, comme nous le verrons bientôt.</p>
+<p>Enfin, notez que la relation est définie en utilisant <tt class="docutils literal"><span class="pre">models.ForeignKey</span></tt>. Ça
+dit à Django que chaque choix Choice est lié à un unique sondage Poll. Django
+supporte toutes les relations communes des bases de données: n vers 1, n vers m
+et 1 vers 1.</p>
+</div>
+
+<div class="section">
+<h1><a id="activation-des-mod-les" name="activation-des-mod-les">Activation des modèles</a></h1>
+<p>Ce petit bout de code de modèle donne à Django beaucoup d'informations. Avec
+lui, Django est capable de:</p>
+<blockquote>
+<ul class="simple">
+<li>Créer le schéma de base de données (les instructions <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt>)
+pour cette appli.</li>
+<li>Créer une API en Python d'accès à la base de données afin d'accéder aux
+objets Poll et Choice.</li>
+</ul>
+</blockquote>
+
+<p>Mais avant, nous avons besoin de dire à notre projet que l'application <tt class="docutils literal"><span class="pre">polls</span></tt>
+est installée.</p>
+<div class="admonition-philosophie admonition">
+<p class="first admonition-title">Philosophie</p>
+<p class="last">Les applis Django sont « pluggables » : Vous pouvez utiliser une appli dans
+de nombreux projets, et vous pouvez distribuer des applis, parce qu'elles ne
+doivent pas dépendre d'une installation Django donnée.</p>
+</div>
+<p>Éditez à nouveau le fichier <tt class="docutils literal"><span class="pre">settings.py</span></tt>, et changez l'option
+<tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> pour inclure la chaîne <tt class="docutils literal"><span class="pre">'monsite.polls'</span></tt>. Ce qui devrait
+ressembler à ça:</p>
+
+<pre class="literal-block">
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'monsite.polls'
+)
+</pre>
+<p>Maintenant Django sait que <tt class="docutils literal"><span class="pre">monsite</span></tt> inclue l'appli <tt class="docutils literal"><span class="pre">polls</span></tt>. Lançons une
+autre commande:</p>
+<pre class="literal-block">
+python manage.py sql polls
+</pre>
+<p>Vous devriez voir ce qui suit (les instructions SQL CREATE TABLE pour l'appli
+polls):</p>
+<pre class="literal-block">
+BEGIN;
+CREATE TABLE &quot;polls_poll&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;question&quot; varchar(200) NOT NULL,
+    &quot;pub_date&quot; timestamp with time zone NOT NULL
+);
+CREATE TABLE &quot;polls_choice&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;poll_id&quot; integer NOT NULL REFERENCES &quot;polls_poll&quot; (&quot;id&quot;),
+    &quot;choice&quot; varchar(200) NOT NULL,
+    &quot;votes&quot; integer NOT NULL
+);
+COMMIT;
+
+</pre>
+<p>Notez ceci:</p>
+<blockquote>
+<ul class="simple">
+<li>Le nom des tables est généré automatiquement en combinant le nom de
+l'appli (<tt class="docutils literal"><span class="pre">polls</span></tt>) avec le nom en minuscule du modèle -- <tt class="docutils literal"><span class="pre">poll</span></tt> et
+<tt class="docutils literal"><span class="pre">choice</span></tt>. (Vous pouvez changer ce comportement.)</li>
+<li>Les clés primaires (IDs) sont ajoutées automatiquement. (Vous pouvez aussi
+le changer.)</li>
+<li>Par convention, Django ajoute <tt class="docutils literal"><span class="pre">&quot;_id&quot;</span></tt> à nom de champ de la clé
+étrangère. Oui, vous pouvez également le changer.</li>
+
+<li>La relation de la clé étrangère est faite explicitement par une clause
+<tt class="docutils literal"><span class="pre">REFERENCES</span></tt>.</li>
+<li>Le code est rédigé pour la base de données que vous employez, donc les
+types de champ spécifiques à chaque base de données, tel que
+<tt class="docutils literal"><span class="pre">auto_increment</span></tt> (MySQL), <tt class="docutils literal"><span class="pre">serial</span></tt> (PostgreSQL), ou
+<tt class="docutils literal"><span class="pre">integer</span> <span class="pre">primary</span> <span class="pre">key</span></tt> (SQLite) sont gérés pour vous automatiquement.
+Même chose pour les quotes de noms de champs -- par exemple, l'utilisation
+de doubles ou simples quotes. L'auteur de ce tutoriel utilise PostgreSQL,
+donc les traces d'exécution de l'exemple sont dans la syntaxe PostgreSQL.</li>
+
+<li>La commande <cite>sql</cite> ne lance en fait pas le code SQL dans votre base de
+données - il l'affiche juste à l'écran pour que vous puissiez voir quel
+code SQL est requis d'après Django. Si vous aviez voulu, nous auriez pu
+copier et coller ce code SQL dans l'invite interactive de votre base de
+données. Cependant, comme nous le verrons d'ici peu, Django fournit une
+moyen plus simple d'éxecuter le SQL dans la base de données.</li>
+</ul>
+</blockquote>
+<dl class="docutils">
+<dt>Si vous êtes intéressé, lancez aussi les commandes suivantes :</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">validate</span> <span class="pre">polls</span></tt> -- Vérifie s'il n'y a pas d'erreurs
+dans la construction de vos modèles.</li>
+
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">sqlinitialdata</span> <span class="pre">polls</span></tt> -- Affiche toutes les données
+initiales requises pour le framework d'administration de Django et pour
+vos modèles.</li>
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">sqlclear</span> <span class="pre">polls</span></tt> -- Affiche les instructions <tt class="docutils literal"><span class="pre">DROP</span>
+
+<span class="pre">TABLE</span></tt> nécessaires pour cette appli, selon les table qui existent déjà
+dans votre base de données (s'il y en a).</li>
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">sqlindexes</span> <span class="pre">polls</span></tt> -- Affiche les instructions <tt class="docutils literal"><span class="pre">CREATE</span>
+<span class="pre">INDEX</span></tt> pour cette appli.</li>
+
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">sqlall</span> <span class="pre">polls</span></tt> -- Une combinaison de tous les codes SQL
+des commandes 'sql', 'sqlinitialdata', et 'sqlindexes'.</li>
+</ul>
+</dd>
+</dl>
+<p>L'examen de la trace d'exécution de ces commandes peut vous aider à
+comprendre ce qui se passe en fait en bas-niveau.</p>
+<p>À présent, lancez à nouveau <tt class="docutils literal"><span class="pre">syncdb</span></tt> pour créer ces tables du modèles dans
+votre base de données:</p>
+
+<pre class="literal-block">
+python manage.py syncdb
+</pre>
+<p>La commande <tt class="docutils literal"><span class="pre">syncdb</span></tt> exécute le code sql de 'sqlall' dans votre base de
+données pour toutes les applis de <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> qui n'existent pas encore
+dans votre base de données. Ça crée toutes les tables, initie les données et
+indexes pour toutes les applis que vous avez ajouté dans votre projet depuis la
+dernière fois que vous avez lancé syncdb. <tt class="docutils literal"><span class="pre">syncdb</span></tt> peut être appelé aussi
+souvent que vous le souhaitez, et ça ne créera que les tables qui n'existaient
+pas auparavant.</p>
+<p>Lisez la <a class="reference" href="http://www.djangoproject.com/documentation/django_admin/">documentation de django-admin.py</a> pour des informations complètes sur
+ce que l'outil <tt class="docutils literal"><span class="pre">manage.py</span></tt> peut faire.</p>
+
+</div>
+<div class="section">
+<h1><a id="jouons-avec-l-api" name="jouons-avec-l-api">Jouons avec l'API</a></h1>
+<p>Maintenant, jetons un œil au shell Python interactif et jouons avec l'API libre
+que Django nous fournit. Pour invoquer le shell Python, utilisez cette
+commande:</p>
+<pre class="literal-block">
+python manage.py shell
+</pre>
+<p>Nous utilisons celle-ci au lieu de simplement taper « python » parce que
+<tt class="docutils literal"><span class="pre">manage.py</span></tt> définit l'environnement du projet pour vous. « Définir
+l'environnement » signifie deux choses:</p>
+<blockquote>
+<ul>
+<li><p class="first">Insertion de <tt class="docutils literal"><span class="pre">monsite</span></tt> dans <tt class="docutils literal"><span class="pre">sys.path</span></tt>. Par flexibilité, plusieurs
+parties de Django se référent aux projets à l'aide de la notation Python
+de chemins séparés par des points (par exemple, <cite>'monsite.polls.models'`</cite>
+
+). Et pour que ça marche, le paquetage <tt class="docutils literal"><span class="pre">monsite</span></tt> doit être dans
+<tt class="docutils literal"><span class="pre">sys.path</span></tt>.</p>
+<p>Nous avons déjà vu un exemple de cela : l'option <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> est
+une liste de paquetages utilisant la notation de chemins séparés par des
+points.</p>
+</li>
+<li><p class="first">Définition de la variable d'environnement <tt class="docutils literal"><span class="pre">DJANGO_SETTINGS_MODULE</span></tt>, qui
+indique à Django le chemin vers votre fichier <tt class="docutils literal"><span class="pre">settings.py</span></tt>.</p>
+
+</li>
+</ul>
+</blockquote>
+<div class="admonition-outrepasser-manage-py admonition">
+<p class="first admonition-title">Outrepasser manage.py</p>
+<p>Si vous préférez ne pas utiliser <tt class="docutils literal"><span class="pre">manage.py</span></tt>, pas de problème. Vérifiez
+juste que <tt class="docutils literal"><span class="pre">monsite</span></tt> est à la racine du path Python (c'est-à-dire, <tt class="docutils literal"><span class="pre">import</span>
+<span class="pre">monsite</span></tt> fonctionne) et définissez la variable d'environnement
+
+<tt class="docutils literal"><span class="pre">DJANGO_SETTINGS_MODULE</span></tt> à <tt class="docutils literal"><span class="pre">monsite.settings</span></tt>.</p>
+<p class="last">Pour plus d'informations sur tout cela, lisez la <a class="reference" href="http://www.djangoproject.com/documentation/django_admin/">documentation de
+django-admin.py</a>.</p>
+</div>
+<p>Une fois que vous êtes dans le shell, explorez l'API pour la base de données:</p>
+<pre class="literal-block">
+# Importe les classes de modèle que nous venons d'écrire.
+&gt;&gt;&gt; from monsite.polls.models import Poll, Choice
+
+# Aucun sondage n'est dans le système pour l'instant.
+
+&gt;&gt;&gt; Poll.objects.all()
+[]
+
+# Crée un nouveau sondage Poll.
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; p = Poll(question=&quot;Quoi de neuf ?&quot;, pub_date=datetime.now())
+
+# Sauvegarde l'objet dans la base de données.
+# Vous devez appeler save() explicitement.
+&gt;&gt;&gt; p.save()
+
+# Maintenant il a un ID. Notez que ça pourrait afficher &quot;1L&quot; au lieu de &quot;1&quot;,
+# cela dépend de la base de données que vous utilisez. Ce n'est pas un bug ;
+# ça signifie juste que le backend de votre base de données préfère
+# retourner les entiers comme des objets de type entiers longs en Python.
+&gt;&gt;&gt; p.id
+1
+
+# Accède aux colonnes de base de données via les attributs Python.
+
+&gt;&gt;&gt; p.question
+&quot;Quoi de neuf ?&quot;
+&gt;&gt;&gt; p.pub_date
+datetime.datetime(2005, 7, 15, 12, 00, 53)
+
+# Change les valeurs en modifiant les attributs, puis en appelant save().
+&gt;&gt;&gt; p.pub_date = datetime(2005, 4, 1, 0, 0)
+&gt;&gt;&gt; p.save()
+
+# objects.all() affiche tous les sondages de la base de données.
+&gt;&gt;&gt; Poll.objects.all()
+[&lt;Poll: Poll object&gt;]
+</pre>
+<p>Attendez une minute. <tt class="docutils literal"><span class="pre">&lt;Poll:</span> <span class="pre">Poll</span> <span class="pre">object&gt;</span></tt> est, à vrai dire, une
+représentation qui n'apporte rien sur l'objet. Corrigeons cela en éditant le
+modèle des sondages (dans le fichier <tt class="docutils literal"><span class="pre">polls/models.py</span></tt>) et en ajoutant une
+méthode <tt class="docutils literal"><span class="pre">__str__()</span></tt> aux classes <tt class="docutils literal"><span class="pre">Poll</span></tt> et <tt class="docutils literal"><span class="pre">Choice</span></tt>:</p>
+
+<pre class="literal-block">
+class Poll(models.Model):
+    # ...
+    def __str__(self):
+        return self.question
+
+class Choice(models.Model):
+    # ...
+    def __str__(self):
+        return self.choice
+</pre>
+<p>Il est important d'ajouter les méthodes <tt class="docutils literal"><span class="pre">__str__()</span></tt> dans vos modèles, pas
+seulement pour votre propre bien-être lorsque vous utilisez la console
+interactive, mais aussi parce que les représentations d'objets sont utilisées à
+travers l'interface d'administration auto-générée de Django.</p>
+<p>Notez que ce sont des méthodes standards de Python. Ajoutons une méthode perso,
+juste pour la démo:</p>
+<pre class="literal-block">
+import datetime
+# ...
+class Poll(models.Model):
+    # ...
+    def was_published_today(self):
+        return self.pub_date.date() == datetime.date.today()
+</pre>
+<p>Notez l'ajout de <tt class="docutils literal"><span class="pre">import</span> <span class="pre">datetime</span></tt> pour référencer le module standard de
+Python <tt class="docutils literal"><span class="pre">datetime</span></tt>.</p>
+
+<p>Revenons au shell Python interactif en lançant à nouveau <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span>
+<span class="pre">shell</span></tt>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from monsite.polls.models import Poll, Choice
+
+# Vérifie que notre nouvelle méthode __str__() fonctionne.
+&gt;&gt;&gt; Poll.objects.all()
+[&lt;Poll: Quoi de neuf ?&gt;]
+
+# Django fournit une riche API de recherche dans la base de données qui est
+# entièrement gérée par des arguments mot-clés.
+&gt;&gt;&gt; Poll.objects.filter(id=1)
+[&lt;Poll: Quoi de neuf ?&gt;]
+
+&gt;&gt;&gt; Poll.objects.filter(question__startswith='Quoi')
+[&lt;Poll: Quoi de neuf ?&gt;]
+
+# Récupére le sondage dont l'année est 2005. Bien sûr, si vous suivez ce
+# tutoriel dans une autre année, remplacez par la valeur appropriée.
+&gt;&gt;&gt; Poll.objects.get(pub_date__year=2005)
+&lt;Poll: Quoi de neuf ?&gt;
+
+&gt;&gt;&gt; Poll.objects.get(id=2)
+Traceback (most recent call last):
+    ...
+DoesNotExist: Poll matching query does not exist.
+
+# La recherche par clé primaire est le cas le plus courant, donc Django
+# fournit un raccourci pour les recherches exactes sur clé primaire.
+# Ce qui suit est identique à Poll.objects.get(id=1).
+&gt;&gt;&gt; Poll.objects.get(pk=1)
+&lt;Poll: Quoi de neuf ?&gt;
+
+# Vérifie que notre méthode perso fonctionne.
+
+&gt;&gt;&gt; p = Poll.objects.get(pk=1)
+&gt;&gt;&gt; p.was_published_today()
+False
+
+# Donne une liste de choix Choice au sondage Poll. L'appel à create
+# construit un nouvel objet choice, fait l'instruction INSERT , ajoute le
+# choix dans l'ensemble des choix disponibles et retourne le nouvel objet
+# Choice.
+&gt;&gt;&gt; p = Poll.objects.get(pk=1)
+&gt;&gt;&gt; p.choice_set.create(choice='Pas grand chose', votes=0)
+&lt;Choice: Pas grand chose&gt;
+&gt;&gt;&gt; p.choice_set.create(choice='Le ciel', votes=0)
+&lt;Choice: Le ciel&gt;
+&gt;&gt;&gt; c = p.choice_set.create(choice='Toujours en train de coder', votes=0)
+
+# Les objets Choice ont une API d'accès aux objets Poll qui leur sont liés.
+&gt;&gt;&gt; c.poll
+
+&lt;Poll: Quoi de neuf ?&gt;
+
+# Et vice-versa: les objets Poll ont accès aux objets Choice.
+&gt;&gt;&gt; p.choice_set.all()
+[&lt;Choice: Pas grand chose&gt;, &lt;Choice: Le ciel&gt;, &lt;Choice: Toujours en train de coder&gt;]
+&gt;&gt;&gt; p.choice_set.count()
+3
+
+# L'API suit automatiquement les relations aussi loin que vous en avez
+# besoin. Utilisez les doubles underscores pour séparer les relations.
+# Ça fonctionne sur autant de niveaux de profonteur que vous voulez. Il n'y
+# a pas de limite. Trouve tous les choix Choice pour n'importe quel sondage
+# dont le pub_date est 2005.
+&gt;&gt;&gt; Choice.objects.filter(poll__pub_date__year=2005)
+[&lt;Choice: Pas grand chose&gt;, &lt;Choice: Le ciel&gt;, &lt;Choice: Toujours en train de coder&gt;]
+
+# Supprimons un des choix. Utilisez delete() pour se faire.
+
+&gt;&gt;&gt; c = p.choice_set.filter(choice__startswith='Toujours en train')
+&gt;&gt;&gt; c.delete()
+</pre>
+<p>Pour les détails complets au sujet de l'API de la base de données, lisez notre
+<a class="reference" href="http://www.djangoproject.com/documentation/db_api/">référence de l'API de base de données</a>.</p>
+<p>Quand vous vous serez familiarisé avec l'API, lisez la <a class="reference" href="/journal/index.php/redaction-de-votre-premiere-appli-django-partie-2-exploration-de-l-interface-d-admin-auto-generee">partie 2 de ce
+tutoriel</a> pour voir le fonctionnement de l'interface d'administration
+automatique de Django.</p>
+<p>Vous pouvez maintenant retourner à la <a class="reference" href="/journal/index.php/traduction-francaise-de-la-documentation-de-django-le-framework-web-python">page d'accueil des traductions de la
+documentation de Django</a>.</p>
+
+<p>Cette traduction correspond à la révision 3589 (post 0.95).</p>
+</div>
+</div>
+    </div>
+</div>
+
+
+<div id="promotion">
+    <div class="container">
+        <div class="column span-24">
+            <div class="column span-15 colborder">
+                
+            </div>
+            <div class="column span-8 last">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="extra_content">
+    <div class="container">
+    
+    <hr />
+    <h3>Billets contextuels</h3>
+	﻿
+    <div class="column span-7 colborder">
+        <h4><a href="/django,traduction,web-frameworks/le-langage-de-template-django-pour-les-auteurs-de-templates/" title="Lire le billet intitulé Le langage de template Django : Pour les auteurs de templates" rel="bookmark">Le langage de template Django : Pour les auteurs de templates</a></h4>
+        
+            <a href="/django,traduction,web-frameworks/le-langage-de-template-django-pour-les-auteurs-de-templates/" title="Lire le billet intitulé Le langage de template Django : Pour les auteurs de templates">
+                <img src="http://media.biologeek.com/images/logos/django.png" alt="Image associée au billet" class="vignette" />
+            </a>
+        
+        <p>Le langage de template Django a été conçu dans l'idée d'être un bon compromis
+entre puissance et facilité. Il est facilement accessible aux personnes ayant
+l'habitude de travailler avec du HTML. Si vous avez déjà utilisé un ...</p>
+    </div>
+
+    <div class="column span-7 colborder">
+        <h4><a href="/django,traduction,web-frameworks/comparaison-de-turbogears-et-django-deux-frameworks-web-python/" title="Lire le billet intitulé Comparaison de TurboGears et Django, deux frameworks web Python" rel="bookmark">Comparaison de TurboGears et Django, deux frameworks web Python</a></h4>
+        
+            <a href="/django,traduction,web-frameworks/comparaison-de-turbogears-et-django-deux-frameworks-web-python/" title="Lire le billet intitulé Comparaison de TurboGears et Django, deux frameworks web Python">
+                <img src="http://media.biologeek.com/images/logos/turbogears_django.png" alt="Image associée au billet" class="vignette" />
+            </a>
+        
+        <p>Entre deux traductions de tutoriels pour Django, j'ai décidé de traduire ce petit comparatif qui fait suite aux articles d'introduction à ces frameworks web publiés sur le site d'IBM (partie 1 consacrée à Django et partie 2 ...</p>
+    </div>
+
+    <div class="column span-7 last">
+        <h4><a href="/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-4-conception-d-un-formulaire-et-vues-generiques/" title="Lire le billet intitulé Rédaction de votre première appli Django, partie 4 : Conception d&#39;un formulaire et vues génériques" rel="bookmark">Rédaction de votre première appli Django, partie 4 : Conception d'un formulaire et vues génériques</a></h4>
+        
+            <a href="/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-4-conception-d-un-formulaire-et-vues-generiques/" title="Lire le billet intitulé Rédaction de votre première appli Django, partie 4 : Conception d&#39;un formulaire et vues génériques">
+                <img src="http://media.biologeek.com/images/logos/django.png" alt="Image associée au billet" class="vignette" />
+            </a>
+        
+        <p>Ce tutoriel commence là où le Tutoriel 3 s'est achevé. Nous continuons notre
+application de sondage en ligne et allons nous intéresser à la génération d'un
+formulaire simple et au ré-arrangement de notre code.</p>
+    </div>
+
+
+
+	<hr />
+	<div id="comments" class="main column span-16 prepend-4">
+        
+        ﻿
+    <h2 id="co">Commentaires</h2>
+    
+        <div class="comment_odd" id="c1666" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1666">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1666">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1666">#1</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">Paolo</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-06-17" datatype="xsd:date">
+                        17 Juin 2006 à 19h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Django's tutorial part one translated in French.. simply fantastic :-)<br />
+Great news, keep up the good work!</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_even" id="c1677" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1677">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1677">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1677">#2</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">David</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-06-20" datatype="xsd:date">
+                        20 Juin 2006 à 15h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Très bon travail, j'attends la suite avec impatience ! ;-)</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_odd" id="c1809" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1809">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1809">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1809">#3</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">Phil</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-07-19" datatype="xsd:date">
+                        19 Juillet 2006 à 13h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Petite faute de typo, on créé le projet monsite, mais dans les exemples, on utilise mysite</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_even" id="c1813" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1813">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1813">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1813">#4</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <a href="http://david.larlet.fr" title="Accès au site de l'auteur de ce commentaire">
+                            <span property="rdfs:label" typeof="sioc:User">David, biologeek</span>
+                        </a>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-07-19" datatype="xsd:date">
+                        19 Juillet 2006 à 15h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Bien vu, corrigé :)</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_odd" id="c1933" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1933">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1933">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1933">#5</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <a href="http://langebleu.net" title="Accès au site de l'auteur de ce commentaire">
+                            <span property="rdfs:label" typeof="sioc:User">Flipper</span>
+                        </a>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-08-05" datatype="xsd:date">
+                        5 Août 2006 à 11h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Petite faute de frappe, dans le petit paragraphe &quot;Projets contre applis&quot; il y a d'écrit &quot;un base d'enregistrement&quot;</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_even" id="c1939" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1939">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1939">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c1939">#6</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <a href="http://david.larlet.fr" title="Accès au site de l'auteur de ce commentaire">
+                            <span property="rdfs:label" typeof="sioc:User">David, biologeek</span>
+                        </a>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2006-08-05" datatype="xsd:date">
+                        5 Août 2006 à 17h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Ok, merci c'est corrigé !</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_odd" id="c5466" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c5466">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c5466">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c5466">#7</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">ark</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2007-01-11" datatype="xsd:date">
+                        11 Janvier 2007 à 14h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>joli travail, merci :)</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_even" id="c6635" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6635">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6635">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6635">#8</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">Bastien</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2007-01-16" datatype="xsd:date">
+                        16 Janvier 2007 à 14h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Note : Il est possible de générer automatiquement le fichier models.py depuis une base de donnée existante (définie dans monsite\settings.py) en exécutant la commande &quot;python manage.py inspectdb &gt; monapp/models.py&quot; à partir du répertoire du site...Cependant, d'après mon expérience, pour mysql il faudra créer soi-même les clés étrangères selon ce modèle :<br />
+<br />
+class AuthMessage(models.Model):<br />
+    id = models.IntegerField(primary_key=True)<br />
+    user = models.ForeignKey(AuthUser)<br />
+    message = models.TextField()<br />
+    class Meta:<br />
+        db_table = 'auth_message'<br />
+<br />
+Et modifier le fichier settings.py afin que (dans ce cas par exemple) la classe AuthUser soit déclarée dans le fichier AVANT la classe AuthMessage.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_odd" id="c6649" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6649">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6649">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c6649">#9</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <a href="http://david.larlet.fr" title="Accès au site de l'auteur de ce commentaire">
+                            <span property="rdfs:label" typeof="sioc:User">David, biologeek</span>
+                        </a>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2007-01-16" datatype="xsd:date">
+                        16 Janvier 2007 à 18h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Tu peux aussi déclarer tes Key/Field sous la forme de strings, auquel cas l'ordre n'importe pas, par exemple ici :<br />
+<br />
+user = models.ForeignKey('AuthUser')</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_even" id="c21596" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21596">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21596">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21596">#10</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <span property="rdfs:label" typeof="sioc:User">[JO-JOJO]</span>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2007-05-07" datatype="xsd:date">
+                        7 Mai 2007 à 18h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Bonjour,<br />
+<br />
+Merci encore pour tous ces tuto vraiment bien expliqués !<br />
+<br />
+J'ai fait des petites recherches pour le champ de type ImageField, car j'aimerai lui donné un chemin d'accès en fonction d'une catégorie spécifique !!<br />
+<br />
+voilà donc comment j'ai fait cela :  <br />
+categorie = models.ForeignKey(CategoriePhoto)<br />
+ImageField(upload_to='photos/%(categorie)s') <br />
+<br />
+Mais ceci ne marche pas ... pourquoi ? ca me créer un dossier qui s'appele &quot; categorie)s &quot; !!! bizarrreeee !<br />
+<br />
+Merci d'avance<br />
+<br />
+Joakim<br />
+</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="comment_odd" id="c21599" 
+            rel="sioc:has_reply" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21599">
+            <div typeof="sioctype:Comment" about="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21599">
+                <span rel="sioc:has_container" href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/" />
+                <p>
+                    <span class="comnum">
+                        <a href="http://www.biologeek.com/django,traduction,web-frameworks/redaction-de-votre-premiere-appli-django-partie-1-initialisation-creation-des-modeles-et-api-de-la-base-de-donnees/#c21599">#11</a>
+                    </span>
+                    <strong rel="sioc:has_creator">
+                    
+                        <a href="http://david.larlet.fr" title="Accès au site de l'auteur de ce commentaire">
+                            <span property="rdfs:label" typeof="sioc:User">David, biologeek</span>
+                        </a>
+                    
+                    </strong>, 
+                    le <span property="dcterms:created" content="2007-05-07" datatype="xsd:date">
+                        7 Mai 2007 à 21h
+                    </span>&nbsp;:
+                </p>
+                <div property="sioc:content">
+                    <p>Normal, il faut que tu traites la chaîne de caractère upload_to comme une chaîne de caractères python. Pour l'utilisation comme un dictionnaire, tu peux consulter ce billet :<br />
+<a href="http://www.biologeek.com/journal/index.php/formatage-des-chaines-de-caracteres-en-python" title="http://www.biologeek.com/journal/index.php/formatage-des-chaines-de-caracteres-en-python" rel="nofollow">www.biologeek.com/journal...</a><br />
+<br />
+Pour faire court, il faudrait mettre :<br />
+ImageField(upload_to='photos/%(categorie)s' % {'categorie': nom-de-ta-catégorie})<br />
+<br />
+Bon courage dans ton apprentissage de Django :-).</p>
+                </div>
+            </div>
+        </div>
+    
+        
+        <h2>Ajouter un commentaire</h2>
+        
+        
+<form action="/commentaires/#preview" method="post">
+    <fieldset>
+        
+          
+            <dl
+              >
+              <dt><label for="id_name">Nom★ </label></dt> <dd><input id="id_name" type="text" name="name" maxlength="50" /></dd>
+            </dl>
+          
+        
+          
+            <dl
+              >
+              <dt><label for="id_email">Email </label></dt> <dd><input type="text" name="email" id="id_email" /></dd>
+            </dl>
+          
+        
+          
+            <dl
+              >
+              <dt><label for="id_url">Site </label></dt> <dd><input type="text" name="url" id="id_url" /></dd>
+            </dl>
+          
+        
+          
+            <dl
+              >
+              <dt><label for="id_comment">Commentaire★ </label></dt> <dd><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea></dd>
+            </dl>
+          
+        
+          
+            <dl
+               class="hide">
+              <dt><label for="id_honeypot">Laissez ce champ vide si vous ne souhaitez pas être pris pour un spammeur </label></dt> <dd><input id="id_honeypot" type="text" class="hide" name="honeypot" /></dd>
+            </dl>
+          
+        
+          
+            <input type="hidden" name="content_type" value="journal.post" id="id_content_type" />
+          
+        
+          
+            <input type="hidden" name="object_pk" value="116" id="id_object_pk" />
+          
+        
+          
+            <input type="hidden" name="timestamp" value="1219868891" id="id_timestamp" />
+          
+        
+          
+            <input type="hidden" name="security_hash" value="2c7ebc6908fe94ea479f7e8d39c05bfabe0b6a6e" id="id_security_hash" />
+          
+            
+        <input type="submit" name="submit" id="submit-preview" value="Prévisualiser" />
+    </fieldset>
+</form>
+    </div>
+
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <hr />
+        <div class="column span-24">
+            <div id="author" class="column span-15 colborder">
+                <h3>En savoir plus sur l'auteur</h3>
+                <img src="http://media.biologeek.com/css/img/nenuphar_optim.png" alt="Nénuphar biologeek" />
+                <p>
+                    <a href="http://david.larlet.fr" title="Accès au profil de David Larlet" rel="me">David Larlet</a>
+                    est un passionné du web qui croit en sa progression, c'est la
+                    raison pour laquelle il a aujourd'hui choisi d'en devenir acteur
+                    à travers ces publications régulières.
+                </p>
+                <p>
+                    Bon et comme on est entre nous, je vais arrêter de parler de moi
+                    à la troisième personne. J'écris principalement ici pour
+                    partager mes connaissances et les confronter à votre œil
+                    critique afin de progresser.
+                </p>
+                <p>
+                    Comme tout blogueur, j'ai inévitablement un ego beaucoup 
+                    plus gros que mon pagerank mais j'essaye de me soigner et
+                    de survivre en répondant du mieux que je peux aux commentaires
+                    et aux mails.
+                </p>
+                <p>
+                    Pour terminer, si vous aimez ce qui est écrit ici, n'hésitez pas
+                    à <a href="/abonnements/" title="Abonnez-vous, c'est 
+                    simple gratuit et rapide">vous abonner</a>. C'est gratuit
+                    et garanti sans spam ni revente d'adresse. <!--Vous pouvez aussi
+                    <a href="" title="Identifiez-vous avec OpenID">vous identifier</a> 
+                    si vous disposez d'<a href="#TODO" title="En savoir plus sur OpenID">un OpenID</a>.-->
+                </p>
+                <p>
+                    Vous pouvez <a href="/contact/" title="Accès à la page de contact">me contacter</a> par mail 
+                    si vous souhaitez une réponse personnalisée mais je préfère répondre 
+                    en commentaire si c'est relatif à un billet particulier afin d'en faire
+                    profiter tout le monde.
+                </p>
+            </div>
+            <div id="quicklinks" class="column span-8 last">
+            
+                
+                
+                ﻿<h3>Derniers billets publiés</h3>
+<ul>
+
+    <li><a href="/bio-informatique,web-semantique/rdf-adn-de-notre-identite-numerique/" title="Lire le billet intitulé RDF, l&#39;ADN de notre identité numérique ?">★ RDF, l'ADN de notre identité numérique ?</a></li>
+
+    <li><a href="/bonnes-pratiques,web-mobile/ipheedsorg-une-version-iphone-pour-votre-blog/" title="Lire le billet intitulé iPheeds.org, une version iPhone pour votre blog">★ iPheeds.org, une version iPhone pour votre blog</a></li>
+
+    <li><a href="/openid,web-semantique/differences-entre-identification-autorisation-et-authentification/" title="Lire le billet intitulé Différences entre identification, autorisation et authentification">Différences entre identification, autorisation et authentification</a></li>
+
+    <li><a href="/django,web-semantique/decouvrons-oauth-avec-mixin-et-django-oauth/" title="Lire le billet intitulé Découvrons OAuth avec mixin (et django-oauth)">★ Découvrons OAuth avec mixin (et django-oauth)</a></li>
+
+    <li><a href="/conferences,critique,livre/critique-du-livre-presentation-zen/" title="Lire le billet intitulé Critique du livre Presentation Zen">Critique du livre Presentation Zen</a></li>
+
+</ul>
+
+                
+                ﻿<h3>Dernières brèves</h3>
+<ul>
+
+    <li><a href="/2008/08/rdfa-et-html5-vs-microformats-et-xhtml2/" title="Lire la pensée intitulée RDFa et HTML5 (vs. microformats et XHTML2)">RDFa et HTML5 (vs. microformats et XHTML2)</a></li>
+
+    <li><a href="/2008/08/documenter-son-code-en-rdf/" title="Lire la pensée intitulée Documenter son code en RDF">Documenter son code en RDF</a></li>
+
+    <li><a href="/2008/08/meilleur-client-ssh-sur-iphone/" title="Lire la pensée intitulée Meilleur client SSH sur iPhone ?">Meilleur client SSH sur iPhone ?</a></li>
+
+</ul>
+
+            
+            </div>
+        </div>
+    </div>
+</div>
+<div id="legacy">
+    <div class="container">
+        <p class="column span-24 small">
+            &copy; 2004-2008 <a href="http://david.larlet.fr" title="Accès au profil de David Larlet" rel="me">David Larlet</a> -
+            <a href="/contact/#licence" title="À lire avant toute (re)copie">Licence</a> (presque) libre - 
+            Site enfin propulsé par <a href="http://www.django-fr.org/" title="Le framework web python">Django</a> 
+            et hébergé par <a href="http://www.typhon.com/" title="Typhon, l'hébergeur de qualité">Typhon</a>.
+        </p>
+    </div>
+</div>
+
+</div>
+<script src="http://stats.biologeek.com/?js" type="text/javascript"></script>
+<script src="http://media.biologeek.com/js/highlight.js" type="text/javascript"></script>
+<script type="text/javascript">
+initHighlightingOnLoad('html', 'css', 'python', 'php', 'javascript', 'django');
+</script>
+</body>
+</html>
