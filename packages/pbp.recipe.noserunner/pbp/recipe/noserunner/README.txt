@@ -46,18 +46,17 @@ Example usage
     ... [test]
     ... recipe = pbp.recipe.noserunner
     ... eggs = pbp.recipe.noserunner
+    ... working-directory = ${buildout:directory}
     ... """) 
 
-Running the buildout gives us::
+Running the buildout::
     
-    >>> print system(buildout) 
-    Installing test.
-    ...
+    >>> null = system(buildout) 
 
 Checking the generated script::
 
     >>> import os
-    >>> print open(os.path.join('bin', 'test')).read()    
+    >>> print open(os.path.join(sample_buildout, 'bin', 'test')).read()    
     #!...
     <BLANKLINE>
     import sys
@@ -68,7 +67,7 @@ Checking the generated script::
     import os
     <BLANKLINE>
     sys.argv[0] = os.path.abspath(sys.argv[0])
-    os.chdir('/sample-buildout/parts/test')
+    os.chdir('/sample-buildout')
     <BLANKLINE>
     <BLANKLINE>
     import nose

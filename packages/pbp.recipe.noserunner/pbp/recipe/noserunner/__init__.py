@@ -13,7 +13,8 @@ class Recipe(object):
         options['script'] = os.path.join(buildout['buildout']['bin-directory'],
                                          options.get('script', self.name),
                                          )
-        if not options.get('working-directory', ''):
+        wd = options.get('working-directory', '').strip()
+        if wd == '':
             options['location'] = os.path.join(
                 buildout['buildout']['parts-directory'], name)
         eggs = options.get('eggs', '')
@@ -36,16 +37,15 @@ class Recipe(object):
             defaults = ['nose'] + defaults.split()
             defaults = "argv=%s" % defaults
 
-        wd = options.get('working-directory', '')
-        if not wd:
-            wd = options['location']
+        wd = options.get('working-directory', '').strip()
+        if wd != '':
             if os.path.exists(wd):
                 assert os.path.isdir(wd)
             else:
                 os.mkdir(wd)
             dest.append(wd)
         else:
-            wd = os.getcwd()
+            wd = options['location']
 
         initialization = initialization_template % wd 
 
@@ -58,6 +58,7 @@ class Recipe(object):
         initialization_section = options.get('initialization', '').strip()
         if initialization_section:
             initialization += initialization_section
+
         dest.extend(zc.buildout.easy_install.scripts(
             [(options['script'], 'nose', 'main')],
             ws, options['executable'],
