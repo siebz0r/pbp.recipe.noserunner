@@ -84,9 +84,11 @@ class _Follower(object):
 
             tag.attrs = [(attr, val) for attr, val in tag.attrs
                         if attr in ATTRS]
-       
-        return soup.body.renderContents()
-
+        if soup.body is not None: 
+            return soup.body.renderContents()
+        else:
+            return soup.renderContents()
+    
     def _clean(self, value):
         """cleans an html page."""
         # loads and render
@@ -195,7 +197,7 @@ class RedditFollower(_Follower):
     The filter tries to pick up the best extract out
     of the page.
     """
-    pattern = r'<a href="(.*)">\[link\]</a> <a href=".*?">\[comments\]</a>'
+    pattern = r'submitted .*? <br /> <a href="(.*?)">\[link\]</a> <a href=".*?">\[.*?comments\]</a>$'
 
     def _detect(self, entry):
         summary = entry.get('summary', '')

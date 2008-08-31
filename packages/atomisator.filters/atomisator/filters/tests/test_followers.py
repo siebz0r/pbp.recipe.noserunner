@@ -71,6 +71,23 @@ def test_reddit():
     entry = red(e, [])
     assert 'HTTPRedirectHandler' in entry['summary']
 
+@with_setup(setupurl, teardownurl)
+def test_reddit2():
+    red = RedditFollower()
+    summary = ('submitted by <a href="http://www.reddit.com/user/'
+               'sebastianavina">sebastianavina</a> <br /> <a href='
+               '"http://www.reddit.com/r/python">[link]</a> <a href'
+               '="http://www.reddit.com/r/Python/comments/6ytrh/pytho'
+               'n_subreddit_now_skinned_as_pythonorg/">[22 comments]</a>')
+
+    e = {'summary': summary,
+         'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
+                   ' (and more)')}
+    entry = red(e, [])
+    assert 'HTTPRedirectHandler' in entry['summary']
+
+
+
 @with_setup(setupurl, teardownurl) 
 def test_delicious():
     delicious = DeliciousFollower()

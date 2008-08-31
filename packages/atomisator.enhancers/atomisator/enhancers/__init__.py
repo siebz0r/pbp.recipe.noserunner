@@ -19,7 +19,12 @@ TPML = """\
 
 LI = """\
      <li><a href="%s">%s</a></li>
+"""       
+
+LI_COMMENT = """\
+     <li>%s</li>
 """         
+
 
 class DiggComments(object):
     """
@@ -38,7 +43,7 @@ class DiggComments(object):
             return entry
         id_ = stories[0].id
         comments = server.getStoriesComments(id_)
-        comments = [LI % c.content for c in comments]
+        comments = [LI_COMMENT % c.content for c in comments]
         comments = TPML % ('Digg comments', '\n'.join(comments))
         entry.summary = entry.summary + comments
         return entry
