@@ -1,4 +1,12 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
 import digg
+import BeautifulSoup
+import re
+
+options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
+ABSOLUTE = re.compile(r'^(ftp|http|https)://', options)
 
 TPML = """\
 <div>
@@ -48,11 +56,55 @@ class RelatedEntries(object):
         - links to the same page            XXX TODO
         - its Leventstein distance is small XXX TODO
     """
+    
+
+    def _get_page_links(self, url):
+        """return links found in the page"""
+        
+        try:
+            page = urllib2.urlopen(link)
+            if 'content-type' in page.headers.keys():
+                content_type = page.headers['content-type'].split(';')
+                type_ = content_type[0].strip().lower()
+                if type_ not in ('text/html', 'text/plain', 'test/rst'):
+                    return []
+            url_content = page.read()
+        except urllib2.HTTPError:
+            return []
+
+        return self._get_content_link(content)
+
+    def _get_content_link(self, content):
+        """extract content"""
+        s = BeautifulSoup.BeautifulSoup(content)  
+        def _href(a):
+            attrs = dict(a.attrs)
+            href = attrs.get('href')
+            if href is None:
+                return False
+            return ABSOLUTE.search(href) is not None and href
+
+        links = []
+        for a in s.findAll('a'):
+            href = _href(a)
+            if href and href not in links:
+                links.append(href)
+        return set(links) 
+
     def prepare(self, entries):
         # preparing data
         self._tags = {}
         self._links = {}
         for e in entries:
+            links = self._get_content_link(e.summary) 
+            # see if we want to do this as well
+            #links = links + self._get_page_links(e.link)
+            for l in links:
+                if l not in self._links:
+                    self._links[l] = [e]
+                elif e not in self._links[l]:
+                    self._links[l].append(e)
+
             for vals, rel in ((e.links, self._links), (e.tags, self._tags)):
                 for v in vals:
                     if v not in rel:
@@ -74,6 +126,7 @@ class RelatedEntries(object):
             related = [LI % r.link for r in related]
             related = TPML % ('Related', '\n'.join(related))
             entry.summary = entry.summary + related
+
         return entry
 
 

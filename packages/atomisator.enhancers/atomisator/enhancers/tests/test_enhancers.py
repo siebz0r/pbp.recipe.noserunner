@@ -1,3 +1,8 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
+import os
+
 from atomisator.enhancers import DiggComments
 from atomisator.enhancers import RelatedEntries
 from atomisator.enhancers.digg import Digg
@@ -73,3 +78,35 @@ def test_related():
     # common tags   
     assert 'http://example.com/two' in entry.summary
 
+def test_related_link():
+
+    dirname = os.path.dirname(__file__)
+    sample1 = os.path.join(dirname, 'sample1.html')
+    sample2 = os.path.join(dirname, 'sample2.html')
+
+    class E:
+        id = u'1'
+        summary = open(sample1).read() 
+        tags = []
+        links = []
+        link = 'http://example.com/one'
+
+    class E2:
+        id = u'2'
+        summary = open(sample2).read()
+        tags = ['two', 'three']
+        link = 'http://example.com/two'
+        links = []
+
+    r = RelatedEntries()
+   
+    e1, e2 = E(), E2()
+    entry = e1
+    entries = [e1, e2]       
+    r.prepare(entries) 
+    links = r._get_content_link(E.summary)
+    assert u'http://www.python.org' in links
+    assert_equals(len(links), 21)
+
+    assert_equals(r._links[u'http://www.python.org'], [e1, e2])
+    
