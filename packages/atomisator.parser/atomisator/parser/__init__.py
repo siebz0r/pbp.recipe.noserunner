@@ -33,7 +33,8 @@ class Parser(object):
         if 'date' not in keys and 'published' in keys:
             entry['date'] = entry['published']
 
-        entry['links'] = [link['href'] for link in entry['links']]
+        entry['links'] = [l for l in [link.get('href') for link in entry['links']]
+                          if l is not None]
         if 'summary' not in entry:
             if 'content' in entry:
                 entry['summary'] = entry['content'][0]['value']

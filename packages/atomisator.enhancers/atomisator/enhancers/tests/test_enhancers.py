@@ -109,4 +109,6 @@ def test_related_link():
     assert_equals(len(links), 21)
 
     assert_equals(r._links[u'http://www.python.org'], [e1, e2])
-    
+    entry = r(entry)
+    assert '<strong>Related</strong>' in entry.summary
+

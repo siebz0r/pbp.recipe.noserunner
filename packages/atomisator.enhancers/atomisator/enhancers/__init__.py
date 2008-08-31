@@ -76,6 +76,9 @@ class RelatedEntries(object):
 
     def _get_content_link(self, content):
         """extract content"""
+        if content is None:
+            return []
+        
         s = BeautifulSoup.BeautifulSoup(content)  
         def _href(a):
             attrs = dict(a.attrs)
@@ -105,7 +108,8 @@ class RelatedEntries(object):
                 elif e not in self._links[l]:
                     self._links[l].append(e)
 
-            for vals, rel in ((e.links, self._links), (e.tags, self._tags)):
+            for vals, rel in ((e.links, self._links), 
+                              (e.tags, self._tags)):
                 for v in vals:
                     if v not in rel:
                         rel[v] = [e]
@@ -115,8 +119,13 @@ class RelatedEntries(object):
     def __call__(self, entry):
         
         related = []
+        links = [l for l in entry.links]
+        for l in self._get_content_link(entry.summary):
+            links.append(l)
 
-        for vals, rel in ((entry.tags, self._tags), (entry.links, self._links)):
+        for vals, rel in ((entry.tags, self._tags), (links, self._links)):
+            if vals is None:
+                continue
             for val in vals:
                 if val in rel:
                     for e in rel[val]:
