@@ -64,16 +64,6 @@ def teardownurl():
 @with_setup(setupurl, teardownurl)
 def test_reddit():
     red = RedditFollower()
-    e = {'summary': 
-         '<a href="http://link">[link]</a> <a href="xxx">[comments]</a>',
-         'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
-                   ' (and more)')}
-    entry = red(e, [])
-    assert 'HTTPRedirectHandler' in entry['summary']
-
-@with_setup(setupurl, teardownurl)
-def test_reddit2():
-    red = RedditFollower()
     summary = ('submitted by <a href="http://www.reddit.com/user/'
                'sebastianavina">sebastianavina</a> <br /> <a href='
                '"http://www.reddit.com/r/python">[link]</a> <a href'

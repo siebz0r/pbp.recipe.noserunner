@@ -54,7 +54,11 @@ class DiggComments(object):
         if stories == []:
             return entry
         id_ = stories[0].id
-        diggs = len(server.getStoryDiggs(id_))
+        try:
+            diggs = len(server.getStoryDiggs(id_))
+        except (digg.Digg.Error, IOError):
+            diggs = 0
+
         entry.title = '%s - Digged !' % entry.title
 
         header = '<div><strong>%d</strong> Diggs</div><br/>' % diggs
@@ -164,7 +168,6 @@ class RelatedEntries(object):
             related = [LI % (r.link, r.title) for r in related]
             related = TPML % ('Related', '\n'.join(related))
             entry.summary = entry.summary + related
-
         return entry
 
 

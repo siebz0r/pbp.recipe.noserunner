@@ -51,9 +51,7 @@ def test_doublons():
     entry = {'title': 'the title', 
             'summary': 'info'}
     class E:
-        title = ''
-        summary = ''
-        url = ''
+        link = summary = title = url = ''
 
     e = E()
     e.summary = 'info'

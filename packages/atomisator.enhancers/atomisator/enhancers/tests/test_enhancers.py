@@ -38,7 +38,7 @@ def test_digg():
 
     class E:
         link = 'http://mail.python.org/pipermail/python-dev/2006-December/070323.html'
-        summary = 'xxx'
+        title = summary = 'xxx'
     entry =  E()
     d = DiggComments()
     entry = d(entry, [])
@@ -47,14 +47,14 @@ def test_digg():
 def test_related():
    
     class E:
-        id = u'1'
+        title = id = u'1'
         summary = 'my summary'
         tags = ['one', 'two']
         links = ['http://link/one']
         link = 'http://example.com/one'
 
     class E2:
-        id = u'2'
+        title = id = u'2'
         summary = 'other summary'
         tags = ['two', 'three']
         link = 'http://example.com/two'
@@ -85,15 +85,15 @@ def test_related_link():
     sample2 = os.path.join(dirname, 'sample2.html')
 
     class E:
-        id = u'1'
-        summary = open(sample1).read() 
+        title = id = u'1'
+        summary = open(sample1).read().decode('utf8') 
         tags = []
         links = []
         link = 'http://example.com/one'
 
     class E2:
-        id = u'2'
-        summary = open(sample2).read()
+        title = id = u'2'
+        summary = open(sample2).read().decode('utf8')
         tags = ['two', 'three']
         link = 'http://example.com/two'
         links = []

@@ -34,6 +34,8 @@ class Html2Txt(SGMLParser):
 
 class _Follower(object):
 
+    _marker = '.'
+
     def _detect(self, entry):
         """returns a link if detected
         None otherwise
@@ -51,7 +53,9 @@ class _Follower(object):
         sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:
             extract = '<div>Extract from link :</div> <p>%s</p><br/>' % sample
-            entry['summary'] = extract.decode(encoding, 'ignore') + entry.get('summary', u'')
+            entry['summary'] = (extract.decode(encoding, 'ignore') + 
+                                entry.get('summary', u'') +
+                                self._marker)
         return entry
  
     def _soup(self, value):
