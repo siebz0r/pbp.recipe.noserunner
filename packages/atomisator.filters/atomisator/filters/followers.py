@@ -167,7 +167,7 @@ class _Follower(object):
             
         #return '...' + content[start:end] + '...'
  
-    def _get_sample(self, title, link, size=500):
+    def _get_sample(self, title, link, size=1000):
         """get the page, extract part of it if it is some text.
         
         tries to find the words of the title, to extract 

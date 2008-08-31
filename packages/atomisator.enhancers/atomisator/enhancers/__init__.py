@@ -55,11 +55,11 @@ class DiggComments(object):
             return entry
         id_ = stories[0].id
         diggs = len(server.getStoryDiggs(id_))
-        entry['title'] = '%s - Digged !' % entry['title']
+        entry.title = '%s - Digged !' % entry.title
 
         header = '<div><strong>%d</strong> Diggs</div><br/>' % diggs
         comments = server.getStoriesComments(id_)
-        if len(comment) > 0:
+        if len(comments) > 0:
             comments = [LI_COMMENT % c.content for c in comments]
             comments = TPML % ('Digg comments', '\n'.join(comments))
         else:
