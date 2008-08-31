@@ -2,6 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 from sgmllib import SGMLParser
+import socket
 #import probstat
 import re
 import urllib2
@@ -184,7 +185,7 @@ class _Follower(object):
                     charset = content_type[1].split('=')[-1]
             content = page.read()
 
-        except (urllib2.HTTPError, urllib2.URLError):
+        except (urllib2.HTTPError, urllib2.URLError, socket.timeout):
             return None, None
 
         body = self._clean(content)
