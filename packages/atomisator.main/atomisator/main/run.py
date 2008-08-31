@@ -1,5 +1,6 @@
 import sys
 import os
+import socket
 
 from optparse import OptionParser
 from optparse import OptionValueError
@@ -80,6 +81,9 @@ def _apply_filters(entry, entries, filters):
 def load_feeds(conf):
     """Fetches feeds."""
     parser = AtomisatorConfig(conf)
+    old_timeout = socket.getdefaulttimeout()
+    socket.setdefaulttimeout(float(parser.timeout))
+
     create_session(parser.database)
     count = 0
 
@@ -111,6 +115,7 @@ def load_feeds(conf):
         _log('%d entries read.' % scount)
     _log('%d total.' % count)
     commit()    # final commit
+    socket.setdefaulttimeout(old_timeout)
 
 _es = iter_entry_points('atomisator.enhancers')
 _enhancers = dict([(e.name, e.load()()) for e in _es])

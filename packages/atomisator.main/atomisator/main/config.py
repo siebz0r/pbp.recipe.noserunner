@@ -52,7 +52,9 @@ class AtomisatorConfig(ConfigParser):
         return [_args(e) for e in enhancers if e.strip() != '']
     enhancers = property(_get_enhancers)
 
-    def _get_simple_field(self, field):
+    def _get_simple_field(self, field, default=None):
+        if not self.has_option('atomisator', field):
+            return default
         return self.get('atomisator', field).strip()
 
     def _get_database(self):
@@ -66,6 +68,10 @@ class AtomisatorConfig(ConfigParser):
     def _get_description(self):
         return self._get_simple_field('description')
     description = property(_get_description)
+
+    def _get_timeout(self):
+        return self._get_simple_field('timeout', '5')
+    timeout = property(_get_timeout)
 
     def _get_link(self):
         return self._get_simple_field('link')

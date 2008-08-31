@@ -9,6 +9,7 @@ options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 ABSOLUTE = re.compile(r'^(ftp|http|https)://', options)
 
 TPML = """\
+<br/><br/>
 <div>
   <strong>%s</strong>
   <ul>
@@ -25,6 +26,17 @@ LI_COMMENT = """\
      <li>%s</li>
 """         
 
+class ShowTags(object):
+    """
+    Will display tags.
+    """
+    def __call__(self, entry):
+        if entry.tags == []:
+            return entry
+        tags = [LI % t for t in entry.tags]
+        tags = TPML % ('tags', '\n'.join(tags))
+        entry.summary = entry.summary + tags
+        return entry
 
 class DiggComments(object):
     """
@@ -42,10 +54,17 @@ class DiggComments(object):
         if stories == []:
             return entry
         id_ = stories[0].id
+        diggs = len(server.getStoryDiggs(id_))
+        header = '<div><strong>%d</strong> Diggs</div>' % diggs
         comments = server.getStoriesComments(id_)
         comments = [LI_COMMENT % c.content for c in comments]
         comments = TPML % ('Digg comments', '\n'.join(comments))
-        entry.summary = entry.summary + comments
+        
+        if entry.summary is None:
+            entry.summary = header + comments
+        else:
+            entry.summary = header + entry.summary + comments
+        
         return entry
 
 class RelatedEntries(object):
@@ -137,7 +156,7 @@ class RelatedEntries(object):
                         if e not in related and e.id != entry.id:
                             related.append(e)
         if related != []:
-            related = [LI % (r.link, r.link) for r in related]
+            related = [LI % (r.link, r.title) for r in related]
             related = TPML % ('Related', '\n'.join(related))
             entry.summary = entry.summary + related
 

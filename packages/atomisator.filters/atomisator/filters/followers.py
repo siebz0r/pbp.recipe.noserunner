@@ -184,7 +184,7 @@ class _Follower(object):
                     charset = content_type[1].split('=')[-1]
             content = page.read()
 
-        except urllib2.HTTPError:
+        except (urllib2.HTTPError, urllib2.URLError):
             return None, None
 
         body = self._clean(content)
