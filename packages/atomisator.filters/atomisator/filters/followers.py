@@ -44,6 +44,8 @@ class _Follower(object):
         if link is None:
             return entry
 
+        entry['link'] = link
+
         # let's get a sample of the link
         sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:

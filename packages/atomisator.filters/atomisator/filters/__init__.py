@@ -100,8 +100,11 @@ class Doublons(object):
         return st.lower().strip()
     
     def __call__(self, entry, entries):
+        link = self._clean(entry.get('link', ''))
         summary = self._clean(entry.get('summary', ''))
         for e in entries:
+            if link == self._clean(e.link):
+                return None
             if summary == self._clean(e.summary):
                 return None
         return entry
