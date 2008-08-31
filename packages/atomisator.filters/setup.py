@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-                                                      
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>                             
 # 
-#
 from setuptools import setup, find_packages
 import os
 from os.path import join
 from distutils.core import Extension 
 
-version = '0.1.7'
+version = '0.1.8'
 
 long_description = open("README.txt").read()
 

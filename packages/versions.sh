@@ -1,3 +1,8 @@
+cd atomisator.enhancers
+echo atomisator.enhancers
+python setup.py --version
+cd ..
+
 cd atomisator.filters
 echo atomisator.filters
 python setup.py --version
