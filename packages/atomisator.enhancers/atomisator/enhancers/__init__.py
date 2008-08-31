@@ -18,7 +18,7 @@ TPML = """\
 """
 
 LI = """\
-     <li>%s</li>
+     <li><a href="%s">%s</a></li>
 """         
 
 class DiggComments(object):
@@ -132,7 +132,7 @@ class RelatedEntries(object):
                         if e not in related and e.id != entry.id:
                             related.append(e)
         if related != []:
-            related = [LI % r.link for r in related]
+            related = [LI % (r.link, r.link) for r in related]
             related = TPML % ('Related', '\n'.join(related))
             entry.summary = entry.summary + related
 
