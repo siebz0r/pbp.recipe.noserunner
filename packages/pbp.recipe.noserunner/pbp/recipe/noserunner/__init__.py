@@ -44,10 +44,9 @@ class Recipe(object):
             else:
                 os.mkdir(wd)
             dest.append(wd)
+            initialization = initialization_template % wd 
         else:
-            wd = options['location']
-
-        initialization = initialization_template % wd 
+            initialization = ''
 
         env_section = options.get('environment', '').strip()
         if env_section:
@@ -67,8 +66,8 @@ class Recipe(object):
             arguments = defaults, 
             initialization = initialization,
             ))
-
-        return dest
+        
+        return (os.path.join(self.buildout['buildout']['bin-directory'], options['script']),)
 
     update = install
 

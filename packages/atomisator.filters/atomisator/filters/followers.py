@@ -15,8 +15,21 @@ TAGS = set(('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img'))
 ATTRS = set(('href', 'src', 'title'))
 DELETE_TAGS = ('script',)
 DIV_BLOGS = set(('article-body', 'knol-content', 'post-body',
-                 'post', 'entry-content', 'post-chapo', 'content'))
- 
+                 'post', 'entry-content', 'post-chapo', 'content',
+                 'documentContent', 'message-text'))
+
+TXT_HTML = re.compile(r'\s?\n+\s?\n?\s?', options)
+
+EXTRACT = """\
+        <div style="border: 1px solid black; padding: 8px">
+ <strong>Extract from link :</strong>
+ <p>
+ %s
+ </p>
+ <br/>
+</div>
+"""
+
 class Html2Txt(SGMLParser):
     def reset(self):
         SGMLParser.reset(self)
@@ -52,7 +65,8 @@ class _Follower(object):
         # let's get a sample of the link
         sample, encoding = self._get_sample(entry['title'], link)
         if sample is not None:
-            extract = '<div>Extract from link :</div> <p>%s</p><br/>' % sample
+            sample = TXT_HTML.sub(r'<br/>', sample.strip())
+            extract = EXTRACT % sample
             entry['summary'] = (extract.decode(encoding, 'ignore') + 
                                 entry.get('summary', u'') +
                                 self._marker)
@@ -131,8 +145,10 @@ class _Follower(object):
         XXX should be better, experimenting
         """
         content_size = len(content)
+        if content_size <= size:
+            return content
         delta = size / 2
-
+        
         for l, word in reversed(sorted(self._words(title))):
             positions = [m.start() for m in re.finditer(word, content)]
             if positions != []:
@@ -147,9 +163,10 @@ class _Follower(object):
                     end = content_size
                 else:
                     end = start + delta
-         
+    
                 return '...' + content[start:end] + '...'
-        return '...' + content[:size] + '...'
+
+        return content[:size] + '...' 
 
         # finding the positions for all the words
         #def _indexes(word, content):
@@ -191,7 +208,6 @@ class _Follower(object):
 
         except (urllib2.HTTPError, urllib2.URLError, socket.timeout):
             return None, None
-
         body = self._clean(content)
         return self._extract(title.encode(charset), body, size), charset
 

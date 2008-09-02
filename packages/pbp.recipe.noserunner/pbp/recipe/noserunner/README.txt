@@ -25,7 +25,7 @@ working-directory
     The working-directory option lets to specify a directory where the
     tests will run. The testrunner will change to this directory when
     run. If the working directory is the empty string or not specified
-    at all, the recipe will create a working directory among the parts.
+    at all, the recipe will not change the current working directory.
 
 environment
     A set of environment variables that should be exported before
@@ -75,4 +75,40 @@ Checking the generated script::
     if __name__ == '__main__':
         nose.main()
     <BLANKLINE>
+
+No working dir::
+
+    >>> write('buildout.cfg',
+    ... """
+    ... [buildout]
+    ... parts = test
+    ... index = http://download.zope.org/simple
+    ...
+    ... [test]
+    ... recipe = pbp.recipe.noserunner
+    ... eggs = pbp.recipe.noserunner
+    ... """) 
+
+Running the buildout::
+    
+    >>> null = system(buildout) 
+
+Checking the generated script::
+
+    >>> import os
+    >>> print open(os.path.join(sample_buildout, 'bin', 'test')).read()    
+    #!...
+    <BLANKLINE>
+    import sys
+    sys.path[0:0] = [
+      ...
+      ]
+    <BLANKLINE>
+    <BLANKLINE>
+    import nose
+    <BLANKLINE>
+    if __name__ == '__main__':
+        nose.main()
+    <BLANKLINE>
+
 
