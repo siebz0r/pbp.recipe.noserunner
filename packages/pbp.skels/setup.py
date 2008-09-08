@@ -20,7 +20,7 @@ This module contains the tool of pbp.skels
 import os
 from setuptools import setup, find_packages
 
-version = '0.2.2'
+version = '0.2.4'
 
 README = os.path.join(os.path.dirname(__file__),
                       'pbp', 'skels', 'docs', 'README.txt')
