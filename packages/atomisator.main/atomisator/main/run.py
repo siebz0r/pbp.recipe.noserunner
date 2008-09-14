@@ -127,7 +127,7 @@ def _select_enhancers(enhancers):
             res.append((_enhancers[name], args))
     return res
 
-def generate_feed(conf):
+def generate_data(conf):
     """Creates the meta-feed."""
     if conf is None:
         conf = _get_opt()
@@ -232,5 +232,5 @@ def atomisator():
     if options.read:
         load_data(options.config)
     if options.generate:
-        generate_feed(options.config)
+        generate_data(options.config)
 

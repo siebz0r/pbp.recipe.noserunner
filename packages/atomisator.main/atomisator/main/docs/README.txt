@@ -17,8 +17,8 @@ The package has two main features:
     18 entries read.
     23 total.
 
-    >>> from atomisator.main.run import generate_feed
-    >>> generate_feed(test_conf)
+    >>> from atomisator.main.run import generate_data
+    >>> generate_data(test_conf)
     Writing feed in atomisator.xml
     Feed ready.
 
