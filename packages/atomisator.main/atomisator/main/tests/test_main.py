@@ -86,8 +86,7 @@ def tear_conf():
 
 @with_setup(set_conf, tear_conf)
 def test_load_feeds():
-    pass
-    #load_feeds(test_conf)
+    load_feeds(test_conf)
 
 @with_setup(set_conf, tear_conf)
 def test_generate_feed():
