@@ -7,7 +7,7 @@ from atomisator.main.run import atomisator, _parse_options
 from atomisator.main.run import CONF_TMPL, _get_reader 
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.run import generate_config 
-from atomisator.main.run import load_feeds, generate_feed
+from atomisator.main.run import load_data, generate_feed
 from atomisator.main.run import _enhancers, _filters
 
 saved = None
@@ -85,8 +85,8 @@ def tear_conf():
         os.remove(xml)
 
 @with_setup(set_conf, tear_conf)
-def test_load_feeds():
-    load_feeds(test_conf)
+def test_load_data():
+    load_data(test_conf)
 
 @with_setup(set_conf, tear_conf)
 def test_generate_feed():

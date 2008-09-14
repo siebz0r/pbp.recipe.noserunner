@@ -7,8 +7,8 @@ The package has two main features:
 1. it loads the feeds described into `atomisator.cfg`.
 2. it generates a feed
 
-    >>> from atomisator.main.run import load_feeds
-    >>> load_feeds(test_conf)
+    >>> from atomisator.main.run import load_data
+    >>> load_data(test_conf)
     Reading source ...digg.xml
     1 entries read.
     Reading source ...tarek.xml

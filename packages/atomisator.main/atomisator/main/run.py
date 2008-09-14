@@ -78,8 +78,8 @@ def _apply_filters(entry, entries, filters):
             return None
     return entry
 
-def load_feeds(conf):
-    """Fetches feeds."""
+def load_data(conf):
+    """Fetches data."""
     parser = AtomisatorConfig(conf)
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(float(parser.timeout))
@@ -230,7 +230,7 @@ def atomisator():
         sys.exit(0)
     
     if options.read:
-        load_feeds(options.config)
+        load_data(options.config)
     if options.generate:
         generate_feed(options.config)
 
