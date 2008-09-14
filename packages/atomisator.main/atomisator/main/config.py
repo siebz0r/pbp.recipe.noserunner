@@ -14,7 +14,15 @@ class AtomisatorConfig(object):
             cfg = DEFAULT_CONFIG_FILE
         if not os.path.exists(cfg):
             raise ValueError('Could not read configuration (%s)' % cfg)
+        self._file = cfg
         self._parser.read([cfg])
+
+    def write(self):
+        f = open(self._file, 'w')
+        try:
+            self._parser.write(f)
+        except:
+            f.close()
 
     def _set_multiline_value(self, name, value):
 
