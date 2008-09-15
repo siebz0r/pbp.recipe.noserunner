@@ -31,8 +31,8 @@ setup(name='atomisator.main',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'atomisator.db>=0.2.6',
-          'atomisator.feed>=0.2.7',
+          'atomisator.db>=0.3.0',
+          'atomisator.feed>=0.3.0',
           # default plugins
           'atomisator.parser>=0.2.4',
           'atomisator.readers>=0.1.1',
