@@ -5,7 +5,6 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import MetaData
 from sqlalchemy import ForeignKey    
-from sqlalchemy import UnicodeText
 from sqlalchemy import Text
 
 from sqlalchemy.orm import relation
@@ -24,10 +23,10 @@ class Entry(Base):
     link = Column(Text())
     date = Column(DateTime, default=datetime.now)
     updated = Column(DateTime, default=datetime.now)
-    summary = Column(UnicodeText())
-    summary_detail = Column('summary_detail', UnicodeText())
-    title = Column(UnicodeText())
-    title_detail = Column(UnicodeText())    
+    summary = Column(Text())
+    summary_detail = Column('summary_detail', Text())
+    title = Column(Text())
+    title_detail = Column(Text())    
     
     links = relation("Link", order_by="Link.id", backref="entry")
     tags = relation("Tag", order_by="Tag.id", backref="entry")
