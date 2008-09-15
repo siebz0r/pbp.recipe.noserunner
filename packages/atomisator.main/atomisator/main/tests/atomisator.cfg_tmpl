@@ -10,10 +10,8 @@ sources =
 
 database = sqlite:///%(test_dir)s/atomisator.db
 
-file = %(test_dir)s/atomisator.xml
-title = meta
-description = My feed
-link = http://link
+outputs =
+    rss %(test_dir)s/atomisator.xml http://link meta My feed
 
 filters =
     spam

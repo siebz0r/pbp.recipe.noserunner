@@ -51,6 +51,19 @@ class AtomisatorConfig(object):
 
     sources = property(_get_sources, _set_sources)
 
+    def _get_outputs(self):
+        outputs = self._parser.get('atomisator', 'outputs').split('\n')
+        def _args(p):
+            p = p.split()
+            return p[0].strip(), tuple([p.strip() 
+                                        for p in p[1:]])
+        return [_args(s) for s in outputs if s.strip() != '']
+
+    def _set_outputs(self, outputs):
+        self._set_multiline_value('outputs', outputs)
+
+    outputs = property(_get_outputs, _set_outputs)
+
     def _get_filters(self):
         if not self._parser.has_option('atomisator', 'filters'):
             return []
@@ -97,22 +110,6 @@ class AtomisatorConfig(object):
 
     database = property(_get_database, _set_database)
 
-    def _get_title(self):
-        return self._get_simple_field('title')
-    
-    def _set_title(self, value):
-        self._set_simple_field('title', value)
-
-    title = property(_get_title, _set_title)
-
-    def _get_description(self):
-        return self._get_simple_field('description')
-
-    def _set_description(self, value):
-        self._set_simple_field('description', value) 
-
-    description = property(_get_description, _set_description)
-
     def _get_timeout(self):
         return self._get_simple_field('timeout', '5')
     
@@ -120,20 +117,4 @@ class AtomisatorConfig(object):
         self._set_simple_field('timeout', value)
 
     timeout = property(_get_timeout, _set_timeout)
-
-    def _get_link(self):
-        return self._get_simple_field('link')
-    
-    def _set_link(self, value):
-        self._set_simple_field('link', value)
-
-    link = property(_get_link, _set_link)
-
-    def _get_file(self):
-        return self._get_simple_field('file')
-
-    def _set_file(self, value):
-        self._set_simple_field('file', value)   
-
-    file = property(_get_file, _set_file)
 

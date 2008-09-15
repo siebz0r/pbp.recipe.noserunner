@@ -1,13 +1,17 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.7'
+version = '0.2.8'
 
 long_description = open("README.txt").read()
+
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
+
+entry_points = {"atomisator.outputs": 
+        ["rss = atomisator.feed:Generator"]}
 
 setup(name='atomisator.feed',
       version=version,
@@ -26,10 +30,7 @@ setup(name='atomisator.feed',
       install_requires=[
           'setuptools',
           'Cheetah',
-          'atomisator.db'
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points=entry_points,
       )

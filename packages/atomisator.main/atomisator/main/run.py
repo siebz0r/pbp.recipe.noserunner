@@ -12,7 +12,6 @@ from atomisator.main import __version__ as VERSION
 from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
-from atomisator.feed import generate
 from atomisator.db.session import commit
 
 def _log(msg):
@@ -39,13 +38,9 @@ enhancers =
 # put here the database location
 database = sqlite:///atomisator.db
 
-# this is the filename that will be generated
-file = atomisator.xml
+outputs =
+    rss atomisator.xml http://atomisator.ziade.org/example meta Automatic feed created by Atomisator. 
 
-# infos that will appear in the generated feed. 
-title = meta
-description = Automatic feed created by Atomisator.
-link =  http://atomisator.ziade.org/example
 """
 
 def generate_config(path):
@@ -71,6 +66,9 @@ def _get_reader(name):
 _fs = iter_entry_points('atomisator.filters')
 _filters = dict([(f.name, f.load()()) for f in _fs])
 
+_os = iter_entry_points('atomisator.outputs')
+_outputs = dict([(o.name, o.load()()) for o in _os])
+
 def _apply_filters(entry, entries, filters):
     for f, args in filters:
         entry = f(entry, entries, *args)
@@ -80,6 +78,8 @@ def _apply_filters(entry, entries, filters):
 
 def load_data(conf):
     """Fetches data."""
+    _log('Reading data.')
+
     parser = AtomisatorConfig(conf)
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(float(parser.timeout))
@@ -127,22 +127,30 @@ def _select_enhancers(enhancers):
             res.append((_enhancers[name], args))
     return res
 
+def _select_outputs(outputs):
+    res = []
+    for name, args in outputs:
+        if name in _outputs:
+            res.append((_outputs[name], args))
+    return res
+
 def generate_data(conf):
     """Creates the meta-feed."""
+    _log('Writing outputs.')
     if conf is None:
         conf = _get_opt()
     parser = AtomisatorConfig(conf)
     create_session(parser.database)
-    _log('Writing feed in %s' % parser.file)
+
     enhancers = _select_enhancers(parser.enhancers)
-    feed = generate(parser.title, parser.description, parser.link, enhancers)
+    outputs = _select_outputs(parser.outputs)
+
+    entries = get_entries().all()
     
-    f = open(parser.file, 'w')
-    try:
-        f.write(feed)
-    finally:
-        f.close()
-    _log('Feed ready.')
+    for output, args in outputs:
+        output(entries, enhancers, args)
+
+    _log('Data ready.')
 
 def _parse_options():
     """Calling both."""
@@ -202,7 +210,11 @@ def list_readers():
         d = p.load().__doc__
         if d is not None:
             print d
-            
+
+def list_outputs():
+    for key, ob in _outputs.items():
+        print '%s: %s' % (key, ob.__doc__)
+           
 def list_filters():
     for key, ob in _filters.items():
         print '%s: %s' % (key, ob.__doc__)

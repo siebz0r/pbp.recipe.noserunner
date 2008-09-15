@@ -33,9 +33,9 @@ class ShowTags(object):
     def __call__(self, entry):
         if entry.tags == []:
             return entry
-        tags = [LI % t for t in entry.tags]
+        tags = [LI_COMMENT % t for t in entry.tags]
         tags = TPML % ('tags', '\n'.join(tags))
-        entry.summary = entry.summary + tags
+        entry.summary = entry.summary or '' + tags
         return entry
 
 class DiggComments(object):
