@@ -7,13 +7,26 @@ pbp.skels package
 What is pbp.skels ?
 ===================
 
-Explain here what is the purpose of pbp.skels.
+pbp.skels is a collection of templates to speed up the creation of
+standardized, boiler-plate code.
 
 How to use pbp.skels ?
 ======================
 
-Explain here how the package is used. Points to doctests here !
+After it has been installed, you should see the pbp_ templates with the
+paster command::
 
+    $ paster create --list-templates
+    Available templates:
+        ...
+        pbp_design_doc:     A Design document
+        pbp_module_doc:     A Module helper document
+        pbp_package:        A namespaced package
+        pbp_recipe_doc:     A recipe document
+        pbp_tutorial_doc:   A Tutorial document
+        ...
 
+Just pick one and launch it with paster create -t. For example::
 
+    $ paster create -t pbp_package my.package
 
