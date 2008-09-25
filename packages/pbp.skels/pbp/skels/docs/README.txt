@@ -10,10 +10,12 @@ What is pbp.skels ?
 pbp.skels is a collection of templates to speed up the creation of
 standardized, boiler-plate code.
 
+See http://atomisator.ziade.org for more infos.
+
 How to use pbp.skels ?
 ======================
 
-After it has been installed, you should see the pbp_ templates with the
+After it has been installed, you should see the pbp templates with the
 paster command::
 
     $ paster create --list-templates
