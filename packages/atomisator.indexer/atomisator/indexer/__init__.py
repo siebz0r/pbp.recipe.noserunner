@@ -10,7 +10,7 @@ class Indexer(object):
     def __call__(self, entry, entries, db=None):
         # todo
         docid = entry['link']
-        text = entry['summary']
+        text = '%s %s' % (entry['title'], entry['summary'])
         index_document(docid, text)
         return entry
 
