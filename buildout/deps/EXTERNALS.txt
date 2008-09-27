@@ -1,4 +1,5 @@
 navaddplugin                http://trac-hacks.org/svn/navaddplugin/0.9 
 timingandestimationplugin   http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11  
 TracMercurial               http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin 
+afpy.xap                    https://svn.afpy.org/misc/afpy.xap/trunk/
  
