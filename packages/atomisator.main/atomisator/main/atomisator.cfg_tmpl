@@ -1,0 +1,24 @@
+[atomisator]
+
+# put here the sources you wish to process
+# the first parameter is the type of source
+# and the following parameters are the arguments
+# passed to the reader
+sources = 
+    rss http://tarekziade.wordpress.com/atom 
+    rss http://digg.com/rss/index.xml
+
+# put here the filters you want to use
+filters =
+    doublons
+
+# put here the enhancers you want to use
+enhancers =
+
+# put here the database location
+database = sqlite:///atomisator.db
+
+outputs =
+    rss atomisator.xml http://atomisator.ziade.org/example meta Automatic feed created by Atomisator. 
+
+

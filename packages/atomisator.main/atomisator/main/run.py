@@ -1,6 +1,8 @@
 import sys
 import os
 import socket
+from os.path import join
+from os.path import dirname
 
 from optparse import OptionParser
 from optparse import OptionValueError
@@ -34,31 +36,9 @@ def _dot_log(msg):
     sys.stdout.flush()
 
 
-CONF_TMPL = """\
-[atomisator]
-
-# put here the sources you wish to process
-# the first parameter is the type of source
-# and the following parameters are the arguments
-# passed to the reader
-sources = 
-    rss http://tarekziade.wordpress.com/atom 
-    rss http://digg.com/rss/index.xml
-
-# put here the filters you want to use
-filters =
-    doublons
-
-# put here the enhancers you want to use
-enhancers =
-
-# put here the database location
-database = sqlite:///atomisator.db
-
-outputs =
-    rss atomisator.xml http://atomisator.ziade.org/example meta Automatic feed created by Atomisator. 
-
-"""
+CONF_TMPL = join(dirname(__file__), 
+                 'atomisator.cfg_tmpl')
+CONF_TMPL = open(CONF_TMPL).read()
 
 def generate_config(path):
     """creates a default config file"""
