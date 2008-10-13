@@ -14,6 +14,8 @@ from processing import cpuCount
 from setuptools.package_index import iter_entry_points
 
 from atomisator.main.config import logger
+from atomisator.main.config import generate_config
+
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main import __version__ as VERSION
 
@@ -26,7 +28,6 @@ from atomisator.db.session import commit
 PROCESSES = cpuCount() * 2
 
 # logging
-
 def _log(msg):
     logger.info(msg)
 
@@ -34,22 +35,6 @@ def _log(msg):
 def _dot_log(msg):      
     sys.stdout.write('.')
     sys.stdout.flush()
-
-
-CONF_TMPL = join(dirname(__file__), 
-                 'atomisator.cfg_tmpl')
-CONF_TMPL = open(CONF_TMPL).read()
-
-def generate_config(path):
-    """creates a default config file"""
-    if os.path.exists(path):
-        raise ValueError('%s already exists.' % path)
-    f = open(path, 'w')
-    try:
-        f.write(CONF_TMPL)
-    finally:
-        f.close()
-    _log('Default config generated at "%s."' % path)
 
 
 def _get_reader(name):

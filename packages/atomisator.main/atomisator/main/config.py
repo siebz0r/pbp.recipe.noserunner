@@ -1,4 +1,5 @@
 import os
+from os.path import dirname
 import sys
 from os.path import join
 from ConfigParser import ConfigParser
@@ -14,6 +15,21 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 DEFAULT_CONFIG_FILE = 'atomisator.cfg'
+
+CONF_TMPL = join(dirname(__file__), 
+                 'atomisator.cfg_tmpl')
+CONF_TMPL = open(CONF_TMPL).read()
+
+def generate_config(path):
+    """creates a default config file"""
+    if os.path.exists(path):
+        raise ValueError('%s already exists.' % path)
+    f = open(path, 'w')
+    try:
+        f.write(CONF_TMPL)
+    finally:
+        f.close()
+    logger.info('Default config generated at "%s."' % path)
 
 class AtomisatorConfig(object):
 

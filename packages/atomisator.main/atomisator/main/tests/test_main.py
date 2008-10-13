@@ -4,9 +4,8 @@ import os
 from nose.tools import with_setup, assert_equals
 
 from atomisator.main.run import atomisator, _parse_options
-from atomisator.main.run import CONF_TMPL, _get_reader 
+from atomisator.main.run import _get_reader 
 from atomisator.main.config import AtomisatorConfig
-from atomisator.main.run import generate_config 
 from atomisator.main.run import load_data, generate_data
 from atomisator.main.run import _enhancers, _filters
 
@@ -55,16 +54,6 @@ def test_options():
     assert_equals(options.read, False)
     assert_equals(options.generate, True)
     assert_equals(options.config, 'here.cfg')
-
-def gen_init():
-    if os.path.exists('here.cfg'):
-        os.remove('here.cfg')
-
-@with_setup(setup=gen_init, teardown=gen_init)
-def test_generation():
-    # Let's try a generation
-    generate_config('here.cfg')
-    assert_equals(open('here.cfg').read(), CONF_TMPL)
 
 test_dir = os.path.dirname(__file__)
 package_dir = os.path.split(test_dir)[0]
