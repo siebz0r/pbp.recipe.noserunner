@@ -11,6 +11,7 @@ from processing import cpuCount
 
 from setuptools.package_index import iter_entry_points
 
+from atomisator.main.config import logger
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main import __version__ as VERSION
 
@@ -22,8 +23,16 @@ from atomisator.db.session import commit
 # we'll use two processes per CPU
 PROCESSES = cpuCount() * 2
 
+# logging
+
 def _log(msg):
-    print msg
+    logger.info(msg)
+
+# see how this can be done with logging
+def _dot_log(msg):      
+    sys.stdout.write('.')
+    sys.stdout.flush()
+
 
 CONF_TMPL = """\
 [atomisator]
@@ -87,6 +96,7 @@ def _apply_filters(entry, entries, filters):
 def _process_source(args):
     reader_name, reader, reader_args = args
     try:
+        _log('Retrieving from %s - %s' %  (reader_name, str(reader_args)))
         return reader()(*reader_args)
     except TimeoutError:
         _log('TIMEOUT on %s - %s' % (reader_name, str(reader_args)))
@@ -126,13 +136,14 @@ def load_data(conf):
     # let's call in parallel all the readers
     entries = chain(*pool.imapUnordered(_process_source, sources))
 
+    _log('Now processing entries')
     for pos, entry in enumerate(entries):
+        _dot_log('.')
         entry = _apply_filters(entry, existing_entries, filter_chain)
         if entry is None:
             continue
         id_, new_entry = create_entry(entry, commit=False)
         existing_entries.append(new_entry)
-        _log('Reading entry #%d' % pos)
 
     commit()    # final commit
     socket.setdefaulttimeout(old_timeout)

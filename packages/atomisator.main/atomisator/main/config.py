@@ -3,6 +3,14 @@ import sys
 from os.path import join
 from ConfigParser import ConfigParser
 import re
+import logging
+
+logger = logging.getLogger("atomisator")
+formatter = logging.Formatter()
+handler = logging.StreamHandler(sys.stdout)
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 DEFAULT_CONFIG_FILE = 'atomisator.cfg'
 
