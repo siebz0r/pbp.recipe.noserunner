@@ -4,6 +4,7 @@
 import digg
 import BeautifulSoup
 import re
+import socket
 
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 ABSOLUTE = re.compile(r'^(ftp|http|https)://', options)
@@ -44,13 +45,37 @@ class DiggComments(object):
     has been digged. If so, displays
     user comments at the end of the entry.
     """
-    def __call__(self, entry, digg_id='http://example.com'):
+    def __init__(self):
+        self._digg_dead = False
+
+    def _set_timeout(self, value):
+        self._old_timeout = socket.getdefaulttimeout()
+        socket.setdefaulttimeout(value)
+
+    def _restore_timeout(self):
+        socket.setdefaulttimeout(self._old_timeout)
+
+    def __call__(self, entry, digg_id='http://example.com', timeout=5):
+
+        if self._digg_dead:
+            return entry
+        self._set_timeout(timeout)
+        try:
+            return self._process(entry, digg_id, timeout)
+        finally:
+            self._restore_timeout()
+        
+    def _process(self, entry, digg_id='http://example.com', timeout=5):
         link = entry.link 
         server = digg.Digg(digg_id)
         try:
             stories = server.getStories(link=link)
-        except (digg.Digg.Error, IOError):
+        except digg.Digg.Error:
             return entry
+        except (IOError, socket.timeout, AttributeError):
+            self._digg_dead = True
+            return entry
+        
         if stories == []:
             return entry
         id_ = stories[0].id

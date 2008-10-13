@@ -4,6 +4,11 @@ import socket
 
 from optparse import OptionParser
 from optparse import OptionValueError
+from itertools import chain
+
+from processing import Pool
+from processing import cpuCount
+
 from setuptools.package_index import iter_entry_points
 
 from atomisator.main.config import AtomisatorConfig
@@ -13,6 +18,9 @@ from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
 from atomisator.db.session import commit
+
+# we'll use two processes per CPU
+PROCESSES = cpuCount() * 2
 
 def _log(msg):
     print msg
@@ -76,6 +84,14 @@ def _apply_filters(entry, entries, filters):
             return None
     return entry
 
+def _process_source(args):
+    reader_name, reader, reader_args = args
+    try:
+        return reader()(*reader_args)
+    except TimeoutError:
+        _log('TIMEOUT on %s - %s' % (reader_name, str(reader_args)))
+        return []
+
 def load_data(conf):
     """Fetches data."""
     _log('Reading data.')
@@ -93,27 +109,31 @@ def load_data(conf):
     filter_chain = set([(_filters[name], args) 
                         for name, args in parser.filters 
                         if name in _filters])
-    for reader, args in parser.sources:
-        # check if the readers is available
-        pl = _get_reader(reader)
-
+    
+    # first, check if all readers are available
+    def _load_reader(reader_name):
+        pl = _get_reader(reader_name)
         if pl is None:
-            raise ValueError('%s reader not found for %s' \
-                        % (pl, ' '.join(args))) 
-            
-        _log('Reading source %s' % ' '.join(args))
-        scount = 0
+            raise ValueError('%s reader not found' % name)
+        return pl
 
-        for entry in pl()(*args):
-            entry = _apply_filters(entry, existing_entries, filter_chain)
-            if entry is None:
-                continue
-            id_, new_entry = create_entry(entry, commit=False)
-            count += 1
-            scount += 1
-            existing_entries.append(new_entry)
-        _log('%d entries read.' % scount)
-    _log('%d total.' % count)
+    sources = [(reader_name, _load_reader(reader_name), args) 
+               for reader_name, args in parser.sources]
+
+    # create a processing pool
+    pool = Pool(PROCESSES)
+    
+    # let's call in parallel all the readers
+    entries = chain(*pool.imapUnordered(_process_source, sources))
+
+    for pos, entry in enumerate(entries):
+        entry = _apply_filters(entry, existing_entries, filter_chain)
+        if entry is None:
+            continue
+        id_, new_entry = create_entry(entry, commit=False)
+        existing_entries.append(new_entry)
+        _log('Reading entry #%d' % pos)
+
     commit()    # final commit
     socket.setdefaulttimeout(old_timeout)
 
@@ -146,7 +166,7 @@ def generate_data(conf):
     outputs = _select_outputs(parser.outputs)
 
     entries = get_entries().all()
-    
+   
     for output, args in outputs:
         output(entries, enhancers, args)
 

@@ -27,7 +27,7 @@ class Generator(object):
             for e, args in enhancers:
                 entry = e(entry, *args)
             return entry
-        
+       
         entries = [_enhance(e) for e in entries[:size]] 
 
         class Encode(Cheetah.Filters.Filter):
@@ -47,7 +47,7 @@ class Generator(object):
                 'channel': {'title': title, 'description': description,
                             'link': link}}
         template = Template(open(tmpl).read(), searchList=[data], filter=Encode)
-        
+
         content = str(template)
         f = open(filename, 'w')
         try:

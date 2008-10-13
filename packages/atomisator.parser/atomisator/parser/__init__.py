@@ -54,9 +54,14 @@ class Parser(object):
                 self.name = u' '.join(args)
                 size = -1
         result = feedparse(url)
+       
+        # we don't want to use generators
+        # here because the result is pickled
+        # by the multiprocessing module
+        entries = [self._filter_entry(e)
+                   for e in result['entries']]
+
         if size != -1:
-            return islice(imap(self._filter_entry, 
-                               result['entries']), size)
-        else:
-            return imap(self._filter_entry, result['entries'])
+            return entries[:size]
+        return entries
 
