@@ -5,6 +5,7 @@ from ConfigParser import ConfigParser
 import re
 import logging
 
+# XXX make logging level configurable
 logger = logging.getLogger("atomisator")
 formatter = logging.Formatter()
 handler = logging.StreamHandler(sys.stdout)
