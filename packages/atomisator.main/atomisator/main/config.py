@@ -14,6 +14,15 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+# logging
+def log(msg):
+    logger.info(msg)
+
+# see how this can be done with logging
+def dotlog(msg):      
+    sys.stdout.write('.')
+    sys.stdout.flush()
+
 DEFAULT_CONFIG_FILE = 'atomisator.cfg'
 
 CONF_TMPL = join(dirname(__file__), 

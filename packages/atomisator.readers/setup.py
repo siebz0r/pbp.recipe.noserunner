@@ -8,7 +8,7 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
-entry_points = {"atomisator.readers": ["html = atomisator.plugins:HTML"]}
+entry_points = {"atomisator.readers": ["html = atomisator.readers:HTML"]}
 
 setup(name='atomisator.readers',
       version=version,
