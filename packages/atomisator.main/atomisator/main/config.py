@@ -90,8 +90,8 @@ class AtomisatorConfig(object):
             line = re.sub(r'"(.*?)"', _rep, line)
             line = [element.replace(':::', ' ') 
                     for element in line.split() if element != '']
-            return line[0].strip(), tuple([line.strip() 
-                                        for line in p[1:]])
+            return line[0].strip(), tuple([el.strip() 
+                                           for el in line[1:]])
         return [_args(line) for line in lines if line.strip() != '']
 
     # 

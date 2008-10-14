@@ -89,7 +89,6 @@ class DataProcessor(object):
     
     def _load_data(self):
         """Loads the data"""
-        log('Reading data.')
         # initial entries, see if this call is optimal
         existing_entries = get_entries().all()
 

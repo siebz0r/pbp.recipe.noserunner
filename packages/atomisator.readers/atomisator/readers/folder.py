@@ -11,8 +11,9 @@ class Folder(object):
     def _extract(self, filepath):
 
         content = open(filepath).read()
+        content = content.decode('utf8', 'ignore')
         return {'title': filepath,
-                'url': filepath,
+                'link': filepath,
                 'summary': content}
 
     def __call__(self, path, recursive=True):
