@@ -1,6 +1,5 @@
 import sys
 from optparse import OptionParser
-from optparse import OptionValueError
 
 from atomisator.main.core import DataProcessor
 from atomisator.main.config import generate_config
@@ -12,7 +11,7 @@ from atomisator.main import enhancers
 from atomisator.main import readers
 
 def _parse_options():
-    """Atomisator options"""
+    """parses Atomisator args options"""
     parser = OptionParser(usage='usage: %prog [options]',
                           version='%%prog %s' % VERSION)
 
@@ -64,25 +63,30 @@ def _parse_options():
     return options
 
 def list_readers():
-    for key, ob in readers:
-        print key
-        doc = ob.__doc__
+    """List out readers plugins."""
+    for reader_name, reader in readers:
+        print reader_name
+        doc = reader.__doc__
         if doc is not None:
             print doc
 
 def list_outputs():
-    for key, ob in outputs.items():
-        print '%s: %s' % (key, ob.__doc__)
+    """List out output plugins."""
+    for output_name, output in outputs.items():
+        print '%s: %s' % (output_name, output.__doc__)
            
 def list_filters():
-    for key, ob in filters.items():
-        print '%s: %s' % (key, ob.__doc__)
+    """List out filter plugins."""
+    for filter_name, filter_ in filters.items():
+        print '%s: %s' % (filter_name, filter_.__doc__)
 
 def list_enhancers():
-    for key, ob in enhancers.items():
-        print '%s: %s' % (key, ob.__doc__)
+    """List out enhancers plugins."""
+    for enhancer_name, enhancer in enhancers.items():
+        print '%s: %s' % (enhancer_name, enhancer.__doc__)
 
 def atomisator():
+    """Main function."""
     options = _parse_options()
     if options.filters:
         list_filters()
