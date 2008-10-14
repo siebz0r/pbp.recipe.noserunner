@@ -2,7 +2,7 @@ import sys
 from optparse import OptionParser
 from optparse import OptionValueError
 
-from atomisator.main.run import DataProcessor
+from atomisator.main.core import DataProcessor
 from atomisator.main.config import generate_config
 
 from atomisator.main import __version__ as VERSION

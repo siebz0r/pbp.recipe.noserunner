@@ -6,9 +6,7 @@ from nose.tools import with_setup, assert_equals
 from atomisator.main.commands import atomisator, _parse_options
 from atomisator.main.commands import readers
 from atomisator.main.config import AtomisatorConfig
-
-from atomisator.main.run import DataProcessor
-
+from atomisator.main.core import DataProcessor
 from atomisator.main.commands import enhancers, filters
 
 saved = None
