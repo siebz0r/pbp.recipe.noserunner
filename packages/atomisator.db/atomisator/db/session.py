@@ -7,12 +7,16 @@ metadata = Base.metadata
 
 session = None
 
-def create_session(SQLURI):
+def create_session(SQLURI, global_session=True):
     engine = create_engine(SQLURI)
     metadata.create_all(engine)
     Session = sessionmaker(bind=engine, autoflush=True, autocommit=False)
-    global session
-    session = Session()
+    if global_session:
+        global session
+        session = Session()
+        return session
+    else:
+        return Session()
 
 def save(obj):
     session.save(obj)

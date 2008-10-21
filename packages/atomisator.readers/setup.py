@@ -1,14 +1,16 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.1'
+version = '0.1.2'
 long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
-entry_points = {"atomisator.readers": ["html = atomisator.plugins:HTML"]}
+entry_points = {"atomisator.readers": 
+        ["html = atomisator.readers.html:HTML",
+         "folder = atomisator.readers.folder:Folder"]}
 
 setup(name='atomisator.readers',
       version=version,

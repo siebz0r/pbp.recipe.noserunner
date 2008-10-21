@@ -3,11 +3,11 @@ import os
 
 from nose.tools import with_setup, assert_equals
 
-from atomisator.main.run import atomisator, _parse_options
-from atomisator.main.run import _get_reader 
+from atomisator.main.commands import atomisator, _parse_options
+from atomisator.main.commands import readers
 from atomisator.main.config import AtomisatorConfig
-from atomisator.main.run import load_data, generate_data
-from atomisator.main.run import _enhancers, _filters
+from atomisator.main.core import DataProcessor
+from atomisator.main.commands import enhancers, filters
 
 saved = None
 
@@ -75,11 +75,12 @@ def tear_conf():
 
 @with_setup(set_conf, tear_conf)
 def test_load_data():
-    load_data(test_conf)
+
+    DataProcessor(test_conf).load_data()
 
 @with_setup(set_conf, tear_conf)
 def test_generate_data():
-    generate_data(test_conf)
+    DataProcessor(test_conf).generate_data()
 
 @with_setup(set_conf, tear_conf)
 def test_config():
@@ -111,13 +112,13 @@ def test_config():
 def test_get_readers():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser
-    
-    assert_equals(_get_reader('xxxx'), None)
-    assert_equals(_get_reader('rss'), Parser)
+   
+    assert 'xxxx' not in readers
+    assert isinstance(readers['rss'], Parser)
 
 def test_filters():
-    assert 'doublons' in _filters
+    assert 'doublons' in filters
 
 def test_enhancers():
-    assert 'digg' in _enhancers
+    assert 'digg' in enhancers
 

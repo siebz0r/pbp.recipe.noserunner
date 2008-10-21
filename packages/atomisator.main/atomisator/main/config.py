@@ -14,21 +14,31 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-DEFAULT_CONFIG_FILE = 'atomisator.cfg'
+# logging
+def log(msg):
+    """Shortcut to logger."""
+    logger.info(msg)
 
+# see how this can be done with logging
+def dotlog(msg):    
+    """Flush to stdout"""
+    sys.stdout.write(msg)
+    sys.stdout.flush()
+
+DEFAULT_CONFIG_FILE = 'atomisator.cfg'
 CONF_TMPL = join(dirname(__file__), 
                  'atomisator.cfg_tmpl')
 CONF_TMPL = open(CONF_TMPL).read()
 
 def generate_config(path):
-    """creates a default config file"""
+    """Creates a default config file/"""
     if os.path.exists(path):
         raise ValueError('%s already exists.' % path)
-    f = open(path, 'w')
+    file_ = open(path, 'w')
     try:
-        f.write(CONF_TMPL)
+        file_.write(CONF_TMPL)
     finally:
-        f.close()
+        file_.close()
     logger.info('Default config generated at "%s."' % path)
 
 class AtomisatorConfig(object):
@@ -72,27 +82,27 @@ class AtomisatorConfig(object):
         self._parser.set('atomisator', name, values)
 
     def _get_multiline_value(self, name):
-        v = self._parser.get('atomisator', name).split('\n')
+        lines = self._parser.get('atomisator', name).split('\n')
         # crappy pattern matching
         def _rep(match):
             return match.groups()[0].replace(' ', ':::')
-        def _args(p):
-            p = re.sub(r'"(.*?)"', _rep, p)
-            p = [e.replace(':::', ' ') 
-                 for e in p.split() if e != '']
-            return p[0].strip(), tuple([p.strip() 
-                                        for p in p[1:]])
-        return [_args(s) for s in v if s.strip() != '']
+        def _args(line):
+            line = re.sub(r'"(.*?)"', _rep, line)
+            line = [element.replace(':::', ' ') 
+                    for element in line.split() if element != '']
+            return line[0].strip(), tuple([el.strip() 
+                                           for el in line[1:]])
+        return [_args(line) for line in lines if line.strip() != '']
 
     # 
     # properties and public APIs
     #
     def write(self):
-        f = open(self._file, 'w')
+        file_ = open(self._file, 'w')
         try:
-            self._parser.write(f)
+            self._parser.write(file_)
         except:
-            f.close()
+            file_.close()
 
     def get_reader(self, name):
         if not self._parser.has_section('readers'):

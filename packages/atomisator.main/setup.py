@@ -11,7 +11,7 @@ classifiers=[
 
 entry_points = {
     "console_scripts": [
-        "atomisator = atomisator.main.run:atomisator"
+        "atomisator = atomisator.main.commands:atomisator"
     ]
 }
 
@@ -32,7 +32,7 @@ setup(name='atomisator.main',
       install_requires=[
           'setuptools',
           'processing',
-          'atomisator.db>=0.3.0',
+          'atomisator.db>=0.3.1',
           'atomisator.feed>=0.3.0',
           # default plugins
           'atomisator.parser>=0.2.4',
