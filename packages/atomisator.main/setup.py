@@ -32,7 +32,7 @@ setup(name='atomisator.main',
       install_requires=[
           'setuptools',
           'processing',
-          'atomisator.db>=0.3.0',
+          'atomisator.db>=0.3.1',
           'atomisator.feed>=0.3.0',
           # default plugins
           'atomisator.parser>=0.2.4',
