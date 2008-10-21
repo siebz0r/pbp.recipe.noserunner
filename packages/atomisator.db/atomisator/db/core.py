@@ -1,10 +1,10 @@
 from sqlalchemy import desc  
 from sqlalchemy.orm import eagerload
 
-from atomisator.db import session 
+from atomisator.db import session as default_session
 from atomisator.db.mappers import Entry
 
-def create_entry(data, commit=True):
+def create_entry(data, commit=True, session=default_session):
     """Creates an entry in the db."""
     link = data['link']
 
@@ -16,7 +16,7 @@ def create_entry(data, commit=True):
         data[key] = data[key]['value']
 
     # check it the url already exists in the database
-    entries = get_entries(link=link)
+    entries = get_entries(link=link, session=session)
     
     if entries.count() > 0:
         found_entry = entries.first()
@@ -41,7 +41,7 @@ def create_entry(data, commit=True):
         session.commit()
     return new.id, new
 
-def get_entries(size=None, **kw):
+def get_entries(size=None, session=default_session, **kw):
     """Returns entries"""
     if kw == {}:
         query = session.query(Entry)

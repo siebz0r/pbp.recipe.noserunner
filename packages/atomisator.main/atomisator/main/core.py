@@ -54,10 +54,9 @@ def _apply_filters(entry, entries, selected_filters):
             return None
     return entry
 
-def _process_source(args):
+def _process_source(reader_name, reader, reader_args):
     """processing one source. callable through 
     a process"""
-    reader_name, reader, reader_args = args
     try:
         log('Retrieving from %s - %s' %  (reader_name, str(reader_args)))
         return reader(*reader_args)
@@ -74,8 +73,8 @@ class DataProcessor(object):
 
     def __init__(self, conf):
         self.parser = AtomisatorConfig(conf) 
-        create_session(self.parser.database) 
-        
+        create_session(self.parser.database)
+
     def load_data(self):
         """Fetches data"""
         log('Reading data.')
@@ -90,12 +89,12 @@ class DataProcessor(object):
     def _load_data(self):
         """Loads the data"""
         # initial entries, see if this call is optimal
-        existing_entries = get_entries().all()
+        self.existing_entries = get_entries().all()
 
         # building filtering chain once.
-        filter_chain = set([(_load_plugin(name, filters), args) 
-                            for name, args in self.parser.filters 
-                            if name in filters])
+        self.filter_chain = set([(_load_plugin(name, filters), args) 
+                                 for name, args in self.parser.filters 
+                                 if name in filters])
         
         # building source chain once.
         sources = [(reader_name, _load_plugin(reader_name, readers), args) 
@@ -105,21 +104,29 @@ class DataProcessor(object):
         pool = Pool(PROCESSES)
         
         # let's call in parallel all the readers
-        entries = chain(*[f for f in 
-                          pool.imapUnordered(_process_source, sources)])
+        for source in sources:
+            log('Launching worker for %s - %s' % (source[0], source[-1]))
+            res = pool.applyAsync(_process_source, source, 
+                                  callback=self._process_entries)
 
+        pool.close()
+        pool.join()
+        
+    def _process_entries(self, entries):
+        """callback called by the worker"""
         # now lets apply filters, then store entries
-        log('Now processing entries')
+        psession = create_session(self.parser.database, 
+                                 global_session=False) 
         for entry in entries:
             dotlog('.')
-            entry = _apply_filters(entry, existing_entries, filter_chain)
+            entry = _apply_filters(entry, self.existing_entries, 
+                                   self.filter_chain)
             if entry is None:
                 continue
-            id_, new_entry = create_entry(entry, commit=False)
-            existing_entries.append(new_entry)
-
-        # all done, let's commit
-        commit()   
+            id_, new_entry = create_entry(entry, commit=False,
+                                          session=psession)
+            self.existing_entries.append(new_entry)
+        psession.commit()
 
     def generate_data(self):
         """Generates the output"""
