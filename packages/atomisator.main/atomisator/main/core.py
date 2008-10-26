@@ -137,8 +137,9 @@ class DataProcessor(object):
     def generate_data(self):
         """Generates the output"""
         if not self.parser.store_entries:
-            raise ConfigurationError(('Cannot generate output'
-                                      'if store-entries is false'))
+            log('No storage, no output.')
+            return
+
         log('Writing outputs.')
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)

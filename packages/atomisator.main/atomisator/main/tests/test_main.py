@@ -10,6 +10,8 @@ from atomisator.main.config import ConfigurationError
 from atomisator.main.core import DataProcessor
 from atomisator.main.commands import enhancers, filters
 
+from atomisator.main.tests.base import set_conf, tear_conf
+
 saved = None
 
 def setup():
@@ -57,22 +59,7 @@ def test_options():
     assert_equals(options.config, 'here.cfg')
 
 test_dir = os.path.dirname(__file__)
-package_dir = os.path.split(test_dir)[0]
 test_conf = os.path.join(test_dir, 'atomisator.cfg')
-
-def set_conf():
-    template = open(os.path.join(test_dir, 'atomisator.cfg_tmpl')).read()
-    cfg = template % {'test_dir': test_dir}
-    f = open(test_conf, 'w')
-    f.write(cfg)
-    f.close()
-
-def tear_conf():
-    if os.path.exists(test_conf):
-        os.remove(test_conf)
-    xml = os.path.join(test_dir, 'atomisator.xml')
-    if os.path.exists(xml):
-        os.remove(xml)
 
 @with_setup(set_conf, tear_conf)
 def test_load_data():
@@ -127,8 +114,8 @@ def test_enhancers():
 def test_no_storage():
     proc = DataProcessor(test_conf)
     proc.parser.store_entries = False
-    
-    assert_raises(ConfigurationError, proc.generate_data)
+   
+    proc.generate_data()    # does nothing
 
     proc.load_data()
     assert_equals(proc.existing_entries, [])
