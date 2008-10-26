@@ -10,6 +10,7 @@ from processing import TimeoutError
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
 from atomisator.main.config import AtomisatorConfig
+from atomisator.main.config import ConfigurationError
 from atomisator.main import filters
 from atomisator.main import outputs
 from atomisator.main import enhancers
@@ -72,8 +73,10 @@ class DataProcessor(object):
     """
 
     def __init__(self, conf):
-        self.parser = AtomisatorConfig(conf) 
-        create_session(self.parser.database)
+        self.parser = AtomisatorConfig(conf)
+        self.existing_entries = []
+        if self.parser.store_entries:
+            create_session(self.parser.database)
 
     def load_data(self):
         """Fetches data"""
@@ -88,8 +91,9 @@ class DataProcessor(object):
     
     def _load_data(self):
         """Loads the data"""
-        # initial entries, see if this call is optimal
-        self.existing_entries = get_entries().all()
+        if self.parser.store_entries:
+            # initial entries, see if this call is optimal
+            self.existing_entries = get_entries().all()
 
         # building filtering chain once.
         self.filter_chain = set([(_load_plugin(name, filters), args) 
@@ -115,21 +119,26 @@ class DataProcessor(object):
     def _process_entries(self, entries):
         """callback called by the worker"""
         # now lets apply filters, then store entries
-        psession = create_session(self.parser.database, 
-                                 global_session=False) 
+        if self.parser.store_entries:
+            psession = create_session(self.parser.database, 
+                                      global_session=False) 
         for entry in entries:
             dotlog('.')
             entry = _apply_filters(entry, self.existing_entries, 
                                    self.filter_chain)
-            if entry is None:
+            if entry is None or not self.parser.store_entries:
                 continue
             id_, new_entry = create_entry(entry, commit=False,
                                           session=psession)
             self.existing_entries.append(new_entry)
-        psession.commit()
+        if self.parser.store_entries:
+            psession.commit()
 
     def generate_data(self):
         """Generates the output"""
+        if not self.parser.store_entries:
+            raise ConfigurationError(('Cannot generate output'
+                                      'if store-entries is false'))
         log('Writing outputs.')
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)

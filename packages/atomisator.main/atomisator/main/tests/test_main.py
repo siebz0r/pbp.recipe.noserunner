@@ -1,11 +1,12 @@
 import sys
 import os
 
-from nose.tools import with_setup, assert_equals
+from nose.tools import *
 
 from atomisator.main.commands import atomisator, _parse_options
 from atomisator.main.commands import readers
 from atomisator.main.config import AtomisatorConfig
+from atomisator.main.config import ConfigurationError
 from atomisator.main.core import DataProcessor
 from atomisator.main.commands import enhancers, filters
 
@@ -121,4 +122,14 @@ def test_filters():
 
 def test_enhancers():
     assert 'digg' in enhancers
+
+@with_setup(set_conf, tear_conf)
+def test_no_storage():
+    proc = DataProcessor(test_conf)
+    proc.parser.store_entries = False
+    
+    assert_raises(ConfigurationError, proc.generate_data)
+
+    proc.load_data()
+    assert_equals(proc.existing_entries, [])
 
