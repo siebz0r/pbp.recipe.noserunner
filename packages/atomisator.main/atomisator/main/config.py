@@ -14,6 +14,9 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+class ConfigurationError(Exception):
+    pass
+
 # logging
 def log(msg):
     """Shortcut to logger."""
@@ -146,4 +149,15 @@ class AtomisatorConfig(object):
     def _set_timeout(self, value):
         self._set_simple_field('timeout', value)
     timeout = property(_get_timeout, _set_timeout)
+
+    def _get_store_entries(self):
+        value = self._get_simple_field('store-entries', 'true')
+        value = value.lower()
+        return value in ('true', '1')
+    def _set_store_entries(self, value):
+        value = value and 'true' or 'false'
+        self._set_simple_field('store-entries', value)
+    store_entries = property(_get_store_entries, _set_store_entries)
+
+
 

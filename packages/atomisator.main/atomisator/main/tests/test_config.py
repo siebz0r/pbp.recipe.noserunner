@@ -37,6 +37,10 @@ def test_config():
     parser.timeout = '7'
     assert_equals(parser.timeout, '7')
 
+    assert_equals(parser.store_entries, True) 
+    parser.store_entries = False
+    assert_equals(parser.store_entries, False)
+
     old = open(cfg).read()
     parser.write()
     new = open(cfg).read()
