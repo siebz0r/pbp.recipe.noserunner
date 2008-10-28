@@ -64,7 +64,7 @@ def _parse_options():
 
 def list_readers():
     """List out readers plugins."""
-    for reader_name, reader in readers:
+    for reader_name, reader in readers.items():
         print reader_name
         doc = reader.__doc__
         if doc is not None:
