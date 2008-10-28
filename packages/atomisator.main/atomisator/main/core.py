@@ -140,13 +140,31 @@ class DataProcessor(object):
             log('No storage, no output.')
             return
 
+        
         log('Writing outputs.')
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)
+        
+        # XXX TODO: limit the size of the data 
+        # processed, by number of items, or by date
         entries = get_entries().all()
     
+        # Enhancement is a two-phase process.
+        # 1. Preparing entries for enhancement
+        for e, args in selected_enhancers:
+            if hasattr(e, 'prepare'):
+                e.prepare(entries)
+
+        # 2. Now enhancing them
+        def _enhance(entry):
+            for e, args in selected_enhancers:
+                entry = e(entry, *args)
+            return entry
+       
+        entries = [_enhance(e) for e in entries]
+
         for output, args in selected_outputs:
-            output(entries, selected_enhancers, args)
+            output(entries, args)
+
         log('Data ready.')
 
-    
