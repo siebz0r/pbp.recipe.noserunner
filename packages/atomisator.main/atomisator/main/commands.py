@@ -30,11 +30,15 @@ def _parse_options():
    
     parser.add_option("-p", "--list-readers", dest="readers",
                       action="store_true",
-                      help="List all readers.", default=False)
+                      help="List all reader plugins.", default=False)
 
     parser.add_option("-e", "--list-enhancers", dest="enhancers",
                       action="store_true",
-                      help="List all enhancers.", default=False)
+                      help="List all enhancer plugins.", default=False)
+
+    parser.add_option("-o", "--list-outputs", dest="outputs",
+                      action="store_true",
+                      help="List all output plugins.", default=False)
 
     parser.add_option("-g", "--generate", dest="generate",
                       action="store_true",
@@ -94,6 +98,10 @@ def atomisator():
 
     if options.readers:
         list_readers()
+        sys.exit(0)
+
+    if options.outputs:
+        list_outputs()
         sys.exit(0)
 
     if options.enhancers:

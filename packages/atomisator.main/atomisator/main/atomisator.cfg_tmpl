@@ -1,24 +1,30 @@
 [atomisator]
 
 # put here the sources you wish to process
-# the first parameter is the type of source
-# and the following parameters are the arguments
-# passed to the reader
+# the first parameter is the name of the
+# plugin and the following parameters are 
+# the arguments.
+#
+# get the list of available readers with :
+#   atomisator --list-readers
 sources = 
     rss http://tarekziade.wordpress.com/atom 
     rss http://digg.com/rss/index.xml
 
 # put here the filters you want to use
+# get the list of available filters with :
+#   atomisator --list-filters
 filters =
-    doublons
 
 # put here the enhancers you want to use
+# get the list of available filters with :
+#   atomisator --list-enhancers
 enhancers =
 
 # put here the database location
 database = sqlite:///atomisator.db
 
 outputs =
-    rss atomisator.xml http://atomisator.ziade.org/example meta Automatic feed created by Atomisator. 
+    rss atomisator.xml http://atomisator.ziade.org/example "Meta feed" "Automatic feed created by Atomisator." 
 
 
