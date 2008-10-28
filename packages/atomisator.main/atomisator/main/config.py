@@ -29,7 +29,7 @@ def log(msg):
 
 # see how this can be done with logging
 def dotlog(msg):    
-    """Flush to stdout"""
+    """Flushes to stdout."""
     sys.stdout.write(msg)
     sys.stdout.flush()
 
@@ -39,7 +39,7 @@ CONF_TMPL = join(dirname(__file__),
 CONF_TMPL = open(CONF_TMPL).read()
 
 def generate_config(path):
-    """Creates a default config file/"""
+    """Creates a default config file."""
     if os.path.exists(path):
         raise ValueError('%s already exists.' % path)
     file_ = open(path, 'w')
@@ -50,9 +50,10 @@ def generate_config(path):
     logger.info('Default config generated at "%s."' % path)
 
 class AtomisatorConfig(object):
+    """Custom config parser
+    """
 
     def __init__(self, cfg=None):
-        
         self._parser = ConfigParser()
         if cfg is None:
             cfg = DEFAULT_CONFIG_FILE
@@ -65,16 +66,17 @@ class AtomisatorConfig(object):
     # basic APIs
     #
     def _get_simple_field(self, field, default=None):
+        """Returns an option located in the `atomisator` section."""
         if not self._parser.has_option('atomisator', field):
             return default
         return self._parser.get('atomisator', field).strip()
     
     def _set_simple_field(self, field, value):
+        """Set an option located in the `atomisator` section."""
         self._parser.set('atomisator', field, value)    
 
-
     def _set_multiline_value(self, name, value):
-
+        """Set a multiline option located in the `atomisator` section."""
         def _quote(value):
             if ' ' in value:
                 value = value.replace('"', "'")
@@ -90,6 +92,7 @@ class AtomisatorConfig(object):
         self._parser.set('atomisator', name, values)
 
     def _get_multiline_value(self, name):
+        """Returns a multiline option located in the `atomisator` section."""
         lines = self._parser.get('atomisator', name).split('\n')
         # crappy pattern matching
         def _rep(match):
@@ -106,6 +109,9 @@ class AtomisatorConfig(object):
     # properties and public APIs
     #
     def write(self):
+        """ Saves the configuration.
+        
+        Writes the configuration into the file provided at initialization."""
         file_ = open(self._file, 'w')
         try:
             self._parser.write(file_)
@@ -113,6 +119,7 @@ class AtomisatorConfig(object):
             file_.close()
 
     def get_reader(self, name):
+        """Returns the readers."""
         if not self._parser.has_section('readers'):
             return None
         if not self._parser.has_option('readers', name):
@@ -163,6 +170,4 @@ class AtomisatorConfig(object):
         value = value and 'true' or 'false'
         self._set_simple_field('store-entries', value)
     store_entries = property(_get_store_entries, _set_store_entries)
-
-
 

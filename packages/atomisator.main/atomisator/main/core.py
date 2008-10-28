@@ -4,7 +4,6 @@
 Core module. contains processor.
 """
 import socket
-from itertools import chain
 
 from processing import Pool
 from processing import cpuCount
@@ -13,7 +12,6 @@ from processing import TimeoutError
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
 from atomisator.main.config import AtomisatorConfig
-from atomisator.main.config import ConfigurationError
 from atomisator.main import filters
 from atomisator.main import outputs
 from atomisator.main import enhancers
@@ -21,7 +19,6 @@ from atomisator.main import readers
 from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
-from atomisator.db.session import commit
 
 # we'll use two processes per CPU
 PROCESSES = cpuCount() * 2
@@ -78,6 +75,7 @@ class DataProcessor(object):
     def __init__(self, conf):
         self.parser = AtomisatorConfig(conf)
         self.existing_entries = []
+        self.filter_chain = None
         if self.parser.store_entries:
             create_session(self.parser.database)
 
@@ -90,7 +88,6 @@ class DataProcessor(object):
             self._load_data()
         finally:
             socket.setdefaulttimeout(old_timeout)
-    
     
     def _load_data(self):
         """Loads the data"""
@@ -113,8 +110,8 @@ class DataProcessor(object):
         # let's call in parallel all the readers
         for source in sources:
             log('Launching worker for %s - %s' % (source[0], source[-1]))
-            res = pool.applyAsync(_process_source, source, 
-                                  callback=self._process_entries)
+            pool.applyAsync(_process_source, source, 
+                            callback=self._process_entries)
 
         pool.close()
         pool.join()
