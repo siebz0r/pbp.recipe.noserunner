@@ -33,6 +33,12 @@ python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
 rm -rf *egg-info build dist    
 cd ..
 
+cd atomisator.outputs
+python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
+rm -rf *egg-info build dist    
+cd ..
+
+
 cd atomisator.indexer
 python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
 rm -rf *egg-info build dist    

@@ -40,7 +40,9 @@ setup(name='atomisator.main',
           # default filters
           'atomisator.filters>=0.1.5',
           # default enhancers
-          'atomisator.enhancers>=0.1.1'
+          'atomisator.enhancers>=0.1.1',
+          # default outputs
+          'atomisator.outputs'
       ],
       tests_require=['nose'],
       test_suite='atomisator.main.tests.test_docs.test_suite',
