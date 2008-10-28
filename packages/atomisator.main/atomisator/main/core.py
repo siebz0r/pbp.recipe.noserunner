@@ -1,4 +1,7 @@
-""" core module. contains processor.
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+""" 
+Core module. contains processor.
 """
 import socket
 from itertools import chain

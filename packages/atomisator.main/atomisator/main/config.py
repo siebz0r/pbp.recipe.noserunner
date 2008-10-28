@@ -1,3 +1,8 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+"""
+Custom config parser for Atomisator, and logging utilities.
+"""
 import os
 from os.path import dirname
 import sys

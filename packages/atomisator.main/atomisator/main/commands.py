@@ -1,3 +1,8 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+"""
+Provides high-level commands and the options parser.
+"""
 import sys
 from optparse import OptionParser
 
