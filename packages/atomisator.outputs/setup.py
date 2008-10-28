@@ -10,7 +10,7 @@ classifiers=[
         ]
 
 entry_points = {"atomisator.outputs": 
-        ["email = atomisator.outputs.email:Email"]}
+        ["email = atomisator.outputs.mail:Mail"]}
 
 setup(name='atomisator.outputs',
       version=version,

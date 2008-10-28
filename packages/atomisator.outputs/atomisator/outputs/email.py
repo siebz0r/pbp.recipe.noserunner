@@ -1,4 +1,0 @@
-
-class Email(object):
-    pass
-
