@@ -33,6 +33,16 @@ python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
 rm -rf *egg-info build dist    
 cd ..
 
+cd atomisator.indexer
+python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
+rm -rf *egg-info build dist    
+cd ..
+
+cd Atomisator
+python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
+rm -rf *egg-info build dist
+cd ..
+
 cd pbp.buildbotenv
 python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
 rm -rf *egg-info build dist    
@@ -56,11 +66,6 @@ cd ..
 cd pbp.skels
 python setup.py egg_info -RDb "" mregister sdist mupload -r "tarek"
 rm -rf *egg-info build dist    
-cd ..
-
-cd Atomisator
-python setup.py egg_info -RDb "" mregister sdist mupload -r "book"
-rm -rf *egg-info build dist
 cd ..
 
 
