@@ -1,30 +1,58 @@
+# this is an example of configuration
+# that produces an RSS feed, by combining 
+# several feeds.
 [atomisator]
 
+# sources
+# =======
+#
 # put here the sources you wish to process
 # the first parameter is the name of the
 # plugin and the following parameters are 
 # the arguments.
 #
-# get the list of available readers with :
+# get the list of available readers plugins
+# with :
 #   atomisator --list-readers
 sources = 
     rss http://tarekziade.wordpress.com/atom 
     rss http://digg.com/rss/index.xml
 
+# filters
+# =======
+#
 # put here the filters you want to use
-# get the list of available filters with :
+# get the list of available filters plugins 
+# with :
 #   atomisator --list-filters
 filters =
 
+# enhancers
+# =========
+#
 # put here the enhancers you want to use
-# get the list of available filters with :
+# get the list of available enhancers plugins
+# with :
 #   atomisator --list-enhancers
 enhancers =
 
-# put here the database location
-database = sqlite:///atomisator.db
-
+# outputs
+# =======
+#
+# put here the outputs you want
+# get the list of available output plugins
+# with :
+#   atomisator --list-outputs
 outputs =
     rss atomisator.xml http://atomisator.ziade.org/example "Meta feed" "Automatic feed created by Atomisator." 
 
+# database
+# ========
+#
+# put here the database location
+# this is used only if your configuration
+# uses outputs. If not, you can turn
+# down the database storage by using:
+#   store_entries = false
+database = sqlite:///atomisator.db
 
