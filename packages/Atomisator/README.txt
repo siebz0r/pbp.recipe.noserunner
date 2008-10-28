@@ -161,7 +161,8 @@ RSS 2.0 XML file::
         rss atomisator.xml http://atomisator.ziade.org/example meta "Automatic feed created by Atomisator." 
     ...
     
-All the arguments following the plugin name will be sent to it,besides the entries.
+All the arguments following the plugin name will be sent to it,
+besides the entries.
 
 Available plugins
 =================
