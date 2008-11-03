@@ -148,7 +148,7 @@ class DataProcessor(object):
         # XXX TODO: limit the size of the data 
         # processed, by number of items, or by date
         entries = get_entries().all()
-    
+        
         # Enhancement is a two-phase process.
         # 1. Preparing entries for enhancement
         for e, args in selected_enhancers:
