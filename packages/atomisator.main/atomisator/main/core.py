@@ -65,7 +65,6 @@ def _process_source(reader_name, reader, reader_args):
         log('TIMEOUT on %s - %s' % (reader_name, str(reader_args)))
         return []
 
-
 class DataProcessor(object):
     """Atomisator processor
     
@@ -76,8 +75,11 @@ class DataProcessor(object):
         self.parser = AtomisatorConfig(conf)
         self.existing_entries = []
         self.filter_chain = None
-        if self.parser.store_entries:
-            create_session(self.parser.database)
+        if not self.parser.store_entries:  
+            db = 'sqlite:///:memory:'
+        else:
+            db = self.parser.database
+        create_session(db)
 
     def load_data(self):
         """Fetches data"""
@@ -91,9 +93,8 @@ class DataProcessor(object):
     
     def _load_data(self):
         """Loads the data"""
-        if self.parser.store_entries:
-            # initial entries, see if this call is optimal
-            self.existing_entries = get_entries().all()
+        # initial entries, see if this call is optimal
+        self.existing_entries = get_entries().all()
 
         # building filtering chain once.
         self.filter_chain = set([(_load_plugin(name, filters), args) 
@@ -115,32 +116,25 @@ class DataProcessor(object):
 
         pool.close()
         pool.join()
-        
+         
     def _process_entries(self, entries):
         """callback called by the worker"""
         # now lets apply filters, then store entries
-        if self.parser.store_entries:
-            psession = create_session(self.parser.database, 
-                                      global_session=False) 
+        psession = create_session(self.parser.database, 
+                                  global_session=False) 
         for entry in entries:
             dotlog('.')
             entry = _apply_filters(entry, self.existing_entries, 
                                    self.filter_chain)
-            if entry is None or not self.parser.store_entries:
+            if entry is None:
                 continue
             id_, new_entry = create_entry(entry, commit=False,
                                           session=psession)
             self.existing_entries.append(new_entry)
-        if self.parser.store_entries:
-            psession.commit()
+        psession.commit()
 
     def generate_data(self):
         """Generates the output"""
-        if not self.parser.store_entries:
-            log('No storage, no output.')
-            return
-
-        
         log('Writing outputs.')
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)
@@ -148,7 +142,7 @@ class DataProcessor(object):
         # XXX TODO: limit the size of the data 
         # processed, by number of items, or by date
         entries = get_entries().all()
-        
+
         # Enhancement is a two-phase process.
         # 1. Preparing entries for enhancement
         for e, args in selected_enhancers:

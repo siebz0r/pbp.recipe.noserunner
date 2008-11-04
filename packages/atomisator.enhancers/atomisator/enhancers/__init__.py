@@ -165,15 +165,14 @@ class RelatedEntries(object):
                     self._links[l] = [e]
                 elif e not in self._links[l]:
                     self._links[l].append(e)
-
             for vals, rel in ((e.links, self._links), 
-                              (e.tags, self._tags)):
+                            (e.tags, self._tags)):
                 for v in vals:
                     if v not in rel:
                         rel[v] = [e]
                     elif e not in rel[v]:
                         rel[v].append(e)
-            
+
     def __call__(self, entry):
         
         related = []

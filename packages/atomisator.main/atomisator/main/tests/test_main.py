@@ -115,8 +115,9 @@ def test_no_storage():
     proc = DataProcessor(test_conf)
     proc.parser.store_entries = False
    
-    proc.generate_data()    # does nothing
-
     proc.load_data()
-    assert_equals(proc.existing_entries, [])
+    proc.generate_data()   
+       
+    # as usual but in memory
+    assert_equals(len(proc.existing_entries), 23)
 
