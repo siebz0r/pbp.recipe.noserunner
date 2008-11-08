@@ -8,27 +8,24 @@ options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 
 class FileFilter(object):
 
+    def __init__(self):
+        self._cached_expressions = {}
+
     def _comp(self, line):
         line = line.strip()
         return line, re.compile(line, options)
-
-    def _read_file(self, path):
-        if path in _files:
-            return _files[path]
-        _files[path] = [self._comp(line) for line in
-                        open(path).readlines()
-                        if line.strip() != '']
-        return _files[path]
 
     def _get_texts(self, entry):
         return entry['title'], entry.get('summary', '')
 
     def _match(self, entry, path):
-        for w, exp in self._read_file(path):
-            for t in self._get_texts(entry):
-                if exp.search(t) is not None:
-                    return w
-        return None
+        if path not in self._cached_expressions:
+            patterns = [l for l in open(path).read().split('\n')
+                        if l.strip() != '']
+            expr = re.compile('|'.join(patterns), options)
+            self._cached_expressions[path] = expr
+        text = '\n'.join(self._get_texts(entry))
+        return self._cached_expressions[path].search(text) 
 
 class StopWords(FileFilter):
     """
@@ -52,9 +49,14 @@ class ReplaceWords(FileFilter):
     The file path is provided as argument.
     """
     def _replace(self, entry, path):
-        for w, exp, repl in self._read_file(path):
-            for key in ('summary', 'title'):
-                entry[key] = exp.sub(repl, entry[key])
+        if path not in self._cached_expressions:
+            lines = [self._comp(l) 
+                     for l in open(path).read().split('\n')
+                     if l.strip() != '']
+            self._cached_expressions[path] = lines
+        for key in ('summary', 'title'):
+            for comp, repl in self._cached_expressions[path]:
+                entry[key] = comp.sub(repl, entry[key]) 
         return entry
 
     def _comp(self, line):
@@ -64,7 +66,7 @@ class ReplaceWords(FileFilter):
             exp, repl = spl[0], ''
         else:
             exp, repl = spl
-        return exp, re.compile(exp, options), repl
+        return re.compile(exp, options), repl
 
     def __call__(self, entry, entries, path):
         return self._replace(entry, path) 
@@ -78,9 +80,9 @@ class BuzzWords(FileFilter):
 
     def __call__(self, entry, entries, path):
         """Keeps entries based on keywords"""
-        w = self._match(entry, path)
-        if w is not None:
-            entry['title'] = '[%s] %s' % (w, entry['title'])
+        m = self._match(entry, path)
+        if m is not None:
+            entry['title'] = '[%s] %s' % (m.group(), entry['title'])
             return entry
         return None
 
@@ -123,22 +125,10 @@ class AutoTag(FileFilter):
     Automatically tag entries when words or regular expression
     from a file are found into this entry.
     """ 
-    def _match(self, entry, path):
-        res = []
-        for w, exp in self._read_file(path):
-            for t in self._get_texts(entry):
-                if exp.search(t) is not None:
-                    res.append(w)
-        return res
-
     def __call__(self, entry, entries, path):
         """Keeps entries based on keywords"""
-        for w in self._match(entry, path):
-            if 'tags' not in entry:
-                entry['tags'] = [{'term': w}]
-            else:
-                if w not in [e['term'] for e in entry.tags]:
-                    entry['tags'].append({'term': w})
+        match = self._match(entry, path)
+        if match is not None:
+            entry['tags'] = [{'term': tag} for tag in  match.group()]
         return entry
-
 
