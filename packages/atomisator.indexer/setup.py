@@ -6,7 +6,7 @@ import os
 from os.path import join
 from distutils.core import Extension 
 
-version = '0.1.0'
+version = '0.1.1'
 
 long_description = open("README.txt").read()
 
@@ -21,7 +21,7 @@ entry_points = {"atomisator.filters": ["indexer = atomisator.indexer:Indexer"]}
 
 setup(name='atomisator.indexer',
       version=version,
-      description="Atomisator - Indexing",
+      description="Expert Python Programming - Indexing",
       long_description=long_description,
       classifiers=classifiers,
       keywords='atomisator indexer xapian',
