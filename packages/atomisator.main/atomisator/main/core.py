@@ -75,11 +75,7 @@ class DataProcessor(object):
         self.parser = AtomisatorConfig(conf)
         self.existing_entries = []
         self.filter_chain = None
-        if not self.parser.store_entries:  
-            db = 'sqlite:///:memory:'
-        else:
-            db = self.parser.database
-        create_session(db)
+        create_session(self.parser.database)
 
     def load_data(self):
         """Fetches data"""
