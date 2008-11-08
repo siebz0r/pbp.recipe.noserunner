@@ -1,7 +1,5 @@
 from feedparser import parse as feedparse
 from feedparser import _parse_date
-from itertools import islice
-from itertools import imap
 from datetime import datetime
 
 class Parser(object):
