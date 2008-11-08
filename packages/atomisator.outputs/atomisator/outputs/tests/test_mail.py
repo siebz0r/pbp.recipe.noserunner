@@ -1,11 +1,12 @@
 import smtplib
 from nose.tools import *
+import os
 
 class _SMTP(object):
-
     msgs = []
-
     def __init__(self, *args, **kw):
+        pass
+    def close(self):
         pass
 
     def sendmail(self, from_, tos, msg, **kw):
@@ -46,17 +47,20 @@ Atomisator has triggered an alert. Check out for:
 
 """
 
+mail_config = os.path.join(os.path.dirname(__file__), 'email.cfg')
+
 def test_email():
 
     email = Mail()
 
-    # args : 
-    #   to mails, subject, from mail, 
-    #   body_template, entry_template
-    #   smtp_server, smtp_port
-    
-    entry = {'url': 'http://here', 'title': 'this'}
-    args = ('tarek@ziade.org',)
+    class Entry(object):
+        pass
+
+    entry = Entry()
+    entry.link = 'http://here'
+    entry.title = 'this'
+
+    args = (mail_config,)
     entries = [entry]
     email(entries, args)
 
