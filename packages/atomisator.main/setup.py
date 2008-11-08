@@ -33,7 +33,7 @@ setup(name='atomisator.main',
           'setuptools',
           'processing',
           'atomisator.db>=0.3.1',
-          'atomisator.feed>=0.3.1',
+          'atomisator.feed>=0.3.2',
           # default plugins
           'atomisator.parser>=0.2.4',
           'atomisator.readers>=0.1.1',
