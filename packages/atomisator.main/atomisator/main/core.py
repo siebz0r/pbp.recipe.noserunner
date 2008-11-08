@@ -4,6 +4,7 @@
 Core module. contains processor.
 """
 import socket
+import os
 
 from processing import Pool
 from processing import cpuCount
@@ -89,6 +90,10 @@ class DataProcessor(object):
     
     def _load_data(self):
         """Loads the data"""
+        # remove the temp db if it exists
+        if os.path.exists('_temp_.db'):
+            os.remove('_temp_.db')
+        
         # initial entries, see if this call is optimal
         self.existing_entries = get_entries().all()
 

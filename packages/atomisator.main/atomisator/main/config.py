@@ -153,7 +153,7 @@ class AtomisatorConfig(object):
     enhancers = property(_get_enhancers, _set_enhancers)
 
     def _get_database(self):
-        return self._get_simple_field('database', 'sqlite:///temp.db')
+        return self._get_simple_field('database', 'sqlite:///_temp_.db')
     def _set_database(self, value):
         self._set_simple_field('database', value)
     database = property(_get_database, _set_database)
