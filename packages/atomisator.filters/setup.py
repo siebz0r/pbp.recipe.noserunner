@@ -6,7 +6,7 @@ import os
 from os.path import join
 from distutils.core import Extension 
 
-version = '0.1.8'
+version = '0.1.9'
 
 long_description = open("README.txt").read()
 

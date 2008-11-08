@@ -38,7 +38,7 @@ setup(name='atomisator.main',
           'atomisator.parser>=0.2.4',
           'atomisator.readers>=0.1.1',
           # default filters
-          'atomisator.filters>=0.1.5',
+          'atomisator.filters>=0.1.9',
           # default enhancers
           'atomisator.enhancers>=0.1.1',
           # default outputs
