@@ -31,7 +31,7 @@ setup(name='atomisator.main',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'processing',
+          'multiprocessing',
           'atomisator.db>=0.3.1',
           'atomisator.feed>=0.3.2',
           # default plugins

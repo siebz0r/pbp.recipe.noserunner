@@ -6,9 +6,9 @@ Core module. contains processor.
 import socket
 import os
 
-from processing import Pool
-from processing import cpuCount
-from processing import TimeoutError
+from multiprocessing import Pool
+from multiprocessing import cpu_count
+from multiprocessing import TimeoutError
 
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
@@ -22,7 +22,7 @@ from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
 
 # we'll use two processes per CPU
-PROCESSES = cpuCount() * 2
+PROCESSES = cpu_count() * 2
 
 def _load_plugin(name, kind):
     """returns a registered plugin.
@@ -112,8 +112,8 @@ class DataProcessor(object):
         # let's call in parallel all the readers
         for source in sources:
             log('Launching worker for %s - %s' % (source[0], source[-1]))
-            pool.applyAsync(_process_source, source, 
-                            callback=self._process_entries)
+            pool.apply_async(_process_source, source, 
+                             callback=self._process_entries)
 
         pool.close()
         pool.join()
