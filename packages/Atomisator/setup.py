@@ -8,7 +8,7 @@ classifiers=[
         ]
 
 setup(name='Atomisator',
-      version='1.0',
+      version='1.1',
       description="Data processing framework",
       long_description=long_description,
       classifiers=classifiers,
@@ -21,7 +21,7 @@ setup(name='Atomisator',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'atomisator.main>=0.5.1',
+          'atomisator.main>=0.5.2',
       ]
       )
 
