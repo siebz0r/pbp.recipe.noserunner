@@ -91,8 +91,10 @@ class AtomisatorConfig(object):
         values = '\n'.join([_line(v) for v in value])
         self._parser.set('atomisator', name, values)
 
-    def _get_multiline_value(self, name):
+    def _get_multiline_value(self, name, default=None):
         """Returns a multiline option located in the `atomisator` section."""
+        if not self._parser.has_option('atomisator', name):
+            return default is None and None or []
         lines = self._parser.get('atomisator', name).split('\n')
         # crappy pattern matching
         def _rep(match):

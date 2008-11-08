@@ -6,6 +6,7 @@ from atomisator.main.config import generate_config
 from atomisator.main.config import CONF_TMPL
 
 cfg = os.path.join(os.path.dirname(__file__), 'test.cfg')
+cfg2 = os.path.join(os.path.dirname(__file__), 'test2.cfg')
 
 def gen_init():
     if os.path.exists('here.cfg'):
@@ -56,4 +57,11 @@ def test_quotes():
     parser.outputs = [rss]
 
     assert_equals(parser.outputs, [rss])
+
+def test_defaults():
+    parser = AtomisatorConfig(cfg2)
+    assert_equals(parser.enhancers, [])
+    assert_equals(parser.filters, [])
+    assert_equals(parser.outputs, [])
+
 
