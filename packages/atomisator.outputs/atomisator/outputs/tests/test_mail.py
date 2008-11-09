@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 import smtplib
 from nose.tools import *
 import os
@@ -33,17 +35,17 @@ reload(atomisator.outputs.mail)
 from atomisator.outputs.mail import Mail 
 
 waited = """\
-Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Subject: Atomisator alert
 To: tarek@ziade.org
 From: admin@atomisator
 Date: NOW
+Content-Type: text/plain; charset="utf8"
 
 Atomisator has triggered an alert. Check out for:
 
-  * this: http://here
+  * this is é: http://here
 
 """
 
@@ -58,7 +60,7 @@ def test_email():
 
     entry = Entry()
     entry.link = 'http://here'
-    entry.title = 'this'
+    entry.title = u'this is é'
 
     args = (mail_config,)
     entries = [entry]

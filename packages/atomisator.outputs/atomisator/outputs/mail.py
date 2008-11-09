@@ -9,13 +9,13 @@ from datetime import datetime
 from ConfigParser import ConfigParser
 import logging
 
-DEFAULT_BODY_TMPL = """\
+DEFAULT_BODY_TMPL = u"""\
 Atomisator has triggered an alert. Check out for:
 
 %(entries)s
 """
 
-DEFAULT_ENTRY_TMPL = """\
+DEFAULT_ENTRY_TMPL = u"""\
   * %(title)s: %(link)s
 """
 
@@ -76,7 +76,10 @@ class Mail(object):
         
         # mail content
         text = values['body_template'] % \
-                {'entries': '\n'.join(lines)}
+                {'entries': u'\n'.join(lines)}
+
+        # stored in utf8 by default
+        text = text.encode('utf8', 'ignore')
 
         # a mail is built, using MimeText
         msg = MIMEText(text)
@@ -84,6 +87,7 @@ class Mail(object):
         msg['To'] = ','.join(values['tos'])
         msg['From'] = values['from']
         msg['Date'] = datetime.now().isoformat()
+        msg.set_charset('utf8')
         msg = msg.as_string() 
 
         # let's send it
