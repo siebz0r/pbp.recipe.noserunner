@@ -1,5 +1,13 @@
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+""" DB Apis
+"""
+from datetime import timedelta
+from datetime import datetime
+
 from sqlalchemy import desc  
 from sqlalchemy.orm import eagerload
+from sqlalchemy.sql.expression import delete
 
 from atomisator.db import session as default_session
 from atomisator.db.mappers import Entry
@@ -30,16 +38,18 @@ def create_entry(data, commit=True, session=default_session):
         return found_entry.id, found_entry
     
     new = Entry(**data)
-    #if 'links' in data:
-    #    new.add_links(data['links'])
-
-    #if 'tags' in data:
-    #    new.add_tags(data['tags'])
-
     session.save(new)
     if commit:
         session.commit()
     return new.id, new
+
+def purge_entries(max_age=30, session=default_session):
+    """remove old entries"""
+    today = datetime.now()
+    oldest = today - timedelta(days=max_age)
+    entry = Entry.__table__
+    session.execute(delete(entry).where(entry.c.date<oldest))
+    session.commit()
 
 def get_entries(size=None, session=default_session, **kw):
     """Returns entries"""

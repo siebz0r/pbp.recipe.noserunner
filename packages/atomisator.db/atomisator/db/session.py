@@ -27,3 +27,6 @@ def commit():
 def query(mapper):
     return session.query(mapper)
 
+def execute(*args, **kw):
+    return session.execute(*args, **kw)
+
