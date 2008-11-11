@@ -42,6 +42,10 @@ def test_config():
     parser.store_entries = False
     assert_equals(parser.store_entries, False)
 
+    assert_equals(parser.max_age, '30') 
+    parser.max_age = '35'
+    assert_equals(parser.max_age, '35')
+
     old = open(cfg).read()
     parser.write()
     new = open(cfg).read()

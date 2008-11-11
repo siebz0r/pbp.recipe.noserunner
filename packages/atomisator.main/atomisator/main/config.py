@@ -173,3 +173,10 @@ class AtomisatorConfig(object):
         self._set_simple_field('store-entries', value)
     store_entries = property(_get_store_entries, _set_store_entries)
 
+    def _get_max_age(self):
+        return self._get_simple_field('max-age', '30')
+    def _set_max_age(self, value):
+        self._set_simple_field('max-age', value)
+    max_age = property(_get_max_age, _set_max_age)
+
+
