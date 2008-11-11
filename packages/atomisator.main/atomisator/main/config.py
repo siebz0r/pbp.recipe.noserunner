@@ -159,9 +159,9 @@ class AtomisatorConfig(object):
     database = property(_get_database, _set_database)
 
     def _get_timeout(self):
-        return self._get_simple_field('timeout', '5')
+        return float(self._get_simple_field('timeout', '5'))
     def _set_timeout(self, value):
-        self._set_simple_field('timeout', value)
+        self._set_simple_field('timeout', str(value))
     timeout = property(_get_timeout, _set_timeout)
 
     def _get_store_entries(self):
@@ -174,9 +174,9 @@ class AtomisatorConfig(object):
     store_entries = property(_get_store_entries, _set_store_entries)
 
     def _get_max_age(self):
-        return self._get_simple_field('max-age', '30')
+        return int(self._get_simple_field('max-age', '30'))
     def _set_max_age(self, value):
-        self._set_simple_field('max-age', value)
+        self._set_simple_field('max-age', str(value))
     max_age = property(_get_max_age, _set_max_age)
 
 

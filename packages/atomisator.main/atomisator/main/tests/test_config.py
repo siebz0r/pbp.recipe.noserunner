@@ -34,17 +34,17 @@ def test_config():
     parser.database = 'sqlite://here'
     assert_equals(parser.database, 'sqlite://here')    
 
-    assert_equals(parser.timeout, '5') 
-    parser.timeout = '7'
-    assert_equals(parser.timeout, '7')
+    assert_equals(parser.timeout, 5.0) 
+    parser.timeout = 7.0
+    assert_equals(parser.timeout, 7.0)
 
     assert_equals(parser.store_entries, True) 
     parser.store_entries = False
     assert_equals(parser.store_entries, False)
 
-    assert_equals(parser.max_age, '30') 
-    parser.max_age = '35'
-    assert_equals(parser.max_age, '35')
+    assert_equals(parser.max_age, 30) 
+    parser.max_age = 35
+    assert_equals(parser.max_age, 35)
 
     old = open(cfg).read()
     parser.write()

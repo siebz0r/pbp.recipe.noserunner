@@ -32,7 +32,7 @@ setup(name='atomisator.main',
       install_requires=[
           'setuptools',
           'multiprocessing',
-          'atomisator.db>=0.3.1',
+          'atomisator.db>=0.3.2',
           'atomisator.feed>=0.3.2',
           # default plugins
           'atomisator.parser>=0.2.6',
@@ -42,7 +42,7 @@ setup(name='atomisator.main',
           # default enhancers
           'atomisator.enhancers>=0.1.1',
           # default outputs
-          'atomisator.outputs'
+          'atomisator.outputs>=0.1.2'
       ],
       tests_require=['nose'],
       test_suite='atomisator.main.tests.test_docs.test_suite',

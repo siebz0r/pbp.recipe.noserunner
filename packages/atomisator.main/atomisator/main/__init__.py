@@ -2,7 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 """Main module, loads entry points
 """
-__version__ = '0.5.2'
+__version__ = '0.5.3'
 
 from setuptools.package_index import iter_entry_points
 

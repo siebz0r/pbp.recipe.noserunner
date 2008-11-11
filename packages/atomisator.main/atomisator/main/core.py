@@ -20,6 +20,7 @@ from atomisator.main import readers
 from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
+from atomisator.db.core import purge_entries
 
 # we'll use two processes per CPU
 PROCESSES = cpu_count() * 2
@@ -82,18 +83,25 @@ class DataProcessor(object):
         """Fetches data"""
         log('Reading data.')
         old_timeout = socket.getdefaulttimeout()
-        socket.setdefaulttimeout(float(self.parser.timeout))
+        socket.setdefaulttimeout(self.parser.timeout)
         try:
             self._load_data()
         finally:
             socket.setdefaulttimeout(old_timeout)
-    
+   
+    def _cleanup_entries(self):
+        """removes old entries"""
+        purge_entries(self.parser.max_age)
+
     def _load_data(self):
         """Loads the data"""
         # remove the temp db if it exists
         if os.path.exists('_temp_.db'):
             os.remove('_temp_.db')
-        
+       
+        # cleanup old entries
+        self._cleanup_entries()
+
         # initial entries, see if this call is optimal
         self.existing_entries = get_entries().all()
 
