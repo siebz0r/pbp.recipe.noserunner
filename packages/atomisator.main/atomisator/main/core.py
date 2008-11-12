@@ -27,6 +27,9 @@ from atomisator.db.core import purge_entries
 # we'll use two processes per CPU
 PROCESSES = cpu_count() * 2
 
+#
+# internal APIs called by multiprocessing
+#
 def _select_enhancers(enhancers_selected):
     """Gets the selected enhancers."""
     res = []
@@ -75,6 +78,9 @@ def _prepare_enhancer(enhancer, entries):
         enhancer.prepare(entries)
     return enhancer
 
+#
+# class that processes data
+#
 class DataProcessor(object):
     """Atomisator processor
     
