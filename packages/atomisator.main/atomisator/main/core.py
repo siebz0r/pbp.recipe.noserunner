@@ -61,10 +61,10 @@ def _process_source(reader_name, reader, reader_args):
     """processing one source. callable through 
     a process"""
     try:
-        log('Retrieving from %s - %s' %  (reader_name, str(reader_args)))
+        log('\tRetrieving from %s - %s' %  (reader_name, str(reader_args)))
         return reader(*reader_args)
     except TimeoutError:
-        log('TIMEOUT on %s - %s' % (reader_name, str(reader_args)))
+        log('\tTIMEOUT on %s - %s' % (reader_name, str(reader_args)))
         return []
 
 class DataProcessor(object):
@@ -81,7 +81,7 @@ class DataProcessor(object):
 
     def load_data(self):
         """Fetches data"""
-        log('Reading data.')
+        log('Loading existing data.')
         old_timeout = socket.getdefaulttimeout()
         socket.setdefaulttimeout(self.parser.timeout)
         try:
@@ -100,17 +100,24 @@ class DataProcessor(object):
             os.remove('_temp_.db')
        
         # cleanup old entries
+        log('\tRemoving old entries.')
         self._cleanup_entries()
 
         # initial entries, see if this call is optimal
+        log('\tReading existing entries.')
         self.existing_entries = get_entries().all()
 
         # building filtering chain once.
+        log('Loading filters plugins : %s' \
+                   % ', '.join([f for f, a in self.parser.filters])) 
         self.filter_chain = set([(_load_plugin(name, filters), args) 
                                  for name, args in self.parser.filters 
                                  if name in filters])
         
         # building source chain once.
+        log('Loading source plugins : %s' \
+                   % ', '.join([f for f, a in self.parser.sources]))
+
         sources = [(reader_name, _load_plugin(reader_name, readers), args) 
                    for reader_name, args in self.parser.sources]
 
@@ -118,8 +125,9 @@ class DataProcessor(object):
         pool = Pool(PROCESSES)
         
         # let's call in parallel all the readers
+        log('Reading sources.')
         for source in sources:
-            log('Launching worker for %s - %s' % (source[0], source[-1]))
+            log('\tLaunching worker for %s - %s' % (source[0], source[-1]))
             pool.apply_async(_process_source, source, 
                              callback=self._process_entries)
 
@@ -153,11 +161,14 @@ class DataProcessor(object):
         entries = get_entries().all()
         # Enhancement is a two-phase process.
         # 1. Preparing entries for enhancement
+        log('Preparing enhancers.')
         for e, args in selected_enhancers:
             if hasattr(e, 'prepare'):
                 e.prepare(entries)
 
         # 2. Now enhancing them
+        log('Enhancing: %s' % ', '.join([e for e, args 
+                                         in self.parser.enhancers]))
         def _enhance(entry):
             for e, args in selected_enhancers:
                 entry = e(entry, *args)
@@ -165,6 +176,8 @@ class DataProcessor(object):
        
         entries = [_enhance(e) for e in entries]
 
+        log('Rendering: %s' % ', '.join([e for e, args 
+                                         in self.parser.outputs]))
         for output, args in selected_outputs:
             output(entries, args)
 
