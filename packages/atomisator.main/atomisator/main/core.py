@@ -133,7 +133,8 @@ class DataProcessor(object):
 
         pool.close()
         pool.join()
-         
+        dotlog('\n')
+
     def _process_entries(self, entries):
         """callback called by the worker"""
         # now lets apply filters, then store entries
@@ -152,34 +153,43 @@ class DataProcessor(object):
 
     def generate_data(self):
         """Generates the output"""
-        log('Writing outputs.')
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)
         
         # XXX TODO: limit the size of the data 
         # processed, by number of items, or by date
         entries = get_entries().all()
-        # Enhancement is a two-phase process.
-        # 1. Preparing entries for enhancement
-        log('Preparing enhancers.')
-        for e, args in selected_enhancers:
-            if hasattr(e, 'prepare'):
-                e.prepare(entries)
-
-        # 2. Now enhancing them
-        log('Enhancing: %s' % ', '.join([e for e, args 
-                                         in self.parser.enhancers]))
-        def _enhance(entry):
+        
+        if selected_enhancers != []:
+            # Enhancement is a two-phase process.
+            # 1. Preparing entries for enhancement
+            log('Preparing enhancers.')
             for e, args in selected_enhancers:
-                entry = e(entry, *args)
-            return entry
-       
-        entries = [_enhance(e) for e in entries]
+                if hasattr(e, 'prepare'):
+                    dotlog('.')
+                    e.prepare(entries)
+            dotlog('\n')
 
-        log('Rendering: %s' % ', '.join([e for e, args 
-                                         in self.parser.outputs]))
-        for output, args in selected_outputs:
-            output(entries, args)
+            # 2. Now enhancing them
+            log('Enhancing: %s' % ', '.join([e for e, args 
+                                            in self.parser.enhancers]))
+            def _enhance(entry):
+                for e, args in selected_enhancers:
+                    dotlog('.')
+                    entry = e(entry, *args)
+                return entry
+        
+            entries = [_enhance(e) for e in entries]
+            dotlog('\n')
 
-        log('Data ready.')
+        if selected_outputs != []:
+            log('Writing outputs.')
+            log('Rendering: %s' % ', '.join([e for e, args 
+                                             in self.parser.outputs]))
+            for output, args in selected_outputs:
+                dotlog('.')
+                output(entries, args)
+            dotlog('\n')
+
+            log('Output ready.')
 
