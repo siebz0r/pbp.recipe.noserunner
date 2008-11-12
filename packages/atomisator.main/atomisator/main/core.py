@@ -9,6 +9,7 @@ import os
 from multiprocessing import Pool
 from multiprocessing import cpu_count
 from multiprocessing import TimeoutError
+from multiprocessing import Queue
 
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
@@ -66,6 +67,13 @@ def _process_source(reader_name, reader, reader_args):
     except TimeoutError:
         log('\tTIMEOUT on %s - %s' % (reader_name, str(reader_args)))
         return []
+
+def _enhance(entry, selected_enhancers):
+    """Enhances an entry"""
+    for enhancer, args in selected_enhancers:
+        dotlog('.')
+        entry = enhancer(entry, *args)
+    return entry
 
 class DataProcessor(object):
     """Atomisator processor
@@ -172,14 +180,15 @@ class DataProcessor(object):
             # 2. Now enhancing them
             log('Enhancing: %s' % ', '.join([e for e, args 
                                             in self.parser.enhancers]))
-            def _enhance(entry):
-                """Enhances an entry"""
-                for enhancer, args in selected_enhancers:
-                    dotlog('.')
-                    entry = enhancer(entry, *args)
-                return entry
-        
-            entries = [_enhance(e) for e in entries]
+
+            # creating a processing pool
+            pool = Pool(PROCESSES)
+            results = [pool.apply_async(_enhance, (entry, selected_enhancers))
+                       for entry in entries]
+
+            pool.close()
+            pool.join()
+            entries = [result.get() for result in results]
             dotlog('\n')
 
         if selected_outputs != []:
