@@ -18,6 +18,7 @@ from atomisator.main import FILTERS
 from atomisator.main import OUTPUTS
 from atomisator.main import ENHANCERS
 from atomisator.main import READERS
+from atomisator.main import load_plugin
 from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
@@ -25,14 +26,6 @@ from atomisator.db.core import purge_entries
 
 # we'll use two processes per CPU
 PROCESSES = cpu_count() * 2
-
-def _load_plugin(name, kind):
-    """returns a registered plugin.
-    
-    Will raise an error if the plugin does not exists"""
-    if name not in kind:
-        raise ValueError('Could not load %s plugin.' % name)
-    return kind[name]
 
 def _select_enhancers(enhancers_selected):
     """Gets the selected enhancers."""
@@ -125,14 +118,14 @@ class DataProcessor(object):
         # building filtering chain once.
         filter_names = [f[0] for f in self.parser.filters]
         log('Loading filters plugins : %s' % ', '.join(filter_names))
-        self.filter_chain = set([(_load_plugin(name, FILTERS), args) 
+        self.filter_chain = set([(load_plugin(name, FILTERS), args) 
                                  for name, args in self.parser.filters 
                                  if name in FILTERS])
         
         # building source chain once.
         source_names = [s[0] for s in self.parser.sources]
         log('Loading source plugins : %s' % ', '.join(source_names))
-        sources = [(reader_name, _load_plugin(reader_name, READERS), args) 
+        sources = [(reader_name, load_plugin(reader_name, READERS), args) 
                    for reader_name, args in self.parser.sources]
 
         # creating a processing pool

@@ -16,3 +16,12 @@ OUTPUTS = _load_entry_point('atomisator.outputs')
 ENHANCERS = _load_entry_point('atomisator.enhancers')
 READERS = _load_entry_point('atomisator.readers')
 
+def load_plugin(name, kind):
+    """returns a registered plugin.
+    
+    Will raise an error if the plugin does not exists"""
+    if name not in kind:
+        raise ValueError('Could not load %s plugin.' % name)
+    return kind[name]
+
+
