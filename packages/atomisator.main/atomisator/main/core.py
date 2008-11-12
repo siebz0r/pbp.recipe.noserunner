@@ -75,6 +75,13 @@ def _enhance(entry, selected_enhancers):
         entry = enhancer(entry, *args)
     return entry
 
+def _prepare_enhancer(enhancer, entries):
+    """prepare the enhancer"""
+    if hasattr(enhancer, 'prepare'):
+        dotlog('.')
+        enhancer.prepare(entries)
+    return enhancer
+
 class DataProcessor(object):
     """Atomisator processor
     
@@ -171,10 +178,30 @@ class DataProcessor(object):
             # Enhancement is a two-phase process.
             # 1. Preparing entries for enhancement
             log('Preparing enhancers.')
-            for enhancer, args in selected_enhancers:
-                if hasattr(enhancer, 'prepare'):
-                    dotlog('.')
-                    enhancer.prepare(entries)
+            pool = Pool(PROCESSES)
+            results = [pool.apply_async(_prepare_enhancer, (enhancer, entries))
+                       for enhancer, args in selected_enhancers]
+            pool.close()
+            pool.join()
+
+            # pushing back into the ENHANCERS list (not the same process)
+            # and selected_enhancers
+            # XXX maybe the multiprocess has something cleaner for this
+            for result in results:
+                enhancer = result.get()
+                enhancer_type = type(enhancer)
+                for name, ob in ENHANCERS.items():
+                    if type(ob) == enhancer_type:
+                        ENHANCERS[name] = enhancer
+
+                def _replace(s, args, new):
+                    if type(s) == type(new):
+                        s = new
+                    return s, args
+
+                selected_enhancers = [_replace(s, args, enhancer) 
+                                      for s, args in selected_enhancers]
+
             dotlog('\n')
 
             # 2. Now enhancing them
