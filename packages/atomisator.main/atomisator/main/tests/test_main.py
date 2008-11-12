@@ -4,11 +4,10 @@ import os
 from nose.tools import *
 
 from atomisator.main.commands import atomisator, _parse_options
-from atomisator.main.commands import readers
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.config import ConfigurationError
 from atomisator.main.core import DataProcessor
-from atomisator.main.commands import enhancers, filters
+from atomisator.main.commands import ENHANCERS, FILTERS, READERS
 
 from atomisator.main.tests.base import set_conf, tear_conf
 
@@ -101,14 +100,14 @@ def test_get_readers():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser
    
-    assert 'xxxx' not in readers
-    assert isinstance(readers['rss'], Parser)
+    assert 'xxxx' not in READERS
+    assert isinstance(READERS['rss'], Parser)
 
 def test_filters():
-    assert 'doublons' in filters
+    assert 'doublons' in FILTERS
 
 def test_enhancers():
-    assert 'digg' in enhancers
+    assert 'digg' in ENHANCERS
 
 @with_setup(set_conf, tear_conf)
 def test_no_storage():

@@ -10,10 +10,10 @@ from atomisator.main.core import DataProcessor
 from atomisator.main.config import generate_config
 
 from atomisator.main import __version__ as VERSION
-from atomisator.main import filters
-from atomisator.main import outputs
-from atomisator.main import enhancers
-from atomisator.main import readers
+from atomisator.main import FILTERS
+from atomisator.main import OUTPUTS
+from atomisator.main import ENHANCERS
+from atomisator.main import READERS
 
 def _parse_options():
     """parses Atomisator args options"""
@@ -73,7 +73,7 @@ def _parse_options():
 
 def list_readers():
     """List out readers plugins."""
-    for reader_name, reader in readers.items():
+    for reader_name, reader in READERS.items():
         print reader_name
         doc = reader.__doc__
         if doc is not None:
@@ -81,17 +81,17 @@ def list_readers():
 
 def list_outputs():
     """List out output plugins."""
-    for output_name, output in outputs.items():
+    for output_name, output in OUTPUTS.items():
         print '%s: %s' % (output_name, output.__doc__)
            
 def list_filters():
     """List out filter plugins."""
-    for filter_name, filter_ in filters.items():
+    for filter_name, filter_ in FILTERS.items():
         print '%s: %s' % (filter_name, filter_.__doc__)
 
 def list_enhancers():
     """List out enhancers plugins."""
-    for enhancer_name, enhancer in enhancers.items():
+    for enhancer_name, enhancer in ENHANCERS.items():
         print '%s: %s' % (enhancer_name, enhancer.__doc__)
 
 def atomisator():
