@@ -10,6 +10,8 @@ import string
 
 from BeautifulSoup import BeautifulSoup, Comment
 
+LETTERS = string.ascii_letters + 'éèàêâôï'
+
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 TAGS = set(('p', 'i', 'strong', 'b', 'u', 'a', 'h1', 'h2', 'h3', 'br', 'img'))
 ATTRS = set(('href', 'src', 'title'))
@@ -120,7 +122,7 @@ class _Follower(object):
         return parser.output().strip()
 
     def _words(self, data):
-        data = ''.join([w for w in data if w in string.ascii_letters+' '])
+        data = ''.join([w for w in data if w in LETTERS + ' '])
         return [(len(w.strip()), w.strip()) for w in data.split()]
 
     #def _combos(self, lists):
@@ -209,7 +211,8 @@ class _Follower(object):
         except (urllib2.HTTPError, urllib2.URLError, socket.timeout):
             return None, None
         body = self._clean(content)
-        return self._extract(title.encode(charset), body, size), charset
+        title = title.encode(charset, 'ignore')
+        return self._extract(title, body, size), charset
 
 class RedditFollower(_Follower):
     """

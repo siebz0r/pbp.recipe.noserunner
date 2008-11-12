@@ -8,7 +8,7 @@ from nose.tools import *
 DATA = """
 <html>
  <body>
-    The simplest way to use this module is to call the urlopen function,
+    é The simplest way to use this module is to call the urlopen function,
     which accepts a string containing a URL or a Request object (described
     below).  It opens the URL and returns the results as file-like
     object; the returned object has some extra methods described below.
@@ -71,7 +71,7 @@ def test_reddit():
                'n_subreddit_now_skinned_as_pythonorg/">[22 comments]</a>')
 
     e = {'summary': summary,
-         'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
+         'title': (u'é HTTPRedirectHandler and HTTPDigestAuthHandler' 
                    ' (and more)')}
     entry = red(e, [])
     assert 'HTTPRedirectHandler' in entry['summary']
@@ -84,7 +84,7 @@ def test_delicious():
     
     e = {'comments': 
             'http://delicious.com/url/45bb751bb4dd1f4a291c91cf31c43511',
-         'title': ('HTTPRedirectHandler and HTTPDigestAuthHandler' 
+         'title': (u'é HTTPRedirectHandler and HTTPDigestAuthHandler' 
                    ' (and more)'),
          'link': 'http://link'}
     entry = delicious(e, [])
