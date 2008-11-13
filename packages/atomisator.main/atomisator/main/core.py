@@ -152,7 +152,7 @@ class DataProcessor(object):
         """callback called by the worker"""
         # now lets apply filters, then store entries
         psession = create_session(self.parser.database, 
-                                  global_session=False) 
+                                  global_=False) 
         for entry in entries:
             dotlog('.')
             entry = _apply_filters(entry, self.existing_entries, 
