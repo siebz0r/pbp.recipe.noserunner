@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.2'
+version = '0.1.3'
 
 long_description = open("README.txt").read()
 
@@ -13,7 +13,8 @@ classifiers=[
 entry_points = {"atomisator.enhancers": 
                     ["digg = atomisator.enhancers:DiggComments",
                      "related = atomisator.enhancers:RelatedEntries",
-                     "showtags = atomisator.enhancers:ShowTags"]}
+                     "showtags = atomisator.enhancers:ShowTags",
+                     "postrank = atomisator.enhancers:PostRanked"]}
 
 setup(name='atomisator.enhancers',
       version=version,
@@ -31,7 +32,8 @@ setup(name='atomisator.enhancers',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'BeautifulSoup'
+          'BeautifulSoup',
+          'simplejson'
           # -*- Extra requirements: -*-
       ],
       entry_points=entry_points,

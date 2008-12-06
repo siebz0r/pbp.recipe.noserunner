@@ -5,6 +5,7 @@ import digg
 import BeautifulSoup
 import re
 import socket
+from postrank import PostRank
 
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 ABSOLUTE = re.compile(r'^(ftp|http|https)://', options)
@@ -194,4 +195,23 @@ class RelatedEntries(object):
             entry.summary = entry.summary + related
         return entry
 
+class PostRanked(object):
+    """ Will add a postrank value in the entry"""
+
+    def __init__(self):
+        self._post_rank = PostRank()
+
+    def __call__(self, entry, appkey='atomisator.ziade.org'):
+        rank = self._post_rank('postrank', appkey=appkey, format='json',
+                               url=[entry.link])
+        postrank = 0.
+        # now adding the rank in the post
+        if len(rank) > 1:
+            rank = rank[1]
+            if entry.link in rank:
+                postrank = rank[entry.link]['postrank']
+        
+        postrank = '<div class="postrank">%.2f</div>' % postrank
+        entry.summary += postrank
+        return entry
 
