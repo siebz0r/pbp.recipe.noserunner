@@ -27,7 +27,8 @@ class Entry(Base):
     summary_detail = Column('summary_detail', Text())
     title = Column(Text())
     title_detail = Column(Text())    
-    
+    root_link = Column(Text())
+
     links = relation("Link", order_by="Link.id", backref="entry")
     tags = relation("Tag", order_by="Tag.id", backref="entry")
 
@@ -53,6 +54,8 @@ class Entry(Base):
             self.add_links(kw['links'])
         if 'tags' in kw:
             self.add_tags(kw['tags'])
+        if 'root_link' in kw:
+            self.root_link = kw['root_link']
 
     def add_links(self, links):
         for link in links:

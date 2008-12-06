@@ -179,4 +179,3 @@ class AtomisatorConfig(object):
         self._set_simple_field('max-age', str(value))
     max_age = property(_get_max_age, _set_max_age)
 
-

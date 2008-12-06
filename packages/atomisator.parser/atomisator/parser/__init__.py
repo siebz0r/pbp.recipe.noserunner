@@ -38,9 +38,13 @@ class Parser(object):
                 entry['summary'] = entry['content'][0]['value']
         if self.name is not None:
             entry['title'] = u'[%s] %s' % (self.name, entry['title'])
+
+        entry['root_link'] = self.url
         return entry
 
     def __call__(self, url, *args):
+        
+        self.url = url
         if len(args) == 0:
             self.name = None
             size = -1

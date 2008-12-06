@@ -5,7 +5,9 @@ import digg
 import BeautifulSoup
 import re
 import socket
-from postrank import PostRank
+import urlparse
+
+from atomisator.enhancers.postrank import PostRank
 
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
 ABSOLUTE = re.compile(r'^(ftp|http|https)://', options)
@@ -202,8 +204,22 @@ class PostRanked(object):
         self._post_rank = PostRank()
 
     def __call__(self, entry, appkey='atomisator.ziade.org'):
+        feed_id = self._post_rank('feed_id', appkey=appkey, format='json',
+                                  url=entry.root_link)
+
+        
+        if feed_id[1] is None and entry.root_link is not None:
+            # trying with the root url
+            root = urlparse.urlparse(entry.root_link)
+            root = '%s://%s' % (root[0], root[1])
+            feed_id = self._post_rank('feed_id', appkey=appkey, format='json',
+                                      url=root)
+        if feed_id[1] is None:
+            return entry
+        feed_id = feed_id[1]['feed_id']
+
         rank = self._post_rank('postrank', appkey=appkey, format='json',
-                               url=[entry.link])
+                               feed_id=[feed_id], url=[entry.link])
         postrank = 0.
         # now adding the rank in the post
         if len(rank) > 1:

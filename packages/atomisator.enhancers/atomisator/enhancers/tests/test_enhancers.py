@@ -117,27 +117,32 @@ def test_post_rank():
 
     postrank_res = [('{ "http:\\/\\/tarekziade.wordpress.com\\/2008'
                      '\\/11\\/27\\/expert-python-programming-book-typo'
-                     '-sprint-tonight\\/": { "postrank": 5.0,' 
+                     '-sprint-tonight\\/": { "postrank": 5.3,' 
                      '"postrank_color": "#ffaf61" } }'), 
                      {('http://tarekziade.wordpress.com/2008/11/27/'
                        'expert-python-programming-book-typo-sprint-tonight/'):
-                     {'postrank_color': '#ffaf61', 'postrank': 5.0}}]
+                     {'postrank_color': '#ffaf61', 'postrank': 5.3}}]
 
+    postrank_id = ['dontcare', {'feed_id': 87554}]
     class E2:
         title = id = 'Expert Python Programming Book : typo sprint tonight'
         summary = ''
         link = ('http://tarekziade.wordpress.com/2008/11/27/'
                 'expert-python-programming-book-typo-sprint-tonight/')
+        root_link = 'http://tarekziade.wordpress.com/feed/atom'
 
     ranker = PostRanked()
 
     # faking postrank webservice
     class FakePR(object):
         def __call__(self, *args, **kw):
+            if args[0] == 'feed_id':
+                return postrank_id
             return postrank_res
 
     ranker._post_rank = FakePR()
     result = ranker(E2())
-    assert_equals(result.summary, '<div class="postrank">5.00</div>')
+    assert_equals(result.summary, 
+                  '<div class="postrank">PostRank: 5.3</div>\n')
 
 
