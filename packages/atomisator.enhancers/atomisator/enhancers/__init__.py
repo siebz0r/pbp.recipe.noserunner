@@ -211,7 +211,7 @@ class PostRanked(object):
             if entry.link in rank:
                 postrank = rank[entry.link]['postrank']
         
-        postrank = '<div class="postrank">%.2f</div>' % postrank
-        entry.summary += postrank
+        postrank = '<div class="postrank">PostRank: %.1f</div>' % postrank
+        entry.summary = '%s\n%s' % (postrank, entry.summary)
         return entry
 
