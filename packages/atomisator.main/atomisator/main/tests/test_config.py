@@ -4,6 +4,7 @@ from nose.tools import *
 from atomisator.main.config import AtomisatorConfig
 from atomisator.main.config import generate_config 
 from atomisator.main.config import CONF_TMPL
+from atomisator.main import PROCESSES
 
 cfg = os.path.join(os.path.dirname(__file__), 'test.cfg')
 cfg2 = os.path.join(os.path.dirname(__file__), 'test2.cfg')
@@ -52,6 +53,11 @@ def test_config():
     assert new != old
 
     open(cfg, 'w').write(old)
+
+    assert_equals(parser.processes, PROCESSES)
+    parser.processes = 1
+    assert_equals(parser.processes, 1)
+
 
 def test_quotes():
     parser = AtomisatorConfig(cfg)

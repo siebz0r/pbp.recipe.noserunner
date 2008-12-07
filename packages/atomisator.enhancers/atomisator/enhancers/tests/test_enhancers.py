@@ -145,4 +145,8 @@ def test_post_rank():
     assert_equals(result.summary, 
                   '<div class="postrank">PostRank: 5.3</div>\n')
 
+    
+    # now we filter out any postrank < 7.0
+    res = ranker(E2(), treshold='7.0')
+    assert res is None
 

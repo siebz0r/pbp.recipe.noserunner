@@ -11,6 +11,8 @@ from ConfigParser import ConfigParser
 import re
 import logging
 
+from atomisator.main import PROCESSES
+
 # XXX make logging level configurable
 logger = logging.getLogger("atomisator")
 formatter = logging.Formatter()
@@ -178,4 +180,11 @@ class AtomisatorConfig(object):
     def _set_max_age(self, value):
         self._set_simple_field('max-age', str(value))
     max_age = property(_get_max_age, _set_max_age)
+
+    def _get_processes(self):
+        return int(self._get_simple_field('processes', PROCESSES))
+    def _set_processes(self, value):
+        self._set_simple_field('processes', str(value))
+    processes = property(_get_processes, _set_processes)
+
 

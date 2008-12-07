@@ -203,7 +203,12 @@ class PostRanked(object):
     def __init__(self):
         self._post_rank = PostRank()
 
-    def __call__(self, entry, appkey='atomisator.ziade.org'):
+    def __call__(self, entry, treshold=None, appkey='atomisator.ziade.org'):
+        if treshold is None:
+            treshold = -1.0
+        else:
+            treshold = float(treshold)
+
         feed_id = self._post_rank('feed_id', appkey=appkey, format='json',
                                   url=entry.root_link)
 
@@ -226,7 +231,9 @@ class PostRanked(object):
             rank = rank[1]
             if entry.link in rank:
                 postrank = rank[entry.link]['postrank']
-        
+
+        if postrank <= treshold:
+            return None
         postrank = '<div class="postrank">PostRank: %.1f</div>' % postrank
         entry.summary = '%s\n%s' % (postrank, entry.summary)
         return entry

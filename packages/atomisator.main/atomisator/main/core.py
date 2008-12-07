@@ -7,25 +7,23 @@ import socket
 import os
 
 from multiprocessing import Pool
-from multiprocessing import cpu_count
 from multiprocessing import TimeoutError
 from multiprocessing import Queue
 
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
 from atomisator.main.config import AtomisatorConfig
+
 from atomisator.main import FILTERS
 from atomisator.main import OUTPUTS
 from atomisator.main import ENHANCERS
 from atomisator.main import READERS
 from atomisator.main import load_plugin
+
 from atomisator.db.session import create_session
 from atomisator.db.core import create_entry
 from atomisator.db.core import get_entries
 from atomisator.db.core import purge_entries
-
-# we'll use two processes per CPU
-PROCESSES = cpu_count() * 2
 
 #
 # internal APIs called by multiprocessing
@@ -69,6 +67,8 @@ def _enhance(entry, selected_enhancers):
     for enhancer, args in selected_enhancers:
         dotlog('.')
         entry = enhancer(entry, *args)
+        if entry is None:
+            return entry
     return entry
 
 def _prepare_enhancer(enhancer, entries):
@@ -134,8 +134,8 @@ class DataProcessor(object):
         sources = [(reader_name, load_plugin(reader_name, READERS), args) 
                    for reader_name, args in self.parser.sources]
 
-        # creating a processing pool
-        pool = Pool(PROCESSES)
+        # creating a processing pool   
+        pool = Pool(self.parser.processes)
         
         # let's call in parallel all the readers
         log('Reading sources.')
@@ -177,7 +177,7 @@ class DataProcessor(object):
             # Enhancement is a two-phase process.
             # 1. Preparing entries for enhancement
             log('Preparing enhancers.')
-            pool = Pool(PROCESSES)
+            pool = Pool(self.parser.processes)
             results = [pool.apply_async(_prepare_enhancer, (enhancer, entries))
                        for enhancer, args in selected_enhancers]
             pool.close()
@@ -208,13 +208,14 @@ class DataProcessor(object):
                                             in self.parser.enhancers]))
 
             # creating a processing pool
-            pool = Pool(PROCESSES)
+            pool = Pool(self.parser.processes)
             results = [pool.apply_async(_enhance, (entry, selected_enhancers))
                        for entry in entries]
 
             pool.close()
             pool.join()
-            entries = [result.get() for result in results]
+            entries = [r for r in [result.get() for result in results] 
+                       if r is not None]
             dotlog('\n')
 
         if selected_outputs != []:

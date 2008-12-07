@@ -2,9 +2,10 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 """Main module, loads entry points
 """
-__version__ = '0.5.5'
+__version__ = '0.5.6'
 
 from setuptools.package_index import iter_entry_points
+from multiprocessing import cpu_count
 
 def _load_entry_point(name):
     """Loads an atomisator entry point."""
@@ -24,4 +25,6 @@ def load_plugin(name, kind):
         raise ValueError('Could not load %s plugin.' % name)
     return kind[name]
 
+# we'll use two processes per CPU
+PROCESSES = cpu_count() * 2
 
