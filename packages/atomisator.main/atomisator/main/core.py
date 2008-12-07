@@ -68,7 +68,7 @@ def _enhance(entry, selected_enhancers):
         dotlog('.')
         entry = enhancer(entry, *args)
         if entry is None:
-            return entry
+            return None
     return entry
 
 def _prepare_enhancer(enhancer, entries):
@@ -192,8 +192,8 @@ class DataProcessor(object):
                         return self.res
         
                 results = [Wrap(e) for e in 
-                           [_prepare_enhancer(enhancer, entries)]
-                           for enhancer, args in selected_enhancers]
+                           [_prepare_enhancer(enhancer, entries)
+                           for enhancer, args in selected_enhancers]]
             else:    
                 pool = Pool(self.parser.processes)
                 results = [pool.apply_async(_prepare_enhancer, 

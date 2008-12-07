@@ -229,7 +229,7 @@ class PostRanked(object):
         # now adding the rank in the post
         if len(rank) > 1:
             rank = rank[1]
-            if entry.link in rank:
+            if rank is not None and entry.link in rank:
                 postrank = rank[entry.link]['postrank']
 
         if postrank <= treshold:
