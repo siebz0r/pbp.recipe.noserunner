@@ -134,18 +134,24 @@ class DataProcessor(object):
         sources = [(reader_name, load_plugin(reader_name, READERS), args) 
                    for reader_name, args in self.parser.sources]
 
-        # creating a processing pool   
-        pool = Pool(self.parser.processes)
-        
-        # let's call in parallel all the readers
+        processes = self.parser.processes
         log('Reading sources.')
-        for source in sources:
-            log('\tLaunching worker for %s - %s' % (source[0], source[-1]))
-            pool.apply_async(_process_source, source, 
-                             callback=self._process_entries)
 
-        pool.close()
-        pool.join()
+        if processes == 1:
+            log('\tWorking in the same process')
+            for source in sources:
+                entries = _process_source(*source)
+                self._process_entries(entries)
+        else:    
+            # creating a processing pool  
+            pool = Pool(self.parser.processes)
+            for source in sources:
+                log('\tLaunching worker for %s - %s' % (source[0], source[-1]))
+                pool.apply_async(_process_source, source, 
+                                 callback=self._process_entries)
+
+            pool.close()
+            pool.join()
         dotlog('\n')
 
     def _process_entries(self, entries):
@@ -168,7 +174,8 @@ class DataProcessor(object):
         """Generates the output"""
         selected_enhancers = _select_enhancers(self.parser.enhancers)
         selected_outputs = _select_outputs(self.parser.outputs)
-        
+        processes = self.parser.processes
+
         # XXX TODO: limit the size of the data 
         # processed, by number of items, or by date
         entries = get_entries().all()
@@ -177,11 +184,23 @@ class DataProcessor(object):
             # Enhancement is a two-phase process.
             # 1. Preparing entries for enhancement
             log('Preparing enhancers.')
-            pool = Pool(self.parser.processes)
-            results = [pool.apply_async(_prepare_enhancer, (enhancer, entries))
+            if processes == 1:
+                class Wrap(object):
+                    def __init__(self, res):
+                        self.res = res
+                    def get(self):
+                        return self.res
+        
+                results = [Wrap(e) for e in 
+                           [_prepare_enhancer(enhancer, entries)]
+                           for enhancer, args in selected_enhancers]
+            else:    
+                pool = Pool(self.parser.processes)
+                results = [pool.apply_async(_prepare_enhancer, 
+                                            (enhancer, entries))
                        for enhancer, args in selected_enhancers]
-            pool.close()
-            pool.join()
+                pool.close()
+                pool.join()
 
             # pushing back into the ENHANCERS list (not the same process)
             # and selected_enhancers
@@ -207,15 +226,20 @@ class DataProcessor(object):
             log('Enhancing: %s' % ', '.join([e for e, args 
                                             in self.parser.enhancers]))
 
-            # creating a processing pool
-            pool = Pool(self.parser.processes)
-            results = [pool.apply_async(_enhance, (entry, selected_enhancers))
-                       for entry in entries]
+            if processes == 1:
+                results = [e for e in [_enhance(entry, selected_enhancers) 
+                           for entry in entries] if e is not None] 
+            else:
+                # creating a processing pool
+                pool = Pool(self.parser.processes)
+                results = [pool.apply_async(_enhance, 
+                           (entry, selected_enhancers))
+                           for entry in entries]
 
-            pool.close()
-            pool.join()
-            entries = [r for r in [result.get() for result in results] 
-                       if r is not None]
+                pool.close()
+                pool.join()
+                entries = [r for r in [result.get() for result in results] 
+                           if r is not None]
             dotlog('\n')
 
         if selected_outputs != []:

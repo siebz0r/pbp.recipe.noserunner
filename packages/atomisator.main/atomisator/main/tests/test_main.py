@@ -120,3 +120,9 @@ def test_no_storage():
     # as usual but in memory
     assert_equals(len(proc.existing_entries), 225)
 
+@with_setup(set_conf, tear_conf)
+def test_mono_proc():
+    proc = DataProcessor(test_conf)
+    proc.parser.processes = 1
+    proc.load_data()
+
