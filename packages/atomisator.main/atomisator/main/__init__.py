@@ -5,7 +5,12 @@
 __version__ = '0.5.6'
 
 from setuptools.package_index import iter_entry_points
-from multiprocessing import cpu_count
+try:
+    from multiprocessing import cpu_count
+except ImportError:
+    # maybe not loaded yet
+    def cpu_count():
+        return 1
 
 def _load_entry_point(name):
     """Loads an atomisator entry point."""
