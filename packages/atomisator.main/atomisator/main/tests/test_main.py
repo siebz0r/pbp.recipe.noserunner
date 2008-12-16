@@ -118,7 +118,7 @@ def test_no_storage():
     proc.generate_data()   
        
     # as usual but in memory
-    assert_equals(len(proc.existing_entries), 225)
+    assert len(proc.existing_entries) > 50
 
 @with_setup(set_conf, tear_conf)
 def test_mono_proc():
