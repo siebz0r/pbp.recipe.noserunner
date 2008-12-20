@@ -6,7 +6,7 @@ import os
 from os.path import join
 from distutils.core import Extension 
 
-version = '0.1.9'
+version = '0.2.0'
 
 long_description = open("README.txt").read()
 
@@ -39,7 +39,8 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "replace = atomisator.filters:ReplaceWords",
                                        "autotag = atomisator.filters:AutoTag",
                                        "reddit = atomisator.filters.followers:RedditFollower",
-                                       "delicious = atomisator.filters.followers:DeliciousFollower"]}
+                                       "delicious = atomisator.filters.followers:DeliciousFollower",
+                                       "guesslang = atomisator.filters.filters:GuessLang"]}
 
 setup(name='atomisator.filters',
       version=version,

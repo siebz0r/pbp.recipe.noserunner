@@ -2,6 +2,7 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 import re
+from guess_language import guessLanguage
 
 _files = {}
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
@@ -131,4 +132,17 @@ class AutoTag(FileFilter):
         if match is not None:
             entry['tags'] = [{'term': tag} for tag in  match.group()]
         return entry
+
+class GuessLang(object):
+    """"Filter out entries that are not in the chosen
+    languages""" 
+    def __call__(self, entry, entries, langs='en'):
+        langs = langs.split(',')
+        text = '%s %s' % (entry.get('summary', ''), entry.get('title', ''))
+        lang = guessLanguage(text)
+        if lang not in langs:
+            return None
+        return entry
+
+
 
