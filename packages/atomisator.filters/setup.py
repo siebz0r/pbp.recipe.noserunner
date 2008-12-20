@@ -40,7 +40,7 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "autotag = atomisator.filters:AutoTag",
                                        "reddit = atomisator.filters.followers:RedditFollower",
                                        "delicious = atomisator.filters.followers:DeliciousFollower",
-                                       "guesslang = atomisator.filters.filters:GuessLang"]}
+                                       "guesslang = atomisator.filters:GuessLang"]}
 
 setup(name='atomisator.filters',
       version=version,
