@@ -1,3 +1,5 @@
 include README.txt
 include LICENSE
 recursive-include atomisator/filters *.txt *.py
+graft atomisator/filters/guess_language/trigrams
+
