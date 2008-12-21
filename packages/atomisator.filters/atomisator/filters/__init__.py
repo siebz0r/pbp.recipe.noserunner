@@ -2,7 +2,8 @@
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
 #
 import re
-from guess_language import guessLanguage
+from atomisator.filters.guess_language import guessLanguage
+from atomisator.filters.levenshtein import StringMatcher 
 
 _files = {}
 options = re.DOTALL | re.UNICODE | re.MULTILINE | re.IGNORECASE
@@ -102,13 +103,17 @@ class Doublons(object):
             return None
         return st.lower().strip()
     
-    def __call__(self, entry, entries):
+    def __call__(self, entry, entries, ratio=''):
         link = self._clean(entry.get('link', ''))
         summary = self._clean(entry.get('summary', ''))
+        matcher = StringMatcher()
+        matcher.set_seq1(summary)
         for e in entries:
             if link == self._clean(e.link):
                 return None
-            if summary == self._clean(e.summary):
+            matcher.set_seq2(self._clean(e.summary))
+            ratio = matcher.quick_ratio()  
+            if ratio > 0.75:
                 return None
         return entry
 

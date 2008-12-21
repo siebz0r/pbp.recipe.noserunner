@@ -10,23 +10,6 @@ version = '0.2.0'
 
 long_description = open("README.txt").read()
 
-includes = [join('probstat', 'include'), 
-             join('probstat', 'python')]
-libraries = [] 
-
-files = [
-         join('probstat', 'base', 'cartesian_base.c'),
-         join('probstat', 'base', 'permutation_base.c'),
-         join('probstat', 'base', 'combination_base.c'),
-         join('probstat', 'base', 'pqueue_base.c'),
-         join('probstat', 'python', 'cartesian.c'),
-         join('probstat', 'python', 'permutation.c'),
-         join('probstat', 'python', 'combination.c'),
-         join('probstat', 'python', 'pqueue.c'),
-         join('probstat', 'python', 'stats_module.c'),
-        ]
-
-
 classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -41,6 +24,9 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "reddit = atomisator.filters.followers:RedditFollower",
                                        "delicious = atomisator.filters.followers:DeliciousFollower",
                                        "guesslang = atomisator.filters:GuessLang"]}
+
+ext_levenshtein = Extension('Levenshtein', 
+        sources = [join('atomisator', 'filters', 'levenshtein', 'Levenshtein.c')]) 
 
 setup(name='atomisator.filters',
       version=version,
@@ -61,10 +47,5 @@ setup(name='atomisator.filters',
           'BeautifulSoup',
       ],
       entry_points=entry_points,
-      #ext_modules = [Extension("probstat", files,
-      #                         libraries = libraries,
-      #                         include_dirs =  includes,
-      #                        )
-      #              ],
-
-      )
+      ext_modules=[ext_levenshtein]
+)
