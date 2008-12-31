@@ -3,6 +3,7 @@ from nose.tools import *
 import os
 from atomisator.readers.html import HTML 
 from atomisator.readers.folder import Folder
+from atomisator.readers.twitter import Twitter
 
 test_dir = os.path.dirname(__file__)
 
@@ -46,4 +47,14 @@ def test_folder():
     
     assert_equals(len(result), 2)
     assert_equals(result[1]['summary'], 'some things\n\n')
+
+def test_twitter():
+
+    twitt_file = os.path.join(os.path.dirname(__file__), 'twitter.xml')
+    engine = Twitter()
+    excl = 'chipnowacek, pydanny,SnowWrite'
+    entries = engine(open(twitt_file), excl)
+    assert_equals(len(entries), 8)
+
+
 

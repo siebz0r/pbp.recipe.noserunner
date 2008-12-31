@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.2'
+version = '0.1.3'
 long_description = open("README.txt").read()
 classifiers=[
         "Programming Language :: Python",
@@ -10,7 +10,8 @@ classifiers=[
 
 entry_points = {"atomisator.readers": 
         ["html = atomisator.readers.html:HTML",
-         "folder = atomisator.readers.folder:Folder"]}
+         "folder = atomisator.readers.folder:Folder",
+         "twitter = atomisator.readers.twitter:Twitter"]}
 
 setup(name='atomisator.readers',
       version=version,
@@ -28,7 +29,7 @@ setup(name='atomisator.readers',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'atomisator.parser',
       ],
       entry_points=entry_points,
       )
