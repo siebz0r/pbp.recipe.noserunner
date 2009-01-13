@@ -1,0 +1,4 @@
+^buildout/bin
+^buildout/lib
+^buildout/eggs
+^buildout/include
