@@ -34,6 +34,7 @@ setup(name='atomisator.indexer',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'setuptools',
           'afpy.xap',
       ],
       entry_points=entry_points,

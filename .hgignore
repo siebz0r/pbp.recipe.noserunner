@@ -3,3 +3,8 @@
 ^buildout/eggs
 ^buildout/include
 ^buildout/develop-eggs/
+^buildout/.installed.cfg$
+^buildout/downloads/dist/
+\.egg-info/
+\.pyc$
+/Levenshtein.s?o$
