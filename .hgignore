@@ -2,3 +2,4 @@
 ^buildout/lib
 ^buildout/eggs
 ^buildout/include
+^buildout/develop-eggs/
