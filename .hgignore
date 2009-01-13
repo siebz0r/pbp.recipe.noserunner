@@ -5,6 +5,7 @@
 ^buildout/develop-eggs/
 ^buildout/.installed.cfg$
 ^buildout/downloads/dist/
+^buildout/afpy.xap.db
 \.egg-info/
 \.pyc$
 /Levenshtein.s?o$
