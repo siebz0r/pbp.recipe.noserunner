@@ -15,10 +15,10 @@ class HTML(object):
     Usage:
 
         [atomisator]
-        sources = 
+        sources =
             html url expression
 
-    If expression is None, returns the whole page 
+    If expression is None, returns the whole page
     as one entry.
 
     Otherwise returns an iterator over items that
@@ -32,7 +32,7 @@ class HTML(object):
     and (2) for the entry content.
 
     if one single group is provided, it is the entry
-    content, and the title of the page is used for the 
+    content, and the title of the page is used for the
     entry title.
 
     """
@@ -50,14 +50,14 @@ class HTML(object):
             if len(groups) == 0:
                 return None
             if len(groups) == 1:
-                return {'summary': groups[0].strip(), 
+                return {'summary': groups[0].strip(),
                         'title': page_title,
                         'url': url}
-            
-            return {'summary': groups[1].strip(), 
-                    'title': groups[0].strip(), 
+
+            return {'summary': groups[1].strip(),
+                    'title': groups[0].strip(),
                     'url': url}
 
-        return [_entry(e) for e in 
+        return [_entry(e) for e in
                 re.finditer(expression, content, options)]
-        
+

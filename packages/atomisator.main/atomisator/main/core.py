@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
-""" 
+"""
 Core module. contains processor.
 """
 import socket
@@ -8,7 +8,6 @@ import os
 
 from multiprocessing import Pool
 from multiprocessing import TimeoutError
-from multiprocessing import Queue
 
 from atomisator.main.config import log
 from atomisator.main.config import dotlog
@@ -53,7 +52,7 @@ def _apply_filters(entry, entries, selected_filters):
     return entry
 
 def _process_source(reader_name, reader, reader_args):
-    """processing one source. callable through 
+    """processing one source. callable through
     a process"""
     try:
         log('\tRetrieving from %s - %s' %  (reader_name, str(reader_args)))
@@ -83,7 +82,7 @@ def _prepare_enhancer(enhancer, entries):
 #
 class DataProcessor(object):
     """Atomisator processor
-    
+
     Knows how to load datas and generate outputs.
     """
 
@@ -102,7 +101,7 @@ class DataProcessor(object):
             self._load_data()
         finally:
             socket.setdefaulttimeout(old_timeout)
-   
+
     def _cleanup_entries(self):
         """removes old entries"""
         purge_entries(self.parser.max_age)
@@ -112,7 +111,7 @@ class DataProcessor(object):
         # remove the temp db if it exists
         if os.path.exists('_temp_.db'):
             os.remove('_temp_.db')
-       
+
         # cleanup old entries
         log('\tRemoving old entries.')
         self._cleanup_entries()
@@ -124,14 +123,14 @@ class DataProcessor(object):
         # building filtering chain once.
         filter_names = [f[0] for f in self.parser.filters]
         log('Loading filters plugins : %s' % ', '.join(filter_names))
-        self.filter_chain = set([(load_plugin(name, FILTERS), args) 
-                                 for name, args in self.parser.filters 
+        self.filter_chain = set([(load_plugin(name, FILTERS), args)
+                                 for name, args in self.parser.filters
                                  if name in FILTERS])
-        
+
         # building source chain once.
         source_names = [s[0] for s in self.parser.sources]
         log('Loading source plugins : %s' % ', '.join(source_names))
-        sources = [(reader_name, load_plugin(reader_name, READERS), args) 
+        sources = [(reader_name, load_plugin(reader_name, READERS), args)
                    for reader_name, args in self.parser.sources]
 
         processes = self.parser.processes
@@ -142,12 +141,12 @@ class DataProcessor(object):
             for source in sources:
                 entries = _process_source(*source)
                 self._process_entries(entries)
-        else:    
-            # creating a processing pool  
+        else:
+            # creating a processing pool
             pool = Pool(self.parser.processes)
             for source in sources:
                 log('\tLaunching worker for %s - %s' % (source[0], source[-1]))
-                pool.apply_async(_process_source, source, 
+                pool.apply_async(_process_source, source,
                                  callback=self._process_entries)
 
             pool.close()
@@ -157,11 +156,11 @@ class DataProcessor(object):
     def _process_entries(self, entries):
         """callback called by the worker"""
         # now lets apply filters, then store entries
-        psession = create_session(self.parser.database, 
-                                  global_=False) 
+        psession = create_session(self.parser.database,
+                                  global_=False)
         for entry in entries:
             dotlog('.')
-            entry = _apply_filters(entry, self.existing_entries, 
+            entry = _apply_filters(entry, self.existing_entries,
                                    self.filter_chain)
             if entry is None:
                 continue
@@ -176,10 +175,10 @@ class DataProcessor(object):
         selected_outputs = _select_outputs(self.parser.outputs)
         processes = self.parser.processes
 
-        # XXX TODO: limit the size of the data 
+        # XXX TODO: limit the size of the data
         # processed, by number of items, or by date
         entries = get_entries().all()
-        
+
         if selected_enhancers != []:
             # Enhancement is a two-phase process.
             # 1. Preparing entries for enhancement
@@ -190,13 +189,13 @@ class DataProcessor(object):
                         self.res = res
                     def get(self):
                         return self.res
-        
-                results = [Wrap(e) for e in 
+
+                results = [Wrap(e) for e in
                            [_prepare_enhancer(enhancer, entries)
                            for enhancer, args in selected_enhancers]]
-            else:    
+            else:
                 pool = Pool(self.parser.processes)
-                results = [pool.apply_async(_prepare_enhancer, 
+                results = [pool.apply_async(_prepare_enhancer,
                                             (enhancer, entries))
                        for enhancer, args in selected_enhancers]
                 pool.close()
@@ -217,34 +216,34 @@ class DataProcessor(object):
                         s = new
                     return s, args
 
-                selected_enhancers = [_replace(s, args, enhancer) 
+                selected_enhancers = [_replace(s, args, enhancer)
                                       for s, args in selected_enhancers]
 
             dotlog('\n')
 
             # 2. Now enhancing them
-            log('Enhancing: %s' % ', '.join([e for e, args 
+            log('Enhancing: %s' % ', '.join([e for e, args
                                             in self.parser.enhancers]))
 
             if processes == 1:
-                results = [e for e in [_enhance(entry, selected_enhancers) 
-                           for entry in entries] if e is not None] 
+                results = [e for e in [_enhance(entry, selected_enhancers)
+                           for entry in entries] if e is not None]
             else:
                 # creating a processing pool
                 pool = Pool(self.parser.processes)
-                results = [pool.apply_async(_enhance, 
+                results = [pool.apply_async(_enhance,
                            (entry, selected_enhancers))
                            for entry in entries]
 
                 pool.close()
                 pool.join()
-                entries = [r for r in [result.get() for result in results] 
+                entries = [r for r in [result.get() for result in results]
                            if r is not None]
             dotlog('\n')
 
         if selected_outputs != []:
             log('Writing outputs.')
-            log('Rendering: %s' % ', '.join([output[0] for output 
+            log('Rendering: %s' % ', '.join([output[0] for output
                                              in self.parser.outputs]))
             for output, args in selected_outputs:
                 dotlog('.')

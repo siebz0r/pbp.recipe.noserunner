@@ -1,10 +1,10 @@
-# -*- encoding: utf-8 -*-                                                      
-# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>                             
-# 
+# -*- encoding: utf-8 -*-
+# (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
+#
 from setuptools import setup, find_packages
 import os
 from os.path import join
-from distutils.core import Extension 
+from distutils.core import Extension
 
 version = '0.2.1'
 
@@ -23,10 +23,11 @@ entry_points = {"atomisator.filters": ["stopwords = atomisator.filters:StopWords
                                        "autotag = atomisator.filters:AutoTag",
                                        "reddit = atomisator.filters.followers:RedditFollower",
                                        "delicious = atomisator.filters.followers:DeliciousFollower",
-                                       "guesslang = atomisator.filters:GuessLang"]}
+                                       "guesslang = atomisator.filters:GuessLang",
+                                       "urldiff = atomisator.filters:UrlDiff"]}
 
-ext_levenshtein = Extension('Levenshtein', 
-        sources = [join('atomisator', 'filters', 'levenshtein', 'Levenshtein.c')]) 
+ext_levenshtein = Extension('Levenshtein',
+        sources = [join('atomisator', 'filters', 'levenshtein', 'Levenshtein.c')])
 
 setup(name='atomisator.filters',
       version=version,

@@ -8,10 +8,11 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
-entry_points = {"atomisator.readers": 
+entry_points = {"atomisator.readers":
         ["html = atomisator.readers.html:HTML",
          "folder = atomisator.readers.folder:Folder",
-         "twitter = atomisator.readers.twitter:Twitter"]}
+         "twitter = atomisator.readers.twitter:Twitter",
+         "yahoo = atomisator.readers.yahoo:Yahoo"]}
 
 setup(name='atomisator.readers',
       version=version,
@@ -30,6 +31,7 @@ setup(name='atomisator.readers',
       install_requires=[
           'setuptools',
           'atomisator.parser',
+          'json',
       ],
       entry_points=entry_points,
       )

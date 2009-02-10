@@ -35,7 +35,7 @@ class Twitter(Parser):
         entries = Parser.__call__(self, query)
         if excluded_users is None:
             return entries
-        
+
         excluded_users = [e.strip() for e in excluded_users.split(',')]
         return [e for e in entries if not self._filter(e, excluded_users)]
 
