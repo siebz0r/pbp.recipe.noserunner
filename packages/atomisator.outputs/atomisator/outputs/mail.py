@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 # (C) Copyright 2008 Tarek Ziadé <tarek@ziade.org>
-""" 
+"""
 Mail output plugin.
 """
 from email.MIMEText import MIMEText
-from smtplib import SMTP 
-from datetime import datetime 
+from smtplib import SMTP
+from datetime import datetime
 from ConfigParser import ConfigParser
 import logging
 
@@ -21,18 +21,18 @@ DEFAULT_ENTRY_TMPL = u"""\
 
 class Mail(object):
     """Will send an alert by mail
-    
+
     Arguments:
         - config file
 
     Config file contains::
 
         [email]
-        tos = 
-        subject = 
-        from = 
-        body =
-        entry = 
+        tos =
+        subject =
+        from =
+        body_template =
+        entry_template =
         smtp_server =
         smtp_port =
 
@@ -62,18 +62,22 @@ class Mail(object):
                      ('smtp_server', 'localhost'),
                      ('smtp_port', '25')
                      )
-        
+
         for name, default in optionals:
             if config.has_option('email', name):
                 values[name] = config.get('email', name)
+                if name in ('body_template', 'entry_template'):
+                    values[name] = open(values[name]).read()
             else:
                 values[name] = default
-        
+
         # lines
+        # should be generic
         lines = [values['entry_template'] % {'title': entry.title,
-                                             'link': entry.link} 
+                                             'link': entry.link,
+                                             'diff': entry.diff}
                  for entry in entries]
-        
+
         # mail content
         text = values['body_template'] % \
                 {'entries': u'\n'.join(lines)}
@@ -88,7 +92,7 @@ class Mail(object):
         msg['From'] = values['from']
         msg['Date'] = datetime.now().isoformat()
         msg.set_charset('utf8')
-        msg = msg.as_string() 
+        msg = msg.as_string()
 
         # let's send it
         s = SMTP(values['smtp_server'], int(values['smtp_port']))

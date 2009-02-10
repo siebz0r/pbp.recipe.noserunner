@@ -52,12 +52,15 @@ class HTML(object):
             if len(groups) == 1:
                 return {'summary': groups[0].strip(),
                         'title': page_title,
-                        'url': url}
+                        'link': url}
 
             return {'summary': groups[1].strip(),
                     'title': groups[0].strip(),
-                    'url': url}
+                    'link': url}
 
-        return [_entry(e) for e in
-                re.finditer(expression, content, options)]
+        if expression == SINGLE:
+            return [{'summary': content, 'title': page_title, 'link': url}]
+        else:
+            return [_entry(e) for e in
+                    re.finditer(expression, content, options)]
 

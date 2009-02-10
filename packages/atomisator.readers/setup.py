@@ -31,7 +31,7 @@ setup(name='atomisator.readers',
       install_requires=[
           'setuptools',
           'atomisator.parser',
-          'json',
+          'simplejson',
       ],
       entry_points=entry_points,
       )

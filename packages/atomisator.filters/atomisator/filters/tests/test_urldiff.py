@@ -19,9 +19,9 @@ def test_urldiff():
     # if the entry is found add a diff
     d = UrlDiff()
 
-    old = {'url': 'xxx',
+    old = {'link': 'xxx',
            'summary': summary1}
-    new = {'url': 'xxx',
+    new = {'link': 'xxx',
            'summary': summary2}
 
     res = d(new, [old])

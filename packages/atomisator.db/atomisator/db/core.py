@@ -5,7 +5,7 @@
 from datetime import timedelta
 from datetime import datetime
 
-from sqlalchemy import desc  
+from sqlalchemy import desc
 from sqlalchemy.orm import eagerload
 from sqlalchemy.sql.expression import delete
 
@@ -25,7 +25,7 @@ def create_entry(data, commit=True, session=default_session):
 
     # check it the url already exists in the database
     entries = get_entries(link=link, session=session)
-    
+
     if entries.count() > 0:
         found_entry = entries.first()
         # yes, let's check if it has been updated
@@ -36,7 +36,7 @@ def create_entry(data, commit=True, session=default_session):
         if commit: # and changed:
             session.commit()
         return found_entry.id, found_entry
-    
+
     new = Entry(**data)
     session.save(new)
     if commit:
