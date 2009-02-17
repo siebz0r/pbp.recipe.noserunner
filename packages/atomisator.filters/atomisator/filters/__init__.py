@@ -177,7 +177,7 @@ class UrlDiff(object):
             body = soup(text=True)
 
         # in text is the text of the html-doc
-        return ''.join(body).strip()
+        return ' '.join(body).strip()
 
     def _get_diff(self, text1, text2):
         text1 = self._html_to_text(text1).splitlines(True)
@@ -190,12 +190,13 @@ class UrlDiff(object):
         return '\n'.join([_filter(line) for line in res if line.strip() != ''])
 
     def __call__(self, entry, entries):
-
         link = entry['link']
         for existing in entries:
             if existing.link == link:
                 entry['diff'] = self._get_diff(entry['summary'],
                                                existing.summary)
+                if entry['diff'] == '':
+                    return None
                 break
         return entry
 

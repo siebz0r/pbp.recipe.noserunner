@@ -78,6 +78,10 @@ class Mail(object):
                                              'diff': entry.diff}
                  for entry in entries]
 
+        # we don't mail an empty mail
+        if ''.join(lines).strip() == '':
+            return
+
         # mail content
         text = values['body_template'] % \
                 {'entries': u'\n'.join(lines)}
