@@ -177,17 +177,23 @@ class UrlDiff(object):
             body = soup(text=True)
 
         # in text is the text of the html-doc
-        return ' '.join(body).strip()
+        text = ' '.join(body).strip()
+
+        # see how to do this better
+        text = text.replace('&#32;', ' ')
+        text = text.replace('&nbsp;', ' ')
+        return text
 
     def _get_diff(self, text1, text2):
-        text1 = self._html_to_text(text1).splitlines(True)
-        text2 = self._html_to_text(text2).splitlines(True)
+        text1 = self._html_to_text(text1) .splitlines(True)
+        text2 = self._html_to_text(text2) .splitlines(True)
         res = ''.join(difflib.unified_diff(text1, text2)).split('\n')[2:]
         def _filter(line):
             if line.startswith('@'):
                 return ''
             return line
-        return '\n'.join([_filter(line) for line in res if line.strip() != ''])
+        res = '\n'.join([_filter(line) for line in res if line.strip() != ''])
+        return res
 
     def __call__(self, entry, entries):
         link = entry['link']

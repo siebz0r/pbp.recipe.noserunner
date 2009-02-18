@@ -1,27 +1,32 @@
 import os
-import urllib2
 from os.path import join
 from urllib import quote_plus
+from urllib import FancyURLopener
 
 import simplejson
-#from yos.crawl import rest
 
-DEFAULT_CONFIG = {"appid": "BossDemo",
-                  "email": "boss-feedback@yahoo-inc.com",
-                  "org": "Yahoo! Inc.",
+DEFAULT_CONFIG = {"appid": "b.U92LXV34GLljD7X8G9OwPyiN1CZJC_f8EeBpmNLzkuFhxxmrk2Jya2WDy3ku_Z5cdZj686",
+                  "email": "",
+                  "org": "test",
                   "agent": "Atomisator",
                   "commercial": False,
                   "purpose": "To give Atomisator a way to search into Yahoo.",
-                  "version": "1.0",
+                  "version": "v1",
                   "vertical": "web",
                   "lang": "en",
                   "region": "us",
+                  "start": 0,
+                  "count": 10,
                   "uri": "http://boss.yahooapis.com/ysearch"}
 
-#vertical, version, quote_plus(command), start, count, lang, region) + params(more)
+SEARCH_API_URL = '%(uri)s/%(vertical)s/%(version)s/%(command)s'
+SEARCH_PARAMS = ('?start=%(start)d&count=%(count)d&lang=%(lang)s&region=%(region)'
+                 's&appid=%(appid)s')
+URL = SEARCH_API_URL + SEARCH_PARAMS
 
-SEARCH_API_URL = ('%(uri)s/%(vertical)s/v%(version)/%(command)s?start=%(start)d&count=%(count)d'
-                  '&lang=%s&region=%(region)s&appid=%(appid)s')
+class YahooOpener(FancyURLopener):
+    version = ''
+
 
 class Yahoo(object):
     """Query Yahoo BOSS search service
@@ -32,18 +37,32 @@ class Yahoo(object):
 
     """
 
-    def params(d):
+    # XXXX todo : include those
+    def params(self, params):
         """ Takes a dictionary of key, value pairs and generates a cgi parameter/argument string """
         p = ""
-        for k, v in d.iteritems():
+        for k, v in params.iteritems():
             p += "&%s=%s" % (quote_plus(k), quote_plus(v))
         return p
 
-    def __call__(self, query, config):
+    def __call__(self, command, config=None):
 
-        #url = SEARCH_API_URL %
-        res = search(query, count=count)
+        if config is not None:
+            DEFAULT_CONFIG.update(config)
 
-        #return rest.load_json(url)
+        DEFAULT_CONFIG['command'] = quote_plus(command)
+        url = URL % DEFAULT_CONFIG
 
+        res = YahooOpener().open(url)
+        if res.headers['content-type'] != 'application/json':
+            return
+
+        res = simplejson.loads(res.read())
+        entries = res['ysearchresponse']['resultset_web']
+
+        def _f(e):
+            e['link'] = e['url']
+            e['summary'] = e['abstract']
+
+        return [_f(e) for e in entries]
 

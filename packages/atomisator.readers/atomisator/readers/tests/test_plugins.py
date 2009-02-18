@@ -4,6 +4,7 @@ import os
 from atomisator.readers.html import HTML
 from atomisator.readers.folder import Folder
 from atomisator.readers.twitter import Twitter
+from atomisator.readers.yahoo import Yahoo
 
 test_dir = os.path.dirname(__file__)
 
@@ -57,6 +58,8 @@ def test_twitter():
     assert_equals(len(entries), 8)
 
 def test_yahoo():
-    pass
 
+    engine = Yahoo()
+    entries = engine('combelles')
+    assert len(entries) > 1
 
