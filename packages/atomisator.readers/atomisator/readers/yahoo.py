@@ -63,6 +63,7 @@ class Yahoo(object):
         def _f(e):
             e['link'] = e['url']
             e['summary'] = e['abstract']
+            return e
 
         return [_f(e) for e in entries]
 
