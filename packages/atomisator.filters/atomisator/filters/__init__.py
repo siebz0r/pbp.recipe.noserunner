@@ -201,7 +201,7 @@ class UrlDiff(object):
             if existing.link == link:
                 entry['diff'] = self._get_diff(entry['summary'],
                                                existing.summary)
-                if entry['diff'] == '':
+                if entry['diff'].strip() == '':
                     return None
                 break
         return entry
