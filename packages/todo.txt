@@ -1,3 +1,4 @@
 
+
 add a max duration for entries un db
 
