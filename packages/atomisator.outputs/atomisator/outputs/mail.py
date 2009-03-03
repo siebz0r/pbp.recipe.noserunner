@@ -78,6 +78,8 @@ class Mail(object):
                                              'diff': entry.diff}
                  for entry in entries]
 
+        lines = [line for line in lines if line.strip() != 'None']
+
         # we don't mail an empty mail
         if ''.join(lines).strip() == '':
             return
