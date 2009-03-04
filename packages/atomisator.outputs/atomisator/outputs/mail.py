@@ -71,6 +71,10 @@ class Mail(object):
             else:
                 values[name] = default
 
+        # XXX not keeping entries with no diff
+        # this should be its own plugin so email plugin stay generic
+        entries = [entry for entry in entries if entry.diff in ('', None)]
+
         # lines
         # should be generic
         lines = [values['entry_template'] % {'title': entry.title,
