@@ -184,9 +184,14 @@ class UrlDiff(object):
         text = text.replace('&nbsp;', ' ')
         return text
 
+    def _clean_text(self, text):
+        text = BeautifulSoup.BeautifulSoup(text).prettify()
+        text = self._html_to_text(text).splitlines(True)
+        return [l.strip() for l in text if l.strip() != '']
+
     def _get_diff(self, text1, text2):
-        text1 = self._html_to_text(text1).splitlines(True)
-        text2 = self._html_to_text(text2).splitlines(True)
+        text1 = self._clean_text(text1)
+        text2 = self._clean_text(text2)
         res = ''.join(difflib.unified_diff(text1, text2)).split('\n')[2:]
         def _filter(line):
             if line.startswith('@') or line.startswith('-'):
