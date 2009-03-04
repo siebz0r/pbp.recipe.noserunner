@@ -73,7 +73,7 @@ class Mail(object):
 
         # XXX not keeping entries with no diff
         # this should be its own plugin so email plugin stay generic
-        entries = [entry for entry in entries if entry.diff in ('', None)]
+        entries = [entry for entry in entries if entry.diff not in ('', None)]
 
         # lines
         # should be generic
