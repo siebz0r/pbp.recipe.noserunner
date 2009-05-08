@@ -13,8 +13,6 @@ version = '0.2.5'
 long_description = (
     read('README.txt')
     + '\n' +
-    read('CHANGES.txt')
-    + '\n' +
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
@@ -27,6 +25,8 @@ long_description = (
     + '\n' +
     'Change history\n'
     '**************\n'
+    + '\n' +
+    read('CHANGES.txt')
     + '\n' +
     'Download\n'
     '********\n'
