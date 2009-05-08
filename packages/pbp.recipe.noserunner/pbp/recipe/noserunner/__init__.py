@@ -55,6 +55,7 @@ class Recipe(object):
             env = self.buildout[env_section]
             for key, value in env.items():
                 initialization += env_template % (key, value)
+            initialization = 'import os\n%s' % initialization
 
         initialization_section = options.get('initialization', '').strip()
         if initialization_section:
