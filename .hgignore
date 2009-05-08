@@ -10,4 +10,11 @@
 \.pyc$
 /Levenshtein.s?o$
 \.bak$
-
+eggs
+build
+dist
+\.DS_Store
+bin
+\.Python
+memory
+\.installed\.cfg
