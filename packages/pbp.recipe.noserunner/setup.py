@@ -8,14 +8,11 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '0.2.4'
+version = '0.2.5'
 
 long_description = (
     read('README.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' + 
     read('CHANGES.txt')
     + '\n' +
     'Detailed Documentation\n'
@@ -23,24 +20,26 @@ long_description = (
     + '\n' +
     read('pbp', 'recipe', 'noserunner', 'README.txt')
     + '\n' +
-    'Contributors\n' 
+    'Contributors\n'
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
     + '\n' +
+    'Change history\n'
+    '**************\n'
+    + '\n' +
     'Download\n'
     '********\n'
     )
+
 entry_point = 'pbp.recipe.noserunner:Recipe'
 entry_points = {"zc.buildout": ["default = %s" % entry_point]}
-
 tests_require=['nose', 'zc.buildout', 'zc.recipe.egg']
 
 setup(name='pbp.recipe.noserunner',
       version=version,
       description="Expert Python Programming - ZC Buildout runner for nose",
       long_description=long_description,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Buildout',
         'Intended Audience :: Developers',
