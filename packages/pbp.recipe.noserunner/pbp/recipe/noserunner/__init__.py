@@ -35,7 +35,9 @@ class Recipe(object):
         defaults = options.get('defaults', '').strip()
         if defaults:
             defaults = ['nose'] + defaults.split()
-            defaults = "argv=%s" % defaults
+            defaults = "argv=%s+sys.argv[1:]" % defaults
+        else:
+            defaults = "argv=sys.argv[1:]"
 
         wd = options.get('working-directory', '').strip()
         if wd != '':
@@ -44,7 +46,7 @@ class Recipe(object):
             else:
                 os.mkdir(wd)
             dest.append(wd)
-            initialization = initialization_template % wd 
+            initialization = initialization_template % wd
         else:
             initialization = ''
 
@@ -63,10 +65,10 @@ class Recipe(object):
             ws, options['executable'],
             self.buildout['buildout']['bin-directory'],
             extra_paths=self.egg.extra_paths,
-            arguments = defaults, 
+            arguments = defaults,
             initialization = initialization,
             ))
-        
+
         return (os.path.join(self.buildout['buildout']['bin-directory'], options['script']),)
 
     update = install
