@@ -37,7 +37,7 @@ class Recipe(object):
             defaults = ['nose'] + defaults.split()
             defaults = "argv=%s+sys.argv[1:]" % defaults
         else:
-            defaults = "argv=sys.argv[1:]"
+            defaults = "argv=['nose']+sys.argv[1:]"
 
         wd = options.get('working-directory', '').strip()
         if wd != '':
@@ -70,7 +70,8 @@ class Recipe(object):
             initialization = initialization,
             ))
 
-        return (os.path.join(self.buildout['buildout']['bin-directory'], options['script']),)
+        return (os.path.join(self.buildout['buildout']['bin-directory'],
+                options['script']),)
 
     update = install
 
