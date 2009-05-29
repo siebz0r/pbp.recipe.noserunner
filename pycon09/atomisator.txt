@@ -1,0 +1,110 @@
+==========
+Atomisator
+==========
+
+pic google reader full of +100
+
+The big picture
+===============
+
+Photo schema
+
+Plugins
+=======
+
+- readers: rss, sql, html, rpc, twitter,
+  filesystem, Yahoo BOSS APIs, etc.
+
+- filters: duplicates, language, etc.
+
+- enhancers: digg comments,
+
+- outputs: rss, atom, email, charts
+
+Technical details
+=================
+
+- multiprocessing
+- setuptools entry points
+
+Technical details
+=================
+
+Filters = one-phase process
+
+Example::
+
+    class OnlyPythonFilter(object):
+
+        def __call__(entry, entries):
+            if 'python' in entry['title']:
+                entry['title'] += '<-- cool!'
+            else:
+                return None
+            return entry
+
+- entry: entry to filter
+- entries: existing entries **scalability risk**
+
+Technical details
+=================
+
+two-phase enhancers:
+
+    class Related:
+
+        def prepare(self, entries):
+            # indexing links
+            self._links = defaultdict(list)
+            for e in entries:
+                for link in e.links:
+                    self._links[link] += link
+
+        def __call__(self, entry):
+            # enhance entry
+            related = ['<li>%s</li>' % e.url
+                       for e in self._links[link]
+                       if e != entry]
+
+            entry['summary'] += '<ul>%s</ul>' % ''.join(reated)
+            return entry
+
+- entry: entry to enhance
+- entries: all entries to enhance
+
+Use cases
+=========
+
+- planet
+- email alerts ala Google Reader
+- entreprise indexer
+- webscraping
+- dashboard builder
+
+Demo time
+=========
+
+- Planet Python Francophone
+- 'who is talking about Atomisator in the world ?'
+- 'send me a mail when one of those pages change'
+- 'what are the biggest files in all reachable network drives ?'
+
+Todo
+====
+
+- two-phase filters: provide a prepare phase with a
+  data cursor.
+
+- Atomisator in the cloud
+
+- multiprocessing -> Concurrence (tasklets)
+
+- write a tutorial for writing plugins
+
+Thanks
+======
+
+Thanks !
+
+Questions ?
+

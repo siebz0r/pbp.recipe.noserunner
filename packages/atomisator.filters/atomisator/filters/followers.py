@@ -69,11 +69,11 @@ class _Follower(object):
         if sample is not None:
             sample = TXT_HTML.sub(r'<br/>', sample.strip())
             extract = EXTRACT % sample
-            entry['summary'] = (extract.decode(encoding, 'ignore') + 
+            entry['summary'] = (extract.decode(encoding, 'ignore') +
                                 entry.get('summary', u'') +
                                 self._marker)
         return entry
- 
+
     def _soup(self, value):
         soup = BeautifulSoup(value)
 
@@ -94,7 +94,7 @@ class _Follower(object):
                                     # caught a pattern
                                     c = tag.renderContents()
                                     return self._soup('<body>%s</body>' % c)
-            
+
             if tag.name == 'p' and 'meta' in [v for n, v in tag.attrs]:
                 tag.extract()
                 continue
@@ -107,11 +107,11 @@ class _Follower(object):
 
             tag.attrs = [(attr, val) for attr, val in tag.attrs
                         if attr in ATTRS]
-        if soup.body is not None: 
+        if soup.body is not None:
             return soup.body.renderContents()
         else:
             return soup.renderContents()
-    
+
     def _clean(self, value):
         """cleans an html page."""
         # loads and render
@@ -131,7 +131,7 @@ class _Follower(object):
     #    return probstat.Cartesian(lists)
     #    if len(lists) == 1:
     #        return [[x] for x in lists[0]]
-    #    
+    #
     #    res = [[i] + j for j in self._combos(lists[1:]) for i in lists[0]]
     #    print res
     #    return res
@@ -139,18 +139,18 @@ class _Follower(object):
     #def _ampl_combo(self, lists):
     #    for seq in self._combos(lists):
     #        start, end = min(seq), max(seq)
-    #        yield end-start, start, end     
+    #        yield end-start, start, end
 
     def _extract(self, title, content, size):
         """will try to find the best extract
-        
+
         XXX should be better, experimenting
         """
         content_size = len(content)
         if content_size <= size:
             return content
         delta = size / 2
-        
+
         for l, word in reversed(sorted(self._words(title))):
             positions = [m.start() for m in re.finditer(word, content)]
             if positions != []:
@@ -165,20 +165,20 @@ class _Follower(object):
                     end = content_size
                 else:
                     end = start + delta
-    
+
                 return '...' + content[start:end] + '...'
 
-        return content[:size] + '...' 
+        return content[:size] + '...'
 
         # finding the positions for all the words
         #def _indexes(word, content):
-        #    return [e.start() for e in re.finditer(word.strip(), 
+        #    return [e.start() for e in re.finditer(word.strip(),
         #            content, options)]
-        
-         
-        #positions = [_indexes(w, lcontent) for w in self._words(title) 
+
+
+        #positions = [_indexes(w, lcontent) for w in self._words(title)
         #             if _indexes(w, lcontent) != []]
-                
+
         # creating all the combos, and calculating the
         # amplitude for each
         #combos = sorted(self._ampl_combo(positions))
@@ -187,13 +187,13 @@ class _Follower(object):
         #ampl, start, end = combos[0]
         #if ampl > size:
         #    end = start + size
-            
+
         #return '...' + content[start:end] + '...'
- 
+
     def _get_sample(self, title, link, size=1000):
         """get the page, extract part of it if it is some text.
-        
-        tries to find the words of the title, to extract 
+
+        tries to find the words of the title, to extract
         the most meaningful part of the page.
         """
         charset = 'utf-8'
@@ -217,7 +217,7 @@ class _Follower(object):
 class RedditFollower(_Follower):
     """
     Will detect a reddit-like post and fill the summary
-    of the entry with an extract of the target page 
+    of the entry with an extract of the target page
     by following the link.
 
     The filter tries to pick up the best extract out
@@ -228,7 +228,7 @@ class RedditFollower(_Follower):
     def _detect(self, entry):
         summary = entry.get('summary', '')
 
-        link = re.search(self.pattern, summary, options) 
+        link = re.search(self.pattern, summary, options)
         if link is None:
             return None
 
@@ -238,7 +238,7 @@ class RedditFollower(_Follower):
 class DeliciousFollower(_Follower):
     """
     Will detect a delicious-like post and fill the summary
-    of the entry with an extract of the target page 
+    of the entry with an extract of the target page
     by following the link.
 
     The filter tries to pick up the best extract out
