@@ -10,11 +10,64 @@ Initial use case
 .. figure:: reader.png
     :align: center
 
+NIH
+===
+
+.. figure:: pipes.gif
+    :align: center
+
+    Yahoo Pipes
+
+Generic Pattern
+===============
+
+1. Collecting
+2. Filtering
+3. Storing
+4. Rendering
 
 The big picture
 ===============
 
-Photo schema
+.. image:: big.picture.png
+    :align: center
+
+Initial plans
+=============
+
+.. image:: initial.png
+    :align: center
+
+The cfg file
+============
+
+::
+
+    [atomisator]
+    sources =
+        rss     http://tarekziade.wordpress.com/atom
+        rss     http://digg.com/rss2.xml
+    filters =
+        duplicates
+    enhancers =
+        digg
+    database = sqlite:///atomisator.db
+    outputs =
+        rss atomisator.xml
+
+The script
+==========
+
+- multi-process
+- sqlite as default DB
+- fully extensible
+
+Demo time !
+===========
+
+1. installation
+2. writing a .cfg file
+3. running the script
 
 Plugins
 =======
@@ -37,7 +90,7 @@ Technical details
 Technical details
 =================
 
-Filters = one-phase process
+Plugin filters = one-phase process
 
 Example::
 
@@ -56,7 +109,7 @@ Example::
 Technical details
 =================
 
-two-phase enhancers:
+Enhancers filters = two-phase process.
 
     class Related:
 
@@ -88,8 +141,8 @@ Use cases
 - webscraping
 - dashboard builder
 
-Demo time
-=========
+Web mining
+==========
 
 - Planet Python Francophone
 - 'who is talking about Atomisator in the world ?'
