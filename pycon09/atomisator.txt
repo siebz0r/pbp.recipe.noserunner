@@ -1,8 +1,15 @@
-==========
-Atomisator
-==========
 
-pic google reader full of +100
+.. figure:: atomisator.png
+    :align: center
+
+    Tarek Ziadé <tarek@ziade.org>
+
+Initial use case
+================
+
+.. figure:: reader.png
+    :align: center
+
 
 The big picture
 ===============

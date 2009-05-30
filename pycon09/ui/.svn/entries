@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="60"
+   name=""
+   committed-date="2006-07-05T09:29:32.615255Z"
+   url="http://svn.afpy.org/misc/rmll_workshops/lxml_etree_howto/ui"
+   last-author="ogrisel"
+   kind="dir"
+   uuid="032b3d69-b411-0410-8abb-fb15536a37e9"
+   revision="93"/>
+<entry
+   name="default"
+   kind="dir"/>
+</wc-entries>
