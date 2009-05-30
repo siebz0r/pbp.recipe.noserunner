@@ -119,7 +119,7 @@ img.incremental {visibility: hidden;}
 
 .slide table.docinfo {margin: 1em 0 0.5em 2em;}
 
-pre.literal-block, pre.doctest-block {background-color: transparent;}
+pre.literal-block, pre.doctest-block {background-color: transparent; font-size: 50%}
 
 tt.docutils {background-color: transparent;}
 

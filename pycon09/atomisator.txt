@@ -92,6 +92,12 @@ Technical details
 
 Plugin filters = one-phase process
 
+- entry: entry to filter
+- entries: existing entries (scalability risk)
+
+Technical details
+=================
+
 Example::
 
     class OnlyPythonFilter(object):
@@ -103,13 +109,19 @@ Example::
                 return None
             return entry
 
-- entry: entry to filter
-- entries: existing entries **scalability risk**
-
 Technical details
 =================
 
 Enhancers filters = two-phase process.
+
+- entry: entry to enhance
+- entries: all entries to enhance
+
+
+Technical details
+=================
+
+::
 
     class Related:
 
@@ -129,42 +141,36 @@ Enhancers filters = two-phase process.
             entry['summary'] += '<ul>%s</ul>' % ''.join(reated)
             return entry
 
-- entry: entry to enhance
-- entries: all entries to enhance
-
 Use cases
 =========
 
 - planet
 - email alerts ala Google Reader
 - entreprise indexer
-- webscraping
+- webscraping / webmining
 - dashboard builder
 
-Web mining
-==========
+Who uses it ?
+=============
 
 - Planet Python Francophone
-- 'who is talking about Atomisator in the world ?'
-- 'send me a mail when one of those pages change'
-- 'what are the biggest files in all reachable network drives ?'
+- Unified planet Python
+- 2 or 3 individual folks for alert
+- You ! (give me your use case)
 
 Todo
 ====
 
 - two-phase filters: provide a prepare phase with a
   data cursor.
-
 - Atomisator in the cloud
-
 - multiprocessing -> Concurrence (tasklets)
-
 - write a tutorial for writing plugins
 
 Thanks
 ======
 
-Thanks !
-
-Questions ?
-
+- Thanks !
+- Questions ?
+- Twitter: tarek_ziade
+- project : http://atomisator.ziade.org
