@@ -42,3 +42,10 @@ Generates a feed using a template::
     </rss>
     <BLANKLINE>
     <BLANKLINE>
+
+
+The same with unicode:
+
+    >>> entry1.title = u'hééé'
+    >>> generator([entry1],
+    ...           (tmpfilename, 'http://link', 'the feed'))
