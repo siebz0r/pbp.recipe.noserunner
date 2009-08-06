@@ -49,3 +49,8 @@ The same with unicode:
     >>> entry1.title = u'hééé'
     >>> generator([entry1],
     ...           (tmpfilename, 'http://link', 'the feed'))
+
+Delete the temp file
+
+    >>> import os
+    >>> os.remove(tempfile)
