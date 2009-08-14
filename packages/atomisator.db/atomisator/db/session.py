@@ -1,15 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from atomisator.db.mappers import Base 
+from atomisator.db.mappers import Base
 
 metadata = Base.metadata
 
 session = None
 
 def create_session(sqluri, global_=True):
-    """Creates a session. 
-    
+    """Creates a session.
+
     If `global` is True creates a global session variable."""
 
     engine = create_engine(sqluri)
@@ -23,7 +23,7 @@ def create_session(sqluri, global_=True):
         return Session()
 
 def save(obj):
-    session.save(obj)
+    session.add(obj)
 
 def commit():
     session.commit()
