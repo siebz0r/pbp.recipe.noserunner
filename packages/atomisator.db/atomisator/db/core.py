@@ -53,10 +53,9 @@ def purge_entries(max_age=30, session=default_session):
 
 def get_entries(size=None, session=default_session, **kw):
     """Returns entries"""
-    if kw == {}:
-        query = session.query(Entry)
-    else:
-        query = session.query(Entry).filter_by(**kw)
+    query = session.query(Entry)
+    if kw:
+        query = query.filter_by(**kw)
 
     query = query.options(eagerload('links'), eagerload('tags'))
     query = query.order_by(desc(Entry.updated))

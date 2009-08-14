@@ -16,13 +16,13 @@ Let's create a few items::
     >>> python_org
     <Link('http://python.org')>
 
-    >>> annoucement = Entry('Python 2.6alpha1 and 3.0alpha3 released', 
-    ...                     'http://www.python.org/news',
-    ...                     'Summary goes here')
+    >>> annoucement = Entry(title='Python 2.6alpha1 and 3.0alpha3 released', 
+    ...                     link='http://www.python.org/news',
+    ...                     summary='Summary goes here')
     >>> annoucement
     <Entry('Python 2.6alpha1 and 3.0alpha3 released')>
 
-    >>> annoucement.add_tags(['cool', 'fun'])
+    >>> annoucement.add_tags([{'term':'cool'}, {'term':'fun'}])
     >>> annoucement.tags
     [<Tag('cool')>, <Tag('fun')>]
 
