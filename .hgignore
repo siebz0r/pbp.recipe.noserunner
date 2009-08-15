@@ -18,3 +18,4 @@ bin
 \.Python
 memory
 \.installed\.cfg
+.*\.swp$
