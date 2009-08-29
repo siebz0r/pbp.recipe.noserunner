@@ -1,5 +1,4 @@
-from Cheetah.Template import Template
-import Cheetah.Filters
+import tempita
 
 import os
 from cStringIO import StringIO
@@ -17,28 +16,16 @@ class Generator(object):
 
         entries = entries[:size]
 
-        class Encode(Cheetah.Filters.Filter):
-            def filter(self, val, **kw):
-                if kw.has_key('encoding'):
-                    encoding = kw['encoding']
-                else:
-                    encoding = 'utf8'
-                if isinstance(val, unicode):
-                    val = val.encode(encoding)
-                else:
-                    val = str(val)
-                return val
-
-        
-        data = {'entries': entries, 
-                'channel': {'title': title, 'description': description,
+        data = {'entries': entries,
+                'channel': {'title': title,
+                            'description': description,
                             'link': link}}
-        template = Template(open(tmpl).read(), searchList=[data], filter=Encode)
+        template = tempita.Template(unicode(open(tmpl).read()))
 
-        content = str(template)
+        content = template.substitute(**data)
         f = open(filename, 'w')
         try:
-            f.write(content)
+            f.write(content.encode('utf-8'))
         finally:
             f.close()
 

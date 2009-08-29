@@ -71,7 +71,7 @@ class Entry(Base):
             self.tags.append(Tag(tag['term']))
 
     def __repr__(self):
-        return "<Entry('%s')>" % self.title
+        return u"<Entry('%s')>" % self.title
 
 
 class Link(Base):
@@ -85,7 +85,7 @@ class Link(Base):
         self.url = url
 
     def __repr__(self):
-        return "<Link('%s')>" % self.url
+        return u"<Link('%s')>" % self.url
 
 class Tag(Base):
 
@@ -98,5 +98,5 @@ class Tag(Base):
         self.value = value
 
     def __repr__(self):
-        return "<Tag('%s')>" % self.value
+        return u"<Tag('%s')>" % self.value
 

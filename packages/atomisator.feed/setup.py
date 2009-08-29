@@ -10,7 +10,7 @@ classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         ]
 
-entry_points = {"atomisator.outputs": 
+entry_points = {"atomisator.outputs":
         ["rss = atomisator.feed:Generator"]}
 
 setup(name='atomisator.feed',
@@ -29,7 +29,7 @@ setup(name='atomisator.feed',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Cheetah',
+          'tempita',
           # -*- Extra requirements: -*-
       ],
       entry_points=entry_points,
