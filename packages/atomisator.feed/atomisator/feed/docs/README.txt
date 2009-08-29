@@ -19,7 +19,7 @@ Generates a feed using a template::
     >>> entry1.updated = u'date1'
     >>> entry1.tags = [Tag()]
     >>> generator([entry1],
-    ...           (tmpfilename, 'http://link', u'thééé feed'))
+    ...           (tmpfilename, u'http://link', u'thééé feed'))
     >>> print open(tmpfilename).read()
     <?xml version="1.0" encoding="utf-8"?>
     <rss version="2.0" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">

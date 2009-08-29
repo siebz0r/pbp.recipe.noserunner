@@ -30,13 +30,13 @@ def log(msg):
     logger.info(msg)
 
 # see how this can be done with logging
-def dotlog(msg):    
+def dotlog(msg):
     """Flushes to stdout."""
     sys.stdout.write(msg)
     sys.stdout.flush()
 
 DEFAULT_CONFIG_FILE = 'atomisator.cfg'
-CONF_TMPL = join(dirname(__file__), 
+CONF_TMPL = join(dirname(__file__),
                  'atomisator.cfg_tmpl')
 CONF_TMPL = open(CONF_TMPL).read()
 
@@ -72,10 +72,10 @@ class AtomisatorConfig(object):
         if not self._parser.has_option('atomisator', field):
             return default
         return self._parser.get('atomisator', field).strip()
-    
+
     def _set_simple_field(self, field, value):
         """Set an option located in the `atomisator` section."""
-        self._parser.set('atomisator', field, value)    
+        self._parser.set('atomisator', field, value)
 
     def _set_multiline_value(self, name, value):
         """Set a multiline option located in the `atomisator` section."""
@@ -89,7 +89,7 @@ class AtomisatorConfig(object):
             main = entry[0]
             params = [_quote(e) for e in entry[1]]
             return '%s %s' % (main, ' '.join(params))
-        
+
         values = '\n'.join([_line(v) for v in value])
         self._parser.set('atomisator', name, values)
 
@@ -103,18 +103,18 @@ class AtomisatorConfig(object):
             return match.groups()[0].replace(' ', ':::')
         def _args(line):
             line = re.sub(r'"(.*?)"', _rep, line)
-            line = [element.replace(':::', ' ') 
+            line = [element.replace(':::', ' ')
                     for element in line.split() if element != '']
-            return line[0].strip(), tuple([el.strip() 
+            return line[0].strip(), tuple([el.strip()
                                            for el in line[1:]])
         return [_args(line) for line in lines if line.strip() != '']
 
-    # 
+    #
     # properties and public APIs
     #
     def write(self):
         """ Saves the configuration.
-        
+
         Writes the configuration into the file provided at initialization."""
         file_ = open(self._file, 'w')
         try:
@@ -137,13 +137,13 @@ class AtomisatorConfig(object):
     sources = property(_get_sources, _set_sources)
 
     def _get_outputs(self):
-        return self._get_multiline_value('outputs') 
+        return self._get_multiline_value('outputs')
     def _set_outputs(self, outputs):
         self._set_multiline_value('outputs', outputs)
     outputs = property(_get_outputs, _set_outputs)
 
     def _get_filters(self):
-        return self._get_multiline_value('filters') 
+        return self._get_multiline_value('filters')
     def _set_filters(self, filters):
         self._set_multiline_value('filters', filters)
     filters = property(_get_filters, _set_filters)

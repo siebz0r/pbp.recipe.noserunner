@@ -7,19 +7,15 @@ The package has two main features:
 1. it loads the feeds described into `atomisator.cfg`.
 2. it generates a feed
 
-    >>> from atomisator.main.run import load_data
-    >>> load_data(test_conf)
-    Reading source ...digg.xml
-    1 entries read.
-    Reading source ...tarek.xml
-    4 entries read.
-    Reading source ...pp.xml
-    18 entries read.
-    23 total.
+    >>> from atomisator.main.core import DataProcessor
+    >>> processor = DataProcessor(test_conf)
+    >>> processor.load_data()
+    Loading...
 
-    >>> from atomisator.main.run import generate_data
-    >>> generate_data(test_conf)
-    Writing feed in atomisator.xml
-    Feed ready.
+    >>> processor.generate_data()
+    Preparing enhancers.
+    Enhancing: related, digg
+    Writing outputs.Rendering: rss.
+    Output ready.
 
 

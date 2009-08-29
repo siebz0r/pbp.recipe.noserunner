@@ -2,7 +2,7 @@ import os
 from nose.tools import *
 
 from atomisator.main.config import AtomisatorConfig
-from atomisator.main.config import generate_config 
+from atomisator.main.config import generate_config
 from atomisator.main.config import CONF_TMPL
 from atomisator.main import PROCESSES
 
@@ -22,28 +22,28 @@ def test_generation():
 
 def test_config():
     parser = AtomisatorConfig(cfg)
-    s = parser.sources 
-    waited = [('rss', ('gdigg.xml',)), ('rss', ('gtarek.xml',)), 
-              ('rss', ('gpp.xml',)), ('rss', ('gdigg.xml',)), 
+    s = parser.sources
+    waited = [('rss', ('gdigg.xml',)), ('rss', ('gtarek.xml',)),
+              ('rss', ('gpp.xml',)), ('rss', ('gdigg.xml',)),
               ('rss', ('gtarek.xml',)), ('rss', ('gpp.xml',))]
 
     assert_equals(s, waited)
     parser.sources = (('rss', ('ok.xml',)),)
-    assert_equals(parser.sources, [('rss', ('ok.xml',))])
+    assert_equals(parser.sources, [('rss', (u'ok.xml',))])
 
-    assert_equals(parser.database, 'sqlite:///gatomisator.db') 
+    assert_equals(parser.database, 'sqlite:///gatomisator.db')
     parser.database = 'sqlite://here'
-    assert_equals(parser.database, 'sqlite://here')    
+    assert_equals(parser.database, 'sqlite://here')
 
-    assert_equals(parser.timeout, 5.0) 
+    assert_equals(parser.timeout, 5.0)
     parser.timeout = 7.0
     assert_equals(parser.timeout, 7.0)
 
-    assert_equals(parser.store_entries, True) 
+    assert_equals(parser.store_entries, True)
     parser.store_entries = False
     assert_equals(parser.store_entries, False)
 
-    assert_equals(parser.max_age, 30) 
+    assert_equals(parser.max_age, 30)
     parser.max_age = 35
     assert_equals(parser.max_age, 35)
 
@@ -61,8 +61,8 @@ def test_config():
 
 def test_quotes():
     parser = AtomisatorConfig(cfg)
-    rss = ('rss', ('output.xml',  'http://link.xml', 
-             'This is the output', 
+    rss = ('rss', ('output.xml',  'http://link.xml',
+             'This is the output',
              'This is the description'))
     parser.outputs = [rss]
 

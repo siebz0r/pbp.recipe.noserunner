@@ -9,7 +9,6 @@ from atomisator.main.config import ConfigurationError
 from atomisator.main.core import DataProcessor
 from atomisator.main.commands import ENHANCERS, FILTERS, READERS
 
-from atomisator.main.tests.base import set_conf, tear_conf
 
 saved = None
 
@@ -60,25 +59,25 @@ def test_options():
 test_dir = os.path.dirname(__file__)
 test_conf = os.path.join(test_dir, 'atomisator.cfg')
 
-@with_setup(set_conf, tear_conf)
+@with_setup(setup, teardown)
 def test_load_data():
 
     DataProcessor(test_conf).load_data()
 
-@with_setup(set_conf, tear_conf)
+@with_setup(setup, teardown)
 def test_generate_data():
     DataProcessor(test_conf).generate_data()
 
-@with_setup(set_conf, tear_conf)
+@with_setup(setup, teardown)
 def test_config():
     parser = AtomisatorConfig(test_conf)
     sources = parser.sources
     sources.sort()
     dir = os.path.dirname(test_conf)
-    wanted = [('rss', ('%s/digg.xml' % dir,)), 
-              ('rss', ('%s/digg.xml' % dir,)), 
-              ('rss', ('%s/pp.xml' % dir,)), 
-              ('rss', ('%s/pp.xml' % dir,)), 
+    wanted = [('rss', ('%s/digg.xml' % dir,)),
+              ('rss', ('%s/digg.xml' % dir,)),
+              ('rss', ('%s/pp.xml' % dir,)),
+              ('rss', ('%s/pp.xml' % dir,)),
               ('rss', ('%s/tarek.xml' % dir,)),
               ('rss', ('%s/tarek.xml' % dir,))]
 
@@ -89,7 +88,7 @@ def test_config():
 
     # getting readers
     assert_equals(parser.get_reader('xxx'), None)
-    assert_equals(parser.get_reader('xml'), 
+    assert_equals(parser.get_reader('xml'),
                   'atomisator.reader.xml')
 
     f = [f[0] for f in parser.filters]
@@ -99,7 +98,7 @@ def test_config():
 def test_get_readers():
     # see if we get the rss and atom plugin
     from atomisator.parser import Parser
-   
+
     assert 'xxxx' not in READERS
     assert isinstance(READERS['rss'], Parser)
 
@@ -109,18 +108,18 @@ def test_get_readers():
 def test_enhancers():
     assert 'digg' in ENHANCERS
 
-@with_setup(set_conf, tear_conf)
+@with_setup(setup, teardown)
 def test_no_storage():
     proc = DataProcessor(test_conf)
     proc.parser.store_entries = False
-   
+
     proc.load_data()
-    proc.generate_data()   
-       
+    proc.generate_data()
+
     # as usual but in memory
     assert len(proc.existing_entries) > 50
 
-@with_setup(set_conf, tear_conf)
+@with_setup(setup, teardown)
 def test_mono_proc():
     proc = DataProcessor(test_conf)
     proc.parser.processes = 1
