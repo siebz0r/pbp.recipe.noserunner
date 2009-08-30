@@ -2,7 +2,6 @@
 # (C) Copyright 2008 Tarek Ziad\xe9 <tarek@ziade.org>
 #
 import os
-from nose.tools import *
 
 from atomisator.filters import UrlDiff
 

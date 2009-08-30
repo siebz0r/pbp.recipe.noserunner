@@ -9,7 +9,7 @@
 
     C++ version is Copyright (c) 2006 Jacob R Rideout <kde@jacobrideout.net>
     Perl version is (c) 2004-6 Maciej Ceglowski
-    
+
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
@@ -23,11 +23,11 @@
     You should have received a copy of the GNU Lesser General Public
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-    
+
     Note: Language::Guess is GPL-licensed. KDE developers received permission
     from the author to distribute their port under LGPL:
     http://lists.kde.org/?l=kde-sonnet&m=116910092228811&w=2
-    
+
 '''
 
 import codecs, os, re, sys, unicodedata
@@ -304,7 +304,7 @@ IANA_MAP = {
 def _load_models():
     modelsDir = os.path.join(os.path.dirname(__file__), 'trigrams')
     modelsList = os.listdir(modelsDir)
-    
+
     lineRe = re.compile(r"(.{3})\s+(.*)")
     for modelFile in modelsList:
         modelPath = os.path.join(modelsDir, modelFile)
@@ -316,7 +316,7 @@ def _load_models():
             m = lineRe.search(line)
             if m:
                 model[m.group(1)] = int(m.group(2))
-                
+
         models[modelFile.lower()] = model
 
 
@@ -326,12 +326,12 @@ def guessLanguage(text):
     ''' Returns the language code, i.e. 'en' '''
     if not text:
         return UNKNOWN
-    
+
     if isinstance(text, str):
         text = unicode(text, 'utf-8')
-    
+
     text = normalize(text)
-    
+
     return _identify(text, find_runs(text))
 
 
@@ -340,7 +340,7 @@ def guessLanguageInfo(text):
         Returns (tag, id, name)  i.e. ('en', 26110, 'english')
     """
     tag = guessLanguage(text)
-    
+
     if tag == UNKNOWN:
         return UNKNOWN,UNKNOWN,UNKNOWN
 
@@ -366,7 +366,7 @@ def guessLanguageName(text):
         Returns the language name.  i.e. 'english'
     """
     lang = guessLanguage(text)
-    return _getName(lang) 
+    return _getName(lang)
 
 
 def _getId(iana):
@@ -389,7 +389,7 @@ def find_runs(text):
             totalCount += 1
 
 #    pprint.pprint(run_types)
-    
+
     # return run types that used for 40% or more of the string
     # always return basic latin if found more than 15%
     # and extended additional latin if over 10% (for Vietnamese)
@@ -452,7 +452,7 @@ def _identify(sample, scripts):
             return check(sample, PT)
         else:
             return latinLang
-            
+
     if "Basic Latin" in scripts:
         return check( sample, ALL_LATIN )
 
@@ -482,9 +482,9 @@ def check(sample, langs):
 
 def createOrderedModel(content):
     ''' Create a list of trigrams in content sorted by frequency '''
-    trigrams = defaultdict(int) # QHash<QString,int> 
+    trigrams = defaultdict(int) # QHash<QString,int>
     content = content.lower()
-    
+
     for i in xrange(0, len(content)-2):
         trigrams[content[i:i+3]]+=1
 
@@ -507,24 +507,18 @@ def distance(model, knownModel):
     return dist
 
 
-def _makeNonAlphaRe():
-    nonAlpha = [u'[^']
-    for i in range(sys.maxunicode):
-      c = unichr(i)
-      if c.isalpha(): nonAlpha.append(c)
-    nonAlpha.append(u']')
-    nonAlpha = u"".join(nonAlpha)
-    return re.compile(nonAlpha)
-
-
-nonAlphaRe = _makeNonAlphaRe()
 spaceRe = re.compile('\s+', re.UNICODE)
-    
+
 def normalize(u):
     ''' Convert to normalized unicode.
         Remove non-alpha chars and compress runs of spaces.
     '''
     u = unicodedata.normalize('NFC', u)
-    u = nonAlphaRe.sub(' ', u)
+    v = []
+    for c in u:
+        if c.isalpha(): v.append(c)
+        else: v.append(' ')
+    u = spaceRe.sub(' ', ''.join(v))
+    del v
     u = spaceRe.sub(' ', u)
     return u
