@@ -110,11 +110,11 @@ class Recipe(object):
 
         # logo
         header_logo = options.get('header-logo', '')
-	header_logo = os.path.realpath(header_logo)
+        header_logo = os.path.realpath(header_logo)
         if os.path.exists(header_logo):
             shutil.copyfile(header_logo, join(location, 'htdocs', 'logo'))
 
-	parser.set('header_logo', 'src', 'site/logo')
+        parser.set('header_logo', 'src', 'site/logo')
         parser.set('header_logo', 'link', project_url)
 
         # smtp
