@@ -11,8 +11,7 @@ def secs_to_kstones(seconds):
 stats = {}
 
 def reset_stats():
-    global stats
-    stats = {}
+    stats.clear()
 
 def print_stats():
     template = '%s : %.2f kstones, %.3f secondes, %.3d bytes'
