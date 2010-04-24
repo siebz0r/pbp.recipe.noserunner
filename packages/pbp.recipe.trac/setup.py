@@ -15,7 +15,7 @@ long_description = (
     + '\n' +
     'Change history\n'
     '**************\n'
-    + '\n' + 
+    + '\n' +
     read('CHANGES.txt')
     + '\n' +
     'Detailed Documentation\n'
@@ -23,7 +23,7 @@ long_description = (
     + '\n' +
     read('pbp', 'recipe', 'trac', 'README.txt')
     + '\n' +
-    'Contributors\n' 
+    'Contributors\n'
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
@@ -73,6 +73,6 @@ setup(name='pbp.recipe.trac',
       entry_points=entry_points,
       dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9#egg=NavAdd',
                         'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11#egg=timingandestimationplugin',
-                        'http://svn.edgewall.com/repos/trac/sandbox/mercurial-plugin-0.11#egg=TracMercurial']
+                        'http://svn.edgewall.org/repos/trac/plugins/0.11/mercurial-plugin#egg=TracMercurial']
       )
 

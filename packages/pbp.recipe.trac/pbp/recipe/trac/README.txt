@@ -26,7 +26,7 @@ Example usage
    relatively easy to write doctests that both demonstrate the use of
    the recipe and test it.
    You can find examples of recipe doctests from the PyPI, e.g.
-   
+
      http://pypi.python.org/pypi/zc.recipe.egg
 
    The PyPI page for zc.buildout contains documentation about the test
@@ -89,13 +89,13 @@ With a trac.ini file. Let's check its content::
     'hg'
     >>> parser.get('trac', 'repository_dir')
     '/sample-buildout/var/svn'
-    >>> parser.get('project', 'descr') 
+    >>> parser.get('project', 'descr')
     'My example project'
-    >>> parser.get('project', 'name') 
+    >>> parser.get('project', 'name')
     '"My project"'
-    >>> parser.get('project', 'url') 
-    '' 
-    >>> parser.get('components', 'tracext.hg.*') 
+    >>> parser.get('project', 'url')
+    ''
+    >>> parser.get('components', 'tracext.hg.*')
     'enabled'
 
     >>> parser.get('navadd', 'buildbot.url')
