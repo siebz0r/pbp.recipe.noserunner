@@ -25,21 +25,21 @@ class Recipe(object):
             )
         options['bin-directory'] = buildout['buildout']['bin-directory']
         options['executable'] = sys.executable
- 
+
     def install(self):
         """Installer"""
         options = self.options
         # adding trac-admin and tracd into bin
-        entry_points = [('trac-admin', 'trac.admin.console', 'run'), 
+        entry_points = [('trac-admin', 'trac.admin.console', 'run'),
                         ('tracd', 'trac.web.standalone', 'main')]
-        
+
         zc.buildout.easy_install.scripts(
                 entry_points, pkg_resources.working_set,
                 options['executable'], options['bin-directory']
                 )
 
         # now generating the trac instance, if required
-        location = options['location'] 
+        location = options['location']
         project_name = options.get('project-name', 'My project')
         project_name = '"%s"' % project_name
         project_url = options.get('project-url', 'http://example.com')
@@ -48,9 +48,9 @@ class Recipe(object):
         repos_path = options['repos-path']
         if not os.path.exists(location):
             os.mkdir(location)
-            
+
         trac_admin = join(options['bin-directory'], 'trac-admin')
-        
+
         trac = TracAdmin(location)
 
         if not trac.env_check():
@@ -60,12 +60,12 @@ class Recipe(object):
         comp_list = [c.name for c in Component.select(trac.env_open())]
 
         # removing crap
-        for milestone in ('milestone1', 'milestone2', 'milestone3', 
+        for milestone in ('milestone1', 'milestone2', 'milestone3',
                           'milestone4'):
             if milestone in milestone_list:
                 trac._do_milestone_remove(milestone)
-        
-        
+
+
         for comp in ('component1', 'component2'):
             if comp in comp_list:
                 trac._do_component_remove(comp)
@@ -73,7 +73,7 @@ class Recipe(object):
         # adding the 'future' roadmap
         if 'future' not in milestone_list:
             trac._do_milestone_add('future')
-        
+
         # adding components
         components = options.get('components', '')
         components = [(comp.split()[0].strip(), comp.split()[1].strip(),)
@@ -84,7 +84,7 @@ class Recipe(object):
             if comp in comp_list:
                 continue
             trac._do_component_add(comp, owner)
-        
+
         trac_ini = join(location, 'conf', 'trac.ini')
         parser = ConfigParser.ConfigParser()
         parser.read([trac_ini])
@@ -94,12 +94,12 @@ class Recipe(object):
         # if 'hg' in thr repository type, hook its plugin
         if repos_type == 'hg':
             parser.set('components', 'tracext.hg.*', 'enabled')
-        
-        buildbot_url = options.get('buildbot-url', None) 
+
+        buildbot_url = options.get('buildbot-url', None)
         if buildbot_url is not None:
             parser.set('components', 'navadd.*', 'enabled')
-            if 'navadd' not in parser.sections(): 
-                parser.add_section('navadd')  
+            if 'navadd' not in parser.sections():
+                parser.add_section('navadd')
             parser.set('navadd', 'add_items', 'buildbot')
             parser.set('navadd', 'buildbot.target', 'mainnav')
             parser.set('navadd', 'buildbot.title', 'Buildbot')
@@ -118,18 +118,18 @@ class Recipe(object):
         parser.set('header_logo', 'link', project_url)
 
         # smtp
-        for name in ('smtp-server', 'smtp-port', 'smtp-from', 
+        for name in ('smtp-server', 'smtp-port', 'smtp-from',
                      'smtp-replyto'):
             value = options.get(name, None)
             if value is None:
                 continue
             parser.set('notification', name.replace('-', '_'), value)
-        
+
         # setting up time tracking
         if 'ticket-custom' not in parser.sections():
             parser.add_section('ticket-custom')
 
-        for field, value in (('totalhours', 'text'),    
+        for field, value in (('totalhours', 'text'),
                              ('totalhours.value', '0'),
                              ('totalhours.label', 'Total Hours'),
                              ('hours', 'text'),
@@ -139,12 +139,12 @@ class Recipe(object):
                              ('estimatedhours.value', '0'),
                              ('estimatedhours.label', 'Estimated Hours')):
             parser.set('ticket-custom', field, value)
-        
+
         parser.write(open(trac_ini, 'w'))
-         
+
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
         return tuple()
-    
+
     update = install
 
