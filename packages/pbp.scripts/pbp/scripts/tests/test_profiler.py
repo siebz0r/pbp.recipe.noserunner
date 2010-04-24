@@ -4,7 +4,7 @@ from nose.tools import *
 import random
 
 def test_profile():
-    
+
     # let's try the decorator
     @profiler.profile(name='tested')
     def tested():
@@ -14,12 +14,12 @@ def test_profile():
 
     # let's check what we got
     res = profiler.stats['tested']
-    
+
     assert res['stones']< 600
     assert res['memory'] < 1000
 
 def test_memory_grow():
-    
+
     growing = []
 
     def stable():
@@ -35,7 +35,7 @@ def test_memory_grow():
     def unstable():
         growing.append(stable())
 
-    assert profiler.memory_grow(stable) <= 500
+    assert profiler.memory_grow(stable) <= 700
     assert profiler.memory_grow(unstable) > 850000
-    
+
 
