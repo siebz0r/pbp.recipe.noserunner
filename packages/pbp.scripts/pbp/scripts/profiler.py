@@ -54,3 +54,9 @@ def memory_grow(function, *args, **kw):
         function(*args, **kw)
     return profiler.heap().size - start
 
+# warm up
+profiler = hpy()
+profiler.setref()
+profiler.heap().size
+del profiler
+
