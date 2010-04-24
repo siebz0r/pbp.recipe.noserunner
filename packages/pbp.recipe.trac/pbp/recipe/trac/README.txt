@@ -44,10 +44,7 @@ We'll start by creating a buildout that uses the recipe::
     ... [buildout]
     ... parts = trac
     ... index = http://pypi.python.org/simple
-    ... develop =
-    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/timingandestimationplugin
-    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/navaddplugin
-    ...     /home/repos/atomisator.ziade.org/packages/pbp.recipe.trac/dev/TracMercurial
+    ...
     ... [trac]
     ... recipe = pbp.recipe.trac
     ... project-name = My project
@@ -64,7 +61,7 @@ We'll start by creating a buildout that uses the recipe::
 
 Let's run the buildout::
 
-    >>> print system(buildout)
+    >>> res = system(buildout)
 
 This creates a trac instance::
 
@@ -92,7 +89,7 @@ With a trac.ini file. Let's check its content::
     >>> parser.get('project', 'descr')
     'My example project'
     >>> parser.get('project', 'name')
-    '"My project"'
+    'My project'
     >>> parser.get('project', 'url')
     ''
     >>> parser.get('components', 'tracext.hg.*')
