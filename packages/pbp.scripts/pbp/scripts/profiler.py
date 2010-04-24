@@ -28,10 +28,10 @@ def profile(name='stats', stats=stats):
     """Calculates a duration and a memory size."""
     def _profile(function):
         def __profile(*args, **kw):
-            start_time = timer()
             profiler = hpy()
             profiler.setref()
             start = profiler.heap().size + 12
+            start_time = timer()
             try:
                 return function(*args, **kw)
             finally:
@@ -40,7 +40,7 @@ def profile(name='stats', stats=stats):
                 memory = profiler.heap().size - start
                 stats[name] = {'time': total,
                                'stones': kstones,
-                               'memory': profiler.heap().size}
+                               'memory': memory}
         return __profile
     return _profile
 
