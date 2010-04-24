@@ -6,7 +6,7 @@ from guppy import hpy
 benchtime, stones = pystone.pystones()
 
 def secs_to_kstones(seconds):
-    return (stones*seconds) / 1000 
+    return (stones*seconds) / 1000
 
 stats = {}
 
@@ -30,7 +30,7 @@ def profile(name='stats', stats=stats):
         def __profile(*args, **kw):
             start_time = timer()
             profiler = hpy()
-            profiler.setref()        
+            profiler.setref()
             start = profiler.heap().size + 12
             try:
                 return function(*args, **kw)
@@ -38,8 +38,8 @@ def profile(name='stats', stats=stats):
                 total = timer() - start_time
                 kstones = secs_to_kstones(total)
                 memory = profiler.heap().size - start
-                stats[name] = {'time': total, 
-                               'stones': kstones,  
+                stats[name] = {'time': total,
+                               'stones': kstones,
                                'memory': profiler.heap().size}
         return __profile
     return _profile
@@ -49,9 +49,9 @@ REPEAT = 100
 def memory_grow(function, *args, **kw):
     """checks if a function makes the memory grows"""
     profiler = hpy()
-    profiler.setref() 
+    profiler.setref()
     start = profiler.heap().size + 12
     for i in range(REPEAT):
         function(*args, **kw)
-    return profiler.heap().size - start  
-    
+    return profiler.heap().size - start
+
