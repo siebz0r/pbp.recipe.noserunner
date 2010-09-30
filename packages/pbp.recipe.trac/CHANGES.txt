@@ -11,4 +11,4 @@ No changes yet.
 0.1.0 (2008-06-16)
 ==================
 
- - Created recipe with ZopeSkel [Tarek Ziade].
+- Created recipe with ZopeSkel [Tarek Ziade].
