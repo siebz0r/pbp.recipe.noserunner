@@ -91,7 +91,7 @@ class Recipe(object):
         if 'components' not in parser.sections():
             parser.add_section('components')
 
-        # if 'hg' in thr repository type, hook its plugin
+        # if 'hg' in the repository type, hook its plugin
         if repos_type == 'hg':
             parser.set('components', 'tracext.hg.*', 'enabled')
 
