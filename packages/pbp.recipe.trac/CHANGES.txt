@@ -1,23 +1,30 @@
 0.2.4.dev (unreleased)
 ======================
 
-- Force upgrade of informations used during initialization: this is necessary to keep these parameters fresh if the Trac project structure already exists. [kdeldycke]
+- Force upgrade of informations used during initialization: this is necessary
+  to keep these parameters fresh if the Trac project structure already exists.
+  [kdeldycke]
 
-- Get the latest Trac 0.11.x but exclude the 0.12.x branch. [kdeldycke]
+- Get the latest Trac 0.11.x but exclude the 0.12.x branch.
+  [kdeldycke]
 
-- Document all supported options. [kdeldycke]
+- Document all supported options.
+  [kdeldycke]
 
-- Add new options: project-description and footer-message [kdeldycke].
+- Add new options: project-description and footer-message.
+  [kdeldycke]
 
 
 0.2.3 (2010-04-24)
 ==================
 
-- Fixed plugins svn paths [tarek]
+- Fixed plugins svn paths.
+  [tarek]
 
 
 0.1.0 (2008-06-16)
 ==================
 
-- Created recipe with ZopeSkel [Tarek Ziade].
+- Created recipe with ZopeSkel.
+  [tarek]
 
