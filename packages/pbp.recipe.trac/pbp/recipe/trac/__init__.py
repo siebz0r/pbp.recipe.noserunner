@@ -41,7 +41,6 @@ class Recipe(object):
         # now generating the trac instance, if required
         location = options['location']
         project_name = options.get('project-name', 'My project')
-        project_name = '"%s"' % project_name
         project_url = options.get('project-url', 'http://example.com')
         db = 'sqlite:%s' % join('db', 'trac.db')
         repos_type = options['repos-type']
