@@ -62,3 +62,16 @@ With a trac.ini file. Let's check its content::
     >>> parser.get('navadd', 'buildbot.url')
     'http://buildbot.example.com'
 
+
+Support
+=======
+
+- Documentation: http://pypi.python.org/pypi/pbp.recipe.trac
+
+- Bug tracker: http://bitbucket.org/tarek/atomisator/issues
+
+- Source: http://bitbucket.org/tarek/atomisator/src/tip/packages/pbp.recipe.trac/
+
+- pbp.recipe.trac is a sub-project of atomistor: http://atomisator.ziade.org
+
+
