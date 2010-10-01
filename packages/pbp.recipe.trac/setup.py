@@ -13,15 +13,15 @@ version = '0.2.4.dev'
 long_description = (
     read('README.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' +
-    read('CHANGES.txt')
-    + '\n' +
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
     read('pbp', 'recipe', 'trac', 'README.txt')
+    + '\n' +
+    'Change history\n'
+    '**************\n'
+    + '\n' +
+    read('CHANGES.txt')
     + '\n' +
     'Contributors\n'
     '************\n'
