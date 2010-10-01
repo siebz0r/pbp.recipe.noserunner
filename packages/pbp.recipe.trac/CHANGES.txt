@@ -14,6 +14,9 @@
 - Add new options: project-description and footer-message.
   [kdeldycke]
 
+- Reuse the description as alternative text to the logo.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

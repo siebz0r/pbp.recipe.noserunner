@@ -9,7 +9,8 @@ The recipe supports the following options:
 
 ``project-description``
 
-  Description of the project.
+  Description of the project. This description will also be used as the
+  alternative text to the header logo.
 
 ``project-url``
 
