@@ -18,15 +18,15 @@ long_description = (
     + '\n' +
     read('pbp', 'recipe', 'trac', 'README.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' +
-    read('CHANGES.txt')
-    + '\n' +
     'Contributors\n'
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
+    + '\n' +
+    'Change history\n'
+    '**************\n'
+    + '\n' +
+    read('CHANGES.txt')
     + '\n' +
     'Download\n'
     '********\n'
