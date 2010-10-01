@@ -95,6 +95,11 @@ class Recipe(object):
         parser.set('trac', 'repository_dir', repos_path)
         parser.set('trac', 'repository_type', repos_type)
 
+        # Set project description
+        project_descr = options.get('project-description', None)
+        if project_descr:
+            parser.set('project', 'descr', project_descr)
+
         # if 'hg' in the repository type, hook its plugin
         if repos_type == 'hg':
             parser.set('components', 'tracext.hg.*', 'enabled')

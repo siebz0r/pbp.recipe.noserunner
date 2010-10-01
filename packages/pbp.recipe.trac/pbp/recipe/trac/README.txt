@@ -7,6 +7,10 @@ The recipe supports the following options:
 
   Default value: ``My project``.
 
+``project-description``
+
+  Description of the project.
+
 ``project-url``
 
   This URL will be used as the link on the header logo. Default value:
