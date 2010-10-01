@@ -7,6 +7,8 @@
 
 - Document all supported options. [kdeldycke]
 
+- Add new options: project-description and footer-message [kdeldycke].
+
 
 0.2.3 (2010-04-24)
 ==================
