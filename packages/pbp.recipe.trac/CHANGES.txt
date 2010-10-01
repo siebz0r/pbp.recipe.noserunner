@@ -3,6 +3,8 @@
 
 - Force upgrade of informations used during initialization: this is necessary to keep these parameters fresh if the Trac project structure already exists. [kdeldycke]
 
+- Get the latest Trac 0.11.x but exclude the 0.12.x branch. [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
