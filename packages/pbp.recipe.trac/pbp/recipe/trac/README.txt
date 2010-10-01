@@ -9,7 +9,8 @@ The recipe supports the following options:
 
 ``project-url``
 
-  Default value: ``http://example.com``.
+  This URL will be used as the link on the header logo. Default value:
+  ``http://example.com``.
 
 ``repos-type``
 
