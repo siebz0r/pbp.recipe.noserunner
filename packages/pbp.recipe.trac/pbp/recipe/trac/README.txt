@@ -1,3 +1,51 @@
+Supported options
+=================
+
+The recipe supports the following options:
+
+``project-name``
+
+  Default value: ``My project``.
+
+``project-url``
+
+  Default value: ``http://example.com``.
+
+``repos-type``
+
+  Supported values: ``svn`` for Subversion, ``hg`` for Mercurial.
+
+``repos-path``
+
+  Location, on the local file system, of your code repository.
+
+``buildbot-url``
+
+  Add a `buildbot` item in the Trac toolbar pointing to the URL provided.
+
+``header-logo``
+
+  Location of the logo that will replace the default Trac logo at the top of
+  each page. The file will be copied by the recipe to the ``htdocs`` directory
+  of your Trac instance.
+
+``smtp-server``
+
+  Server used to send notification mails.
+
+``smtp-port``
+
+  Port to use on the mail server.
+
+``smtp-from``
+
+  The mail address from which notification mails appears to be sent from.
+
+``smtp-replyto``
+
+  The mail address that will be used if you try to reply to mail notifications.
+
+
 Example usage
 =============
 

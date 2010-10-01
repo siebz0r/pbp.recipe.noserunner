@@ -5,13 +5,17 @@
 
 - Get the latest Trac 0.11.x but exclude the 0.12.x branch. [kdeldycke]
 
+- Document all supported options. [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
 
 - Fixed plugins svn paths [tarek]
 
+
 0.1.0 (2008-06-16)
 ==================
 
 - Created recipe with ZopeSkel [Tarek Ziade].
+
