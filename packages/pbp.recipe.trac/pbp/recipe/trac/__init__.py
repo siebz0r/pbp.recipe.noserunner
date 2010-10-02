@@ -130,10 +130,12 @@ class Recipe(object):
         parser.set('header_logo', 'src', 'site/logo')
         parser.set('header_logo', 'link', project_url)
 
-        # smtp
-        for name in ('smtp-server', 'smtp-port', 'smtp-from',
-                     'smtp-replyto'):
-            value = options.get(name, None)
+        # SMTP parameters
+        for name in ('always-bcc', 'always-cc', 'default-domain', 'enabled',
+                     'from', 'from-name', 'password', 'port', 'replyto',
+                     'server', 'subject-prefix', 'user'):
+            param_name = "smtp-%s" % name
+            value = options.get(param_name, None)
             if value is None:
                 continue
             parser.set('notification', name.replace('-', '_'), value)

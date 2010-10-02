@@ -17,6 +17,9 @@
 - Reuse the description as alternative text to the logo.
   [kdeldycke]
 
+- Add support for all SMTP parameters.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
