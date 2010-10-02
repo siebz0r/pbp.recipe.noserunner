@@ -3,7 +3,7 @@ Supported options
 
 The recipe supports the following options:
 
-``project-name``
+``project-name`` (required)
 
   Default value: ``My project``.
 
@@ -17,11 +17,11 @@ The recipe supports the following options:
   This URL will be used as the link on the header logo. Default value:
   ``http://example.com``.
 
-``repos-type``
+``repos-type`` (required)
 
   Supported values: ``svn`` for Subversion, ``hg`` for Mercurial.
 
-``repos-path``
+``repos-path`` (required)
 
   Location, on the local file system, of your code repository.
 
