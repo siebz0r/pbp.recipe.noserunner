@@ -155,6 +155,14 @@ class Recipe(object):
                              ('estimatedhours.label', 'Estimated Hours')):
             parser.set('ticket-custom', field, value)
 
+        # Apply custom parameters defined by the user
+        custom_params = options.get('trac-ini-additional', None)
+        if custom_params:
+            param_list = [s.split('|') for s in [l.strip() for l in custom_params.split('\n')] if len(s) > 0]
+            for param in param_list:
+                if len(param) == 3:
+                    parser.set(param[0].strip(), param[1].strip(), param[2].strip())
+
         parser.write(open(trac_ini, 'w'))
 
         # Return files that were created by the recipe. The buildout
