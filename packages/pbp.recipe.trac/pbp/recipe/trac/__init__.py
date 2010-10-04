@@ -67,7 +67,7 @@ class Recipe(object):
                 if milestone in milestone_list:
                     trac._do_milestone_remove(milestone)
             # Remove default components
-            for comp in ('component1', 'component2')
+            for comp in ('component1', 'component2'):
                 if comp in comp_list:
                     trac._do_component_remove(comp)
 
