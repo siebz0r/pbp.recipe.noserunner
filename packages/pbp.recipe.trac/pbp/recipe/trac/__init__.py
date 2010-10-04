@@ -58,18 +58,20 @@ class Recipe(object):
         milestone_list = [m.name for m in Milestone.select(trac.env_open())]
         comp_list = [c.name for c in Component.select(trac.env_open())]
 
-        # removing crap
-        for milestone in ('milestone1', 'milestone2', 'milestone3',
-                          'milestone4'):
-            if milestone in milestone_list:
-                trac._do_milestone_remove(milestone)
+        # Remove Trac default example data
+        clean_up = options.get('remove-examples', 'True')
+        if clean_up.strip().lower() != 'false':
+            # Remove default milestones
+            for milestone in ('milestone1', 'milestone2', 'milestone3', 
+                              'milestone4'):
+                if milestone in milestone_list:
+                    trac._do_milestone_remove(milestone)
+            # Remove default components
+            for comp in ('component1', 'component2')
+                if comp in comp_list:
+                    trac._do_component_remove(comp)
 
-
-        for comp in ('component1', 'component2'):
-            if comp in comp_list:
-                trac._do_component_remove(comp)
-
-        # adding the 'future' roadmap
+        # Adding the 'future' roadmap
         if 'future' not in milestone_list:
             trac._do_milestone_add('future')
 

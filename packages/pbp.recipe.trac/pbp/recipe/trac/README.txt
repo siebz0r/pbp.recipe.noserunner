@@ -25,6 +25,12 @@ The recipe supports the following options:
 
   Location, on the local file system, of your code repository.
 
+``remove-examples``
+
+  If set to ``False``, this will not remove the default milestones and
+  components added by Trac when creating a brand new instance. Default value:
+  ``True``.
+
 ``buildbot-url``
 
   Add a `buildbot` item in the Trac toolbar pointing to the URL provided.

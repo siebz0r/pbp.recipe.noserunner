@@ -32,6 +32,10 @@
 - Bring docutils to add reStructuredText (rst) support in Trac's wiki.
   [kdeldycke]
 
+- Add an option to let the user choose if default data added by Trac should be 
+  removed or not.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
