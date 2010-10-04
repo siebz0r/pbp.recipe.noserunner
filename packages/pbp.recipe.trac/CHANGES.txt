@@ -1,5 +1,5 @@
-0.2.4.dev (unreleased)
-======================
+0.3.dev (unreleased)
+====================
 
 - Force upgrade of informations used during initialization: this is necessary
   to keep these parameters fresh if the Trac project structure already exists.
