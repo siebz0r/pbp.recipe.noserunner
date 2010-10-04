@@ -29,6 +29,9 @@
 - Use pytz to get nice and friendly timezones.
   [kdeldycke]
 
+- Bring docutils to add reStructuredText (rst) support in Trac's wiki.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
