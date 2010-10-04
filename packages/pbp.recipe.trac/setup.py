@@ -65,6 +65,7 @@ setup(name='pbp.recipe.trac',
                         'TracMercurial',
                         'pysqlite',
                         'Pygments',
+                        'pytz',
                         'NavAdd',
                         'timingandestimationplugin'
                         # -*- Extra requirements: -*-

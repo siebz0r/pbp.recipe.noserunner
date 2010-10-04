@@ -26,6 +26,9 @@
 - Auto-install Pygments to benefit syntax highlighting.
   [kdeldycke]
 
+- Use pytz to get nice and friendly timezones.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
