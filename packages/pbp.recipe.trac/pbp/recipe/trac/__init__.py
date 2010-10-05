@@ -28,6 +28,10 @@ class Recipe(object):
 
     def install(self):
         """Installer"""
+
+        # Utility function to interpreted boolean option value
+        getBool = lambda s: s.strip().lower() == 'true'
+
         options = self.options
         # adding trac-admin and tracd into bin
         entry_points = [('trac-admin', 'trac.admin.console', 'run'),
@@ -55,12 +59,19 @@ class Recipe(object):
         if not trac.env_check():
             trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
 
-        milestone_list = [m.name for m in Milestone.select(trac.env_open())]
-        comp_list = [c.name for c in Component.select(trac.env_open())]
+        # Upgrade Trac instance to keep it fresh
+        env = trac.env_open()
+        needs_upgrade = env.needs_upgrade()
+        force_upgrade = getBool(options.get('force-instance-upgrade', 'False'))
+        if needs_upgrade or force_upgrade:
+            env.upgrade(backup=True)
+
+        milestone_list = [m.name for m in Milestone.select(env)]
+        comp_list = [c.name for c in Component.select(env)]
 
         # Remove Trac default example data
-        clean_up = options.get('remove-examples', 'True')
-        if clean_up.strip().lower() != 'false':
+        clean_up = getBool(options.get('remove-examples', 'True'))
+        if clean_up:
             # Remove default milestones
             for milestone in ('milestone1', 'milestone2', 'milestone3', 
                               'milestone4'):

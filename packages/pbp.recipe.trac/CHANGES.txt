@@ -36,6 +36,10 @@
   removed or not.
   [kdeldycke]
 
+- Auto-upgrade Trac instance against latest scheme. Add an option to let user
+  force the upgrade.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

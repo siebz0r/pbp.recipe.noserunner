@@ -25,6 +25,12 @@ The recipe supports the following options:
 
   Location, on the local file system, of your code repository.
 
+``force-instance-upgrade``
+
+  If set to ``True``, this will trigger the internal Trac upgrade process on
+  the current instance, even if Trac don't think it's needed. Default value:
+  ``False``.
+
 ``remove-examples``
 
   If set to ``False``, this will not remove the default milestones and
