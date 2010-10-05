@@ -40,6 +40,10 @@
   force the upgrade.
   [kdeldycke]
 
+- Add an option to force upgrade of Wiki pages that are part of the
+  self-documentation embedded in the Trac instance.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

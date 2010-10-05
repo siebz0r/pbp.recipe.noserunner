@@ -66,6 +66,15 @@ class Recipe(object):
         if needs_upgrade or force_upgrade:
             env.upgrade(backup=True)
 
+        # Upgrade default wiki pages embedded in Trac instance
+        wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
+        if wiki_upgrade:
+            # Got the command below from trac/admin/console.py
+            trac._do_wiki_load( pkg_resources.resource_filename('trac.wiki', 'default-pages')
+                              , ignore=['WikiStart', 'checkwiki.py']
+                              , create_only=['InterMapTxt']
+                              )
+
         milestone_list = [m.name for m in Milestone.select(env)]
         comp_list = [c.name for c in Component.select(env)]
 

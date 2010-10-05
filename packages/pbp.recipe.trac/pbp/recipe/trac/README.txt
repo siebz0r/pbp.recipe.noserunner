@@ -31,6 +31,13 @@ The recipe supports the following options:
   the current instance, even if Trac don't think it's needed. Default value:
   ``False``.
 
+``wiki-doc-upgrade``
+
+  If set to ``True``, this will upgrade the default wiki pages embedded in the
+  current Trac instance. As said in Trac 0.11 documentation, this will not
+  remove deprecated wiki pages that were previously part of a Trac release.
+  Default value: ``False``.
+
 ``remove-examples``
 
   If set to ``False``, this will not remove the default milestones and
