@@ -30,7 +30,7 @@ class Recipe(object):
         """Installer"""
 
         # Utility function to interpreted boolean option value
-        getBool = lambda s: s.strip().lower() == 'true'
+        getBool = lambda s: s.strip().lower() in ['true', 'yes']
 
         options = self.options
         # adding trac-admin and tracd into bin
