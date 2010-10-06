@@ -50,6 +50,17 @@ The recipe supports the following options:
   components added by Trac when creating a brand new instance. Default value:
   ``True``.
 
+``milestones``
+
+  List of all custom milestones to create. You can add several custom
+  parameters, one per line. Example::
+
+    milestones = 0.1
+                 0.2
+                 1.0
+                 Future
+                 Undecided
+
 ``components``
 
   List of components for which we can attached Trac tickets to. The syntax must

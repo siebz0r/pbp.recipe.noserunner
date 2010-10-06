@@ -88,11 +88,14 @@ class Recipe(object):
                 if comp in comp_list:
                     trac._do_component_remove(comp)
 
-        # Add the 'future' roadmap
-        if 'future' not in milestone_list:
-            trac._do_milestone_add('future')
+        # Add custom milestones
+        milestones = cleanMultiParams(options.get('milestones', ''))
+        for milestone in milestones:
+            milestone = milestone.strip()
+            if milestone not in milestone_list:
+                trac._do_milestone_add(milestone)
 
-        # Add components
+        # Add custom components
         components = cleanMultiParams(options.get('components', ''))
         for comp_details in components:
             comp_name = comp_details[0].strip()
