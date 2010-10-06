@@ -192,7 +192,10 @@ class Recipe(object):
         custom_params = cleanMultiParams(options.get('trac-ini-additional', ''))
         for param in custom_params:
             if len(param) == 3:
-                parser.set(param[0].strip(), param[1].strip(), param[2].strip())
+                section = param[0].strip()
+                if section not in parser.sections():
+                    parser.add_section(section)
+                parser.set(section, param[1].strip(), param[2].strip())
 
         # Write the final trac.ini
         parser.write(open(trac_ini, 'w'))
