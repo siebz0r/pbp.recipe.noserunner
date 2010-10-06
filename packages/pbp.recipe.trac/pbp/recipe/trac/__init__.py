@@ -157,10 +157,12 @@ class Recipe(object):
                      'from', 'from-name', 'password', 'port', 'replyto',
                      'server', 'subject-prefix', 'user'):
             param_name = "smtp-%s" % name
-            value = options.get(param_name, None)
-            if value is None:
-                continue
-            parser.set('notification', name.replace('-', '_'), value)
+            default_value = None
+            if param_name == "smtp-from-name":
+                default_value = project_name 
+            value = options.get(param_name, default_value)
+            if value is not None:
+                parser.set('notification', name.replace('-', '_'), value)
 
         # setting up time tracking
         if 'ticket-custom' not in parser.sections():

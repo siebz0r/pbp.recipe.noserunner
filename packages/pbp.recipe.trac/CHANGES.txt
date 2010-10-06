@@ -44,6 +44,9 @@
   self-documentation embedded in the Trac instance.
   [kdeldycke]
 
+- Set default value of the smtp-from-name parameter.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

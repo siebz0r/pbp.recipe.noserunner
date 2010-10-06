@@ -5,7 +5,8 @@ The recipe supports the following options:
 
 ``project-name`` (required)
 
-  Default value: ``My project``.
+  Name of the Trac instance. This name will also be used as the default value
+  for the ``smtp-from-name`` option. Default value: ``My project``.
 
 ``project-description``
 
@@ -84,7 +85,8 @@ The recipe supports the following options:
 
 ``smtp-from-name``
 
-  Sender name to use in notification emails.
+  Sender name to use in notification emails. Default value: ``project-name``
+  option value.
 
 ``smtp-password``
 
