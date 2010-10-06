@@ -47,6 +47,11 @@ class Recipe(object):
                 options['executable'], options['bin-directory']
                 )
 
+
+        ####################
+        # Init Trac instance
+        ####################
+
         # Generate the trac instance, if required
         location = options['location']
         project_name = options.get('project-name', 'My project')
@@ -60,27 +65,6 @@ class Recipe(object):
         trac = TracAdmin(location)
         if not trac.env_check():
             trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
-
-        # Upgrade Trac instance to keep it fresh
-        env = trac.env_open()
-        needs_upgrade = env.needs_upgrade()
-        force_upgrade = getBool(options.get('force-instance-upgrade', 'False'))
-        if needs_upgrade or force_upgrade:
-            env.upgrade(backup=True)
-
-        # Force repository resync
-        repo_resync = getBool(options.get('force-repos-resync', 'False'))
-        if repo_resync:
-            trac.do_resync('')
-
-        # Upgrade default wiki pages embedded in Trac instance
-        wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
-        if wiki_upgrade:
-            # Got the command below from trac/admin/console.py
-            trac._do_wiki_load( pkg_resources.resource_filename('trac.wiki', 'default-pages')
-                              , ignore=['WikiStart', 'checkwiki.py']
-                              , create_only=['InterMapTxt']
-                              )
 
         # Remove Trac default example data
         milestone_list = [m.name for m in Milestone.select(env)]
@@ -110,6 +94,11 @@ class Recipe(object):
             if comp in comp_list:
                 continue
             trac._do_component_add(comp, owner)
+
+
+        #######################
+        # Generate the trac.ini
+        #######################
 
         # Read the trac.ini config file
         trac_ini = join(location, 'conf', 'trac.ini')
@@ -154,6 +143,11 @@ class Recipe(object):
             if value is not None:
                 parser.set('notification', name.replace('-', '_'), value)
 
+
+        ###############
+        # Plugins setup
+        ###############
+
         # If 'hg' in the repository type, hook its plugin
         if repos_type == 'hg':
             parser.set('components', 'tracext.hg.*', 'enabled')
@@ -184,6 +178,11 @@ class Recipe(object):
                              ('estimatedhours.label', 'Estimated Hours')):
             parser.set('ticket-custom', field, value)
 
+
+        #######################
+        # Final upgrades & sync
+        #######################
+
         # Apply custom parameters defined by the user
         custom_params = options.get('trac-ini-additional', None)
         if custom_params:
@@ -194,6 +193,27 @@ class Recipe(object):
 
         # Write the final trac.ini
         parser.write(open(trac_ini, 'w'))
+
+        # Upgrade Trac instance to keep it fresh
+        env = trac.env_open()
+        needs_upgrade = env.needs_upgrade()
+        force_upgrade = getBool(options.get('force-instance-upgrade', 'False'))
+        if needs_upgrade or force_upgrade:
+            env.upgrade(backup=True)
+
+        # Force repository resync
+        repo_resync = getBool(options.get('force-repos-resync', 'False'))
+        if repo_resync:
+            trac.do_resync('')
+
+        # Upgrade default wiki pages embedded in Trac instance
+        wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
+        if wiki_upgrade:
+            # Got the command below from trac/admin/console.py
+            trac._do_wiki_load( pkg_resources.resource_filename('trac.wiki', 'default-pages')
+                              , ignore=['WikiStart', 'checkwiki.py']
+                              , create_only=['InterMapTxt']
+                              )
 
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
