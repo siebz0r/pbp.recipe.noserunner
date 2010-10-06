@@ -62,14 +62,15 @@ setup(name='pbp.recipe.trac',
                         'zc.buildout',
                         'zc.recipe.egg',
                         'Trac < 0.12.dev',
-                        'TracMercurial',
+                        # Trac extra requirements
                         'pysqlite',
                         'docutils',
                         'Pygments',
                         'pytz',
+                        # Trac extra plugins
                         'NavAdd',
-                        'timingandestimationplugin'
-                        # -*- Extra requirements: -*-
+                        'timingandestimationplugin',
+                        'TracMercurial'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
