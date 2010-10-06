@@ -164,7 +164,9 @@ class Recipe(object):
             parser.set('navadd', 'buildbot.url', buildbot_url)
 
         # Enable and setup time tracking
-        parser.set('components', 'timingandestimationplugin.*', 'enabled')
+        time_tracking = options.get('time-tracking-plugin', 'disabled').strip().lower() == 'enabled'
+        if time_tracking:
+            parser.set('components', 'timingandestimationplugin.*', 'enabled')
 
 
         #######################

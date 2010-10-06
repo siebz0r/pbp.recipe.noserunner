@@ -119,6 +119,12 @@ The recipe supports the following options:
 
   Username for SMTP server.
 
+``time-tracking-plugin``
+
+  If set to ``enabled``, will activate the `Estimation and Time Tracking plugin
+  <http://trac-hacks.org/wiki/TimingAndEstimationPlugin>`_. Default value:
+  ``disabled``.
+
 ``trac-ini-additional``
 
   In case a Trac parameter is not natively supported by this recipe, you can

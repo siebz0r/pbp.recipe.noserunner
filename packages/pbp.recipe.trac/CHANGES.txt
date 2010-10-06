@@ -51,6 +51,9 @@
   repository.
   [kdeldycke]
 
+- Add an option to enable the time management plugin.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
