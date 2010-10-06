@@ -119,9 +119,9 @@ The recipe supports the following options:
   ``section|parameter|value``. You can add several custom parameters, one per
   line. Example::
 
-    trac-ini-additional = attachment|max_size|52428800
-                          notification|always_notify_owner|true
-                          logging|log_level|DEBUG
+    trac-ini-additional = attachment   | max_size            | 52428800
+                          notification | always_notify_owner | true
+                          logging      | log_level           | DEBUG
 
   To know more about all the ``trac.ini`` parameters, see:
   http://trac.edgewall.org/wiki/0.11/TracIni
