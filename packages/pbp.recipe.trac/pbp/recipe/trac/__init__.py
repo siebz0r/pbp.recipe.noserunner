@@ -37,6 +37,9 @@ class Recipe(object):
         # Utility function to interpreted boolean option value
         getBool = lambda s: s.strip().lower() in ['true', 'yes']
 
+        # Utility function to parse a multi-line/multi-value parameter
+        cleanMultiParams = lambda v: [s.split('|') for s in [l.strip() for l in v.split('\n')] if len(s) > 0]
+
         options = self.options
 
         # Add command line scripts trac-admin and tracd into bin
@@ -153,15 +156,22 @@ class Recipe(object):
             parser.set('components', 'tracext.hg.*', 'enabled')
 
         # Configure the NavAdd plugin
-        buildbot_url = options.get('buildbot-url', None)
-        if buildbot_url is not None:
+        menu_items = cleanMultiParams(options.get('additional-menu-items', ''))
+        item_list = []
+        for item in menu_items:
+            item_title = item[0].strip()
+            item_url = item[1].strip()
+            item_id = getId(item_title)
+            item_list.append((item_id, item_title, item_url))
+        if item_list > 0:
             parser.set('components', 'navadd.*', 'enabled')
             if 'navadd' not in parser.sections():
                 parser.add_section('navadd')
-            parser.set('navadd', 'add_items', 'buildbot')
-            parser.set('navadd', 'buildbot.target', 'mainnav')
-            parser.set('navadd', 'buildbot.title', 'Buildbot')
-            parser.set('navadd', 'buildbot.url', buildbot_url)
+            parser.set('navadd', 'add_items', ','.join([i[0] for i in item_list]))
+            for (uid, title, url) in item_list:
+                parser.set('navadd', '%s.target' % uid, 'mainnav')
+                parser.set('navadd', '%s.title'  % uid, title)
+                parser.set('navadd', '%s.url'    % uid, url)
 
         # Enable and setup time tracking
         time_tracking = options.get('time-tracking-plugin', 'disabled').strip().lower() == 'enabled'
@@ -174,12 +184,10 @@ class Recipe(object):
         #######################
 
         # Apply custom parameters defined by the user
-        custom_params = options.get('trac-ini-additional', None)
-        if custom_params:
-            param_list = [s.split('|') for s in [l.strip() for l in custom_params.split('\n')] if len(s) > 0]
-            for param in param_list:
-                if len(param) == 3:
-                    parser.set(param[0].strip(), param[1].strip(), param[2].strip())
+        custom_params = cleanMultiParams(options.get('trac-ini-additional', ''))
+        for param in custom_params:
+            if len(param) == 3:
+                parser.set(param[0].strip(), param[1].strip(), param[2].strip())
 
         # Write the final trac.ini
         parser.write(open(trac_ini, 'w'))

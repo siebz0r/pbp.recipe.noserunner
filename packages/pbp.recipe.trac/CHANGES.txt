@@ -54,6 +54,10 @@
 - Add an option to enable the time management plugin.
   [kdeldycke]
 
+- Replace buildbot-url parameter by a more generic additional-menu-items
+  option.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

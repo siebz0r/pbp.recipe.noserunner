@@ -50,10 +50,6 @@ The recipe supports the following options:
   components added by Trac when creating a brand new instance. Default value:
   ``True``.
 
-``buildbot-url``
-
-  Add a `buildbot` item in the Trac toolbar pointing to the URL provided.
-
 ``header-logo``
 
   Location of the logo that will replace the default Trac logo at the top of
@@ -119,6 +115,16 @@ The recipe supports the following options:
 
   Username for SMTP server.
 
+``additional-menu-items``
+
+  This will use the `NavAdd plugin <http://trac-hacks.org/wiki/NavAddPlugin>`_
+  to add new menu entries in Trac's top navigation toolbar. The syntax must
+  respect the following scheme: ``Title | Url``. You can specify multiple menu
+  entries as shown in the following example::
+
+    additional-menu-items = Buildbot      | http://localhost:9080/
+                            Demo instance | http://trac.edgewall.org/demo-0.13
+
 ``time-tracking-plugin``
 
   If set to ``enabled``, will activate the `Estimation and Time Tracking plugin
@@ -161,7 +167,6 @@ We'll start by creating a buildout that uses the recipe::
     ... project-url = http://example.com
     ... repos-type = hg
     ... repos-path = sqlite:${buildout:directory}/var/svn
-    ... buildbot-url = http://buildbot.example.com
     ... header-logo = ${buildout:directory}/my_logo
     ... smtp-server = localhost
     ... smtp-port = 25
@@ -204,9 +209,6 @@ With a trac.ini file. Let's check its content::
     ''
     >>> parser.get('components', 'tracext.hg.*')
     'enabled'
-
-    >>> parser.get('navadd', 'buildbot.url')
-    'http://buildbot.example.com'
 
 
 Support
