@@ -165,18 +165,6 @@ class Recipe(object):
 
         # Enable and setup time tracking
         parser.set('components', 'timingandestimationplugin.*', 'enabled')
-        if 'ticket-custom' not in parser.sections():
-            parser.add_section('ticket-custom')
-        for field, value in (('totalhours', 'text'),
-                             ('totalhours.value', '0'),
-                             ('totalhours.label', 'Total Hours'),
-                             ('hours', 'text'),
-                             ('hours.value', '0'),
-                             ('hours.label', 'Hours to Add'),
-                             ('estimatedhours', 'text'),
-                             ('estimatedhours.value', '0'),
-                             ('estimatedhours.label', 'Estimated Hours')):
-            parser.set('ticket-custom', field, value)
 
 
         #######################
