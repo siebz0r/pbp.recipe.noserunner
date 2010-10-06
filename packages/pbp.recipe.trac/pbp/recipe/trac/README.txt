@@ -50,6 +50,14 @@ The recipe supports the following options:
   components added by Trac when creating a brand new instance. Default value:
   ``True``.
 
+``components``
+
+  List of components for which we can attached Trac tickets to. The syntax must
+  follow the ``Component name | Component owner`` scheme. Example::
+
+    components = The application itself | kevin
+                 Build tools            | cecile
+
 ``header-logo``
 
   Location of the logo that will replace the default Trac logo at the top of
@@ -135,8 +143,8 @@ The recipe supports the following options:
 
   In case a Trac parameter is not natively supported by this recipe, you can
   use this to add your own. The syntax must respect the following scheme:
-  ``section|parameter|value``. You can add several custom parameters, one per
-  line. Example::
+  ``Section | Parameter | Value``. You can add several custom parameters, one
+  per line. Example::
 
     trac-ini-additional = attachment   | max_size            | 52428800
                           notification | always_notify_owner | true

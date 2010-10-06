@@ -93,14 +93,12 @@ class Recipe(object):
             trac._do_milestone_add('future')
 
         # Add components
-        components = options.get('components', '')
-        components = [(comp.split()[0].strip(), comp.split()[1].strip(),)
-                      for comp in components.split('\n')
-                      if comp.strip() != '' and len(comp.split()) > 1]
-        for comp, owner in components:
-            if comp in comp_list:
-                continue
-            trac._do_component_add(comp, owner)
+        components = cleanMultiParams(options.get('components', ''))
+        for comp_details in components:
+            comp_name = comp_details[0].strip()
+            comp_owner = comp_details[1].strip()
+            if comp_name not in comp_list:
+                trac._do_component_add(comp, owner)
 
 
         #######################
