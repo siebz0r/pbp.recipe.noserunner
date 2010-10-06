@@ -40,6 +40,9 @@ class Recipe(object):
         # Utility function to parse a multi-line/multi-value parameter
         cleanMultiParams = lambda v: [s.split('|') for s in [l.strip() for l in v.split('\n')] if len(s) > 0]
 
+        # Utility function to transform any string to an ID
+        getId = lambda s: ''.join([c for c in s if c.isalnum()]).lower()
+
         options = self.options
 
         # Add command line scripts trac-admin and tracd into bin
