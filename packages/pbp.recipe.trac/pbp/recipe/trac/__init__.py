@@ -73,6 +73,7 @@ class Recipe(object):
             trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
 
         # Remove Trac default example data
+        env = trac.env_open()
         milestone_list = [m.name for m in Milestone.select(env)]
         comp_list = [c.name for c in Component.select(env)]
         clean_up = getBool(options.get('remove-examples', 'True'))
@@ -196,7 +197,6 @@ class Recipe(object):
         parser.write(open(trac_ini, 'w'))
 
         # Upgrade Trac instance to keep it fresh
-        env = trac.env_open()
         needs_upgrade = env.needs_upgrade()
         force_upgrade = getBool(options.get('force-instance-upgrade', 'False'))
         if needs_upgrade or force_upgrade:
