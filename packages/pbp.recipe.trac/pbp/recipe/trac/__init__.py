@@ -69,7 +69,7 @@ class Recipe(object):
         # Force repository resync
         repo_resync = getBool(options.get('force-repos-resync', 'False'))
         if repo_resync:
-            trac.do_resync()
+            trac.do_resync('')
 
         # Upgrade default wiki pages embedded in Trac instance
         wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
