@@ -47,6 +47,10 @@
 - Set default value of the smtp-from-name parameter.
   [kdeldycke]
 
+- Add an option to force resynchronization of Trac against the source code
+  repository.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

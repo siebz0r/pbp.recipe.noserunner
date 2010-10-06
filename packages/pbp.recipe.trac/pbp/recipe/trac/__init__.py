@@ -66,6 +66,11 @@ class Recipe(object):
         if needs_upgrade or force_upgrade:
             env.upgrade(backup=True)
 
+        # Force repository resync
+        repo_resync = getBool(options.get('force-repos-resync', 'False'))
+        if repo_resync:
+            trac.do_resync()
+
         # Upgrade default wiki pages embedded in Trac instance
         wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
         if wiki_upgrade:

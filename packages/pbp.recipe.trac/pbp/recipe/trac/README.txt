@@ -32,6 +32,11 @@ The recipe supports the following options:
   the current instance, even if Trac don't think it's needed. Default value:
   ``False``.
 
+``force-repos-resync``
+
+  If set to ``True``, this will force the resynchronization of Trac against the
+  source code repository. Default value: ``False``.
+
 ``wiki-doc-upgrade``
 
   If set to ``True``, this will upgrade the default wiki pages embedded in the
