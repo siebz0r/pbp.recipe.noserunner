@@ -85,9 +85,8 @@ The recipe supports the following options:
                   anonymous     | STATS_VIEW
                   authenticated | REPORT_MODIFY MILESTONE_MODIFY
 
-  A `list of permissssions
-  <http://trac.edgewall.org/wiki/0.11/TracPermissions>`_ can be found on Trac's
-  wiki.
+  A `list of permissions <http://trac.edgewall.org/wiki/0.11/TracPermissions>`_
+  can be found on Trac's wiki.
 
 ``header-logo``
 
