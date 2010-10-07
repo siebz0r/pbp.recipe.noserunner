@@ -103,6 +103,15 @@ class Recipe(object):
             if comp_name not in comp_list:
                 trac._do_component_add(comp, owner)
 
+        # Set custom permissions
+        custom_perms = cleanMultiParams(options.get('permissions', ''))
+        for cperm in custom_perms:
+            if len(cperm) == 2:
+                user = cperm[0].strip()
+                perm_list = [p.strip() for p in cperm[1].split(' ') if len(p.strip())]
+                for perm in perm_list:
+                    trac._do_permission_add(user, perm)
+
 
         #######################
         # Generate the trac.ini

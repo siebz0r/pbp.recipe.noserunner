@@ -75,6 +75,15 @@ The recipe supports the following options:
     components = The application itself | kevin
                  Build tools            | cecile
 
+``permissions``
+
+  List of custom permissions to set. Both users and groups are supported. Example::
+
+    permissions = cecile        | REPORT_ADMIN
+                  kevin         | PERMISSION_ADMIN MILESTONE_ADMIN REPORT_ADMIN
+                  anonymous     | STATS_VIEW
+                  authenticated | REPORT_MODIFY MILESTONE_MODIFY
+
 ``header-logo``
 
   Location of the logo that will replace the default Trac logo at the top of

@@ -67,6 +67,9 @@
 - Add support for the Subversion location plugin.
   [kdeldycke]
 
+- Add an option to set custom permissions.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================
