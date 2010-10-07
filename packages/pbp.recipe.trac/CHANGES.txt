@@ -64,6 +64,9 @@
 - Add support for TracStats plugin.
   [kdeldycke]
 
+- Add support for the Subversion location plugin.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

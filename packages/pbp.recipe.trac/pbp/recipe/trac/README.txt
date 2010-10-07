@@ -26,6 +26,12 @@ The recipe supports the following options:
 
   Location, on the local file system, of your code repository.
 
+``repos-url``
+
+  If set, this will enable and configure the `Subversion Location plugin
+  <http://trac-hacks.org/wiki/SubversionLocationPlugin>`_. This only works for
+  Subversion repositories.
+
 ``force-instance-upgrade``
 
   If set to ``True``, this will trigger the internal Trac upgrade process on

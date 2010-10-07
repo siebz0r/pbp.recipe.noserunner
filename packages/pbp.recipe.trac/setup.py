@@ -68,6 +68,7 @@ setup(name='pbp.recipe.trac',
                         'Pygments',
                         'pytz',
                         # Trac extra plugins
+                        'TracSubversionLocation',
                         'NavAdd',
                         'timingandestimationplugin',
                         'TracMercurial',
