@@ -150,6 +150,11 @@ The recipe supports the following options:
   <http://trac-hacks.org/wiki/TimingAndEstimationPlugin>`_. Default value:
   ``disabled``.
 
+``stats-plugin``
+
+  If set to ``enabled``, will activate the `TracStats plugin
+  <http://trac-hacks.org/wiki/TracStatsPlugin>`_. Default value: ``disabled``.
+
 ``trac-ini-additional``
 
   In case a Trac parameter is not natively supported by this recipe, you can

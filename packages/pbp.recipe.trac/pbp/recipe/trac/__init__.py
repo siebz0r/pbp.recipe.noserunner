@@ -183,6 +183,11 @@ class Recipe(object):
         if time_tracking:
             parser.set('components', 'timingandestimationplugin.*', 'enabled')
 
+        # Enable and setup the stat plugin
+        stats = options.get('stats-plugin', 'disabled').strip().lower() == 'enabled'
+        if stats:
+            parser.set('components', 'tracstats.*', 'enabled')
+
 
         #######################
         # Final upgrades & sync

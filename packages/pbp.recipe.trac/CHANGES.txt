@@ -61,6 +61,9 @@
 - Allow the creation of multiple custom milestones.
   [kdeldycke]
 
+- Add support for TracStats plugin.
+  [kdeldycke]
+
 
 0.2.3 (2010-04-24)
 ==================

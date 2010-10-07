@@ -70,7 +70,8 @@ setup(name='pbp.recipe.trac',
                         # Trac extra plugins
                         'NavAdd',
                         'timingandestimationplugin',
-                        'TracMercurial'
+                        'TracMercurial',
+                        'TracStats'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
@@ -78,6 +79,7 @@ setup(name='pbp.recipe.trac',
       entry_points=entry_points,
       dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9#egg=NavAdd',
                         'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11#egg=timingandestimationplugin',
-                        'http://svn.edgewall.org/repos/trac/plugins/0.11/mercurial-plugin#egg=TracMercurial']
+                        'http://svn.edgewall.org/repos/trac/plugins/0.11/mercurial-plugin#egg=TracMercurial',
+                        'http://github.com/mrjbq7/tracstats/tarball/master#egg=TracStats']
       )
 
