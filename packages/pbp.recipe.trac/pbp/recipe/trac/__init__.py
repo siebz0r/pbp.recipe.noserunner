@@ -14,6 +14,7 @@ import zc.recipe.egg
 
 from trac.admin.console import TracAdmin
 from trac.ticket.model import *
+from trac.perm import PermissionSystem
 
 
 
@@ -105,12 +106,15 @@ class Recipe(object):
 
         # Set custom permissions
         custom_perms = cleanMultiParams(options.get('permissions', ''))
+        perm_sys = PermissionSystem(env)
         for cperm in custom_perms:
             if len(cperm) == 2:
                 user = cperm[0].strip()
+                current_user_perms = perm_sys.get_user_permissions(user)
                 perm_list = [p.strip() for p in cperm[1].split(' ') if len(p.strip())]
                 for perm in perm_list:
-                    trac._do_permission_add(user, perm)
+                    if perm not in current_user_perms:
+                        trac._do_permission_add(user, perm)
 
 
         #######################
