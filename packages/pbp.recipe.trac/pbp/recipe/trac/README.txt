@@ -77,12 +77,17 @@ The recipe supports the following options:
 
 ``permissions``
 
-  List of custom permissions to set. Both users and groups are supported. Example::
+  List of custom permissions to set. Both users and groups are supported.
+  Example::
 
     permissions = cecile        | REPORT_ADMIN
                   kevin         | PERMISSION_ADMIN MILESTONE_ADMIN REPORT_ADMIN
                   anonymous     | STATS_VIEW
                   authenticated | REPORT_MODIFY MILESTONE_MODIFY
+
+  A `list of permissssions
+  <http://trac.edgewall.org/wiki/0.11/TracPermissions>`_ can be found on Trac's
+  wiki.
 
 ``header-logo``
 
