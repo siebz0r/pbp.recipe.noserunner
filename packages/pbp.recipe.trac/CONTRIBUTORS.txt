@@ -1,3 +1,4 @@
-Tarek Ziade, Author [tarek]
+- `Tarek Ziade <http://ziade.org>`_, Author [tarek]
 
-Kevin Deldycke, Contributor [kdeldycke]
+- `Kevin Deldycke <http://kevin.deldycke.com>`_, Contributor [kdeldycke]
+
