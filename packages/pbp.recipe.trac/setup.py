@@ -79,8 +79,8 @@ setup(name='pbp.recipe.trac',
       test_suite = 'pbp.recipe.trac.tests.test_docs.test_suite',
       entry_points=entry_points,
       dependency_links=['http://trac-hacks.org/svn/navaddplugin/0.9#egg=NavAdd',
-                        'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.11#egg=timingandestimationplugin',
-                        'http://svn.edgewall.org/repos/trac/plugins/0.11/mercurial-plugin#egg=TracMercurial',
+                        'http://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.12#egg=timingandestimationplugin',
+                        'http://svn.edgewall.org/repos/trac/plugins/0.12/mercurial-plugin#egg=TracMercurial',
                         'http://github.com/mrjbq7/tracstats/tarball/master#egg=TracStats']
       )
 
