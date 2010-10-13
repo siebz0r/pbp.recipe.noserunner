@@ -46,9 +46,10 @@ The recipe supports the following options:
 ``wiki-doc-upgrade``
 
   If set to ``True``, this will upgrade the default wiki pages embedded in the
-  current Trac instance. As said in Trac documentation, this will not remove
-  deprecated wiki pages that were previously part of a Trac release. Default
-  value: ``False``.
+  current Trac instance. As said in Trac documentation, this `will not remove
+  deprecated wiki pages
+  <http://trac.edgewall.org/wiki/TracUpgrade#WikiUpgrade>`_ that were previously
+  part of a Trac release. Default value: ``False``.
 
 ``remove-examples``
 
