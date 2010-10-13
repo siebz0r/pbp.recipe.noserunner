@@ -46,9 +46,9 @@ The recipe supports the following options:
 ``wiki-doc-upgrade``
 
   If set to ``True``, this will upgrade the default wiki pages embedded in the
-  current Trac instance. As said in Trac 0.11 documentation, this will not
-  remove deprecated wiki pages that were previously part of a Trac release.
-  Default value: ``False``.
+  current Trac instance. As said in Trac documentation, this will not remove
+  deprecated wiki pages that were previously part of a Trac release. Default
+  value: ``False``.
 
 ``remove-examples``
 
@@ -85,8 +85,8 @@ The recipe supports the following options:
                   anonymous     | STATS_VIEW
                   authenticated | REPORT_MODIFY MILESTONE_MODIFY
 
-  A `list of permissions <http://trac.edgewall.org/wiki/0.11/TracPermissions>`_
-  can be found on Trac's wiki.
+  A `list of permissions <http://trac.edgewall.org/wiki/TracPermissions>`_ can
+  be found on Trac's wiki.
 
 ``header-logo``
 
@@ -190,7 +190,7 @@ The recipe supports the following options:
   fix your ``trac.ini`` even if this recipe breaks it.
 
   And to get more informations on all the ``trac.ini`` parameters, see:
-  http://trac.edgewall.org/wiki/0.11/TracIni
+  http://trac.edgewall.org/wiki/TracIni
 
 
 Example usage

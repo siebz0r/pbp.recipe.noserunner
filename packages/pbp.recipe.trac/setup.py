@@ -61,7 +61,7 @@ setup(name='pbp.recipe.trac',
       install_requires=['setuptools',
                         'zc.buildout',
                         'zc.recipe.egg',
-                        'Trac < 0.12.dev',
+                        'Trac < 0.13.dev',
                         # Trac extra requirements
                         'pysqlite',
                         'docutils',
