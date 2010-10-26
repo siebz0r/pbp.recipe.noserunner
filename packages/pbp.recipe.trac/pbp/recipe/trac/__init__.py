@@ -71,7 +71,7 @@ class Recipe(object):
         trac_admin = join(options['bin-directory'], 'trac-admin')
         trac = TracAdmin(location)
         if not trac.env_check():
-            trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
+            trac.do_initenv('"%s" %s %s %s' % (project_name, db, repos_type, repos_path))
 
         # Remove Trac default example data
         env = trac.env()
