@@ -4,6 +4,9 @@
 - Let's make this release based on Trac 0.12.
   [kdeldycke]
 
+- Rework the milestones and components system to work with Trac 0.12.
+  [kdeldycke]
+
 
 0.3.0 (2010-10-08)
 ==================
