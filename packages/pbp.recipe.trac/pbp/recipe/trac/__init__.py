@@ -68,7 +68,6 @@ class Recipe(object):
         repos_path = options['repos-path']
         if not os.path.exists(location):
             os.mkdir(location)
-        trac_admin = join(options['bin-directory'], 'trac-admin')
         trac = TracAdmin(location)
         if not trac.env_check():
             trac.do_initenv('"%s" %s %s %s' % (project_name, db, repos_type, repos_path))
