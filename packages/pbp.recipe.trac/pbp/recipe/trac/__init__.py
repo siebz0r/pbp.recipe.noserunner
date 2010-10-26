@@ -113,7 +113,7 @@ class Recipe(object):
             if len(cperm) == 2:
                 user = cperm[0].strip()
                 current_user_perms = perm_sys.get_user_permissions(user)
-                perm_list = [p.strip() for p in cperm[1].split(' ') if len(p.strip())]
+                perm_list = [p.strip().upper() for p in cperm[1].split(' ') if len(p.strip())]
                 for perm in perm_list:
                     if perm not in current_user_perms:
                         perm_sys.grant_permission(user, perm)

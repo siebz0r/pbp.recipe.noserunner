@@ -87,7 +87,8 @@ The recipe supports the following options:
                   authenticated | REPORT_MODIFY MILESTONE_MODIFY
 
   A `list of permissions <http://trac.edgewall.org/wiki/TracPermissions>`_ can
-  be found on Trac's wiki.
+  be found on Trac's wiki. In respects to Trac's conventions, all permissions
+  are automatically upper-cased by the recipe.
 
 ``header-logo``
 

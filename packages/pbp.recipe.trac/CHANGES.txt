@@ -7,6 +7,9 @@
 - Rework the milestones and components system to work with Trac 0.12.
   [kdeldycke]
 
+- Always transform permissions to upper strings.
+  [kdeldycke]
+
 
 0.3.0 (2010-10-08)
 ==================
