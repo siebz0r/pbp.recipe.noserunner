@@ -71,9 +71,11 @@ The recipe supports the following options:
 ``components``
 
   List of components for which we can attached Trac tickets to. The syntax must
-  follow the ``Component name | Component owner`` scheme. Example::
+  follow the ``Component name | Component owner`` scheme, but components without
+  an owner are allowed. Example::
 
     components = The application itself | kevin
+                 Project web site
                  Build tools            | cecile
 
 ``permissions``

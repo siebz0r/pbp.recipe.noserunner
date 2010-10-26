@@ -100,13 +100,14 @@ class Recipe(object):
                 mil.insert()
 
         # Add custom components
-        for (comp_name, comp_owner) in cleanMultiParams(options.get('components', '')):
+        for comp_data in cleanMultiParams(options.get('components', '')):
             try:
                 comp = Component(env, name=comp_name)
             except ResourceNotFound:
                 comp = Component(env)
-                comp.name = comp_name
-                comp.owner = comp_owner
+                comp.name = comp_data[0]
+                if len(comp_data) == 2 and comp_data[1] not in [None, '']:
+                    comp.owner = comp_data[1]
                 comp.insert()
 
         # Set custom permissions

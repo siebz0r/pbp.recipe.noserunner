@@ -10,6 +10,10 @@
 - Always transform permissions to upper strings.
   [kdeldycke]
 
+- Allow custom components to have no owner.
+  [kdeldycke]
+
+
 
 0.3.0 (2010-10-08)
 ==================
