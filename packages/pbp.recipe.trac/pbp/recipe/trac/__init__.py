@@ -15,6 +15,7 @@ import zc.recipe.egg
 from trac.admin.console import TracAdmin
 from trac.ticket.model import *
 from trac.perm import PermissionSystem
+from trac.versioncontrol import RepositoryManager
 
 
 
@@ -241,7 +242,10 @@ class Recipe(object):
         # Force repository resync
         repo_resync = getBool(options.get('force-repos-resync', 'False'))
         if repo_resync:
-            trac.do_resync('')
+            rm = RepositoryManager(env)
+            repositories = rm.get_real_repositories()
+            for repos in sorted(repositories, key=lambda r: r.reponame):
+                repos.sync(clean=True)
 
         # Upgrade default wiki pages embedded in Trac instance
         wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
