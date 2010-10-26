@@ -74,7 +74,7 @@ class Recipe(object):
             trac.do_initenv('%s %s %s %s' % (project_name, db, repos_type, repos_path))
 
         # Remove Trac default example data
-        env = trac.env_open()
+        env = trac.env()
         milestone_list = [m.name for m in Milestone.select(env)]
         comp_list = [c.name for c in Component.select(env)]
         clean_up = getBool(options.get('remove-examples', 'True'))
