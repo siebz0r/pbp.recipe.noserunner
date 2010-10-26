@@ -39,7 +39,12 @@ class Recipe(object):
         getBool = lambda s: s.strip().lower() in ['true', 'yes']
 
         # Utility function to parse a multi-line/multi-value parameter
-        cleanMultiParams = lambda v: [s.split('|') for s in [l.strip() for l in v.split('\n')] if len(s) > 0]
+        def cleanMultiParams(v):
+            params = [s.split('|') for s in [l.strip() for l in v.split('\n')] if len(s) > 0]
+            cleaned_params = []
+            for line in params:
+                cleaned_params.append([row.strip() for row in line])
+            return cleaned_params
 
         # Utility function to transform any string to an ID
         getId = lambda s: ''.join([c for c in s if c.isalnum()]).lower()
@@ -87,7 +92,6 @@ class Recipe(object):
 
         # Add custom milestones
         for mil_name in cleanMultiParams(options.get('milestones', '')):
-            mil_name = mil_name.strip()
             try:
                 mil = Milestone(env, name=mil_name)
             except ResourceNotFound:
@@ -97,8 +101,6 @@ class Recipe(object):
 
         # Add custom components
         for (comp_name, comp_owner) in cleanMultiParams(options.get('components', '')):
-            comp_name = comp_name.strip()
-            comp_owner = comp_owner.strip()
             try:
                 comp = Component(env, name=comp_name)
             except ResourceNotFound:
@@ -111,9 +113,9 @@ class Recipe(object):
         perm_sys = PermissionSystem(env)
         for cperm in cleanMultiParams(options.get('permissions', '')):
             if len(cperm) == 2:
-                user = cperm[0].strip()
+                user = cperm[0]
                 current_user_perms = perm_sys.get_user_permissions(user)
-                perm_list = [p.strip().upper() for p in cperm[1].split(' ') if len(p.strip())]
+                perm_list = [p.upper() for p in cperm[1].split(' ') if len(p)]
                 for perm in perm_list:
                     if perm not in current_user_perms:
                         perm_sys.grant_permission(user, perm)
@@ -179,8 +181,8 @@ class Recipe(object):
         menu_items = cleanMultiParams(options.get('additional-menu-items', ''))
         item_list = []
         for item in menu_items:
-            item_title = item[0].strip()
-            item_url = item[1].strip()
+            item_title = item[0]
+            item_url = item[1]
             item_id = getId(item_title)
             item_list.append((item_id, item_title, item_url))
         if item_list > 0:
@@ -221,10 +223,10 @@ class Recipe(object):
         custom_params = cleanMultiParams(options.get('trac-ini-additional', ''))
         for param in custom_params:
             if len(param) == 3:
-                section = param[0].strip()
+                section = param[0]
                 if section not in parser.sections():
                     parser.add_section(section)
-                parser.set(section, param[1].strip(), param[2].strip())
+                parser.set(section, param[1], param[2])
 
         # Write the final trac.ini
         parser.write(open(trac_ini, 'w'))
