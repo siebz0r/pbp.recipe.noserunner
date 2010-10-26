@@ -71,9 +71,9 @@ class Recipe(object):
         trac = TracAdmin(location)
         if not trac.env_check():
             trac.do_initenv('"%s" %s %s %s' % (project_name, db, repos_type, repos_path))
+        env = trac.env
 
         # Remove Trac default example data
-        env = trac.env
         clean_up = getBool(options.get('remove-examples', 'True'))
         if clean_up:
             # Remove default milestones
