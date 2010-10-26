@@ -75,34 +75,38 @@ class Recipe(object):
 
         # Remove Trac default example data
         env = trac.env
-        milestone_list = [m.name for m in Milestone.select(env)]
-        comp_list = [c.name for c in Component.select(env)]
         clean_up = getBool(options.get('remove-examples', 'True'))
         if clean_up:
             # Remove default milestones
-            for milestone in ('milestone1', 'milestone2', 'milestone3', 
-                              'milestone4'):
-                if milestone in milestone_list:
-                    trac._do_milestone_remove(milestone)
+            for mil in Milestone.select(env):
+                if mil.name in ['milestone1', 'milestone2', 'milestone3', 'milestone4']:
+                    mil.delete()
             # Remove default components
-            for comp in ('component1', 'component2'):
-                if comp in comp_list:
-                    trac._do_component_remove(comp)
+            for comp in Component.select(env):
+                if comp.name in ['component1', 'component2']:
+                    comp.delete()
 
         # Add custom milestones
-        milestones = cleanMultiParams(options.get('milestones', ''))
-        for milestone in milestones:
-            milestone = milestone.strip()
-            if milestone not in milestone_list:
-                trac._do_milestone_add(milestone)
+        for mil_name in cleanMultiParams(options.get('milestones', '')):
+            mil_name = mil_name.strip()
+            try:
+                mil = Milestone(env, name=mil_name)
+            except ResourceNotFound:
+                mil = Milestone(env)
+                mil.name = mil_name
+                mil.insert()
 
         # Add custom components
-        components = cleanMultiParams(options.get('components', ''))
-        for comp_details in components:
-            comp_name = comp_details[0].strip()
-            comp_owner = comp_details[1].strip()
-            if comp_name not in comp_list:
-                trac._do_component_add(comp, owner)
+        for (comp_name, comp_owner) in cleanMultiParams(options.get('components', '')):
+            comp_name = comp_name.strip()
+            comp_owner = comp_owner.strip()
+            try:
+                comp = Component(env, name=comp_name)
+            except ResourceNotFound:
+                comp = Component(env)
+                comp.name = comp_name
+                comp.owner = comp_owner
+                comp.insert()
 
         # Set custom permissions
         custom_perms = cleanMultiParams(options.get('permissions', ''))
