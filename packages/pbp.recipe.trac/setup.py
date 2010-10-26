@@ -67,6 +67,7 @@ setup(name='pbp.recipe.trac',
                         'docutils',
                         'Pygments',
                         'pytz',
+                        'Babel',
                         # Trac extra plugins
                         'TracSubversionLocation',
                         'NavAdd',
