@@ -40,8 +40,8 @@ The recipe supports the following options:
 
 ``force-repos-resync``
 
-  If set to ``True``, this will force the resynchronization of Trac against the
-  source code repository. Default value: ``False``.
+  If set to ``True``, this will force the resynchronization of Trac against all
+  the repositories. Default value: ``False``.
 
 ``wiki-doc-upgrade``
 
