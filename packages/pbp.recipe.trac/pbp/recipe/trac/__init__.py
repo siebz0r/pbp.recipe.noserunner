@@ -16,6 +16,7 @@ from trac.admin.console import TracAdmin
 from trac.ticket.model import *
 from trac.perm import PermissionSystem
 from trac.versioncontrol import RepositoryManager
+from trac.wiki.admin import WikiAdmin
 
 
 
@@ -251,10 +252,9 @@ class Recipe(object):
         wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
         if wiki_upgrade:
             # Got the command below from trac/admin/console.py
-            trac._do_wiki_load( pkg_resources.resource_filename('trac.wiki', 'default-pages')
-                              , ignore=['WikiStart', 'checkwiki.py']
-                              , create_only=['InterMapTxt']
-                              )
+            pages_dir = pkg_resources.resource_filename('trac.wiki', 
+                                                        'default-pages')
+            WikiAdmin(env).load_pages(pages_dir)
 
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
