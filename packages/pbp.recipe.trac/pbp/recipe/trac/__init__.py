@@ -2,7 +2,6 @@
 """Recipe trac"""
 
 import os
-from os.path import join
 import sys
 import subprocess
 import ConfigParser
@@ -70,7 +69,7 @@ class Recipe(object):
         location = options['location']
         project_name = options.get('project-name', 'My project')
         project_url = options.get('project-url', 'http://example.com')
-        db = 'sqlite:%s' % join('db', 'trac.db')
+        db = 'sqlite:%s' % os.path.join('db', 'trac.db')
         repos_type = options['repos-type']
         repos_path = options['repos-path']
         if not os.path.exists(location):
@@ -129,7 +128,7 @@ class Recipe(object):
         #######################
 
         # Read the trac.ini config file
-        trac_ini = join(location, 'conf', 'trac.ini')
+        trac_ini = os.path.join(location, 'conf', 'trac.ini')
         parser = ConfigParser.ConfigParser()
         parser.read([trac_ini])
 
@@ -152,7 +151,7 @@ class Recipe(object):
         header_logo = options.get('header-logo', '')
         header_logo = os.path.realpath(header_logo)
         if os.path.exists(header_logo):
-            shutil.copyfile(header_logo, join(location, 'htdocs', 'logo'))
+            shutil.copyfile(header_logo, os.path.join(location, 'htdocs', 'logo'))
         parser.set('header_logo', 'src', 'site/logo')
         parser.set('header_logo', 'link', project_url)
 
