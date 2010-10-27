@@ -26,6 +26,10 @@
 - Add an option to set the default repository.
   [kdeldycke]
 
+- Apply custom permissions at the end of the instance creation to let a chance
+  to plugins to register their custom permissions.
+  [kdeldycke]
+
 
 0.3.0 (2010-10-08)
 ==================

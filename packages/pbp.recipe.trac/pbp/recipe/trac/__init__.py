@@ -109,17 +109,6 @@ class Recipe(object):
                     comp.owner = comp_data[1]
                 comp.insert()
 
-        # Set custom permissions
-        perm_sys = PermissionSystem(env)
-        for cperm in cleanMultiParams(options.get('permissions', '')):
-            if len(cperm) == 2:
-                user = cperm[0]
-                current_user_perms = perm_sys.get_user_permissions(user)
-                perm_list = [p.upper() for p in cperm[1].split(' ') if len(p)]
-                for perm in perm_list:
-                    if perm not in current_user_perms:
-                        perm_sys.grant_permission(user, perm)
-
 
         #######################
         # Generate the trac.ini
@@ -241,6 +230,22 @@ class Recipe(object):
 
         # Write the final trac.ini
         parser.write(open(trac_ini, 'w'))
+
+        # Reload the environment
+        env.shutdown()
+        trac = TracAdmin(location)
+        env = trac.env
+
+        # Set custom permissions
+        perm_sys = PermissionSystem(env)
+        for cperm in cleanMultiParams(options.get('permissions', '')):
+            if len(cperm) == 2:
+                user = cperm[0]
+                current_user_perms = perm_sys.get_user_permissions(user)
+                perm_list = [p.upper() for p in cperm[1].split(' ') if len(p)]
+                for perm in perm_list:
+                    if perm not in current_user_perms:
+                        perm_sys.grant_permission(user, perm)
 
         # Upgrade Trac instance to keep it fresh
         needs_upgrade = env.needs_upgrade()
