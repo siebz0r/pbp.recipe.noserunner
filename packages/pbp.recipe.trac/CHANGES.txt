@@ -16,6 +16,9 @@
 - Let's install the Babel package which add support of i18n to Trac.
   [kdeldycke]
 
+- Add initial support for multiple repositories.
+  [kdeldycke]
+
 
 0.3.0 (2010-10-08)
 ==================

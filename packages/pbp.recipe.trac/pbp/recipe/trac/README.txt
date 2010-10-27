@@ -18,13 +18,18 @@ The recipe supports the following options:
   This URL will be used as the link on the header logo. Default value:
   ``http://example.com``.
 
-``repos-type`` (required)
+``repos`` (required)
 
-  Supported values: ``svn`` for Subversion, ``hg`` for Mercurial.
+  This parameter list all the code repositories managed by your Trac instance.
+  The syntax must respect the following scheme: ``Name | Type | Path | URL``.
+  Name must be alphanumerical lower string. Supported values for types are:
+  ``svn`` for Subversion, ``hg`` for Mercurial. Path must point to the location
+  of your code repository in the file system. The URL is not mandatory.
+  You can add several repositories, one per line. Example::
 
-``repos-path`` (required)
-
-  Location, on the local file system, of your code repository.
+    repos = repo1 | svn | /data/svn/my_reposo                        | http://my-domain.net/subversion/repo1
+            repo2 | svn | ${buildout:directory}/repos/another_reposo | svn://example.com/repo2
+            repo3 | hg  | /data/hg/reposo2                           | https://user@stuff.com/project
 
 ``repos-url``
 

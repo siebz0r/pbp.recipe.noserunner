@@ -70,13 +70,11 @@ class Recipe(object):
         project_name = options.get('project-name', 'My project')
         project_url = options.get('project-url', 'http://example.com')
         db = 'sqlite:%s' % os.path.join('db', 'trac.db')
-        repos_type = options['repos-type']
-        repos_path = options['repos-path']
         if not os.path.exists(location):
             os.mkdir(location)
         trac = TracAdmin(location)
         if not trac.env_check():
-            trac.do_initenv('"%s" %s %s %s' % (project_name, db, repos_type, repos_path))
+            trac.do_initenv('"%s" %s' % (project_name, db))
         env = trac.env
 
         # Remove Trac default example data
@@ -138,8 +136,21 @@ class Recipe(object):
 
         # Force upgrade of informations used during initialization
         parser.set('project', 'name', project_name)
-        parser.set('trac', 'repository_dir', repos_path)
-        parser.set('trac', 'repository_type', repos_type)
+
+        # Set all repositories
+        repos = cleanMultiParams(options.get('repos', None))
+        repo_types = {}.fromkeys([r[1].lower() for r in repos]).keys()
+        if 'repositories' not in parser.sections():
+            parser.add_section('repositories')
+        for repo in repos:
+            repo_name = getId(repo[0])
+            repo_type = repo[1]
+            repo_dir  = repo[2]
+            repo_url  = repo[3]
+            parser.set('repositories', '%s.type' % repo_name, repo_type)
+            parser.set('repositories', '%s.dir'  % repo_name, repo_dir)
+            if repo_url not in ['', None]:
+                parser.set('repositories', '%s.url'  % repo_name, repo_url)
 
         # Set project description
         project_descr = options.get('project-description', None)
@@ -175,8 +186,8 @@ class Recipe(object):
         # Plugins setup
         ###############
 
-        # If 'hg' in the repository type, hook its plugin
-        if repos_type == 'hg':
+        # If one repository use Mercurial, hook its plugin
+        if 'hg' in repo_types:
             parser.set('components', 'tracext.hg.*', 'enabled')
 
         # Configure the NavAdd plugin
@@ -208,7 +219,7 @@ class Recipe(object):
             parser.set('components', 'tracstats.*', 'enabled')
 
         # Enable and setup the subversion location plugin
-        if repos_type == 'svn':
+        if 'svn' in repo_types:
             repos_url = options.get('repos-url', None)
             if repos_url:
                 parser.set('components', 'subversionlocation.*', 'enabled')
