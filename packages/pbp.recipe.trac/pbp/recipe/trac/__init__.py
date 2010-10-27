@@ -218,15 +218,6 @@ class Recipe(object):
         if stats:
             parser.set('components', 'tracstats.*', 'enabled')
 
-        # Enable and setup the subversion location plugin
-        if 'svn' in repo_types:
-            repos_url = options.get('repos-url', None)
-            if repos_url:
-                parser.set('components', 'subversionlocation.*', 'enabled')
-                if 'svn' not in parser.sections():
-                    parser.add_section('svn')
-                parser.set('svn', 'repository_url', repos_url)
-
 
         #######################
         # Final upgrades & sync

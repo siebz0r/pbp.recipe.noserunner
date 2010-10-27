@@ -19,6 +19,10 @@
 - Add initial support for multiple repositories.
   [kdeldycke]
 
+- Remove the TracSubversionLocation plugin as its features are now implemented
+  by Trac itself.
+  [kdeldycke]
+
 
 0.3.0 (2010-10-08)
 ==================

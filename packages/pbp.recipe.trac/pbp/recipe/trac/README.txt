@@ -31,12 +31,6 @@ The recipe supports the following options:
             repo2 | svn | ${buildout:directory}/repos/another_reposo | svn://example.com/repo2
             repo3 | hg  | /data/hg/reposo2                           | https://user@stuff.com/project
 
-``repos-url``
-
-  If set, this will enable and configure the `Subversion Location plugin
-  <http://trac-hacks.org/wiki/SubversionLocationPlugin>`_. This only works for
-  Subversion repositories.
-
 ``force-instance-upgrade``
 
   If set to ``True``, this will trigger the internal Trac upgrade process on
