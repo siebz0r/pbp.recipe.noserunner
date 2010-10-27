@@ -139,6 +139,7 @@ class Recipe(object):
 
         # Set all repositories
         repos = cleanMultiParams(options.get('repos', None))
+        repo_names = [getId(r[0]) for r in repos]
         repo_types = {}.fromkeys([r[1].lower() for r in repos]).keys()
         if 'repositories' not in parser.sections():
             parser.add_section('repositories')
@@ -151,6 +152,12 @@ class Recipe(object):
             parser.set('repositories', '%s.dir'  % repo_name, repo_dir)
             if repo_url not in ['', None]:
                 parser.set('repositories', '%s.url'  % repo_name, repo_url)
+
+        # Set default repository
+        default_repo = getId(options.get('default-repo', None))
+        if default_repo and default_repo in repo_names:
+            parser.set('repositories', '.alias', default_repo)
+            parser.set('repositories', '.hidden', 'true')
 
         # Set project description
         project_descr = options.get('project-description', None)

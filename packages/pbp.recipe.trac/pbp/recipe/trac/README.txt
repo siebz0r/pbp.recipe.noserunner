@@ -31,6 +31,13 @@ The recipe supports the following options:
             repo2 | svn | ${buildout:directory}/repos/another_reposo | svn://example.com/repo2
             repo3 | hg  | /data/hg/reposo2                           | https://user@stuff.com/project
 
+``default-repo``
+
+  If set with a repository name, this will create an alias from the default
+  repository to the given repository. Example::
+
+    default-repo = repo2
+
 ``force-instance-upgrade``
 
   If set to ``True``, this will trigger the internal Trac upgrade process on
