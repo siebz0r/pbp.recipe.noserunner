@@ -267,7 +267,10 @@ class Recipe(object):
             # Got the command below from trac/admin/console.py
             pages_dir = pkg_resources.resource_filename('trac.wiki', 
                                                         'default-pages')
-            WikiAdmin(env).load_pages(pages_dir)
+            WikiAdmin(env).load_pages( pages_dir
+                                     , ignore=['WikiStart', 'checkwiki.py']
+                                     , create_only=['InterMapTxt']
+                                     )
 
         # Return files that were created by the recipe. The buildout
         # will remove all returned files upon reinstall.
