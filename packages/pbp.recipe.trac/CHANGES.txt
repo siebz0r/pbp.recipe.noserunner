@@ -1,5 +1,5 @@
-0.4.0.dev (unreleased)
-======================
+0.4.0 (2010-11-04)
+==================
 
 - Let's make this release based on Trac 0.12.
   [kdeldycke]
