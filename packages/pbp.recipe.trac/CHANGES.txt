@@ -1,7 +1,8 @@
 0.4.1.dev (unreleased)
 ======================
 
-No changes yet.
+- Add an option to deals with repository synchronization.
+  [kdeldycke]
 
 
 0.4.0 (2010-11-04)

@@ -38,6 +38,21 @@ The recipe supports the following options:
 
     default-repo = repo2
 
+``repos-sync``
+
+  This option deals with the way repositories are synchronized with Trac.
+
+  Currently it only support `per-request synchronization
+  <http://trac.edgewall.org/wiki/TracRepositoryAdmin#Synchronization>`_. This is
+  the method that will be setup if you give this option the ``request`` value.
+  This is the default value.
+
+  In the future, this option will accept ``hook`` as a value, to setup `explicit
+  synchronization
+  <http://trac.edgewall.org/wiki/TracRepositoryAdmin#ExplicitSync>`_.
+
+  This option only takes Subversion repositories into account.
+
 ``force-instance-upgrade``
 
   If set to ``True``, this will trigger the internal Trac upgrade process on

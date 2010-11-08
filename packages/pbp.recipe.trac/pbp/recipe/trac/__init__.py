@@ -148,6 +148,15 @@ class Recipe(object):
             parser.set('repositories', '.alias', default_repo)
             parser.set('repositories', '.hidden', 'true')
 
+        # Set repository sync method
+        sync_method = options.get('repos-sync', 'request').strip().lower()
+        svn_repos = [getId(r[0]) for r in repos if r[1] == 'svn']
+        if sync_method == 'request':
+          parser.set('trac', 'repository_sync_per_request', ', '.join(svn_repos))
+        # TODO
+        # elif sync_method == 'hook':
+        #   do stuff...
+
         # Set project description
         project_descr = options.get('project-description', None)
         if project_descr:
