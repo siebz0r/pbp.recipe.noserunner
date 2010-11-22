@@ -290,4 +290,5 @@ Support
 
 - pbp.recipe.trac is a sub-project of atomistor: http://atomisator.ziade.org
 
+- Page about Buildout-based installation on Trac wiki: http://trac.edgewall.org/wiki/CookBook/TracBuildout
 
