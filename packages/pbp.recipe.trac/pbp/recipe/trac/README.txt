@@ -288,7 +288,11 @@ Support
 
 - Source: http://bitbucket.org/tarek/atomisator/src/tip/packages/pbp.recipe.trac/
 
-- pbp.recipe.trac is a sub-project of atomistor: http://atomisator.ziade.org
+- Tutorial, example and how-to migrate from a legacy Trac instance:
+  http://kevin.deldycke.com/2010/12/automate-trac-instance-deployment-buildout/
 
-- Page about Buildout-based installation on Trac wiki: http://trac.edgewall.org/wiki/CookBook/TracBuildout
+- Page about Buildout-based installation on Trac wiki:
+  http://trac.edgewall.org/wiki/CookBook/TracBuildout
+
+- pbp.recipe.trac is a sub-project of Atomistor: http://atomisator.ziade.org
 
