@@ -16,7 +16,7 @@ from trac.ticket.model import *
 from trac.perm import PermissionSystem
 from trac.versioncontrol import RepositoryManager
 from trac.wiki.admin import WikiAdmin
-
+from trac.resource import ResourceNotFound
 
 
 class Recipe(object):
@@ -90,7 +90,8 @@ class Recipe(object):
                     comp.delete()
 
         # Add custom milestones
-        for mil_name in cleanMultiParams(options.get('milestones', '')):
+        for mil_data in cleanMultiParams(options.get('milestones', '')):
+            mil_name = mil_data[0]
             try:
                 mil = Milestone(env, name=mil_name)
             except ResourceNotFound:
@@ -100,11 +101,12 @@ class Recipe(object):
 
         # Add custom components
         for comp_data in cleanMultiParams(options.get('components', '')):
+            comp_name = comp_data[0]
             try:
                 comp = Component(env, name=comp_name)
             except ResourceNotFound:
                 comp = Component(env)
-                comp.name = comp_data[0]
+                comp.name = comp_name
                 if len(comp_data) == 2 and comp_data[1] not in [None, '']:
                     comp.owner = comp_data[1]
                 comp.insert()
@@ -181,7 +183,7 @@ class Recipe(object):
             param_name = "smtp-%s" % name
             default_value = None
             if param_name == "smtp-from-name":
-                default_value = project_name 
+                default_value = project_name
             value = options.get(param_name, default_value)
             if value is not None:
                 parser.set('notification', name.replace('-', '_'), value)
@@ -274,7 +276,7 @@ class Recipe(object):
         wiki_upgrade = getBool(options.get('wiki-doc-upgrade', 'False'))
         if wiki_upgrade:
             # Got the command below from trac/admin/console.py
-            pages_dir = pkg_resources.resource_filename('trac.wiki', 
+            pages_dir = pkg_resources.resource_filename('trac.wiki',
                                                         'default-pages')
             WikiAdmin(env).load_pages( pages_dir
                                      , ignore=['WikiStart', 'checkwiki.py']
@@ -286,4 +288,3 @@ class Recipe(object):
         return tuple()
 
     update = install
-

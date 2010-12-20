@@ -233,13 +233,21 @@ We'll start by creating a buildout that uses the recipe::
     ... recipe = pbp.recipe.trac
     ... project-name = My project
     ... project-url = http://example.com
-    ... repos-type = hg
-    ... repos-path = sqlite:${buildout:directory}/var/svn
+    ... repos = repo1 | hg | sqlite:${buildout:directory}/var/svn | http://my-domain.net/subversion/repo1
+    ... default-repo = repo1
     ... header-logo = ${buildout:directory}/my_logo
     ... smtp-server = localhost
     ... smtp-port = 25
     ... smtp-from = tarek@ziade.org
     ... smtp-replyto = tarek@ziade.org
+    ... milestones = 0.1
+    ...              0.2
+    ...              1.0
+    ...              Future
+    ...              Undecided
+    ... components = The application itself | kevin
+    ...              Project web site
+    ...              Build tools            | cecile
     ... """)
 
 Let's run the buildout::
@@ -265,9 +273,9 @@ With a trac.ini file. Let's check its content::
     >>> from ConfigParser import ConfigParser
     >>> parser = ConfigParser()
     >>> null = parser.read([f])
-    >>> parser.get('trac', 'repository_type')
+    >>> parser.get('repositories', 'repo1.type')
     'hg'
-    >>> parser.get('trac', 'repository_dir')
+    >>> parser.get('repositories', 'repo1.dir')
     '/sample-buildout/var/svn'
     >>> parser.get('project', 'descr')
     'My example project'
@@ -277,6 +285,35 @@ With a trac.ini file. Let's check its content::
     ''
     >>> parser.get('components', 'tracext.hg.*')
     'enabled'
+
+
+Check the milestones::
+
+    >>> from trac.admin.console import TracAdmin
+    >>> from trac.ticket.model import Milestone, Component
+    >>> location = join(sample_buildout, 'parts', 'trac')
+    >>> trac = TracAdmin(location)
+    >>> Milestone(trac.env, name='0.1')
+    <trac.ticket.model.Milestone object at ...
+    >>> Milestone(trac.env, name='Future')
+    <trac.ticket.model.Milestone object at ...
+    >>> Milestone(trac.env, name='milestone1')
+    Traceback (most recent call last):
+    ...
+    ResourceNotFound: Milestone milestone1 does not exist.
+
+
+Check the components::
+
+    >>> component = Component(trac.env, name='The application itself')
+    >>> component
+    <trac.ticket.model.Component object at ...
+    >>> component.owner
+    u'kevin'
+    >>> Component(trac.env, name='component1')
+    Traceback (most recent call last):
+    ...
+    ResourceNotFound: Component component1 does not exist.
 
 
 Support
@@ -295,4 +332,3 @@ Support
   http://trac.edgewall.org/wiki/CookBook/TracBuildout
 
 - pbp.recipe.trac is a sub-project of Atomistor: http://atomisator.ziade.org
-
