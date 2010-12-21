@@ -2,3 +2,5 @@
 
 - `Kevin Deldycke <http://kevin.deldycke.com>`_, Contributor [kdeldycke]
 
+- Marco Scheidhuber, Contributor [j23d]
+
