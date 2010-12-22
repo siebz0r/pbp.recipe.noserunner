@@ -1,5 +1,5 @@
-0.4.2.dev (unreleased)
-======================
+0.4.2 (2010-12-22)
+==================
 
 - Fix creation of milestones and components.
   [j23d]
