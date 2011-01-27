@@ -186,7 +186,7 @@ class Recipe(object):
                 default_value = project_name
             value = options.get(param_name, default_value)
             if value is not None:
-                parser.set('notification', name.replace('-', '_'), value)
+                parser.set('notification', param_name.replace('-', '_'), value)
 
 
         ###############
