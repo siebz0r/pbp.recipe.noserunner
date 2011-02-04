@@ -1,7 +1,8 @@
 0.4.4.dev (unreleased)
 ======================
 
-No changes yet.
+- Add trove category for Buildout recipes.
+  [kdeldycke]
 
 
 0.4.3 (2011-01-27)

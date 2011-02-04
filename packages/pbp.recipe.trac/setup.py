@@ -43,6 +43,7 @@ setup(name='pbp.recipe.trac',
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Buildout',
+        'Framework :: Buildout :: Recipe',
         'Framework :: Trac',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
