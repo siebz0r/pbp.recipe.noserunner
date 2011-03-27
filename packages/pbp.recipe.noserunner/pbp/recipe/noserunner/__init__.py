@@ -17,6 +17,8 @@ class Recipe(object):
         if wd == '':
             options['location'] = os.path.join(
                 buildout['buildout']['parts-directory'], name)
+        options['parts-directory'] = os.path.join(
+            buildout['buildout']['parts-directory'], self.name)
         eggs = options.get('eggs', '')
         eggs = [egg.strip() for egg in eggs.split('\n') if egg.strip() != '']
         if 'nose' not in eggs:
@@ -61,17 +63,19 @@ class Recipe(object):
         if initialization_section:
             initialization += initialization_section
 
-        dest.extend(zc.buildout.easy_install.scripts(
-            [(options['script'], 'nose', 'main')],
-            ws, options['executable'],
+        if not os.path.exists(options['parts-directory']):
+            os.mkdir(options['parts-directory'])
+            dest.append(options['parts-directory'])
+        dest.extend(zc.buildout.easy_install.sitepackage_safe_scripts(
             self.buildout['buildout']['bin-directory'],
+            ws, options['executable'], options['parts-directory'],
+            reqs=[(options['script'], 'nose', 'main')],
             extra_paths=self.egg.extra_paths,
-            arguments = defaults,
-            initialization = initialization,
+            script_arguments = defaults,
+            script_initialization = initialization,
             ))
 
-        return (os.path.join(self.buildout['buildout']['bin-directory'],
-                options['script']),)
+        return dest
 
     update = install
 
