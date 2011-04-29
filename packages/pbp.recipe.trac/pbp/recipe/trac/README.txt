@@ -332,3 +332,24 @@ Support
   http://trac.edgewall.org/wiki/CookBook/TracBuildout
 
 - pbp.recipe.trac is a sub-project of Atomistor: http://atomisator.ziade.org
+
+
+TODO
+====
+
+Here is a list of ideas that may be worth to implement (all of these are subject
+to discussion):
+
+  - Regenerate the ``trac.ini`` everytime buildout is called (thus setting good
+    default option values if the configuration was changed).
+
+  - Add a port option and use it to launche ``tracd``.
+
+  - Generate a nice ``bin/tracd`` command with all necessary parameters in to
+    launch a proper Trac server in the background.
+
+  - As above, should we create a ``bin/svnserve`` command to launch a
+    standalone Subversion server in the background ?
+
+  - Add an option to automaticcaly add a `post commit hook to close tickets by
+    commit message<http://trac.edgewall.org/wiki/TracInstall#AutomaticreferencetotheSVNchangesetsinTractickets>`_.

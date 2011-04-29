@@ -4,6 +4,9 @@
 - Add trove category for Buildout recipes.
   [kdeldycke]
 
+- Add a TODO section in the README.
+  [kdeldycke]
+
 
 0.4.3 (2011-01-27)
 ==================
