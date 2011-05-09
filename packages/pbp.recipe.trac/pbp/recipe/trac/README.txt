@@ -353,3 +353,6 @@ to discussion):
 
   - Add an option to automaticcaly add a `post commit hook to close tickets by
     commit message<http://trac.edgewall.org/wiki/TracInstall#AutomaticreferencetotheSVNchangesetsinTractickets>`_.
+
+  - Let have Trac and Subversion share the same user database, as `suggested by
+    Kevin Cline<http://kevin.deldycke.com/2010/12/automate-trac-instance-deployment-buildout/comment-page-1/#comment-8684>`_.
