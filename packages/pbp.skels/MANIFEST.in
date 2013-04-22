@@ -1,5 +1,0 @@
-include README.txt
-include CHANGES
-include LICENSE
-recursive-include pbp/skels *.txt *.py
-recursive-include pbp/skels/tmpl *.txt *.py *.*tmpl

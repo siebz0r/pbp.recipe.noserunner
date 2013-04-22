@@ -1,6 +1,0 @@
-include README.txt
-include LICENSE
-recursive-include atomisator/filters *.txt *.py
-recursive-include atomisator/filters/levenshtein *.c *.h *.py
-graft atomisator/filters/guess_language/trigrams
-

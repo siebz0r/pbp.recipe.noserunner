@@ -1,3 +1,0 @@
-[trac.plugins]
-hg = tracvc.hg.backend
-

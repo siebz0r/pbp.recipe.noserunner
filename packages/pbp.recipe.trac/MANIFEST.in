@@ -1,4 +1,0 @@
-include CHANGES.txt
-include CONTRIBUTORS.txt
-include LICENSE
-recursive-include pbp/recipe/trac *.txt *.py
