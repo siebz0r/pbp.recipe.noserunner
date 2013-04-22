@@ -57,7 +57,7 @@ setup(name='pbp.recipe.noserunner',
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
-                        'zc.buildout >= 1.5.0',
+                        'zc.buildout >= 2',
                         'nose',
                         'zc.recipe.egg'
                         # -*- Extra requirements: -*-

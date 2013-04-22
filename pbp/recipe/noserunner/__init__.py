@@ -3,6 +3,7 @@ import os, sys
 import pkg_resources
 import zc.buildout.easy_install
 import zc.recipe.egg
+from glob import glob
 
 class Recipe(object):
 
@@ -63,18 +64,22 @@ class Recipe(object):
         if initialization_section:
             initialization += initialization_section
 
+        globbed = []
+        for path in self.egg.extra_paths:
+            globbed += glob(path)
+        self.egg.extra_paths = globbed
+
         if not os.path.exists(options['parts-directory']):
             os.mkdir(options['parts-directory'])
             dest.append(options['parts-directory'])
-        dest.extend(zc.buildout.easy_install.sitepackage_safe_scripts(
-            self.buildout['buildout']['bin-directory'],
-            ws, options['executable'], options['parts-directory'],
-            reqs=[(options['script'], 'nose', 'main')],
-            extra_paths=self.egg.extra_paths,
-            script_arguments = defaults,
-            script_initialization = initialization,
-            ))
 
+        zc.buildout.easy_install.scripts([(options['script'], 'nose', 'main')],
+                                         ws, options['executable'],
+                                         options['bin-directory'],
+                                         extra_paths=self.egg.extra_paths,
+                                         arguments=defaults,
+                                         initialization=initialization)
+        dest.append(options['script'])
         return dest
 
     update = install

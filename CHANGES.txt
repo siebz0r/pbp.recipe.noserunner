@@ -1,3 +1,9 @@
+0.2.7
+=================
+
+- Updated buildout dependency to 2.x
+- Support for glob paths (wildcards)
+
 0.2.6 (2009-05-13)
 =================
 
